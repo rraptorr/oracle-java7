@@ -86,8 +86,8 @@ msgstr ""
 #. Type: boolean
 #. Description
 #: ../JB-jre.templates.in:2001
-msgid "See \"http://java.sun.com/notes\" for more information."
-msgstr "詳細については \"http://java.sun.com/notes\" を参照してください。"
+msgid "See \"http://download.java.net/dlj/jdk6/LICENSE\" for more information."
+msgstr "詳細については \"http://download.java.net/dlj/jdk6/LICENSE\" を参照してください。"
 
 #. Type: boolean
 #. Description

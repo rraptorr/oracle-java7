@@ -1,14 +1,21 @@
-sun-java6 (6-18-2) unstable; urgency=low
+sun-java6 (6.18-2) unstable; urgency=low
 
   * Package moved under the Debian Java team
-  * Add myself as uploader
+  * Add myself as uploader (Closes: #544629)
   * Update of the Vcs-Svn & Vcs-Browser fields
+  * Cleanup the version numbers (- in the version was messing up)
+    (Closes: #445343)
+  * Update of the license URL from http://java.sun.com/notes (404)
+    to http://download.java.net/dlj/jdk6/LICENSE (Closes: 569352)
   * French debconf templates translation updated (Closes: #569282)
   * Czech debconf templates translation updated (Closes: #569294)
+  * Japanese debconf templates translation updated (Closes: #569312)
+  * Italien debconf templates translation updated
+  * Slovak debconf templates translation updated (Closes: #569489)
   * Fix Incorrect Menu Entry for Java Web Start
     Reuse javaws.wrapper from openjdk (Closes: #489833)
   * Konqueror also available as a browser (Closes: #514983)
-
+	
  -- Sylvestre Ledru <sylvestre@debian.org>  Thu, 11 Feb 2010 09:27:04 +0100
 
 sun-java6 (6-18-1) unstable; urgency=low

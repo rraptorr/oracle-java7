@@ -88,8 +88,8 @@ msgstr ""
 #. Type: boolean
 #. Description
 #: ../JB-jre.templates.in:2001
-msgid "See \"http://java.sun.com/notes\" for more information."
-msgstr "Veja \"http://java.sun.com/notes\" para mais informação."
+msgid "See \"http://download.java.net/dlj/jdk6/LICENSE\" for more information."
+msgstr "Veja \"http://download.java.net/dlj/jdk6/LICENSE\" para mais informação."
 
 #. Type: boolean
 #. Description
