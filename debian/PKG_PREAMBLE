@@ -1,0 +1,11 @@
+This package was debianized by Matthias Klose <doko@ubuntu.com>
+on Mon, 11 Dec 2006, based on the packaging code
+from the sun-java5 Java packages.
+
+The current Debian maintainer is Matthias Klose.
+
+Upstream downloaded from:
+  https://jdk-distros.dev.java.net/developer.html
+
+Upstream homepage:
+  http://jdk-distros.dev.java.net/

@@ -1,0 +1,187 @@
+category truetype
+
+# Sans
+
+begin /usr/share/fonts/truetype/ttf-lucida/LucidaSansRegular.ttf
+  Family = LucidaSans
+  FontName = LucidaSans
+  Encoding = Unicode
+  Location = English
+  Charset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15 ISO10646-1
+  UniCharset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15
+  GeneralFamily = SansSerif
+  Weight = Book
+  Width = Variable
+  Shape = NoSerif Upright
+  Foundry = Lucida
+  Priority = 15
+end
+
+begin /usr/share/fonts/truetype/ttf-lucida/LucidaSansDemiBold.ttf
+  Family = LucidaSans
+  FontName = LucidaSans-Demibold
+  Encoding = Unicode
+  Location = English
+  Charset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15 ISO10646-1
+  UniCharset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15
+  GeneralFamily = SansSerif
+  Weight = Bold
+  Width = Variable
+  Shape = NoSerif Upright
+  Foundry = Lucida
+  Priority = 15
+end
+
+begin /usr/share/fonts/truetype/ttf-lucida/LucidaSansOblique.ttf
+  Family = LucidaSans
+  FontName = LucidaSans-Oblique
+  Encoding = Unicode
+  Location = English
+  Charset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15 ISO10646-1
+  UniCharset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15
+  GeneralFamily = SansSerif
+  Weight = Thin
+  Width = Variable
+  Shape = NoSerif Oblique
+  Foundry = Lucida
+  Priority = 15
+end
+
+begin /usr/share/fonts/truetype/ttf-lucida/LucidaSansDemiOblique.ttf
+  Family = LucidaSans
+  FontName = LucidaSans-Demibold-Oblique
+  Encoding = Unicode
+  Location = English
+  Charset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15 ISO10646-1
+  UniCharset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15
+  GeneralFamily = SansSerif
+  Weight = Bold
+  Width = Variable
+  Shape = NoSerif Oblique
+  Foundry = Lucida
+  Priority = 15
+end
+
+# Serif
+
+begin /usr/share/fonts/truetype/ttf-lucida/LucidaBrightRegular.ttf
+  Family = LucidaBright
+  FontName = LucidaBright-Regular
+  Encoding = Unicode
+  Location = English
+  Charset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15 ISO10646-1
+  UniCharset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15
+  GeneralFamily = Roman
+  Weight = Book
+  Width = Variable
+  Shape = NoSerif Upright
+  Foundry = Lucida
+  Priority = 15
+end
+
+begin /usr/share/fonts/truetype/ttf-lucida/LucidaBrightItalic.ttf
+  Family = LucidaBright
+  FontName = LucidaBright-Italic
+  Encoding = Unicode
+  Location = English
+  Charset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15 ISO10646-1
+  UniCharset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15
+  GeneralFamily = Roman
+  Weight = Book
+  Width = Variable
+  Shape = NoSerif Oblique
+  Foundry = Lucida
+  Priority = 15
+end
+
+begin /usr/share/fonts/truetype/ttf-lucida/LucidaBrightDemiBold.ttf
+  Family = Lucida-Bright
+  FontName = Lucida-Bright-Demi
+  Encoding = Unicode
+  Location = English
+  Charset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15 ISO10646-1
+  UniCharset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15
+  GeneralFamily = Roman
+  Weight = Bold
+  Width = Variable
+  Shape = NoSerif Upright
+  Foundry = Lucida
+  Priority = 15
+end
+
+begin /usr/share/fonts/truetype/ttf-lucida/LucidaBrightDemiItalic.ttf
+  Family = Lucida-Bright
+  FontName = Lucida-Bright-DemiItalic
+  Encoding = Unicode
+  Location = English
+  Charset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15 ISO10646-1
+  UniCharset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15
+  GeneralFamily = Roman
+  Weight = Demi
+  Width = Variable
+  Shape = NoSerif Oblique
+  Foundry = Lucida
+  Priority = 15
+end
+
+# Mono
+
+begin /usr/share/fonts/truetype/ttf-lucida/LucidaTypewriterRegular.ttf
+  Family = LucidaSans-Typewriter
+  FontName = LucidaSans-Typewriter
+  Encoding = Unicode
+  Location = English
+  Charset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15 ISO10646-1
+  UniCharset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15
+  GeneralFamily = Typewriter
+  Weight = Book
+  Width = Fixed
+  Shape = NoSerif Upright
+  Foundry = Lucida
+  Priority = 15
+end
+
+begin /usr/share/fonts/truetype/ttf-lucida/LucidaTypewriterOblique.ttf
+  Family = LucidaSans-Typewriter
+  FontName = LucidaSans-Typewriter-Oblique
+  Encoding = Unicode
+  Location = English
+  Charset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15 ISO10646-1
+  UniCharset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15
+  GeneralFamily = Typewriter
+  Weight = Book
+  Width = Fixed
+  Shape = NoSerif Oblique
+  Foundry = Lucida
+  Priority = 15
+end
+
+begin /usr/share/fonts/truetype/ttf-lucida/LucidaTypewriterBold.ttf
+  Family = LucidaSans-Typewriter
+  FontName = LucidaSans-Typewriter-Bold
+  Encoding = Unicode
+  Location = English
+  Charset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15 ISO10646-1
+  UniCharset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15
+  GeneralFamily = Typewriter
+  Weight = Bold
+  Width = Fixed
+  Shape = NoSerif Upright
+  Foundry = Lucida
+  Priority = 15
+end
+
+begin /usr/share/fonts/truetype/ttf-lucida/LucidaTypewriterBoldOblique.ttf
+  Family = LucidaSans-Typewriter
+  FontName = LucidaSans-Typewriter-Bold-Oblique
+  Encoding = Unicode
+  Location = English
+  Charset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15 ISO10646-1
+  UniCharset = ISO8859-1 ISO8859-2 ISO8859-7 ISO8859-9 ISO8859-15
+  GeneralFamily = Typewriter
+  Weight = Bold
+  Width = Fixed
+  Shape = NoSerif Oblique
+  Foundry = Lucida
+  Priority = 15
+end

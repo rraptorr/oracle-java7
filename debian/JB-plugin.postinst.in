@@ -1,0 +1,25 @@
+#!/bin/sh -e
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+priority=@priority@
+browser_dirs="@browser_dirs@"
+PLUGIN=libnpjp2.so
+PLUGINPTH=/@basediralias@/jre/lib/@archdir@/$PLUGIN
+
+for browser_dir in $browser_dirs; do
+    if [ $browser_dir = xulrunner-addons ]; then
+	browser=xulrunner-1.9
+    else
+	browser=$browser_dir
+    fi
+    update-alternatives --quiet --install \
+	/usr/lib/$browser_dir/plugins/libjavaplugin.so \
+	$browser-javaplugin.so \
+	$PLUGINPTH \
+	$priority
+done
+
+#DEBHELPER#
+
+exit 0

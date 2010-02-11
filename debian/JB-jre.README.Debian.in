@@ -1,0 +1,87 @@
+[Note: this README is not yet up-to-date for @basename@]
+
+Compatibility and problems with some window managers
+====================================================
+
+Some window mangers have problems running java programs with the environment
+variable AWT_TOOLKIT=MToolkit. For these cases, please use a window manger
+which doesn't show these problems.
+
+For details, please see http://bugs.debian.org/504524
+
+
+Installation of extensions:
+===========================
+* Extensions which work with all Java 2 VMs (>= v1.3) should be installed
+  in /@basedir@/ext (with native libraries in /@basedir@/<ARCH>).
+  Packages should depend on @JRE@ or @JDK@ if development tools are required.
+* Extension which require a specific Java @RELEASE@ version should be installed
+  in /@basedir@/jre/lib/ext (with native libraries 
+  in /@basedir@/jre/lib/<ARCH>).
+  Packages should depend on @JRE@ or @JDK@ if
+  development tools are required.
+(<ARCH> currently is 'i386' for all x86 machines, 'sparc' for all sparc
+machines, and '`uname -m`' for all other machines)
+
+
+Debian Java Repository:
+=======================
+/usr/share/java/repository gets added to CLASSPATH automatically but
+it is not an extension directory. If you want to give all permissions
+to code installed in /usr/share/java/repository, the uncomment the
+corresponding section in /etc/@basename@/security/java.policy.
+
+
+Alternatives:
+=============
+Please see README.alternatives.
+
+
+Java Plug-In (i386 only):
+=========================
+* The @basename@-plugin package automatically enables the Java Plug-In
+  for use with Firefox, Mozilla, and browsers based on Mozilla.
+* The Plug-In can be configured with the program ControlPanel.
+* Netscape 4.x only:  For versions < 4.77 the Plug-In only works for
+  HTML pages which have been modified for use with the Plug-In.
+  Since version 4.77 it is possible to completely replace Netscape's
+  builtin VM: Enable 'Edit->Preferences->Advanced->Enable Java->Enable
+  Java Plugin'
+
+
+Java WebStart support:
+======================
+Support for Java(TM) Web Start Technology is included in this
+package but must be enabled on a per-user basis.  See
+/usr/share/@basename@/javaws-1_2-linux-int.zip for more information.
+
+
+Java Cryptography Extension (JCE) support:
+==========================================
+For legal resaon, JCE support in this environment is limited to
+smaller key sizes.  Please see
+<URL:http://javashoplm.sun.com/ECom/docs/Welcome.jsp?StoreId=22&PartDetailId=7503-jce-1.4.2-oth-JPR&SiteId=JSC&TransactionId=noreg>
+for the Unlimited Strength Jurisdiction Policy Files.
+
+Additional security issues:
+===========================
+With release 1.4.1,
+/@basedir@/jre/lib/security/cacerts is now
+/etc/@basename@/security/cacerts as is treated as a
+configuration file by dpkg.  This means that changes to this file are
+preserved across package update.  You should, therefore, think about
+changing the default password protecting this file.
+
+You should also consider changing
+/etc/@basename@/security/java.policy to prevent threads from
+calling java.lang.Thread.stop() without any arguments.  This feature
+is enabled by default in the interests of backward compatibility but
+may result in security issues.  You will find more details on this in
+java.policy.
+
+
+-- 
+$Id: @basename@-jre.README.Debian,v 1.2 2004/07/27 06:07:54 jk-guest Exp $
+
+ -- Juergen Kreileder <jk@blackdown.de>, Tue Jul 27 08:00:40 2004
+ -- Matthias Klose <doko@ubuntu.com>  Wed,  3 May 2006 12:34:11 +0200

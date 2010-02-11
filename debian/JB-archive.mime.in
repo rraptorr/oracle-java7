@@ -1,0 +1,6 @@
+application/java-archive
+        ext: jar
+application/x-java-archive
+        ext: jar
+application/x-jar
+        ext: jar
