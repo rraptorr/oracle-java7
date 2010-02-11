@@ -1,3 +1,11 @@
+sun-java6 (6-18-3) unstable; urgency=low
+
+  * Package moved under the Debian Java team
+  * Add myself as uploader
+  * Update of the Vcs-Svn & Vcs-Browser fields
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Thu, 11 Feb 2010 10:53:06 +0100
+
 sun-java6 (6-18-2) unstable; urgency=low
 
   * QA upload.
