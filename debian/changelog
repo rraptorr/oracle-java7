@@ -1,3 +1,9 @@
+sun-java6 (6.18-3) UNRELEASED; urgency=low
+
+  * Update of the docs filenames (Closes: #523390)
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Fri, 12 Feb 2010 00:55:24 +0100
+
 sun-java6 (6.18-2) unstable; urgency=low
 
   * Package moved under the Debian Java team

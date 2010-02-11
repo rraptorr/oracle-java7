@@ -5,7 +5,7 @@ docdir=/usr/share/doc/@basename@-jdk
 tmpdir=${docdir}/tmp
 installdir=${docdir}/html
 url=http://java.sun.com/javase/downloads/
-archives='jdk-6u10-docs.zip jdk-6u10-docs-ja.zip'
+archives='jdk-6u18-docs.zip jdk-6u18-docs-ja.zip'
 priority=@priority@
 
  
