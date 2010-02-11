@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: sun-java5 1.5.0-07-1\n"
+"Project-Id-Version: sun-java6 6-18-2\n"
 "Report-Msgid-Bugs-To: sun-java6@packages.debian.org\n"
 "POT-Creation-Date: 2010-02-11 10:31+0100\n"
-"PO-Revision-Date: 2006-08-13 16:31+0200\n"
+"PO-Revision-Date: 2010-02-11 10:50+0100\n"
 "Last-Translator: Martin Sin <martin.sin@zshk.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
@@ -93,7 +93,6 @@ msgstr "Pro bližší informace se podívejte na \"http://java.sun.com/notes\"."
 #. Type: boolean
 #. Description
 #: ../dlj.templates:2001
-#, fuzzy
 #| msgid "Do you agree with the DLJ license terms?"
 msgid "Do you accept the DLJ license terms?"
 msgstr "Souhlasíte s licenčními podmínkami DLJ?"
@@ -101,7 +100,6 @@ msgstr "Souhlasíte s licenčními podmínkami DLJ?"
 #. Type: boolean
 #. Description
 #: ../dlj.templates:2001
-#, fuzzy
 #| msgid ""
 #| "In order to install this package, you must agree to its license terms, "
 #| "the \"Operating System Distributor License for Java\" (DLJ), v1.1. Not "

@@ -1,15 +1,10 @@
-sun-java6 (6-18-3) unstable; urgency=low
+sun-java6 (6-18-2) unstable; urgency=low
 
   * Package moved under the Debian Java team
   * Add myself as uploader
   * Update of the Vcs-Svn & Vcs-Browser fields
-
- -- Sylvestre Ledru <sylvestre@debian.org>  Thu, 11 Feb 2010 10:53:06 +0100
-
-sun-java6 (6-18-2) unstable; urgency=low
-
-  * QA upload.
   * French debconf templates translation updated (Closes: #569282)
+  * Czech debconf templates translation updated (Closes: #569294)
   * Fix Incorrect Menu Entry for Java Web Start
     Reuse javaws.wrapper from openjdk (Closes: #489833)
   * Konqueror also available as a browser (Closes: #514983)
