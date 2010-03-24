@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sun-java6 6-18-2\n"
 "Report-Msgid-Bugs-To: sun-java6@packages.debian.org\n"
-"POT-Creation-Date: 2010-02-11 10:31+0100\n"
+"POT-Creation-Date: 2010-02-16 06:35+0100\n"
 "PO-Revision-Date: 2010-02-11 10:50+0100\n"
 "Last-Translator: Martin Sin <martin.sin@zshk.cz>\n"
 "Language-Team: Czech <debian-l10n-czech@lists.debian.org>\n"
@@ -87,23 +87,19 @@ msgstr ""
 #. Type: boolean
 #. Description
 #: ../JB-jre.templates.in:2001
-msgid "See \"http://download.java.net/dlj/jdk6/LICENSE\" for more information."
-msgstr "Pro bližší informace se podívejte na \"http://download.java.net/dlj/jdk6/LICENSE\"."
+msgid "See \"http://java.sun.com/notes\" for more information."
+msgstr ""
+"Pro bližší informace se podívejte na \"http://java.sun.com/notes\"."
 
 #. Type: boolean
 #. Description
 #: ../dlj.templates:2001
-#| msgid "Do you agree with the DLJ license terms?"
 msgid "Do you accept the DLJ license terms?"
 msgstr "Souhlasíte s licenčními podmínkami DLJ?"
 
 #. Type: boolean
 #. Description
 #: ../dlj.templates:2001
-#| msgid ""
-#| "In order to install this package, you must agree to its license terms, "
-#| "the \"Operating System Distributor License for Java\" (DLJ), v1.1. Not "
-#| "accepting will cancel the installation."
 msgid ""
 "In order to install this package, you must accept the license terms, the "
 "\"Operating System Distributor License for Java\" (DLJ), v1.1. Not accepting "

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: sun-java6@packages.debian.org\n"
-"POT-Creation-Date: 2010-02-11 10:31+0100\n"
+"POT-Creation-Date: 2010-03-05 15:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -72,7 +72,7 @@ msgstr ""
 #. Type: boolean
 #. Description
 #: ../JB-jre.templates.in:2001
-msgid "See \"http://download.java.net/dlj/jdk6/LICENSE\" for more information."
+msgid "See \"http://java.sun.com/notes\" for more information."
 msgstr ""
 
 #. Type: boolean

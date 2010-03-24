@@ -1,8 +1,16 @@
-sun-java6 (6.18-3) UNRELEASED; urgency=low
+sun-java6 (6.18-3) unstable; urgency=low
 
   * Update of the docs filenames (Closes: #523390)
+  * Swedish debconf templates translation updated (Closes: #570023)
+  * Chinese (zh_CN) debconf templates translation updated
+  * Czech debconf templates translation updated (Closes: #570062)
+  * French debconf templates translation updated (Closes: #570060)
+  * Slovak debconf templates translation updated (Closes: #570061)
+  * Russian debconf templates translation updated (Closes: #570541)
+  * German debconf templates translation updated (Closes: #570741)
+  * Portuguese debconf templates translation updated (Closes: #571042)
 
- -- Sylvestre Ledru <sylvestre@debian.org>  Fri, 12 Feb 2010 00:55:24 +0100
+ -- Sylvestre Ledru <sylvestre@debian.org>  Fri, 05 Mar 2010 14:55:36 +0100
 
 sun-java6 (6.18-2) unstable; urgency=low
 

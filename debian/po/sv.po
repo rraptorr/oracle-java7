@@ -1,22 +1,24 @@
-# translation of sun-java6_6-06-1_sv.po to swedish
-# Swedish translation of JB debconf template.
-# Copyright (C) 2006, 2008 Free Software Foundation, Inc.
-# This file is distributed under the same license as the JB package.
+# Swedish translation of sun-java6 debconf template.
+# Copyright (C) 2006, 2008, 2010 Free Software Foundation, Inc.
+# This file is distributed under the same license as the sun-java6 package.
 #
 # Daniel Nylander <po@danielnylander.se>, 2006.
 # Martin Bagge <martin.bagge@bthstudent.se>, 2008.
+# Martin Bagge <brother@bsnet.se>, 2010
 msgid ""
 msgstr ""
 "Project-Id-Version: sun-java6_6-06-1_sv\n"
 "Report-Msgid-Bugs-To: sun-java6@packages.debian.org\n"
-"POT-Creation-Date: 2010-02-11 10:31+0100\n"
-"PO-Revision-Date: 2008-06-26 21:54+0200\n"
-"Last-Translator: Martin Bagge <martin.bagge@bthstudent.se>\n"
-"Language-Team: swedish <debian-l10n-swedish@lists.debian.org>\n"
+"POT-Creation-Date: 2010-03-05 15:58+0100\n"
+"PO-Revision-Date: 2010-02-15 22:50+0100\n"
+"Last-Translator: Martin Bagge <brother@bsnet.se>\n"
+"Language-Team: Swedish <debian-l10n-swedish@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 1.11.4\n"
+"X-Poedit-Language: Swedish\n"
+"X-Poedit-Country: Sweden\n"
 
 #. Type: note
 #. Description
@@ -36,15 +38,15 @@ msgid ""
 "version and replace the strong cryptography versions supplied with this "
 "package with the unlimited ones."
 msgstr ""
-"PÂ grund av importkontrollrestriktioner av vissa l‰nder, skeppas JCE-"
-"r‰ttsskipningspolicyfiler med detta paket som tillÂter \"stark\" men "
-"begr‰nsad kryptografi att anv‰ndas. En version med \"obegr‰nsad styrka\" av "
-"dessa filer indikerar inga restriktioner fˆr kryptografiska styrkor ‰r "
-"tillg‰nglig fˆr de som bor i version of these files indicating no "
+"P√• grund av importkontrollrestriktioner av vissa l√§nder, skeppas JCE-"
+"r√§ttsskipningspolicyfiler med detta paket som till√•ter \"stark\" men "
+"begr√§nsad kryptografi att anv√§ndas. En version med \"obegr√§nsad styrka\" av "
+"dessa filer indikerar inga restriktioner f√∂r kryptografiska styrkor √§r "
+"tillg√§nglig f√∂r de som bor i version of these files indicating no "
 "restrictions on cryptographic strengths is available for those living in "
-"kvalificerade l‰nder (som ‰r de flesta l‰nder). Du h‰mtar denna version och "
-"ers‰tter de version med stark kryptografi som skickas med detta paket med "
-"den obegr‰nsade versionen."
+"kvalificerade l√§nder (som √§r de flesta l√§nder). Du h√§mtar denna version och "
+"ers√§tter de version med stark kryptografi som skickas med detta paket med "
+"den obegr√§nsade versionen."
 
 #. Type: note
 #. Description
@@ -56,7 +58,7 @@ msgid ""
 "JPR&SiteId=JSC&TransactionId=noreg"
 msgstr ""
 "Java(TM) Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy "
-"Files 1.4.2 finns tillg‰ngliga pÂ http://javashoplm.sun.com/ECom/docs/"
+"Files 1.4.2 finns tillg√§ngliga p√• http://javashoplm.sun.com/ECom/docs/"
 "Welcome.jsp?StoreId=22&PartDetailId=7503-jce-1.4.2-oth-"
 "JPR&SiteId=JSC&TransactionId=noreg"
 
@@ -64,7 +66,7 @@ msgstr ""
 #. Description
 #: ../JB-jre.templates.in:2001
 msgid "Grant the \"stopThread\" RuntimePermission?"
-msgstr "Godk‰nn \"stopThread\" RuntimePermission?"
+msgstr "Godk√§nn \"stopThread\" RuntimePermission?"
 
 #. Type: boolean
 #. Description
@@ -73,8 +75,8 @@ msgid ""
 "This permission allows any thread to stop itself using the java.lang.Thread."
 "stop() method that takes no argument."
 msgstr ""
-"Denna godk‰nning tillÂter alla trÂdar att stoppa sig sj‰lva med metoden java."
-"lang.Thread.stop() som inte tar nÂgra argument."
+"Denna godk√§nning till√•ter alla tr√•dar att stoppa sig sj√§lva med metoden java."
+"lang.Thread.stop() som inte tar n√•gra argument."
 
 #. Type: boolean
 #. Description
@@ -85,39 +87,32 @@ msgid ""
 "permission at all or restrict it manually in java.policy to code sources "
 "that you specify, because Thread.stop() is potentially unsafe."
 msgstr ""
-"Notera att denna godk‰nning ges som standard endast fˆr att vara "
-"bakÂtkompatibel. Det rekommenderas starkt att du antingen inte ger detta "
-"tillstÂnd alls eller begr‰nsar det manuellt i java.policy till k‰llkod som "
-"du anger, d‰rfˆr att Thread.stop() kan vara os‰ker."
+"Notera att denna godk√§nning ges som standard endast f√∂r att vara "
+"bak√•tkompatibel. Det rekommenderas starkt att du antingen inte ger detta "
+"tillst√•nd alls eller begr√§nsar det manuellt i java.policy till k√§llkod som "
+"du anger, d√§rf√∂r att Thread.stop() kan vara os√§ker."
 
 #. Type: boolean
 #. Description
 #: ../JB-jre.templates.in:2001
-msgid "See \"http://download.java.net/dlj/jdk6/LICENSE\" for more information."
-msgstr "Se \"http://download.java.net/dlj/jdk6/LICENSE\" fˆr mer information."
+msgid "See \"http://java.sun.com/notes\" for more information."
+msgstr "Se \"http://java.sun.com/notes\" f√∂r mer information."
 
 #. Type: boolean
 #. Description
 #: ../dlj.templates:2001
-#, fuzzy
-#| msgid "Do you agree with the DLJ license terms?"
 msgid "Do you accept the DLJ license terms?"
-msgstr "Godk‰nner du DLJ-licensvillkoren?"
+msgstr "Godk√§nner du DLJ-licensvillkoren?"
 
 #. Type: boolean
 #. Description
 #: ../dlj.templates:2001
-#, fuzzy
-#| msgid ""
-#| "In order to install this package, you must agree to its license terms, "
-#| "the \"Operating System Distributor License for Java\" (DLJ), v1.1. Not "
-#| "accepting will cancel the installation."
 msgid ""
 "In order to install this package, you must accept the license terms, the "
 "\"Operating System Distributor License for Java\" (DLJ), v1.1. Not accepting "
 "will cancel the installation."
 msgstr ""
-"Fˆr att installera detta paket mÂste du godta dess licensvillkor, "
+"F√∂r att installera detta paket m√•ste du godta dess licensvillkor, "
 "\"Operating System Distributor License for Java\" (DLJ), v1.1. Om du inte "
 "godtar villkoren kommer installationen att avbrytas."
 
@@ -126,7 +121,7 @@ msgstr ""
 #: ../dlj.templates:3001
 msgid "Declined Operating System Distributor License for Java v1.1 (DLJ)"
 msgstr ""
-"Godk‰nde inte \"Operating System Distributor License for Java v1.1 (DLJ)\""
+"Godk√§nde inte \"Operating System Distributor License for Java v1.1 (DLJ)\""
 
 #. Type: error
 #. Description
@@ -135,7 +130,7 @@ msgid ""
 "If you do not agree to the DLJ license terms you cannot install this "
 "software."
 msgstr ""
-"Om du inte godk‰nner DLJ-licensvillkoren kan du inte installera denna "
+"Om du inte godk√§nner DLJ-licensvillkoren kan du inte installera denna "
 "programvara."
 
 #. Type: error

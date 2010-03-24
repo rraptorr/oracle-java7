@@ -28,7 +28,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sun-java5 1.5.0-10-1\n"
 "Report-Msgid-Bugs-To: sun-java6@packages.debian.org\n"
-"POT-Creation-Date: 2010-02-11 10:31+0100\n"
+"POT-Creation-Date: 2010-03-05 15:58+0100\n"
 "PO-Revision-Date: 2006-12-26 22:39+0100\n"
 "Last-Translator: Steve Lord Flaubert <stonescenter@gmail.com>\n"
 "Language-Team: Spanish <debian-l10n-spanish@lists.debian.org>\n"
@@ -110,9 +110,13 @@ msgstr ""
 #. Type: boolean
 #. Description
 #: ../JB-jre.templates.in:2001
-msgid "See \"http://download.java.net/dlj/jdk6/LICENSE\" for more information."
+#, fuzzy
+#| msgid ""
+#| "See \"http://download.java.net/dlj/jdk6/LICENSE\" for more information."
+msgid "See \"http://java.sun.com/notes\" for more information."
 msgstr ""
-"Véase la siguiente dirección «http://download.java.net/dlj/jdk6/LICENSE» para más información."
+"Véase la siguiente dirección «http://download.java.net/dlj/jdk6/LICENSE» para "
+"más información."
 
 #. Type: boolean
 #. Description

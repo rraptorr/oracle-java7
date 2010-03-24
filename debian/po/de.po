@@ -1,26 +1,27 @@
 # translation of po-debconf template to German
-# Copyright (C) 2006, the sun-java5 package's copyright holder
-# This file is distributed under the same license as the sun-java5 package.
+# This file is distributed under the same license as the sun-java6 package.
+# Copyright ©:
 #
-# Matthias Julius <mdeb@julius-net.net>, 2006.
+# Matthias Julius <mdeb@julius-net.net>, 2006, 2010.
 msgid ""
 msgstr ""
-"Project-Id-Version: sun-java5 1.5.0-08-1\n"
+"Project-Id-Version: sun-java6 6-18-2\n"
 "Report-Msgid-Bugs-To: sun-java6@packages.debian.org\n"
 "POT-Creation-Date: 2010-02-11 10:31+0100\n"
-"PO-Revision-Date: 2006-11-13 21:33-0500\n"
+"PO-Revision-Date: 2010-02-21 01:00-0500\n"
 "Last-Translator: Matthias Julius <mdeb@julius-net.net>\n"
 "Language-Team: German <debian-l10n-german@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.11.4\n"
+"X-Generator: Lokalize 1.0\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #. Type: note
 #. Description
 #: ../JB-jre.templates.in:1001
 msgid "JCE Unlimited Strength Jurisdiction Policy Files"
-msgstr "»JCE Unlimited Strength Jurisdiction Policy Files«"
+msgstr "JCE Unlimited Strength Jurisdiction Policy Files"
 
 #. Type: note
 #. Description
@@ -41,8 +42,8 @@ msgstr ""
 "Einschränkungen der Verschlüsselungsstärke aufweist, ist für diejenigen "
 "verfügbar, die in berechtigten Ländern leben (das sind die meisten Länder). "
 "Sie können diese Version herunterladen und die Version mit starker "
-"Verschlüsselung, die mit diesem Paket geliefert wurden, durch die "
-"unlimitierten ersetzen."
+"Verschlüsselung, die mit diesem Paket geliefert wurde, durch die "
+"unlimitierte ersetzen."
 
 #. Type: note
 #. Description
@@ -62,7 +63,7 @@ msgstr ""
 #. Description
 #: ../JB-jre.templates.in:2001
 msgid "Grant the \"stopThread\" RuntimePermission?"
-msgstr "Die »stopThread« RuntimePermission zulassen?"
+msgstr "Die »stopThread«-RuntimePermission zulassen?"
 
 #. Type: boolean
 #. Description
@@ -91,33 +92,26 @@ msgstr ""
 #. Type: boolean
 #. Description
 #: ../JB-jre.templates.in:2001
-msgid "See \"http://download.java.net/dlj/jdk6/LICENSE\" for more information."
-msgstr "Siehe http://download.java.net/dlj/jdk6/LICENSE für weitere Informationen."
+msgid "See \"http://java.sun.com/notes\" for more information."
+msgstr "Siehe http://java.sun.com/notes für weitere Informationen."
 
 #. Type: boolean
 #. Description
 #: ../dlj.templates:2001
-#, fuzzy
-#| msgid "Do you agree with the DLJ license terms?"
 msgid "Do you accept the DLJ license terms?"
-msgstr "Sind Sie mit den DLJ-Lizenzbestimmungen einverstanden?"
+msgstr "Akzeptieren Sie die DLJ-Lizenzbestimmungen?"
 
 #. Type: boolean
 #. Description
 #: ../dlj.templates:2001
-#, fuzzy
-#| msgid ""
-#| "In order to install this package, you must agree to its license terms, "
-#| "the \"Operating System Distributor License for Java\" (DLJ), v1.1. Not "
-#| "accepting will cancel the installation."
 msgid ""
 "In order to install this package, you must accept the license terms, the "
 "\"Operating System Distributor License for Java\" (DLJ), v1.1. Not accepting "
 "will cancel the installation."
 msgstr ""
-"Um dieses Paket zu installieren, müssen Sie dessen Lizenzbedingungen, den "
-"»Operating System Distributor License for Java« (DLJ), v1.1, zustimmen. "
-"Nichtakzeptanz wird die Installation abbrechen."
+"Um dieses Paket zu installieren, müssen Sie dessen Lizenzbedingungen, die "
+"»Operating System Distributor License for Java« (DLJ), v1.1, akzeptieren. "
+"Anderenfalls wird die Installation abgebrochen."
 
 #. Type: error
 #. Description
@@ -140,3 +134,5 @@ msgstr ""
 #: ../dlj.templates:3001
 msgid "The installation of this package will be canceled."
 msgstr "Die Installation dieses Pakets wird abgebrochen."
+
+
