@@ -1,0 +1,17 @@
+#!/bin/sh -e
+
+jdiralias=@jdiralias@
+
+case "$1" in
+purge)
+    if [ -z "$jdiralias" ]; then
+	echo >&2 "$(basename $0): Internal error"
+	exit 1
+    fi
+    rm -rf /etc/$jdiralias
+
+    # XXX should remove /etc/.java ???
+    ;;
+esac
+
+#DEBHELPER#

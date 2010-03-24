@@ -1,0 +1,26 @@
+                             JAVA_HOME
+
+1. Legacy use of JAVA_HOME
+
+   As of the latest versions of java-common there really should
+   be no need for JAVA_HOME as Java(TM) should be completely
+   integrated with your Debian GNU/Linux system.
+
+   For reference, the setting of JAVA_HOME for Sun Java is:
+     JAVA_HOME=/@TOP@/@jdiralias@
+
+2. Selecting @basename@ as the default Java(TM) implementation
+
+   Please see README.alternatives for instructions on how
+   to make @basename@ executables and man pages the default on your system.
+
+
+3. For developer information about this packaging of Java(TM) for Debian 
+   please visit:
+ 
+   https://jdk-distros.dev.java.net/
+
+   In addition to technical information the jdk-distros site
+   provides forums to discuss packaging of Java for Linux
+   (and OpenSolaris) and to discuss the new Operating System Distributor 
+   License for Java (DLJ).

@@ -1,0 +1,5 @@
+@basename@-doc: possibly-insecure-handling-of-tmp-files-in-maintainer-script postinst:5
+@basename@-doc: copyright-should-refer-to-common-license-file-for-gpl
+@basename@-doc: package-contains-empty-directory
+# the user needs to download these
+@basename@-doc: doc-base-file-references-missing-file

@@ -1,0 +1,18 @@
+#!/bin/sh -e
+
+gnome=''
+
+if [ "$1" = "remove" ] || [ "$1" = "deconfigure" ]; then
+    for i in $gnome; do
+	case $i in
+	    */*)
+		update-alternatives --remove $j /usr/share/gnome/$i
+		;;
+	    *)
+		j=$i
+		;;
+	esac
+    done
+fi
+
+#DEBHELPER#

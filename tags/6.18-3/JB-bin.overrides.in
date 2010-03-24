@@ -1,0 +1,9 @@
+@basename@-bin: unstripped-binary-or-object
+@basename@-bin: binary-or-shlib-defines-rpath
+@basename@-bin: shlib-with-non-pic-code
+@basename@-bin: shlib-without-PT_GNU_STACK-section
+@basename@-bin: copyright-should-refer-to-common-license-file-for-gpl
+@basename@-bin: image-file-in-usr-lib
+@basename@-bin: package-contains-empty-directory
+@basename@-bin: too-long-extended-description-in-templates
+@basename@-bin: embedded-zlib

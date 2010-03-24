@@ -1,0 +1,9 @@
+# the license requires these tight dependencies :-/
+sun-java6 source: not-binnmuable-all-depends-any
+sun-java6 source: not-binnmuable-any-depends-all
+
+# keep dh_desktop to be able to build on older releases
+sun-java6 source: dh_desktop-is-deprecated
+
+# dh_icons is only called conditionally
+sun-java6 source: debhelper-script-needs-versioned-build-depends

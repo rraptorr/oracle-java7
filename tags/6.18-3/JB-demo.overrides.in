@@ -1,0 +1,6 @@
+@basename@-demo: shlib-without-PT_GNU_STACK-section
+@basename@-demo: unstripped-binary-or-object
+@basename@-demo: binary-or-shlib-defines-rpath
+@basename@-demo: menu-command-not-in-package
+@basename@-demo: image-file-in-usr-lib
+@basename@-demo: menu-icon-too-big

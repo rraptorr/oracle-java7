@@ -1,0 +1,103 @@
+#! /bin/sh -e
+
+TMP_DIR=${TMP:=/tmp}
+docdir=/usr/share/doc/@basename@-jdk
+tmpdir=${docdir}/tmp
+installdir=${docdir}/html
+url=http://java.sun.com/javase/downloads/
+archives='jdk-6u18-docs.zip jdk-6u18-docs-ja.zip'
+priority=@priority@
+
+ 
+find_archive()
+{
+    archive=does/not/exist
+    for a in $archives; do
+	if [ -e ${TMP_DIR}/$a ]; then
+	    archive=$a
+	    return
+	fi
+    done
+}
+
+case "$1" in
+configure)
+
+    if [ -e $installdir/index.html ]; then
+	cat <<-EOF
+	
+	A current version of the JDK documentation is already installed.
+	
+	This version will be left in place.
+	
+	EOF
+	exit 0
+    fi
+    prob=1
+    while [ $prob -eq 1 ]; do
+        prob=0
+	find_archive
+        if [ ! -e "${TMP_DIR}/$archive" ]
+        then
+            cat <<-EOF
+	This package is an installer package, it does not actually contain the
+	JDK documentation.  You will need to go download one of the
+	archives:
+	
+	    ${archives}
+	
+	(choose the non-update version if this is the first installation).
+	Please visit
+	
+	    ${url}
+	
+	now and download.  The file should be owned by root.root and be copied
+	to ${TMP_DIR}.
+	EOF
+            prob=1
+        elif [ ! -r "${TMP_DIR}/$archive" ]; then
+             echo "Error: ${TMP_DIR}/$archive is not readable."
+             prob=1
+        fi
+        if [ $prob -eq 0 ]; then
+            rm -rf ${tmpdir}
+            mkdir -p ${tmpdir} ${installdir}
+            cd ${tmpdir}
+            unzip -q -a ${TMP_DIR}/$archive
+	    dir=`ls | wc -l`
+	    while [ $dir -eq 1 ]; do
+		cd *
+		dir=`ls | wc -l`
+	    done
+	    mv * ${installdir}
+	    cd ${installdir}
+            rm -rf ${tmpdir}
+#            mv ${installdir}/relnotes/demos.html \
+#               ${installdir}/relnotes/demos.html.orig
+#            sed -e "s:\.\./\.\./demo:/usr/lib/@basename@/demo:g" \
+#                ${installdir}/relnotes/demos.html.orig \
+#                > ${installdir}/relnotes/demos.html
+#            rm ${installdir}/relnotes/demos.html.orig
+            chown -R root:root ${installdir}
+            chmod -R a=rX,u+w ${installdir}
+        fi
+	if [ $prob -eq 1 ]; then
+            echo ""
+            echo -n "[Press RETURN to try again, 'no' + RETURN to abort] "
+            read foo
+            case "$foo" in [nN]|[nN][oO])
+                echo "Abort installation of JDK documentation"
+                exit 1
+		;;
+            esac
+        fi
+    done
+
+    echo "${TMP_DIR}/$archive has been unpacked and installed."
+    echo "You can now delete it, if you wish."
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

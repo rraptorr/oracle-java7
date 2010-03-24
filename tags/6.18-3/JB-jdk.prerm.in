@@ -1,0 +1,20 @@
+#!/bin/sh -e
+
+jdk_tools='@jdk_tools@'
+basedir=/@basedir@
+basediralias=/@basediralias@
+jar_packs='@jdk_packs@'
+
+
+for i in $jar_packs; do
+    jar=$(echo $i | sed 's/\.pack$/.jar/')
+    rm -f $basedir/$jar
+done
+
+if [ "$1" = "remove" ] || [ "$1" = "deconfigure" ]; then
+    for i in $jdk_tools; do
+	update-alternatives --remove $i $basediralias/bin/$i
+    done
+fi
+
+#DEBHELPER#

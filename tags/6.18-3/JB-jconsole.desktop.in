@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=@vendor@ Java @RELEASE@ Console@ia32txt@
+Comment=@vendor@ Java @RELEASE@ Monitoring & Management Console@ia32txt@
+Exec=/@basedir@/bin/jconsole
+Terminal=false
+Type=Application
+Icon=@basename@
+Categories=Application;System;
