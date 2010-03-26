@@ -1,3 +1,10 @@
+sun-java6 (6.18-4) unstable; urgency=low
+
+  * Package sun-java6-plugin now register plugins for various browser
+    (Closes: #534174)
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Wed, 24 Mar 2010 11:50:06 +0100
+
 sun-java6 (6.18-3) unstable; urgency=low
 
   * Update of the docs filenames (Closes: #523390)

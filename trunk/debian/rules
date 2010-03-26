@@ -68,7 +68,7 @@ ifeq ($(distribution),Ubuntu)
   browser_plugin_dirs = xulrunner-addons firefox iceape iceweasel mozilla midbrowser xulrunner
   browser_plugin_dirs = xulrunner-addons
 else
-  browser_plugin_dirs = mozilla
+  browser_plugin_dirs = xulrunner-addons firefox iceape iceweasel mozilla midbrowser xulrunner
 endif
 
 with_wgy_zenhai = $(if $(filter $(distrelease),hardy),yes)
