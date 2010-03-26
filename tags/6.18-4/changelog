@@ -1,0 +1,751 @@
+sun-java6 (6.18-4) unstable; urgency=low
+
+  * Package sun-java6-plugin now register plugins for various browser
+    (Closes: #534174)
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Wed, 24 Mar 2010 11:50:06 +0100
+
+sun-java6 (6.18-3) unstable; urgency=low
+
+  * Update of the docs filenames (Closes: #523390)
+  * Swedish debconf templates translation updated (Closes: #570023)
+  * Chinese (zh_CN) debconf templates translation updated
+  * Czech debconf templates translation updated (Closes: #570062)
+  * French debconf templates translation updated (Closes: #570060)
+  * Slovak debconf templates translation updated (Closes: #570061)
+  * Russian debconf templates translation updated (Closes: #570541)
+  * German debconf templates translation updated (Closes: #570741)
+  * Portuguese debconf templates translation updated (Closes: #571042)
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Fri, 05 Mar 2010 14:55:36 +0100
+
+sun-java6 (6.18-2) unstable; urgency=low
+
+  * Package moved under the Debian Java team
+  * Add myself as uploader (Closes: #544629)
+  * Update of the Vcs-Svn & Vcs-Browser fields
+  * Cleanup the version numbers (- in the version was messing up)
+    (Closes: #445343)
+  * Update of the license URL from http://java.sun.com/notes (404)
+    to http://download.java.net/dlj/jdk6/LICENSE (Closes: 569352)
+  * French debconf templates translation updated (Closes: #569282)
+  * Czech debconf templates translation updated (Closes: #569294)
+  * Japanese debconf templates translation updated (Closes: #569312)
+  * Italien debconf templates translation updated
+  * Slovak debconf templates translation updated (Closes: #569489)
+  * Fix Incorrect Menu Entry for Java Web Start
+    Reuse javaws.wrapper from openjdk (Closes: #489833)
+  * Konqueror also available as a browser (Closes: #514983)
+	
+ -- Sylvestre Ledru <sylvestre@debian.org>  Thu, 11 Feb 2010 09:27:04 +0100
+
+sun-java6 (6-18-1) unstable; urgency=low
+
+  * QA upload.
+  * Non-maintainer upload.
+  * New upstream version.
+    Release notes at http://java.sun.com/javase/6/webnotes/6u18.html
+  * Rephrase on the license approval (Closes: #541881)
+  * Update messages to show the actual $TMP instead of /tmp 
+    (Closes: #539556; #506890)
+  * Standards-Version updated to version 3.8.4
+  * Replace jconsole => jvisualvm in the menu (Closes: #539288)
+  * fontconfig.properties uses uming.ttc instead of uming.ttc (Closes: #566088)
+  * Integration of the Galician translation. Thanks marce. (Closes: #537543)
+  * Integration of the Slovak translation. Thanks Ivan Masár (Closes: #535184)
+  * Integration of the Simplified Chinese translation. Thanks Ji ZhengYu
+    (Closes: #535184)
+  * dh_desktop removed from debian/rules
+  * not-binnmuable-all-depends-any fixed
+	
+ -- Sylvestre Ledru <sylvestre@debian.org>  Mon, 08 Feb 2010 15:01:36 +0100
+
+sun-java6 (6-17-1) unstable; urgency=low
+
+  * QA upload.
+  * New upstream version. (Closes: #558173)
+    Release notes at http://java.sun.com/javase/6/webnotes/6u17.html
+
+ -- Giuseppe Iuculano <iuculano@debian.org>  Sat, 28 Nov 2009 19:02:56 +0100
+
+sun-java6 (6-16-1) unstable; urgency=low
+
+  * QA upload.
+  * Remove `Uploaders' attribute.
+  * New upstream version.
+    Release notes at http://java.sun.com/javase/6/webnotes/6u16.html
+  * Fix some more lintian warnings.
+  * Stop building sun-java6-doc, it's an installer package anyway.
+    Suggest openjdk-6-doc instead.
+  * Mention compatibility problems with some window managers and running with
+    AWT_TOOLKIT=MToolkit in README.Debian. See #504524.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 28 Aug 2009 10:24:29 +0200
+
+sun-java6 (6-15-1) unstable; urgency=medium
+
+  * New upstream version.
+    Release notes at http://java.sun.com/javase/6/webnotes/6u15.html
+    Addresses CVE-2009-0217, CVE-2009-2475, CVE-2009-2476, CVE-2009-2625,
+    CVE-2009-2670, CVE-2009-2671, CVE-2009-2672, CVE-2009-2673, CVE-2009-2674,
+    CVE-2009-2675, CVE-2009-2676, CVE-2009-2690.
+  * Set section names to java.
+  * Orphan the package.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 07 Aug 2009 13:05:35 +0200
+
+sun-java6 (6-14-1) unstable; urgency=low
+
+  * New upstream version.
+    Release notes at http://java.sun.com/javase/6/webnotes/ReleaseNotes.html.
+  * Add xulrunner-1.9 as a browser alternative. Closes: #526227.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 02 Jun 2009 18:49:25 +0200
+
+sun-java6 (6-13-1) unstable; urgency=low
+
+  * New upstream version. Closes: #521414. LP: #349135.
+    Release notes at http://java.sun.com/javase/6/webnotes/ReleaseNotes.html.
+    Fixes CVE-2006-2426, CVE-2009-1093, CVE-2009-1094, CVE-2009-1095,
+    CVE-2009-1096, CVE-2009-1097, CVE-2009-1098, CVE-2009-1099, CVE-2009-1100,
+    CVE-2009-1101, CVE-2009-1102, CVE-2009-1103, CVE-2009-1104, CVE-2009-1105,
+    CVE-2009-1106, CVE-2009-1107.
+  * Fix name of the downloaded doc zip.
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 29 Mar 2009 19:12:49 +0200
+
+sun-java6 (6-12-1) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 06 Feb 2009 15:39:56 +0100
+
+sun-java6 (6-12-0ubuntu1) jaunty; urgency=low
+
+  * New upstream release. Closes: #508195, #507979.
+    Release notes at http://java.sun.com/javase/6/webnotes/ReleaseNotes.html.
+  * Build the -plugin package on amd64. Closes: #508871.
+  * Install desktop files for javaws and the plugin control panel on amd64.
+  * Find the correct doc zip when installing the -doc package. LP: #85969.
+    LP: #321863.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 06 Feb 2009 14:03:30 +0100
+
+sun-java6 (6-11-0ubuntu1) jaunty; urgency=low
+
+  * New upstream release.
+    Release notes at http://java.sun.com/javase/6/webnotes/ReleaseNotes.html.
+  * sun-java6-plugin: Use the libnpjp2 plugin instead of libjavaplugin_oji.
+    LP: #291135.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 03 Dec 2008 11:43:53 +0100
+
+sun-java6 (6-10-1) unstable; urgency=low
+
+  * New upstream release.
+    Release notes at http://java.sun.com/javase/6/webnotes/ReleaseNotes.html.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 16 Oct 2008 23:42:24 +0200
+
+sun-java6 (6-07-3ubuntu2) hardy-proposed; urgency=low
+
+  * New upstream bug fix release. LP: #254997.
+    - Release notes at http://java.sun.com/javase/6/webnotes/ReleaseNotes.html.
+    - Including security related changes.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 05 Aug 2008 18:37:50 +0200
+
+sun-java6 (6-07-4) unstable; urgency=low
+
+  * Ignore errors when registering the jar binfmt. The alternative may
+    already be registered by another JVM (openjdk-6, cacao-oj6).
+  * Ignore errors when generating the java shared archive. Closes: #493085.
+    LP: #247296.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 05 Aug 2008 17:54:06 +0200
+
+sun-java6 (6-07-3) unstable; urgency=low
+
+  * Use recent macro names in the control file for releases that support these.
+  * Bump debhelper to v5.
+
+  [ Following changes by Philipp Hahn]
+  * Don't remove alternatives on upgrade. Closes: #490249.
+  * debian/control: Add Pre-Depends: debconf for bin-package,
+    add Homepage-field.
+  * debian/copyright: Reference /usr/share/common-licenses/{LGPL-2,Apache-2.0},
+    convert to UTF-8.
+  * debian/JB-doc.postinst.in: /chown/s/./:/.
+  * debian/*.menu.in: s/Apps/Applications/.
+  * debian/rules: rm ...javadb.../*.bat.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 11 Jul 2008 15:46:13 +0200
+
+sun-java6 (6-07-2ubuntu1) intrepid; urgency=low
+
+  * Merge with Debian; remaining changes:
+    - Regenerate the control file.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 10 Jul 2008 14:05:05 +0000
+
+sun-java6 (6-07-2) unstable; urgency=low
+
+  * Ignore errors during activation of class data sharing.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 10 Jul 2008 15:42:54 +0200
+
+sun-java6 (6-07-1) unstable; urgency=low
+
+  * debian/control.in: Update Xb-Npp-MimeType.
+  * Let update-java-alternatives handle the jexec alternative. Closes: #477673.
+  * Ignore errors during activation of class data sharing. Closes: #428142.
+  * Update sv translation for debconf template (Martin Bagge). Closes: #488184.
+  * Distributions are not allowed to package the released versions published
+    at http://java.sun.com/javase/downloads and have to wait for the
+    availability of the DLJ bundles. No need to file reports. Closes: #485913.
+  * Allow epiphany-gecko | epiphany-webkit as browser alternatives.
+  * Remove konqueror as browser alternative, requested in report.
+    Closes: #477204.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 10 Jul 2008 11:49:10 +0200
+
+sun-java6 (6-07-0ubuntu1) intrepid; urgency=low
+
+  * New upstream bug fix release.
+    - Release notes at http://java.sun.com/javase/6/webnotes/ReleaseNotes.html.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 09 Jul 2008 11:15:28 +0200
+
+sun-java6 (6-06-1ubuntu1) hardy-proposed; urgency=low
+
+  * Fix names for browser alternatives in jinfo file, set browser_plugin_dirs
+    unconditionally.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 28 Apr 2008 13:54:52 +0200
+
+sun-java6 (6-06-1) unstable; urgency=low
+
+  * Upload to unstable. Closes: #474932.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 16 Apr 2008 18:51:00 +0200
+
+sun-java6 (6-06-0ubuntu1) hardy; urgency=low
+
+  * New upstream bug fix release.
+    - Release notes at http://java.sun.com/javase/6/webnotes/ReleaseNotes.html.
+    - Fixes Xlib/XCB locking problems. LP: #86103. Closes: #414535.
+    - Update timezone information. Closes: #468234.
+  * Don't open the control panel when starting a WebStart application.
+    LP: #84501.
+  * javaws.desktop: Add `%u' to the Exec key, remove -viewer option. 
+    Closes: #436645.
+  * Suggest ttf-wqy-zenhei instead of ttf-arphic-uming (only available in .ttc
+    format not supported by Sun Java) (Arne Goetje). LP: #213925.
+  * Only use the basename for icons in desktop files. LP: #207413.
+  * Add XS-Autobuild: yes attribute. Closes: #473164.
+  * ia32-sun-java6-bin: Recommend lib32nss-mdns on amd64. Closes: #430917.
+  * JB-bin.postinst.in: Call java -client -Xshare:dump with -Xmx1m, if the
+    memory is available. Closes: #425654, #428654.
+  * binfmt-support: Handle /usr/share/binfmts/jar as a slave symlink of
+    the jexec alternative, install the binfmt file in the jre libdir.
+    Use the jexec alternative in the binfmt file.
+  * Don't fail on removal, if /var/lib/binfmts/openjdk-6 is missing.
+    Closes: #441880.
+  * README.Debian: Clarify about configuring the ControlPanel. Closes: #459435.
+  * Don't include empty directories in /usr/share. Closes: #472995.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 16 Apr 2008 01:02:07 +0200
+
+sun-java6 (6-05-1) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 26 Mar 2008 02:00:33 +0100
+
+sun-java6 (6-05-0ubuntu1) hardy; urgency=low
+
+  * New upstream bug fix release.
+    This was released today on https://jdk-distros.dev.java.net/developer.html.
+    Distributions are not allowed to package the released versions published
+    at http://java.sun.com/javase/downloads and have to wait for the
+    availability of the DLJ bundles. No need to file reports like LP: #199477.
+  * Install all desktop files in /usr/share/applications.
+  * sun-java6-jdk: Add java*-sdk provides.
+  * Adjust plugin links for xulrunner-1.9. LP: #173966, #198633.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 25 Mar 2008 23:33:13 +0000
+
+sun-java6 (6-04-2) unstable; urgency=low
+
+  * Install icons in /usr/share/pixmaps; debhelper silently generates
+    wrong code for icons installed in /usr/share/icons. Addresses: #462727.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 04 Feb 2008 22:16:31 +0100
+
+sun-java6 (6-04-1) unstable; urgency=low
+
+  * Provide the -headless versions of the runtime as well.
+  * Upstream doesn't link with g++-3.3 anymore; drop dependency on libstdc++5.
+    Closes: #449052.
+  * Fix removal of alternatives. Closes: #437083.
+  * README.alternatives: Fix update-java-alternatives example. Closes: #452320.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 25 Jan 2008 16:54:54 +0100
+
+sun-java6 (6-04-0ubuntu1) hardy; urgency=low
+
+  * New upstream bug fix release.
+  * sun-java6-jre: Provide java-runtime packages. LP: #181028.
+  * Register plugin for firefox-3.0.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 18 Jan 2008 10:06:14 +0100
+
+sun-java6 (6-03-2) unstable; urgency=low
+
+  * Fix package removal (unregister binary format).
+
+ -- Matthias Klose <doko@debian.org>  Wed, 03 Oct 2007 18:37:35 +0200
+
+sun-java6 (6-03-1) unstable; urgency=low
+
+  * Upload to unstable.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 27 Sep 2007 23:42:40 +0200
+
+sun-java6 (6-03-0ubuntu1) gutsy; urgency=low
+
+  * New upstream bug fix release.
+  * Re-add the sun-java6-db package, now included upstream again.
+  * Fix lintian warnings for menu files.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 27 Sep 2007 15:42:00 +0200
+
+sun-java6 (6-02-2) unstable; urgency=low
+
+  * Register jar binfmt.
+  * Merge from Ubuntu:
+    - Add Xb-Npp-xxx tags (Hilario Montoliu). See
+      https://blueprints.launchpad.net/ubuntu/+spec/firefox-distro-addon-support.
+    - Register the plugin for more browsers.
+    - Build packages for the lpia architecture.
+  * debian/control: Add XS-Vcs fields.
+  * Changed font configuration to fix CJK font support (Arne Goetje).
+ 
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 29 Aug 2007 21:42:44 +0200
+
+sun-java6 (6-02-1ubuntu3) gutsy; urgency=low
+
+  * debian/rules: Fix typo in binfmts directory name.
+
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 07 Sep 2007 18:28:50 +0000
+
+sun-java6 (6-02-1ubuntu2) gutsy; urgency=low
+
+  * Register jar binfmt.
+  * debian/control: Add XS-Vcs fields.
+  * Changed font configuration to fix CJK font support (Arne Goetje).
+ 
+ -- Matthias Klose <doko@ubuntu.com>  Fri, 07 Sep 2007 18:13:46 +0200
+
+sun-java6 (6-02-1ubuntu1) gutsy; urgency=low
+
+  * Add Xb-Npp-xxx tags (Hilario Montoliu). See
+    https://blueprints.launchpad.net/ubuntu/+spec/firefox-distro-addon-support.
+  * Register the plugin for more browsers.
+  * Build packages for the lpia architecture.
+  * debian/control: Add XS-Vcs fields.
+ 
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 30 Jul 2007 17:34:07 +0200
+
+sun-java6 (6-02-1) unstable; urgency=low
+
+  * New upstream bug fix release. Closes LP: #126059.
+
+  * WARNING: Remove the sun-java6-db package. Apparently the javadb
+    sources are not included in the DLJ bundles while these are still
+    included in the standard bundles. The fix will most likely have
+    to wait until the 6u3 update. Please don't use the 6-02 package
+    for any backport.
+
+  * sun-java6-bin: Make libnss-mdns a recommendation. Closes: #432661.
+  * sun-java6-plugin: Change the dependency iceape -> iceape-browser.
+    Closes: #432593.
+
+ -- Matthias Klose <doko@debian.org>  Wed, 18 Jul 2007 22:55:01 +0200
+
+sun-java6 (6-01-1) unstable; urgency=low
+
+  * JDK image parsing library vulnerabilities fixed in new upstream.
+    CVE-2007-2789.
+  * sun-java6-bin: Depend on libnss-mdns. Closes: #410116.
+  * README.alternatives: Use correct syntax. Closes: #409911.
+  * Updated russian debconf templates translation. Closes: #409802.
+  * README.Debian: The plugin is only available for 32bit. Closes: #411283.
+  * Add portuguese translation for debconf messages. Closes: #413928.
+
+ -- Matthias Klose <doko@debian.org>  Fri, 29 Jun 2007 00:54:31 +0200
+
+sun-java6 (6-01-0ubuntu1) gutsy; urgency=low
+
+  * New upstream bug fix release. Closes LP: #115687.
+    Closes: #418004, #422403, #424047.
+  * Update fontconfig.properties for Japanese. Closes LP: #115573.
+  * Update fontconfig.properties for Korean. Closes LP: #113494.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 27 Jun 2007 13:07:58 +0200
+
+sun-java6 (6-00-2ubuntu3) gutsy; urgency=low
+
+  * debian/JB-plugin.postinst.in: s/mozilla-firefox/firefox/
+    install alternative to new firefox plugin directory 
+    (LP: #112994).
+  * debian/rules: don't dh_installdirs for mozilla-firefox
+    plugins directory anymore.
+
+ -- Alexander Sack <asac@ubuntu.com>  Mon, 25 Jun 2007 11:05:33 +0200
+
+sun-java6 (6-00-2ubuntu2) feisty; urgency=low
+
+  * Use the unversioned jvm path for the man page alternatives.
+    Ubuntu #93619.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue,  3 Apr 2007 12:30:01 +0200
+
+sun-java6 (6-00-2ubuntu1) feisty; urgency=low
+
+  [ Matthias Klose ]
+  * Add russian po-debconf translation. Closes: #409802.
+  * Add menu entry for jconsole. Ubuntu #83384.
+  * Move javadb demos to /usr/share/doc.
+
+  [ Tom Marble ]
+  * Added the optional sun-java6-javadb package
+  * Updated TODO
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon, 12 Feb 2007 12:27:21 +0100
+
+sun-java6 (6-00-2) unstable; urgency=low
+
+  * sun-java6-plugin: please add an alternative dependency on iceape-browser.
+    Addresses: #406954.
+  * Fix installation of sun-java6-plugin. Closes: #407134.
+  * sun-java6-bin: Depend on libstdc++5. Closes: #407197. Ubuntu #78663.
+  * Start javaws with the -viewer option. Ubuntu #78169.
+
+ -- Matthias Klose <doko@ubuntu.com>  Wed, 17 Jan 2007 22:52:30 +0100
+
+sun-java6 (6-00-1) unstable; urgency=low
+
+  [ Matthias Klose ]
+  * Configure plugin for iceape and iceweasel. Addresses: #404808.
+  * Clarify short descriptions. Addresses: #404608.
+  * Add spanish po-debconf translation (Steve Lord Flaubert). Closes: #404746.
+
+ -- Matthias Klose <doko@ubuntu.com>  Mon,  2 Jan 2007 18:11:50 +0100
+
+sun-java6 (6-00-0ubuntu1) feisty; urgency=low
+
+  [ Tom Marble ]
+  * Packaging based on sun-java5 (1.5.0-10-1)
+  * Initial packaging for JDK 6
+
+  [ Matthias Klose ]
+  * debian/rules: Differentiate between JDK version (6) and
+    API version (1.6.0).
+  * debian/rules: First release doesn't have a CHANGES file.
+  * Adjust jar and tarball comparision for JDK 6.
+  * debian/control.in: The demo directory is now listed as optional.
+    Let -jdk suggest -demo instead of depending on it. Closes: #367562.
+  * management/*: Mark as configuration files.
+  * psfontj2d.properties, psfont.properties.ja, fontconfig.*.*:
+    Don't mark as configuration files.
+  * Install binary demos into /usr/lib. Closes: #392415.
+
+ -- Matthias Klose <doko@ubuntu.com>  Tue, 19 Dec 2006 13:37:44 +0100
+
+sun-java5 (1.5.0-10-1) unstable; urgency=medium
+
+  * New upstream release. Closes: #393153.
+    - CVE-2006-2426 is fixed. Closes: #384734.
+    - CVE-2006-5201 is fixed. Closes: #393042.
+  * ia32-sun-java5-bin: Depend on ia32-libs. Ubuntu #71933.
+  * Don't install javaplugin for obsolete mozilla-snapshot package.
+    Closes: #396590.
+  * Add german po-debconf template translation (Matthias Julius).
+    Closes: #398641.
+  * README.alternatives: Fix update-java-alternatives parameters.
+    Closes: #394994.
+  * Add iceweasel as a browser alternative. Closes #399553.
+  * sun-java5-jre: Provide java1-runtime. Closes: #387192.
+
+ -- Matthias Klose <doko@debian.org>  Tue,  5 Dec 2006 23:24:48 +0100
+
+sun-java5 (1.5.0-08-1) unstable; urgency=low
+
+  * New upstream release. Closes: #382919.
+  * Update packaging to reflect changed file names and date stamps.
+  * The jre and sdk README's clarify the distribution in native
+    distribution packaging formats and repository mechanisms.
+    Closes: #370296.
+  * Update/new translations (sv, fr, da, ja, cs) for the debconf templates.
+    Closes: #375745, #377969, #379411, #382931.
+
+ -- Matthias Klose <doko@ubuntu.com>  Thu, 17 Aug 2006 22:19:41 +0200
+
+sun-java5 (1.5.0-07-1) unstable; urgency=low
+
+  * New upstream release.
+  * The FAQ for the DLJ is now part of the LICENSE file.
+
+  [Jeroen van Wolffelaar]
+  * Drop duplicate uploader name, change my email address
+  * Fix typo in package description (Closes: #367493)
+
+  [Matthias Klose]
+  * Include copyright templates in the -jre and -bin packages.
+    Closes: #367504.
+  * Do not use the generated debconf template files. Closes: #367530.
+  * Add debian/sharedmimeinfo. Addresses: #367445.
+  * JB-java.desktop.in, JB-javaws.desktop.in: Add Encoding=UTF-8.
+  * JB-policytool.desktop.in, JB-controlpanel.desktop.in: Remove GNOME
+    from categories.
+  * fontconfig.properties: Use sazanami fonts instead of kochi.
+    Closes: #367573.
+  * Fix display of chinese characters. Ubuntu #47045.
+  * Provide alternatives for the corba tools. Ubuntu #44966.
+  * Give a more verbose error message when the license or the agreement
+    question cannot be presented; point to 'dpkg-reconfigure debconf' to
+    select a frontend other than noninteractive. Ubuntu #44891, #45292, #46096.
+  * Add upstream homepage URL to copyright, regenerate copyright file.
+    Closes: #368083.
+  * Add French debconf templates translation (Florentin Duneau).
+    Closes: #368766.
+  * Add the FAQ for the Operating System Distributor License for Java (DLJ).
+  * Add konqueror as an alternative dependency in the plugin package.
+    Ubuntu #49320.
+
+  [Tom Marble]
+  * updated JAVA_HOME.in to reflect the one (1) directory for 
+    for the JRE and JDK (thanks to some clever symlinking).
+  * Fixed proposed args to update-java-alternatives (UJA) 
+    in README.alternatives.in  Addresses: #376888
+  * Updated Debian installation documentation (for etch) at
+    https://jdk-distros.dev.java.net/debian.html
+  * Added Swedish debconf templates translation (Daniel Nylander) 
+    Addresses: #375745
+  
+ -- Matthias Klose <doko@ubuntu.com>  Tue,  6 Jun 2006 15:05:53 +0200
+
+sun-java5 (1.5.0-06-1) unstable; urgency=low
+
+  [ Combined changelog for versions -0 up to -0.9b ]
+
+  * Initial packages, derived from the j2se1.4 packages.
+  * Update license (DJL v.1.1) and license questions in the installation
+    scripts.
+  * "Source" tarball includes both i586 and amd64 bin packages.
+  * New binary packages:
+    - New empty -plugin package, just installs the plugin alternatives.
+    - New empty -fonts package, registering the fonts in defoma.
+    - Arch independent src package, the src.zip differs on amd64
+      and i386. Check that all src.zip files are equal, besides time stamp
+      and build path differences in comments.
+    - Keep the -demo packages as a separate package; for license reasons
+      -jdk and -demo depend on each other.
+    - Split the jre in an arch and arch-indep packages; move all common
+      jar files and jar files with the same content into the -jre package.
+      Checked at build time to assert equality of the files.
+      Move common subdirectories into the -jre package.
+    - Build the -doc package (needs downloaded docs).
+    - Build ia32 runtime packages for amd64 and ia64.
+    - Rename the -src package to -source (Tom Marble).
+    - Update dependency/replacement information for the new packages.
+  * Unpack the jar files during the build, don't include the pack
+    files in the binaries; always use unpack200 from the i586 archive,
+    which works on amd64, i386 and ia64.
+  * Adjust build dependencies.
+  * Adopt fontconfig.properties.src for Debian/Ubuntu.
+  * Keep all files but the example and demo files in /usr/lib.
+  * Move the sample and demo files into /usr/share/doc/sun-java5-jdk.
+  * Use the jpackage naming conventions for the toplevel
+    directory (java-1.5.0-sun-1.5.0.06, alias java-1.5.0-sun);
+    Use the alias symlink for registering the alternatives.
+  * jre package depends on unixodbc; don't depend on unixodbc for the
+    ia32 runtime, the 32bit libraries are not packaged.
+  * ControlPanel: Fix logic to get the location of the script.
+  * Install README.html in the jdk docdir.
+  * Use /usr/lib/jvm/.sun-java5.jinfo (description file to work with
+    update-java-alternatives). Recommend the java-common package
+    including this script.
+  * Drop all version information from the dependencies on shared
+    libraries; we don't have any information about it anyway.
+  * Place the man pages for the jre tools into JAVA_HOME.
+  * Ease the generation of the copyright file to include the packaging
+    copyright, upstream copyright and third party licenses (Tom Marble).
+  * Activate class data sharing for 32bit runtimes using the client
+    VM (Juergen Kreileder).
+  * Install menu icons in xpm format, convert desktop and menu files
+    to use them.
+  * Do not provide alternatives for kinit, klist, ktab, also in packages
+    heimdal-clients, krb5-user.
+  * For the plugins, use the alternative names used by java-package:
+    netscape-javaplugin.so, mozilla-javaplugin.so, firefox-javaplugin.so.
+  * -jre: suggest the -fonts package (Tom Marble).
+  * Unpack the archives using unzip, don't run the native included
+    installer.
+
+  * Modified debconf for more user friendly license presentment:
+    elaborated dlj.templates and coordinated state machine
+    in JB-jre.preinst.in and JB-jdk.preinst.in per debconf-devel(1).
+    Thanks to Tom Marble.
+  * DLJ related code in JB-jre.config.in and JB-jdk.config.in may
+    no longer be necessary (as it is done in preinst) (Tom Marble).
+
+  * Fix charset encoding of license, making the license show in the gnome
+    frontend of debconf (Jeroen van Wolffelaar).
+  * po-debconf'ize (Jeroen van Wolffelaar).
+
+ -- Matthias Klose <doko@ubuntu.com>  Sun, 14 May 2006 20:30:38 +0200
+
+j2se1.4-i586 (1.4.2.03-1) unstable; urgency=low
+
+  * New upstream version.
+    Fixes security vulnerabilities in the Java runtime environment which may
+    allow an untrusted applet to elevate its privileges.
+    http://sunsolve.sun.com/search/document.do?assetkey=1-26-102003-1
+  * Add new dependency package j2re1.4-mozilla-plugin to hold all dependencies
+    needed to run the mozilla browser plugin. Taken from Ubuntu.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 28 Nov 2005 09:48:28 +0000
+
+j2se1.4-i586 (1.4.2.02-2) unstable; urgency=low
+
+  * Package rebuild using the xorg packages.
+  * Build-depend on xlibs, libasound2.
+  * Reflect change of menu directory.
+
+ -- Matthias Klose <doko@debian.org>  Mon, 19 Sep 2005 09:04:43 +0000
+
+j2se1.4-i586 (1.4.2.02-1) testing unstable; urgency=low
+
+  * Update to 1.4.2-02.
+
+ -- Matthias Klose <doko@debian.org>  Tue, 14 Jun 2005 16:51:49 +0200
+
+j2se1.4-i586 (1.4.2.01-2) testing unstable; urgency=low
+
+  * Reset license question seen state in *.config to prevent installation
+    problems when license wasn't accepted in the first run (closes: #301064)
+  
+  * Fix AMD64 plug-in link
+
+ -- Juergen Kreileder <jk@blackdown.de>  Fri, 21 Jan 2005 18:06:01 +0100
+
+j2se1.4-i586 (1.4.2.01-1) unstable; urgency=low
+
+  * Juergen Kreileder <jk@blackdown.de>
+    - 1.4.2-01 release
+    - Run update-desktop-database
+    - Add hidden .desktop for executing JAR files with java
+
+  * Matthias Klose <doko@debian.org>
+    - Fix package version.
+    - Cleanup debian/rules.
+    - Keep HtmlConverter in the sdk package.
+
+ -- Juergen Kreileder <jk@blackdown.de>  Mon, 22 Nov 2004 01:17:41 +0100
+
+j2se1.4-i586 (1.4.2-1) unstable; urgency=low
+
+  * 1.4.2-fcs release
+
+  * Matthias Klose <doko@debian.org>
+    - Recommend libasound and xlibs, do not depend on it.
+    - Fix locations of gnome menu entries, drop entries for docs.
+    - j2re1.4 replaces j2se-common.
+
+  * Juergen Kreileder <jk@blackdown.de>
+    - Gnome mime support. JAR files can be started using nautilus.
+    - Java web start applications works with Gnome 2.8.
+    - Gnome icons for mimetapes.
+    - Updated JCE URL's.
+    - Don't remove needed empty directories in binary target.
+
+ -- Matthias Klose <doko@debian.org>  Sat,  7 Aug 2004 09:53:29 +0200
+
+j2se1.4-i586 (1.4.1.98-1) unstable; urgency=low
+
+  * First Debian package of upstream release 1.4.2 rc1.
+
+  * Joris Patroons <jopa@kotnet.org>
+
+    - Lots of changes, all coming from blackdown. Read their docs.
+    - Fixed minor postinst bug.
+    - Original jvm.cfg is now in the i386 subdirectory (we put it in /etc)
+    - Handle licenses using debconf.
+
+  * Matthias Klose <doko@debian.org>
+
+    - Merged with the packaging of Joris Patroons <jopa@kotnet.org>
+    - Cleanup gnome desktop files.
+    - Add menu support for j2re1.4, j2sdk1.4-demo.
+    - Add doc-base support for j2re1.4, j2sdk1.4.
+    - Add support for mozilla-firefox.
+
+ -- Matthias Klose <doko@debian.org>  Sat, 24 Jan 2004 09:38:09 +0100
+
+j2se1.4-i586 (1.4.2~rc1-1) unstable; urgency=low
+
+  * New upstream version.
+
+ -- Matthias Klose <doko@debian.org>  Thu, 18 Dec 2003 22:45:23 +0100
+
+j2se1.4-i586 (1.4.1.01-1.1) unstable; urgency=low
+
+  * Update build dependencies.
+
+ -- Matthias Klose <doko@debian.org>  Sat,  6 Dec 2003 09:09:15 +0100
+
+j2se1.4-i386 (1.4.1-6) unstable; urgency=low
+
+  * Ok, removed the sed4 dependency again, and finally fixed all the
+    .desktop files. Many thanks go to Andrew Lau.
+
+ -- Joris Patroons <jopa@kotnet.org>  Sun,  1 Jun 2003 13:37:01 +0200
+
+j2se1.4-i386 (1.4.1-5) unstable; urgency=low
+
+  * Two minor bug fixes: the gnome menu items and a mozilla-cvs link.
+    Added build-depends on sed >=4 to fix the former, since I don't
+    know perl.
+
+ -- Joris Patroons <jopa@kotnet.org>  Sat, 31 May 2003 18:20:29 +0200
+
+j2se1.4-i386 (1.4.1-4) unstable; urgency=low
+
+  * Fixed a minor bug in debian/rules that copied the Japanese
+    manpages over the English ones.
+
+ -- Joris Patroons <jopa@kotnet.org>  Mon, 26 May 2003 00:21:57 +0200
+
+j2se1.4-i386 (1.4.1-3) unstable; urgency=low
+
+  * Fixed a small but nasty bug in the JavaPluginControlPanel script.
+
+ -- Joris Patroons <jopa@kotnet.org>  Thu, 22 May 2003 18:37:01 +0200
+
+j2se1.4-i386 (1.4.1-2) unstable; urgency=low
+
+  * Installation now creates /etc/.java/.systemPrefs/ and two files in it,
+    needed by the Blackdown jre. Purge will rm -rf /etc/.java/.
+
+  * Fixed a lot of things in the debian/ dir, unimportant to end users.
+
+ -- Joris Patroons <jopa@kotnet.org>  Sun, 20 Apr 2003 01:57:46 +0200
+
+j2se1.4-i386 (1.4.1-1) unstable; urgency=low
+
+  * Used Stephen's debian/ directory to package j2se 1.4.1 (final),
+    compiled with gcc-3.2 for compatibility with sid's mozilla.
+
+ -- Joris Patroons <jopa@kotnet.org>  Mon,  7 Apr 2003 18:44:21 +0200

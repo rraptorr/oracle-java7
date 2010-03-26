@@ -1,0 +1,6 @@
+@basename@-jre: postinst-does-not-load-confmodule
+@basename@-jre: extra-license-file
+@basename@-jre: copyright-should-refer-to-common-license-file-for-gpl
+@basename@-jre: image-file-in-usr-lib
+@basename@-jre: using-question-in-extended-description-in-templates
+@basename@-jre: too-long-extended-description-in-templates

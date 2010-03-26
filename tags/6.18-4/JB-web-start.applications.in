@@ -1,0 +1,6 @@
+java-web-start
+        command="/@basedir@/bin/javaws -viewer"
+        name=java-web-start
+        can_open_multiple_files=false
+        requires_terminal=false
+        mime_types=application/x-java-jnlp-file

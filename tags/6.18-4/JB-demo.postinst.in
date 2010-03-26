@@ -1,0 +1,33 @@
+#!/bin/sh
+
+set -e
+
+priority=@priority@
+jdiralias=@jdiralias@
+gnome=''
+
+case "$1" in
+configure)
+    for i in $gnome
+    do
+	case $i in
+	*/*)
+        update-alternatives \
+            --install \
+            /usr/share/gnome/$i \
+            $j \
+            /usr/share/$jdiralias/gnome/$i \
+            $priority
+	    ;;
+
+	*)
+	    j=$i
+	    ;;
+
+	esac
+    done
+
+    ;;
+esac
+
+#DEBHELPER#

@@ -1,0 +1,23 @@
+
+Packages providing a runtime or a development environment for the Java
+language all use symlinks in the /etc/alternatives directory to enable
+the system administrator to choose which programs to use for java,
+javac, javah, etc.
+
+Starting with java-common 0.23ubuntu1, the update-java-alternatives
+script can be used to set a bunch of jre/jdk alternatives:
+
+- Set all runtime tools to point to the @basename@ alternatives:
+
+  update-java-alternatives --jre --set java-6-sun
+
+
+- Set all runtime and development tools to point to the @basename@
+  alternatives:
+
+  update-java-alternatives --set java-6-sun
+
+
+- Set all runtime and development tools to auto mode:
+
+  update-java-alternatives --auto

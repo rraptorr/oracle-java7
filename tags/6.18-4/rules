@@ -1,0 +1,1030 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+# debian/rules file derived from the gcc build system
+
+unexport LANG LC_ALL
+
+export DH_OPTIONS=
+
+export SHELL=/bin/bash
+
+distribution	:= $(shell lsb_release -is)
+distrelease	:= $(shell lsb_release -cs)
+
+DEB_HOST_ARCH	?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+
+arch_map	:= amd64=amd64 i386=i586 lpia=i586 powerpc=ppc sparc=sparc ia64=ia64
+archdir_map	:= amd64=amd64 i386=i386 lpia=i386 powerpc=ppc sparc=sparc ia64=ia64
+
+arch		:= $(strip $(patsubst $(DEB_HOST_ARCH)=%, %, \
+			$(filter $(DEB_HOST_ARCH)=%, $(arch_map))))
+archdir		:= $(strip $(patsubst $(DEB_HOST_ARCH)=%, %, \
+			$(filter $(DEB_HOST_ARCH)=%, $(archdir_map))))
+
+TOP		:= usr/lib/jvm
+dirparts	:= $(shell basename $(CURDIR) | tr '-' ' ')
+VENDOR		:= $(word 1, $(dirparts))
+Vendor		:= $(shell perl -e 'print ucfirst("$(VENDOR)");')
+javaname	:= $(shell echo $(word 2, $(dirparts)) | sed 's/[0-9.]*$$//')
+RELEASE		:= $(shell echo $(word 2, $(dirparts)) | sed 's/^[a-z]*//')
+# where to get it?
+relstring	:= 6
+PRODUCT		:= $(javaname)$(RELEASE)
+srcname		= $(VENDOR)-$(PRODUCT)
+basename	= $(ia32_prefix)$(VENDOR)-$(PRODUCT)
+dirpartsv	:= $(shell echo $(word 3, $(dirparts)) | tr '.' ' ')
+version		:= $(word 1, $(dirpartsv))
+releng_ver	:= $(word 2, $(dirpartsv))
+jdkversion	:= 1.6.0
+#unpackdir	:= jdk$(version)_$(releng_ver)
+#unpackdir	:= jdk$(jdkversion)
+unpackdir	:= jdk$(jdkversion)_$(releng_ver)
+#jdirname	:= $(ia32_prefix)java-$(version)-$(VENDOR)-$(version).$(releng_ver)
+jdirname	:= $(ia32_prefix)java-$(version)-$(VENDOR)-$(jdkversion).$(releng_ver)
+jdiralias	:= $(ia32_prefix)java-$(version)-$(VENDOR)
+srcdir		:= $(arch)-jdk
+bin_pattern	= jdk-$(subst .,_,$(version))-dlj-linux-%.bin
+bin_pattern	= jdk-6u18-dlj-linux-%.bin
+all_archs	= $(filter $(subst =, , $(arch_map)), \
+			   $(subst -, , $(patsubst %.bin, %, $(wildcard *.bin))))
+priority	:= 63
+
+tag		:= $(strip $(subst .,, $(RELEASE)))
+mantag		:= $(VENDOR)$(tag)
+
+basedir		= $(TOP)/$(jdirname)
+doc		:= usr/share/doc
+j2se_lib	:= usr/lib/$(basename)
+security	:= etc/$(jdiralias)/security
+
+bd_plugin = \
+	$(if $(filter $(distribution),Debian),libxul-dev,$(if $(filter $(distrelease),hardy),xulrunner-1.9-dev,firefox-dev))
+
+browser_plugin_dirs = xulrunner-addons firefox iceape iceweasel mozilla midbrowser xulrunner konqueror
+browsers = firefox | firefox-2 | iceweasel | mozilla-firefox | iceape-browser | mozilla-browser | epiphany-gecko | epiphany-webkit | epiphany-browser | galeon | midbrowser | moblin-web-browser | xulrunner | xulrunner-1.9 | konqueror
+
+# FIXME: xulrunner-addons only tested on sid, jaunty, karmic
+ifeq ($(distribution),Ubuntu)
+  browser_plugin_dirs = xulrunner-addons firefox iceape iceweasel mozilla midbrowser xulrunner
+  browser_plugin_dirs = xulrunner-addons
+else
+  browser_plugin_dirs = xulrunner-addons firefox iceape iceweasel mozilla midbrowser xulrunner
+endif
+
+with_wgy_zenhai = $(if $(filter $(distrelease),hardy),yes)
+
+cjk_fonts = ttf-baekmuk | ttf-unfonts | ttf-unfonts-core,
+cjk_fonts += ttf-kochi-gothic | ttf-sazanami-gothic,
+cjk_fonts += ttf-kochi-mincho | ttf-sazanami-mincho,
+cjk_fonts += $(if $(with_wgy_zenhai),ttf-wqy-zenhei,ttf-arphic-uming),
+
+lintian_overrides	:= usr/share/lintian/overrides
+
+ifneq ($(DEB_HOST_ARCH),ia64)
+  packaging_files = packaging-files
+endif
+ifneq (,$(findstring $(DEB_HOST_ARCH), amd64 ia64))
+  with_ia32 = yes
+  ia32_packaging_files = ia32-packaging-files
+
+endif
+
+info:
+	@echo Build information
+	@echo ==========================
+	@echo 'TOP        = $(TOP)'
+	@echo 'VENDOR     = $(VENDOR)'
+	@echo 'RELEASE    = $(RELEASE)'
+	@echo 'PRODUCT    = $(PRODUCT)'
+	@echo 'basename   = $(basename)'
+	@echo 'version    = $(version)'
+	@echo 'releng_ver = $(releng_ver)'
+	@echo 'unpackdir  = $(unpackdir)'
+	@echo 'srcdir     = $(srcdir)'
+	@echo 'all_archs  = $(all_archs)'
+	@echo 'arch       = $(arch)'
+	@echo 'archdir    = $(archdir)'
+	@echo $(jre_tools)
+
+d	= debian/tmp
+
+p_jre	:= $(basename)-jre
+p_jbin	:= $(basename)-bin
+p_jdk	:= $(basename)-jdk
+p_src	:= $(basename)-source
+p_fonts	:= $(basename)-fonts
+p_demo	:= $(basename)-demo
+p_doc	:= $(basename)-doc
+p_plug	:= $(basename)-plugin
+p_javadb	:= $(basename)-javadb
+
+d_jre	:= debian/$(p_jre)
+d_jbin	:= debian/$(p_jbin)
+d_jdk	:= debian/$(p_jdk)
+d_src	:= debian/$(p_src)
+d_demo	:= debian/$(p_demo)
+d_fonts	:= debian/$(p_fonts)
+d_doc	:= debian/$(p_doc)
+d_plug	:= debian/$(p_plug)
+d_javadb	:= debian/$(p_javadb)
+
+ifneq ($(DEB_HOST_ARCH),ia64)
+  binary_arch_targets	= \
+	$(patsubst %, binary-%, $(p_jbin) $(p_jdk) $(p_demo))
+endif
+ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386 lpia))
+    binary_arch_targets	+= binary-$(p_plug)
+endif
+ifeq ($(with_ia32),yes)
+    binary_arch_targets	+= ia32-binary-bin
+    #binary_arch_targets += ia32-binary-plugin
+endif
+binary_indep_targets	:= \
+	$(patsubst %, binary-%, $(p_jre) $(p_src) $(p_fonts) $(p_javadb))
+NO_PACKAGES = -Nia32-$(p_plug)
+ifneq ($(with_ia32),yes)
+  NO_PACKAGES += -Nia32-$(p_jbin)
+endif
+
+# (most) jre and jdk tools handled by the alternatives system.
+# dups in heimdal-clients, krb5-user: kinit, klist, ktab, no alternatives
+all_jre_tools	= $(notdir $(wildcard $(srcdir)/jre/bin/*))
+corba_tools	= orbd servertool tnameserv
+jre_tools	= $(filter-out $(corba_tools), $(all_jre_tools))
+jre_tools_alt	= $(filter-out kinit klist ktab, $(jre_tools)) $(corba_tools)
+
+all_jdk_tools	= $(notdir $(wildcard $(srcdir)/bin/*))
+jdk_tools	= $(filter-out $(all_jre_tools), $(all_jdk_tools))
+jdk_tools_alt	= $(filter-out jvisualvm, $(jdk_tools))
+
+jre_manpages_re:= $(shell echo $(jre_tools) $(corba_tools) | tr -s ' ' '|')
+
+#ship_packs = yes
+ifeq ($(ship_packs),yes)
+  jre_packs	= $(shell cd $(srcdir); find jre/lib -name '*.pack')
+  jdk_packs	= $(shell cd $(srcdir); find lib -name '*.pack')
+endif
+
+# TODO: unpack both tarballs, compare them to ensure we do things right
+# these are identical files / directories
+common_jre_things = \
+	jre/lib/audio \
+	jre/lib/cmm \
+	jre/lib/fonts \
+	jre/lib/images/cursors \
+	jre/lib/oblique-fonts \
+	jre/lib/zi \
+	jre/lib/jsse.jar \
+	jre/COPYRIGHT \
+	jre/LICENSE \
+	jre/THIRDPARTYLICENSEREADME.txt \
+
+common_jdk_things = \
+
+# jar files, whith the same contents; just the time stamps differ
+common_jre_jars = \
+	jre/lib/ext/sunjce_provider.jar \
+	jre/lib/ext/dnsns.jar \
+	jre/lib/ext/localedata.jar \
+	jre/lib/jce.jar \
+	jre/lib/security/US_export_policy.jar \
+	jre/lib/security/local_policy.jar \
+	jre/lib/im/indicim.jar \
+	jre/lib/im/thaiim.jar \
+	jre/lib/charsets.jar \
+
+version_tag	:= $(shell dpkg-parsechangelog | \
+			sed -ne 's/Version: *\([0-9]\+:\)*//p')
+
+tag:
+	cvs tag -c -F $(subst .,_,$(ctp_tag)_debian_version_$(version_tag))
+ifeq ($(findstring -,$(version_tag)),)
+	cvs tag -c -F $(subst .,_,$(ctp_tag)_upstream_version_$(version_tag))
+endif
+
+showtags:
+	@echo Version: $(version)
+	@echo Release: $(release)
+	@echo CTP tag: $(ctp_tag)
+
+control: control-stamp
+control-stamp: debian/control $(ia32_packaging_files) $(packaging_files)
+	touch control-stamp
+
+build: build-stamp
+build-stamp: info unpack-stamp control-stamp
+	touch build-stamp
+
+debian/control: debian/control.in debian/rules
+	@cp -p debian/control debian/control.old
+	  sed -e 's/@JRE@/$(p_jre)/g' \
+	      -e 's/@JDK@/$(p_jdk)/g' \
+	      -e 's/@vendor@/$(Vendor)/g' \
+	      -e 's/@basename@/$(basename)/g' \
+	      -e 's,@basedir@,$(basedir),g' \
+	      -e 's/@srcname@/$(srcname)/g' \
+	      -e 's/@arch@/$(DEB_HOST_ARCH)/g' \
+	      -e 's/@sarch@/$(arch)/g' \
+	      -e 's/@RELEASE@/$(relstring)/g' \
+	      -e 's/@archdir@/$(archdir)/g' \
+	      -e 's/@browsers@/$(browsers)/g' \
+	      -e 's/@cjk_fonts@/$(cjk_fonts)/g' \
+	      -e 's,@pkg_version@,$(if $(filter $(distrelease),etch dapper edgy feisty gutsy),$${Source-Version},$${source:Version}),g' \
+	    debian/control.in > debian/control
+	@if cmp -s debian/control debian/control.old; then \
+	  rm -f debian/control.old; \
+	else \
+	  echo "debian/control did change, please restart the build"; \
+          exit 1; \
+	fi
+
+ifeq (,$(ia32_prefix))
+  in_files = debian/*.in
+else
+  in_files = debian/JB-{archive,bin,control,java,policy,plugin,web}*.in
+  ia32txt= $(empty_) (32bit)
+endif
+packaging-files:
+	for f in $(in_files); do \
+	  case "$$f" in debian/control.in) continue; esac; \
+	  f2=$$(echo $$f | sed 's/JB/$(basename)/;s/\.in$$//'); \
+	  sed -e 's/@JRE@/$(p_jre)/g' \
+	      -e 's/@JDK@/$(p_jdk)/g' \
+	      -e 's/@vendor@/$(Vendor)/g' \
+	      -e 's/@RELEASE@/$(relstring)/g' \
+	      -e 's/@basename@/$(basename)/g' \
+	      -e 's,@TOP@,$(TOP),g' \
+	      -e 's,@basedir@,$(basedir),g' \
+	      -e 's,@basediralias@,$(TOP)/$(jdiralias),g' \
+	      -e 's,@jdiralias@,$(jdiralias),g' \
+	      -e 's,@jdirname@,$(jdirname),g' \
+	      -e 's/@srcname@/$(srcname)/g' \
+	      -e 's/@arch@/$(DEB_HOST_ARCH)/g' \
+	      -e 's/@sarch@/$(arch)/g' \
+	      -e 's/@archdir@/$(archdir)/g' \
+	      -e 's/@tag@/$(tag)/g' \
+	      -e 's/@ia32txt@/$(ia32txt)/g' \
+	      -e 's/@priority@/$(priority)/g' \
+	      -e 's/@mantag@/$(mantag)/g' \
+	      -e 's/@jre_tools@/$(jre_tools_alt)/g' \
+	      -e 's/@jdk_tools@/$(jdk_tools_alt)/g' \
+	      -e 's/@corba_tools@/$(corba_tools)/g' \
+	      -e 's,@jre_packs@,$(jre_packs),g' \
+	      -e 's,@jdk_packs@,$(jdk_packs),g' \
+	      -e 's,@j2se_lib@,$(j2se_lib),g' \
+	      -e 's,@browser_dirs@,$(browser_plugin_dirs),g' \
+	    $$f > $$f2; \
+	done
+ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386 lpia))
+	cat debian/$(p_jbin)-i586.menu >> $(d_jbin).menu
+	rm -f debian/$(p_jbin)-i586.menu
+endif
+ia32-packaging-files:
+	$(MAKE) -f debian/rules packaging-files \
+		ia32_prefix=ia32- \
+		packaging_files= \
+		DEB_HOST_ARCH=i386
+
+compare-jre-jars:
+	set -e; set -- $(all_archs); src1=$$1-jdk/src; shift; \
+	jars=$$(cd i586-jdk/; find jre -name '*.jar'); \
+	for j in $$jars; do \
+	  echo =======  $$j  ========; \
+	  if [ ! -f amd64-jdk/$$j ]; then \
+	    echo "file does not exist: amd64-jdk/$$j"; \
+	    continue; \
+	  fi; \
+	  d=$${j%*.jar}; \
+	  rm -rf i586-jdk/$$d amd64-jdk/$$d; \
+	  unzip -q -d i586-jdk/$$d i586-jdk/$$j; \
+	  unzip -q -d amd64-jdk/$$d amd64-jdk/$$j; \
+	  if diff -ur i586-jdk/$$d amd64-jdk/$$d; then \
+	    : ; \
+	  else \
+	    badjars="$$badjars $$j"; \
+	  fi; \
+	done; \
+	if [ -n "$$badjars" ]; then \
+	  echo "Differing jar files: $$badjars"; \
+	  exit 1; \
+	fi
+
+diff_ignore = -I 'Thursday, December 17' \
+	-I 'Thu Dec 17' -I '^ *// java GenerateCharacter'
+
+with_check = yes
+
+unpack-stamp: $(foreach a, $(all_archs), unpack-$(a)-stamp)
+ifeq ($(with_check),yes)
+	: # check for identical files / trees
+	set -e; set -- $(all_archs); a1=$$1; shift; \
+	for a2; do \
+	  echo "Comparing architecture $$a1 with $$a2"; \
+	  for i in $(common_jre_things); do \
+	    echo "  Comparing $$i ..."; \
+	    if diff -ur $$a1-jdk/$$i $$a2-jdk/$$i; then \
+	      echo "    OK"; \
+	    else \
+	      echo "    differ"; \
+	      badjars="$$badthings $$i"; \
+	    fi; \
+	  done; \
+	done; \
+	if [ -n "$$badthings" ]; then \
+	  echo "Differing files/subtrees: $$badthings"; \
+	  exit 1; \
+	fi
+
+	: # check for jars with the same content
+	set -e; \
+	for j in $(common_jre_jars); do \
+	  echo "  Comparing $$j ..."; \
+	  d=$${j%*.jar}; \
+	  set -- $(all_archs); a1=$$1; shift; \
+	  mkdir -p tmp-$$a1/$$d; \
+	  unzip -q -d tmp-$$a1/$$d $$a1-jdk/$$j; \
+	  for a2; do \
+	    mkdir -p tmp-$$a2/$$d; \
+	    unzip -q -d tmp-$$a2/$$d $$a2-jdk/$$j; \
+	    if diff -ur tmp-$$a1/$$d tmp-$$a2/$$d; then \
+	      echo "    OK"; \
+	    else \
+	      echo "    differ"; \
+	      badjars="$$badjars $$j ($$a1, $$a2)"; \
+	    fi; \
+	  done; \
+	done; \
+	if [ -n "$$badjars" ]; then \
+	  echo "Differing jar files: $$badjars"; \
+	  exit 1; \
+	fi
+
+	: # check if the sources are the "same"
+	set -e; set -- $(all_archs); a1=$$1; shift; \
+	unzip -q -d tmp-$$a1/src $$a1-jdk/src.zip; \
+	for a2; do \
+	  unzip -q -d tmp-$$a2/src $$a2-jdk/src.zip; \
+	  echo "Comparing sources: tmp-$$a1/src tmp-$$a2/src ..."; \
+	  echo "    diff -ur $(diff_ignore)"; \
+	  diff -ur $(diff_ignore) tmp-$$a1/src tmp-$$a2/src; \
+	done
+
+	@echo No relevant differences
+endif
+	touch unpack-stamp
+
+unpack-amd64-stamp: unpack-i586-stamp
+
+unpack-%-stamp: $(bin_pattern)
+	rm -rf $(unpackdir)
+#	$(SHELL) tmp-$< --accept-license > /dev/null
+	binsize=$$(wc -c $< | awk '{print $$1}'); \
+	zipstart=$$(unzip -ql $< 2>&1 >/dev/null \
+			| sed -n -e 's/.* \([0-9][0-9]*\) extra bytes.*/\1/p'); \
+	tail -c $$(expr $$binsize - $$zipstart) $< > tmp-jdk.zip
+	unzip -q tmp-jdk.zip
+	mv $(unpackdir) $*-jdk
+	@echo $*
+
+	diff -u $*-jdk/LICENSE $*-jdk/jre/LICENSE
+	diff -u $*-jdk/THIRDPARTYLICENSEREADME.txt \
+	    $*-jdk/jre/THIRDPARTYLICENSEREADME.txt
+
+ifneq ($(ship_packs),yes)
+	set -e; \
+	for i in $$(find $*-jdk -name '*.pack'); do \
+	  i586-jdk/bin/unpack200 $$i \
+		$$(dirname $$i)/$$(basename $$i .pack).jar; \
+	  rm -f $$i; \
+	done
+endif
+
+	: # fix permissions
+	-find $*-jdk -name '*.properties' -o -name '*.xml' | xargs chmod 644
+
+#	for i in `find $*-jdk/man/man1` -name '*.1'; do \
+#	  mv $$i `dirname $$i`/`basename $$i .1`.$(mantag).1; \
+#	done
+	find $*-jdk/. -name "CVS" -print0 | xargs -0 rm -rf
+
+#	for i in `find $*-jdk/man/ja_JP.eucJP -name *.1.gz`; do \
+#	    mv $$i `dirname $$i`/`basename $$i 1.gz`ja.1.gz; \
+#	done
+
+	touch $@
+
+update-dlj: build-stamp
+	touch debian/dlj.templates
+
+update-copyright: build-stamp
+	jdkdir=$(srcdir) jdkdistrosdir=debian pkgdir=debian \
+	  sh debian/mkcopy.sh
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f *-stamp
+	rm -rf amd64-jdk i586-jdk tmp-* $(unpackdir)
+	rm -f debian/*.debhelper debian/more debian/control.old
+	rm -f debian/$(p_jbin).substvars.tmp
+	: # TODO: and these should be
+	: # -rm -f $(d_jre).copyright debian/copyright
+
+	for f in debian/*.in; do \
+	  f2=$$(echo $$f | sed 's/JB/$(basename)/;s/\.in$$//'); \
+	  case "$$f2" in debian/control) continue; esac; \
+	  rm -f $$f2; \
+	done
+	rm -f debian/$(basename)*.templates
+	rm -f debian/$(basename)*.links
+	rm -f debian/copyright.1*
+	rm -f debian/ia32-$(basename)*.*
+	rm -f debian/*.debhelper.log
+
+	dh_clean
+
+mrproper: clean
+	rm -rf build-stamp $(srcdir)
+
+
+binary-$(p_jbin):	DH_OPTIONS=-p$(p_jbin) $(NO_PACKAGES)
+binary-$(p_jbin):	build
+	dh_testdir
+	dh_testroot
+	dh_clean -d
+	dh_installdirs \
+		usr/share/doc \
+		etc/$(jdiralias)/security \
+		$(basedir)/ext \
+		$(basedir)/man/man1 \
+		$(basedir)/man/ja/man1 \
+		$(basedir)/jre/man/man1 \
+		$(basedir)/jre/man/ja/man1 \
+		$(basedir)/bin/$(archdir)/native_threads \
+		usr/share/lintian/overrides \
+		usr/share/applications \
+		usr/share/application-registry \
+		usr/share/binfmts \
+		usr/share/pixmaps \
+		usr/share/mime-info \
+
+	cp -a $(srcdir)/jre $(d_jbin)/$(basedir)
+
+	echo $(basedir) $(TOP)/$(jdiralias) > $(d_jbin).links
+
+	: remove arch indep files and directories
+	rm -rf $(foreach i, $(common_jre_things) $(common_jre_jars), $(d_jbin)/$(basedir)/$(i))
+	: # icons, only in the i586 archive -> $(p_jre)
+	rm -rf $(d_jbin)/$(basedir)/jre/lib/images/icons
+
+	: # install a wrapper for javaws
+	mv $(d_jbin)/$(basedir)/jre/bin/javaws $(d_jbin)/$(basedir)/jre/bin/javaws.real
+	install -m 755 debian/javaws-wrapper.sh $(d_jbin)/$(basedir)/jre/bin/javaws
+
+
+#	: # 1.4 only
+#	rm -f $(d_jbin)/$(basedir)/jre/lib/$(archdir)/libagent.so
+#	-find $(d_jbin) -name HtmlConverter -o -name htmlconverter.jar | xargs rm -f
+
+###	: # get upstream docs out of there
+###	-rm $(d_jbin)/$(j2se_lib)/jre/{CHANGES,COPYRIGHT,INSTALL,*LICENSE*,README
+	rm -f $(d_jbin)/$(basedir)/jre/{CHANGES,INSTALL}
+
+	: # install template files as real files (all commented out)
+	for i in $(d_jbin)/$(basedir)/jre/lib/management/*.template; do \
+	  mv $$i $${i%*.template}; \
+	done
+
+	: # fix permissions
+	chmod 644 $(d_jbin)/$(basedir)/jre/lib/deploy/splash.gif
+
+	: # move config files to etc/$(jdiralias) and symlink them.
+	mkdir -p $(d_jbin)/etc/$(jdiralias)/management
+	for i in \
+	  calendars.properties \
+	  jvm.cfg \
+	  content-types.properties \
+	  logging.properties \
+	  sound.properties \
+	  flavormap.properties \
+	  net.properties \
+	  fontconfig.properties \
+	  management/jmxremote.access \
+	  management/jmxremote.password \
+	  management/management.properties \
+	  management/snmp.acl; \
+	do \
+	  mv $(d_jbin)/$(basedir)/jre/lib/$$i $(d_jbin)/etc/$(jdiralias)/$$i; \
+	done
+	cp debian/fontconfig.properties.$(if $(with_wgy_zenhai),wqy-zenhei,src) \
+		$(d_jbin)/etc/$(jdiralias)/fontconfig.properties
+
+	mv $(d_jbin)/$(basedir)/jre/lib/$(archdir)/jvm.cfg \
+		$(d_jbin)/etc/$(jdiralias)/
+	: # TODO: why do we provide a custom font.properties.ja?
+	: # cp -p debian/font.properties.ja $(d_jbin)/etc/$(jdiralias)/.
+	-mv $(d_jbin)/$(basedir)/jre/lib/security/{java.*,cacerts} \
+		$(d_jbin)/$(security)
+
+	: # create links for the conffiles
+	find $(d_jbin)/etc/$(jdiralias) -type f ! -name jvm.cfg \
+	    -printf "etc/$(jdiralias)/%P $(basedir)/jre/lib/%P\n" >> $(d_jbin).links
+	echo "etc/$(jdiralias)/jvm.cfg $(basedir)/jre/lib/$(archdir)/jvm.cfg" \
+	    >> $(d_jbin).links
+
+#	: # replace duplicate files in bin and jre/bin with links
+#	for f in `cd $(srcdir)/. && diff -s -r jre/bin bin \
+#		| sed -n 's/^Files \(.*\) and \(.*\) are identical$$/\2/p'`; \
+#	do \
+#	  [ $$f = bin/HtmlConverter ] || \
+#	  echo /$(basedir)/jre/$$f /$(basedir)/$$f; \
+#	done >> $(d_jbin).links
+
+	set -e; \
+	for i in $$(find $(srcdir)/bin ! -type d); do \
+	  n=$$(basename $$i); \
+	  case " $(jre_tools) $(corba_tools) " in *\ $$n\ *) ;; *) continue; esac; \
+	  echo $(basedir)/jre/bin/$$n $(basedir)/bin/$$n; \
+	done >> $(d_jbin).links
+
+#	  if [ -L $(d_jbin)/$(basedir)/jre/$$f ]; then \
+#	    ln -sf `readlink $(d_jbin)/$(basedir)/jre/$$f` \
+#		$(d_jbin)/$(basedir)/$$f; \
+#	  else \
+#	    ln -sf /$(basedir)/jre/$$f \
+#		$(d_jbin)/$(basedir)/$$f; \
+#	  fi; \
+#
+
+	: # give all permissions to cross-VM extension directory
+	mv $(d_jbin)/$(security)/java.policy \
+	   $(d_jbin)/$(security)/java.policy.orig
+	sed -e '/permission java\.security\.AllPermission;/,/};/c\' \
+	    -e '        permission java.security.AllPermission;\' \
+	    -e '};\' \
+	    -e '\' \
+	    -e 'grant codeBase "file:/$(basedir)/ext/*" {\' \
+	    -e '        permission java.security.AllPermission;\' \
+	    -e '};\' \
+	    -e '\' \
+	    -e '// Comment this out if you want to give all permissions to the\' \
+	    -e '// Debian Java repository too:\' \
+	    -e '//grant codeBase "file:/usr/share/java/repository/-" {\' \
+	    -e '//        permission java.security.AllPermission;\' \
+	    -e '//};\' \
+	    -e '' \
+	    $(d_jbin)/$(security)/java.policy.orig \
+	  > $(d_jbin)/$(security)/java.policy
+# 'make Emacs Makefile mode happy
+	$(RM) $(d_jbin)/$(security)/java.policy.orig
+
+	: # add lintian overrides
+	cp -p debian/$(p_jbin).overrides \
+		$(d_jbin)/$(lintian_overrides)/$(p_jbin)
+
+	: # add GNOME stuff
+	cp -p debian/$(basename)-java.desktop \
+	      $(d_jbin)/usr/share/applications/
+	cp -p debian/$(basename)-policytool.desktop \
+	      $(d_jbin)/usr/share/applications/
+ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386 lpia))
+	cp -p debian/$(basename)-{java,javaws}.desktop \
+	      $(d_jbin)/usr/share/applications/
+	cp -p debian/$(basename)-{controlpanel,policytool}.desktop \
+	      $(d_jbin)/usr/share/applications/
+endif
+
+	for i in archive web-start; do \
+	  cp debian/$(basename)-$$i.applications \
+	    $(d_jbin)/usr/share/application-registry/; \
+	  cp debian/$(basename)-$$i.keys $(d_jbin)/usr/share/mime-info/; \
+	  cp debian/$(basename)-$$i.mime $(d_jbin)/usr/share/mime-info/; \
+	done
+
+	: # XXX hack, the icon is not available in the amd64 package
+	cp -p i586-jdk/jre/plugin/desktop/sun_java.png \
+		$(d_jbin)/usr/share/pixmaps/$(basename).png
+	cp -p debian/sun_java.xpm \
+		$(d_jbin)/usr/share/pixmaps/$(basename).xpm
+
+	: # install manpages
+	set -e; \
+	for m in $$(find $(srcdir)/man/man1 -type f); do \
+	  n=$$(basename $$m .1); \
+	  case " $(jre_tools) $(corba_tools) " in *\ $$n\ *) ;; *) continue; esac; \
+	  cp -p $$m $(d_jbin)/$(basedir)/jre/man/man1/$$n.1; \
+	  ln -s ../../jre/man/man1/$$n.1 $(d_jbin)/$(basedir)/man/man1/$$n.1; \
+	  [ -f $(srcdir)/man/ja/man1/$$n.1 ] || continue; \
+	  cp -p $(srcdir)/man/ja/man1/$$n.1 \
+	    $(d_jbin)/$(basedir)/jre/man/ja/man1/$$n.1; \
+	  ln -s ../../../jre/man/ja/man1/$$n.1 \
+	    $(d_jbin)/$(basedir)/man/ja/man1/$$n.1; \
+	done
+	-find $(d_jbin)/$(basedir)/jre/man -name '*.[1-9]' | xargs gzip
+
+# make these absolute links, so we can use them for resolving the dependencies
+ifeq (,$(ia32_prefix))
+	ln -sf /usr/lib/libodbcinst.so.1 \
+		$(d_jbin)/$(basedir)/jre/lib/$(archdir)/libodbcinst.so
+	ln -sf /usr/lib/libodbc.so.1 \
+		$(d_jbin)/$(basedir)/jre/lib/$(archdir)/libodbc.so
+# currently unsupported
+#else
+#	ln -sf /usr/lib32/libodbcinst.so.1 \
+#		$(d_jbin)/$(basedir)/jre/lib/$(archdir)/libodbcinst.so
+#	ln -sf /usr/lib32/libodbc.so.1 \
+#		$(d_jbin)/$(basedir)/jre/lib/$(archdir)/libodbc.so
+endif
+
+	 : # fix permissions
+	find $(d_jbin) -name '*.xml' | xargs -r chmod 644
+
+	rm -f $(d_jbin).substvars
+	ld_path=$(d_jbin)/$(basedir)/jre/lib/$(archdir) \
+	    dh_shlibdeps \
+		-l$$ld_path:$$ld_path/client:$$ld_path/native_threads \
+		-Xlibjavaplugin_oji.so -Xlibnpjp2.so
+
+	sed -i -e 's/libc6[^,]*, *//g' -e 's/libc6[^,]*$$//g' -e 's/ *([^,]*) *//g' \
+		$(d_jbin).substvars
+	cp -p $(d_jbin).substvars $(d_plug).substvars
+	sed -e 's/Depends/Recommends/' \
+		$(d_jbin).substvars > $(d_jbin).substvars.tmp
+	rm -f debian/$(p_jbin).substvars
+	ld_path=$(d_jbin)/$(basedir)/jre/lib/$(archdir) \
+	    dh_shlibdeps -v \
+		-l$$ld_path:$$ld_path/client:$$ld_path/native_threads:$$ld_path/headless \
+		-Xjavaws -Xawt_robot -Xpolicytool \
+		-Xlibjavaplugin -Xlibawt -Xlibjawt -Xlibmawt -Xlibdcpr \
+		-Xlibfontmanager -XlibXm -Xlibjsoundalsa  -X_g.so \
+		-Xlibsplashscreen -Xlibmawt -Xlibmlib \
+		-Xlibdeploy
+	sed -i -e 's/ *([^,]*) *//g' $(d_jbin).substvars
+	cat $(d_jbin).substvars.tmp >> $(d_jbin).substvars
+ifeq (,$(ia32_prefix))
+	echo 'odbc:Depends=unixodbc' >> $(d_jbin).substvars
+	echo 'mdns:Depends=libnss-mdns' >> $(d_jbin).substvars
+else
+  ifneq ($(distribution),Ubuntu)
+    ifneq (,$(filter $(distrelease), gutsy))
+	echo 'mdns:Depends=ia32-libs (>= 1.19ubuntu1)' >> $(d_jbin).substvars
+    endif
+    ifneq (,$(filter $(distrelease), hardy))
+	echo 'mdns:Depends=lib32nss-mdns' >> $(d_jbin).substvars
+    endif
+  else
+	echo 'mdns:Depends=lib32nss-mdns' >> $(d_jbin).substvars
+  endif
+endif
+
+	( \
+	  echo 'package $(basename)'; \
+	  echo 'interpreter /$(basedir)/jre/lib/jexec'; \
+	  echo 'magic PK\x03\x04'; \
+	) > $(d_jbin)/$(basedir)/jre/lib/jar.binfmt
+
+	ln -sf $(subst $(ia32_prefix),, $(p_jre)) $(d_jbin)/usr/share/doc/$(p_jbin)
+
+	rm -f debian/$(p_jbin).substvars.tmp
+
+	( \
+	  echo 'name=$(jdirname)'; \
+	  echo 'alias=$(jdiralias)'; \
+	  echo 'priority=$(priority)'; \
+	  echo 'section=non-free'; \
+	  echo ''; \
+	  for i in $(jre_tools_alt); do \
+	    echo "jre $$i /$(TOP)/$(jdiralias)/jre/bin/$$i"; \
+	  done; \
+	  echo "jre jexec /$(TOP)/$(jdiralias)/jre/lib/jexec"; \
+	  for i in $(jdk_tools_alt); do \
+	    echo "jdk $$i /$(TOP)/$(jdiralias)/bin/$$i"; \
+	  done; \
+	  for d in $(browser_plugin_dirs); do \
+	    case "$$d" in \
+	      xulrunner-addons) b=xulrunner-1.9;; \
+	      *) b=$$d;; \
+	    esac; \
+	    echo "plugin $$b-javaplugin.so /$(TOP)/$(jdiralias)/jre/lib/$(archdir)/libnpjp2.so"; \
+	  done; \
+	) > $(d_jbin)/$(TOP)/.$(jdiralias).jinfo
+	cat debian/dlj.templates >> $(d_jbin).templates
+
+
+ia32-binary-bin: unpack-stamp
+	dh_testdir
+	dh_testroot
+	$(MAKE) -f debian/rules binary-ia32-$(p_jbin) \
+		ia32_prefix=ia32- \
+		packaging_files= \
+		DEB_HOST_ARCH=i386
+
+	for i in $(common_jre_things) $(common_jre_jars); do \
+	  echo $(basedir)/$$i $(TOP)/ia32-$(jdirname)/$$i; \
+	done >> debian/ia32-$(p_jbin).links
+
+
+binary-$(p_jre):	DH_OPTIONS=-p$(p_jre)
+binary-$(p_jre):	#binary-$(p_jbin)
+	dh_testdir
+	dh_testroot
+	dh_clean -d
+	dh_installdirs \
+		$(basedir)/jre \
+		usr/share/doc \
+		$(lintian_overrides)
+
+	set -e; \
+	tar -c -C $(srcdir) -f - $(common_jre_things) $(common_jre_jars) \
+	  | tar -x -C $(d_jre)/$(basedir) -f -
+
+	: # these are only in the i586 archive
+	cp -a i586-jdk/jre/lib/images/icons $(d_jre)/$(basedir)/jre/lib/images/
+
+	: # add lintian overrides
+	cp -p debian/$(p_jre).overrides \
+		$(d_jre)/$(lintian_overrides)/$(p_jre)
+
+	dh_installdocs \
+		$(srcdir)/jre/README \
+		debian/README.alternatives \
+		debian/JAVA_HOME
+
+	dh_installchangelogs -k \
+#		$(srcdir)/jre/CHANGES
+
+	ln -sf /etc/.java $(d_jre)/$(basedir)/.systemPrefs
+
+	cat debian/dlj.templates >> $(d_jre).templates
+
+
+binary-$(p_plug):	DH_OPTIONS=-p$(p_plug)
+binary-$(p_plug):	#binary-$(p_jbin)
+	dh_testdir
+	dh_testroot
+	dh_clean -d
+	dh_installdirs \
+		usr/share/doc \
+		$(lintian_overrides) \
+		$(foreach d, $(browser_plugin_dirs), usr/lib/$(d)/plugins)
+	ln -s $(p_jbin) $(d_plug)/usr/share/doc/$(p_plug)
+#	cat debian/dlj.templates >> $(d_plug).templates
+
+	: # add lintian overrides
+	cp -p debian/$(p_plug).overrides \
+		$(d_plug)/$(lintian_overrides)/$(p_plug)
+
+ia32-binary-plugin: unpack-stamp
+	dh_testdir
+	dh_testroot
+	$(MAKE) -f debian/rules binary-ia32-$(p_plug) \
+		ia32_prefix=ia32- \
+		DEB_HOST_ARCH=i386
+
+
+binary-$(p_fonts):	DH_OPTIONS=-p$(p_fonts)
+binary-$(p_fonts):	build
+	dh_testroot
+	dh_clean -d
+	dh_installdirs \
+		usr/share/doc \
+		usr/share/fonts/truetype/ttf-lucida
+
+	cd $(srcdir) && \
+	for f in jre/lib/*fonts/*.ttf; do \
+	  echo $(basedir)/$$f usr/share/fonts/truetype/ttf-lucida/$$(basename $$f); \
+	done >> $(CURDIR)/$(d_fonts).links
+
+	dh_installdefoma
+	ln -s $(p_jre) $(d_fonts)/usr/share/doc/$(p_fonts)
+#	cat debian/dlj.templates >> $(d_fonts).templates
+
+
+binary-$(p_jdk):	DH_OPTIONS=-p$(p_jdk)
+binary-$(p_jdk):	build
+	dh_testdir
+	dh_testroot
+	dh_clean -d
+	dh_installdirs \
+		usr/share/doc/$(p_jdk) \
+		$(basedir)/jre/lib/$(archdir) \
+		$(basedir)/man/man1 \
+		$(basedir)/man/ja/man1 \
+		usr/share/applications \
+		$(lintian_overrides)
+
+	-cp -a $(srcdir)/{bin,include,lib,README.html} \
+	    $(d_jdk)/$(basedir)
+
+	for i in COPYRIGHT LICENSE THIRDPARTYLICENSEREADME.txt; do \
+	  ln -sf jre/$$i $(d_jdk)/$(basedir)/$$i; \
+	done
+
+	: # remove any runtime files from the jdk package
+	-find $(d_jbin)/$(basedir)/jre/bin \! -type d \
+		-printf "$(d_jdk)/$(basedir)/bin/%P\0" | xargs -r0 rm -f
+
+	: # fix java-rmi.cgi PATH
+	perl -pi -e 's:/usr/local/java/bin:/$(basedir)/bin:' \
+	    $(d_jdk)/$(basedir)/bin/java-rmi.cgi
+
+	: # add menu stuff
+	cp -p debian/$(basename)-jconsole.desktop \
+	      $(d_jdk)/usr/share/applications/
+
+	: # add lintian overrides
+	cp -p debian/$(p_jdk).overrides \
+		$(d_jdk)/$(lintian_overrides)/$(p_jdk)
+
+ifneq (,$(findstring demo, $(NO_PACKAGES)))
+	cp -a $(srcdir)/demo $(d_jdk)/usr/share/doc/$(p_jdk)/
+	cp -a $(srcdir)/sample $(d_jdk)/usr/share/doc/$(p_jdk)/examples
+#	chmod 755 $(d_jdk)/usr/share/doc/$(p_jdk)/examples/scripting/scriptpad/src/scripts/memory.sh
+
+	echo usr/share/doc/$(p_jdk)/demo $(basedir)/demo >> $(d_jdk).links
+	echo usr/share/doc/$(p_jdk)/examples $(basedir)/sample >> $(d_jdk).links
+
+	: # add lintian overrides
+	cat debian/$(p_demo).overrides \
+		>> $(d_jdk)/usr/share/lintian/overrides/$(p_jdk)
+endif
+
+	for m in $$(find $(srcdir)/man/man1 -type f); do \
+	  n=$$(basename $$m .1); \
+	  case " $(jre_tools) $(corba_tools) " in *\ $$n\ *) continue; esac; \
+	  cp -p $$m $(d_jdk)/$(basedir)/man/man1/$$n.1; \
+	  [ -f $(srcdir)/man/ja/man1/$$n.1 ] || continue; \
+	  cp -p $(srcdir)/man/ja/man1/$$n.1 \
+	    $(d_jdk)/$(basedir)/man/ja/man1/$$n.1; \
+	done
+	-find $(d_jdk)/$(basedir)/man -name '*.[1-9]' | xargs gzip
+
+	ld_path=$(d_jbin)/$(basedir)/jre/lib/$(archdir) \
+	    dh_shlibdeps \
+	-l$$ld_path:$$ld_path/client:$$ld_path/native_threads:$$ld_path/headless \
+		-Xlibjavaplugin_oji.so Xlibnpjp2.so -X_g.so
+
+	sed -i -e 's/ *([^,]*) *//g' $(d_jdk).substvars
+	cat debian/dlj.templates >> $(d_jdk).templates
+
+	dh_installdocs \
+		$(srcdir)/README.html debian/README.alternatives
+	dh_installchangelogs
+
+
+binary-$(p_demo):	DH_OPTIONS=-p$(p_demo)
+binary-$(p_demo):	build
+	dh_testdir
+	dh_testroot
+	dh_clean -d
+	dh_installdirs \
+		usr/share/doc/$(p_jdk) \
+		usr/share/pixmaps \
+		$(basedir)/demo \
+		$(lintian_overrides)
+
+	cp -a $(srcdir)/demo $(d_demo)/usr/share/doc/$(p_jdk)/
+	cp -a $(srcdir)/sample $(d_demo)/usr/share/doc/$(p_jdk)/examples
+	mv $(d_demo)/usr/share/doc/$(p_jdk)/demo/jvmti \
+	  $(d_demo)/$(basedir)/demo/
+
+	: # fix permissions
+	chmod 755 $(d_demo)/usr/share/doc/$(p_jdk)/examples/scripting/scriptpad/src/scripts/memory.sh
+
+	echo usr/share/doc/$(p_jdk)/examples $(basedir)/sample > $(d_demo).links
+	for i in $(srcdir)/demo/*; do \
+	  i=$$(basename $$i); \
+	  case "$$i" in jvmti) continue; esac; \
+	  echo usr/share/doc/$(p_jdk)/demo/$$i $(basedir)/demo/$$i >> $(d_demo).links; \
+	done
+	echo $(basedir)/demo/jvmti usr/share/doc/$(p_jdk)/demo/jvmti >> $(d_demo).links
+
+	cp -p debian/sun_java_app.xpm \
+		$(d_demo)/usr/share/pixmaps/$(basename)-app.xpm
+
+	: # add lintian overrides
+	cp -p debian/$(p_demo).overrides \
+		$(d_demo)/$(lintian_overrides)/$(p_demo)
+
+#	( \
+#	  gnome=`find $(d_demo)/usr/share/gnome -type f -printf "%f %P "`; \
+#	  echo "gnome='$$gnome'"; \
+#	  echo "" \
+#	) > $(d_demo).debhelper
+
+	ld_path=$(d_jbin)/$(basedir)/jre/lib/$(archdir) \
+	    dh_shlibdeps \
+
+	echo usr/share/doc/$(p_jdk) usr/share/doc/$(p_demo) >> $(d_demo).links
+
+
+binary-$(p_src):	DH_OPTIONS=-p$(p_src)
+binary-$(p_src):	build
+	dh_testdir
+	dh_testroot
+	dh_clean -d
+	dh_installdirs \
+		usr/share/doc \
+		$(basedir)
+
+	cp -a $(srcdir)/src.zip $(d_src)/$(basedir)/
+
+	ln -s $(p_jdk) $(d_src)/usr/share/doc/$(p_src)
+
+#	cat debian/dlj.templates >> $(d_src).templates
+
+
+binary-$(p_doc):	DH_OPTIONS=-p$(p_doc)
+binary-$(p_doc):	build
+	dh_testdir
+	dh_testroot
+	dh_clean -d
+	dh_installdirs \
+		$(basedir) \
+		$(lintian_overrides) \
+		usr/share/doc/$(p_jdk)/html
+
+	: # add lintian overrides
+	cp -p debian/$(p_doc).overrides \
+		$(d_doc)/$(lintian_overrides)/$(p_doc)
+
+	dh_installdocs
+	dh_installchangelogs
+	echo "$(doc)/$(p_jdk)/html $(doc)/$(p_doc)/html" > $(d_doc).links
+	echo "$(doc)/$(p_jdk)/html $(basedir)/docs" >> $(d_doc).links
+
+binary-$(p_javadb):	DH_OPTIONS=-p$(p_javadb)
+binary-$(p_javadb):	build
+	dh_testdir
+	dh_testroot
+	dh_clean -d
+	dh_installdirs \
+		$(basedir) \
+		$(lintian_overrides) \
+		usr/share/doc/$(p_javadb)
+	cp -a $(srcdir)/db $(d_javadb)/$(basedir)/
+
+	: # add lintian overrides
+	cp -p debian/$(p_javadb).overrides \
+		$(d_javadb)/$(lintian_overrides)/$(p_javadb)
+
+	dh_installdocs
+	dh_installchangelogs
+	mv $(d_javadb)/$(basedir)/db/demo $(d_javadb)/usr/share/doc/$(p_javadb)/
+	mv $(d_javadb)/$(basedir)/db/docs/* $(d_javadb)/usr/share/doc/$(p_javadb)/
+	mv $(d_javadb)/$(basedir)/db/javadoc $(d_javadb)/usr/share/doc/$(p_javadb)/
+	rmdir $(d_javadb)/$(basedir)/db/docs
+	echo usr/share/doc/$(p_javadb)/demo $(basedir)/db/demo >> $(d_javadb).links
+	echo usr/share/doc/$(p_javadb) $(basedir)/db/docs >> $(d_javadb).links
+	echo usr/share/doc/$(p_javadb)/javadoc $(basedir)/db/javadoc >> $(d_javadb).links
+	find $(d_javadb)/$(basedir)/db  -name '*.bat' -o -name '*.ksh' | xargs chmod 644
+
+
+binary-indep:	DH_OPTIONS=-i $(NO_PACKAGES)
+binary-indep:	$(binary_indep_targets)
+	dh_testdir
+	dh_testroot
+	dh_installdebconf
+	dh_installmime
+	dh_installmenu
+	dh_icons || dh_iconcache || true
+	dh_link
+	: # don't compress anything from the shipped demo and sample files
+	dh_compress -Xdemo -Xsample -X.html
+	dh_fixperms
+	: # remove empty directories, when all components are in place
+	for d in $$(find debian/{$(VENDOR),ia32*} -depth -type d \( ! -name plugins -o -name $(p_jdk) \) -empty 2> /dev/null); do \
+	  while rmdir $$d 2> /dev/null; do d=`dirname $$d`; done; \
+	done
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+
+binary-arch:	DH_OPTIONS=-s $(NO_PACKAGES)
+binary-arch:	$(binary_arch_targets)
+	dh_testdir
+	dh_testroot
+	dh_installdebconf
+	dh_installmime
+	dh_installmenu
+	dh_icons || dh_iconcache || true
+	: # don't strip the files, we are not allowed to modify these
+	#dh_strip -X_g.so
+	dh_link
+	: # don't compress anything from the shipped demo and sample files
+	dh_compress -Xdemo -Xexamples -Xsample -X.html -X.pdf
+	dh_fixperms
+	: # remove empty directories, when all components are in place
+	for d in $$(find debian/{$(VENDOR),ia32*} -depth -type d -name plugins -empty 2> /dev/null); do \
+	  while rmdir $$d 2> /dev/null; do d=`dirname $$d`; done; \
+	done
+	dh_installdeb
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-arch binary-indep
+
+.PHONY: binary binary-indep binary-arch install checkroot build

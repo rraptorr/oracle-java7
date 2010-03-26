@@ -1,0 +1,31 @@
+Template: @JRE@/jcepolicy
+Type: note
+_Description: JCE Unlimited Strength Jurisdiction Policy Files
+ Due to import control restrictions of some countries,
+ the JCE jurisdiction policy files shipped with this package
+ allow "strong" but limited cryptography to be used.
+ An "unlimited strength" version of these files indicating no
+ restrictions on cryptographic strengths is available for
+ those living in eligible countries (which is most countries).
+ You download this version and replace the strong cryptography
+ versions supplied with this package with the unlimited ones.
+ .
+ The Java(TM) Cryptography Extension (JCE) Unlimited Strength
+ Jurisdiction Policy Files 1.4.2 are available at
+ http://javashoplm.sun.com/ECom/docs/Welcome.jsp?StoreId=22&PartDetailId=7503-jce-1.4.2-oth-JPR&SiteId=JSC&TransactionId=noreg
+
+Template: @JRE@/stopthread
+Type: boolean
+Default: true
+_Description: Grant the "stopThread" RuntimePermission?
+ This permission allows any thread to stop itself using the
+ java.lang.Thread.stop() method that takes no argument.
+ .
+ Note that this permission is granted by default only to
+ remain backwards compatible. It is strongly recommended that
+ you either not grant this permission at all or restrict it
+ manually in java.policy to code sources that you specify,
+ because Thread.stop() is potentially unsafe.
+ .
+ See "http://java.sun.com/notes" for more information.
+

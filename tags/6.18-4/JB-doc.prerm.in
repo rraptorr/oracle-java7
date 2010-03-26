@@ -1,0 +1,10 @@
+#! /bin/sh -e
+
+case "$1" in
+remove)
+    rm -rf /usr/share/doc/@basename@-jdk/html
+    ;;
+
+esac
+
+#DEBHELPER#

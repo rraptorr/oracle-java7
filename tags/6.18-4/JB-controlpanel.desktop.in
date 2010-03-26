@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=@vendor@ Java @RELEASE@ Plugin Control Panel@ia32txt@
+Comment=@vendor@ Java @RELEASE@ Plugin Control Panel@ia32txt@
+Exec=/@basedir@/bin/ControlPanel
+Terminal=false
+Type=Application
+Icon=@basename@
+Categories=Settings;
