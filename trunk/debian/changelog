@@ -1,3 +1,45 @@
+sun-java6 (6.19-1) UNRELEASED; urgency=low
+
+  * New upstream version.
+  * SECURITY UPDATE: multiple upstream vulnerabilities. Upstream fixes:
+    - (CVE-2010-0837): JAR "unpack200" must verify input parameters (6902299).
+    - (CVE-2010-0845): No ClassCastException for HashAttributeSet constructors
+      if run with -Xcomp (6894807).
+    - (CVE-2010-0838): CMM readMabCurveData Buffer Overflow Vulnerability
+      (6899653).
+    - (CVE-2010-0082): Loader-constraint table allows arrays instead of
+      only the base-classes (6626217).
+    - (CVE-2010-0095): Subclasses of InetAddress may incorrectly interpret
+      network addresses (6893954) [ZDI-CAN-603].
+    - (CVE-2010-0085): File TOCTOU deserialization vulnerability (6736390).
+    - (CVE-2010-0091): Unsigned applet can retrieve the dragged information
+      before drop action occurs (6887703).
+    - (CVE-2010-0088): Inflater/Deflater clone issues (6745393).
+    - (CVE-2010-0084): Policy/PolicyFile leak dynamic ProtectionDomains
+      (6633872).
+    - (CVE-2010-0092): AtomicReferenceArray causes SIGSEGV -> SEGV_MAPERR
+      error (6888149).
+    - (CVE-2010-0094): Deserialization of RMIConnectionImpl objects should
+      enforce stricter checks (6893947) [ZDI-CAN-588].
+    - (CVE-2010-0093): System.arraycopy unable to reference elements
+      beyond Integer.MAX_VALUE bytes (6892265).
+    - (CVE-2010-0840): Applet Trusted Methods Chaining Privilege Escalation
+      Vulnerability (6904691).
+    - (CVE-2010-0848): AWT Library Invalid Index Vulnerability (6914823).
+    - (CVE-2010-0847): ImagingLib arbitrary code execution vulnerability
+      (6914866).
+    - (CVE-2009-3555): TLS: MITM attacks via session renegotiation.
+    - 6639665: ThreadGroup finalizer allows creation of false root
+      ThreadGroups.
+    - 6898622: ObjectIdentifer.equals is not capable of detecting incorrectly.
+      encoded CommonName OIDs.
+    - 6910590: Application can modify command array in ProcessBuilder.
+    - 6909597: JPEGImageReader stepX Integer Overflow Vulnerability.
+    - 6932480: Crash in CompilerThread/Parser. Unloaded array klass?
+    - 6898739: TLS renegotiation issue.
+
+ -- Matthias Klose <doko@canonical.com>  Tue, 30 Mar 2010 23:07:56 +0000
+
 sun-java6 (6.18-4) unstable; urgency=low
 
   * Package sun-java6-plugin now register plugins for various browser

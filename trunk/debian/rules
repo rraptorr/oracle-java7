@@ -44,7 +44,7 @@ jdirname	:= $(ia32_prefix)java-$(version)-$(VENDOR)-$(jdkversion).$(releng_ver)
 jdiralias	:= $(ia32_prefix)java-$(version)-$(VENDOR)
 srcdir		:= $(arch)-jdk
 bin_pattern	= jdk-$(subst .,_,$(version))-dlj-linux-%.bin
-bin_pattern	= jdk-6u18-dlj-linux-%.bin
+bin_pattern	= jdk-6u19-dlj-linux-%.bin
 all_archs	= $(filter $(subst =, , $(arch_map)), \
 			   $(subst -, , $(patsubst %.bin, %, $(wildcard *.bin))))
 priority	:= 63
@@ -309,8 +309,8 @@ compare-jre-jars:
 	  exit 1; \
 	fi
 
-diff_ignore = -I 'Thursday, December 17' \
-	-I 'Thu Dec 17' -I '^ *// java GenerateCharacter'
+diff_ignore = -I 'Tuesday, March 9' \
+	-I 'Tue Mar 09' -I '^ *// java GenerateCharacter'
 
 with_check = yes
 
