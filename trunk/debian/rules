@@ -61,7 +61,7 @@ bd_plugin = \
 	$(if $(filter $(distribution),Debian),libxul-dev,$(if $(filter $(distrelease),hardy),xulrunner-1.9-dev,firefox-dev))
 
 browser_plugin_dirs = xulrunner-addons firefox iceape iceweasel mozilla midbrowser xulrunner konqueror
-browsers = firefox | firefox-2 | iceweasel | mozilla-firefox | iceape-browser | mozilla-browser | epiphany-gecko | epiphany-webkit | epiphany-browser | galeon | midbrowser | moblin-web-browser | xulrunner | xulrunner-1.9 | konqueror
+browsers = firefox | firefox-2 | iceweasel | mozilla-firefox | iceape-browser | mozilla-browser | epiphany-gecko | epiphany-webkit | epiphany-browser | galeon | midbrowser | moblin-web-browser | xulrunner | xulrunner-1.9 | konqueror | chromium-browser
 
 # FIXME: xulrunner-addons only tested on sid, jaunty, karmic
 ifeq ($(distribution),Ubuntu)
@@ -69,6 +69,13 @@ ifeq ($(distribution),Ubuntu)
   browser_plugin_dirs = xulrunner-addons
 else
   browser_plugin_dirs = xulrunner-addons firefox iceape iceweasel mozilla midbrowser xulrunner
+endif
+
+java_launcher = /$(basedir)/bin/java
+ifeq ($(distribution),Ubuntu)
+  ifeq (,$(filter $(distrel),karmic jaunty intrepid hardy gutsy feisty edgy dapper))
+    java_launcher = cautious-launcher %f /$(basedir)/bin/java
+  endif
 endif
 
 with_wgy_zenhai = $(if $(filter $(distrelease),hardy),yes)
@@ -228,6 +235,7 @@ debian/control: debian/control.in debian/rules
 	      -e 's/@RELEASE@/$(relstring)/g' \
 	      -e 's/@archdir@/$(archdir)/g' \
 	      -e 's/@browsers@/$(browsers)/g' \
+	      -e 's,@java_launcher@,$(java_launcher),g' \
 	      -e 's/@cjk_fonts@/$(cjk_fonts)/g' \
 	      -e 's,@pkg_version@,$(if $(filter $(distrelease),etch dapper edgy feisty gutsy),$${Source-Version},$${source:Version}),g' \
 	    debian/control.in > debian/control
