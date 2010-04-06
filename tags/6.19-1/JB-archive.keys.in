@@ -1,0 +1,18 @@
+application/java-archive
+        description=Java Archive
+        icon_filename=sun-java
+        default_action_type=application
+        default_application_id=java-archive
+        short_list_application_user_additions=java-archive
+application/x-java-archive
+        description=Java Archive
+        icon_filename=sun-java
+        default_action_type=application
+        default_application_id=java-archive
+        short_list_application_user_additions=java-archive
+application/x-jar
+        description=Java Archive
+        icon_filename=sun-java
+        default_action_type=application
+        default_application_id=java-archive
+        short_list_application_user_additions=java-archive

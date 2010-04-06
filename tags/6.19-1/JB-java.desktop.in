@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=@vendor@ Java @RELEASE@ Runtime@ia32txt@
+Comment=@vendor@ Java @RELEASE@ Runtime@ia32txt@
+Exec=@java_launcher@ -jar
+Terminal=false
+Type=Application
+Icon=@basename@
+MimeType=application/x-java-archive;application/java-archive;application/x-jar;
+NoDisplay=true

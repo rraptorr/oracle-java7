@@ -1,0 +1,3 @@
+@basename@-javadb: extra-license-file
+@basename@-javadb: package-contains-empty-directory
+@basename@-javadb: executable-not-elf-or-script

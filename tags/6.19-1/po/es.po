@@ -1,0 +1,168 @@
+# sun-java5 po-debconf translation to spanish
+# Copyright (C) 2006 Software in the Public Interest, SPI Inc.
+# This file is distributed under the same license as the sun-java5 package.
+# Changes:
+# - Initial translation
+# Steve Lord Flaubert <stonescenter@gmail.com> , 2006
+#
+# Traductores, si no conoce el formato PO, merece la pena leer la 
+# documentación de gettext, especialmente las secciones dedicadas a este
+# formato, por ejemplo ejecutando:
+# info -n '(gettext)PO Files'
+# info -n '(gettext)Header Entry'
+# Equipo de traducción al español, por favor lean antes de traducir
+# los siguientes documentos:
+# - El proyecto de traducción de Debian al español
+# http://www.debian.org/intl/spanish/
+# especialmente las notas y normas de traducción en
+# http://www.debian.org/intl/spanish/notas
+# - La guía de traducción de po's de debconf:
+# /usr/share/doc/po-debconf/README-trans
+# o http://www.debian.org/intl/l10n/po-debconf/README-trans
+# Si tiene dudas o consultas sobre esta traducción consulte con el último
+# traductor (campo Last-Translator) y ponga en copia a la lista de
+# traducción de Debian al español (<debian-l10n-spanish@lists.debian.org>)
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sun-java5 1.5.0-10-1\n"
+"Report-Msgid-Bugs-To: sun-java6@packages.debian.org\n"
+"POT-Creation-Date: 2010-03-05 15:58+0100\n"
+"PO-Revision-Date: 2006-12-26 22:39+0100\n"
+"Last-Translator: Steve Lord Flaubert <stonescenter@gmail.com>\n"
+"Language-Team: Spanish <debian-l10n-spanish@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: note
+#. Description
+#: ../JB-jre.templates.in:1001
+msgid "JCE Unlimited Strength Jurisdiction Policy Files"
+msgstr "Archivos de la política jurisdiccional si limitar la fuerza de JCE"
+
+#. Type: note
+#. Description
+#: ../JB-jre.templates.in:1001
+msgid ""
+"Due to import control restrictions of some countries, the JCE jurisdiction "
+"policy files shipped with this package allow \"strong\" but limited "
+"cryptography to be used. An \"unlimited strength\" version of these files "
+"indicating no restrictions on cryptographic strengths is available for those "
+"living in eligible countries (which is most countries). You download this "
+"version and replace the strong cryptography versions supplied with this "
+"package with the unlimited ones."
+msgstr ""
+"Debido al control de restricciones de importaciones de algunos países, los "
+"archivos de la política jurisdiccional de JCE que se entregan con este "
+"paquete permite que se use «criptografía fuerte», pero limitada. Una versión "
+"con «fuerza ilimitada» de estos archivos, sin restricciones en la fuerza "
+"criptográfica, está disponible para países aptos(que son la mayoría). "
+"Descargue esta versión y remplace las versiones de «criptografía fuerte» "
+"proporcionadas con este paquete por las ilimitadas."
+
+#. Type: note
+#. Description
+#: ../JB-jre.templates.in:1001
+msgid ""
+"The Java(TM) Cryptography Extension (JCE) Unlimited Strength Jurisdiction "
+"Policy Files 1.4.2 are available at http://javashoplm.sun.com/ECom/docs/"
+"Welcome.jsp?StoreId=22&PartDetailId=7503-jce-1.4.2-oth-"
+"JPR&SiteId=JSC&TransactionId=noreg"
+msgstr ""
+"Los archivos de política jurisdiccional de fuerza ilimitada de la versión "
+"1.4.2 de la Extensión Criptográfica Java(TM) (JCE) están disponibles en "
+"«http://javashoplm.sun.com/ECom/docs/Welcome.jsp?StoreId=22&PartDetailId=7503-"
+"jce-1.4.2-oth-JPR&SiteId=JSC&TransactionId=noreg»"
+
+#. Type: boolean
+#. Description
+#: ../JB-jre.templates.in:2001
+msgid "Grant the \"stopThread\" RuntimePermission?"
+msgstr "¿Otorgar los permisos para ejecutar «stopThread»?"
+
+#. Type: boolean
+#. Description
+#: ../JB-jre.templates.in:2001
+msgid ""
+"This permission allows any thread to stop itself using the java.lang.Thread."
+"stop() method that takes no argument."
+msgstr ""
+"Estos permisos permite a cualquier hilo detenerse por sí mismo usando el "
+"método «java.lang.Thread.stop()», que no lleva argumentos."
+
+#. Type: boolean
+#. Description
+#: ../JB-jre.templates.in:2001
+msgid ""
+"Note that this permission is granted by default only to remain backwards "
+"compatible. It is strongly recommended that you either not grant this "
+"permission at all or restrict it manually in java.policy to code sources "
+"that you specify, because Thread.stop() is potentially unsafe."
+msgstr ""
+"Tenga en cuenta que estos permisos se otorgan por omisión, sólo para "
+"permanecer compatible hacia atrás. Se recomienda encarecidamente que no "
+"otorgue estos permisos a todos o los restrinja manualmente en «java.policy» a "
+"las fuentes de código que especifique, porque el método «Thread.stop()» es "
+"potencialmente inseguro."
+
+#. Type: boolean
+#. Description
+#: ../JB-jre.templates.in:2001
+#, fuzzy
+#| msgid ""
+#| "See \"http://download.java.net/dlj/jdk6/LICENSE\" for more information."
+msgid "See \"http://java.sun.com/notes\" for more information."
+msgstr ""
+"Véase la siguiente dirección «http://download.java.net/dlj/jdk6/LICENSE» para "
+"más información."
+
+#. Type: boolean
+#. Description
+#: ../dlj.templates:2001
+#, fuzzy
+#| msgid "Do you agree with the DLJ license terms?"
+msgid "Do you accept the DLJ license terms?"
+msgstr "¿Está de acuerdo con los términos de la licencia «DLJ»?"
+
+#. Type: boolean
+#. Description
+#: ../dlj.templates:2001
+#, fuzzy
+#| msgid ""
+#| "In order to install this package, you must agree to its license terms, "
+#| "the \"Operating System Distributor License for Java\" (DLJ), v1.1. Not "
+#| "accepting will cancel the installation."
+msgid ""
+"In order to install this package, you must accept the license terms, the "
+"\"Operating System Distributor License for Java\" (DLJ), v1.1. Not accepting "
+"will cancel the installation."
+msgstr ""
+"Para instalar este paquete, debe estar de acuerdo con los términos de la "
+"licencia,la \"Operating System Distributor License for Java» (DLJ), v1.1. No "
+"aceptando cancelará la instalación."
+
+#. Type: error
+#. Description
+#: ../dlj.templates:3001
+msgid "Declined Operating System Distributor License for Java v1.1 (DLJ)"
+msgstr ""
+"Declinada la «Operating·System·Distributor·License·for·Java» versión v1.1 "
+"(DLJ)"
+
+#. Type: error
+#. Description
+#: ../dlj.templates:3001
+msgid ""
+"If you do not agree to the DLJ license terms you cannot install this "
+"software."
+msgstr ""
+"Si no está de acuerdo con los términos de la licencia «DLJ», no puede "
+"instalar este software."
+
+#. Type: error
+#. Description
+#: ../dlj.templates:3001
+msgid "The installation of this package will be canceled."
+msgstr "Se ha cancelado la instalación de este paquete."

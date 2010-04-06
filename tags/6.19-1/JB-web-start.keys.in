@@ -1,0 +1,6 @@
+application/x-java-jnlp-file
+        description=Java Web Start Application@ia32txt@
+        icon_filename=sun-java
+        default_action_type=application
+        default_application_id=java-web-start
+        short_list_application_user_additions=java-web-start

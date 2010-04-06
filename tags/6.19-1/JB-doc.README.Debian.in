@@ -1,0 +1,4 @@
+This package will install Sun's Documentation for JDK 6, you
+need to download jdk-6u10-docs.zip from
+http://java.sun.com/javase/downloads/ and put it into $TMP
+(with root.root ownership).

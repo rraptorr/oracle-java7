@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=@vendor@ Java @RELEASE@ Web Start@ia32txt@
+Comment=@vendor@ Java @RELEASE@ Web Start@ia32txt@
+Exec=/@basedir@/bin/javaws %u
+Terminal=false
+Type=Application
+Icon=@basename@
+Categories=Application;Network;
+MimeType=application/x-java-jnlp-file;

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<mime-info xmlns='http://www.freedesktop.org/standards/shared-mime-info'>
+	<mime-type type="application/java-archive">
+		<comment>Java Archive</comment>
+		<glob pattern="*.jar"/>
+	</mime-type>
+
+	<mime-type type="application/x-java-jnlp-file">
+		<comment>Java Web Start application</comment>
+		<glob pattern="*.jnlp"/>
+	</mime-type>
+</mime-info>

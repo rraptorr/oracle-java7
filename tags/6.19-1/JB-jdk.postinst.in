@@ -1,0 +1,64 @@
+#!/bin/sh
+
+set -e
+
+. /usr/share/debconf/confmodule
+
+priority=@priority@
+basedir=/@basedir@
+basediralias=/@basediralias@
+mandir=/@basediralias@/man
+jdiralias=@jdiralias@
+srcext=1.gz
+dstext=1.gz
+jdk_tools='@jdk_tools@'
+jar_packs='@jdk_packs@'
+
+case "$1" in
+configure)
+    for i in $jdk_tools; do
+	unset slave1 slave2 || true
+        if [ -e $mandir/man1/$i.$srcext ]; then
+	    slave1="--slave \
+		/usr/share/man/man1/$i.$dstext \
+                $i.$dstext \
+                $mandir/man1/$i.$srcext"
+	fi
+        if false && [ -e $mandir/ja/man1/$i.$srcext ]; then
+	    slave2="--slave \
+		/usr/share/man/ja/man1/$i.$dstext \
+                ${i}_ja.$dstext \
+                $mandir/ja/man1/$i.$srcext"
+	fi
+        update-alternatives \
+            --install \
+            /usr/bin/$i \
+            $i \
+            $basediralias/bin/$i \
+            $priority \
+	    $slave1 $slave2
+    done
+
+    # fix slave links for man page alternatives
+    if [ -n "$2" ] && dpkg --compare-versions "$2" lt 6-00-2ubuntu2; then
+	for i in $jdk_tools; do
+	    current=$(LANG=C update-alternatives --display $i 2>&1 \
+		| awk '/link currently points to/ { print $NF}')
+	    case "$current" in /@basediralias@*)
+	        update-alternatives --quiet --set $i $basediralias/bin/$i
+	    esac
+	done
+    fi
+
+    for i in $jar_packs; do
+	jar=$(echo $i | sed 's/\.pack$/.jar/')
+	$basedir/bin/unpack200 $basedir/$i $basedir/$jar
+	chmod 644 $basedir/$jar
+    done
+
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

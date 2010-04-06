@@ -1,0 +1,112 @@
+# Vietnamese translation for Sun Java 6.
+# Copyright © 2010 Free Software Foundation, Inc.
+# Clytie Siddall <clytie@riverland.net.au>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sun-java6\n"
+"Report-Msgid-Bugs-To: sun-java6@packages.debian.org\n"
+"POT-Creation-Date: 2009-12-02 07:46+0100\n"
+"PO-Revision-Date: 2010-04-01 17:25+1030\n"
+"Last-Translator: Clytie Siddall <clytie@riverland.net.au>\n"
+"Language-Team: Vietnamese <vi-VN@googlegroups.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: LocFactoryEditor 1.8\n"
+
+#: ../JB-jre.templates.in:1001
+#. Type: note
+#. Description
+msgid "JCE Unlimited Strength Jurisdiction Policy Files"
+msgstr "Tập tin chính sách phạm vi quyền hạn sức mạnh vô hạn JCE"
+
+#: ../JB-jre.templates.in:1001
+#. Type: note
+#. Description
+msgid ""
+"Due to import control restrictions of some countries, the JCE jurisdiction "
+"policy files shipped with this package allow \"strong\" but limited "
+"cryptography to be used. An \"unlimited strength\" version of these files "
+"indicating no restrictions on cryptographic strengths is available for those "
+"living in eligible countries (which is most countries). You download this "
+"version and replace the strong cryptography versions supplied with this "
+"package with the unlimited ones."
+msgstr "Do giới hạn điều khiển nhập khẩu của một số quốc gia nào đó, những tập tin chính sách phạm vi quyền hạn JCE có sẵn với gói này chỉ cho phép sử dụng kỹ thuật mật mã « mạnh » mà bị hạn chế. Cho những người ở quốc gia thích hợp (hậu hết quốc gia) thì cũng có sẵn sàng một phiên bản « sức mạnh vô hạn » của các tập tin đó, mà không hạn chế sức mạnh kỹ thuật mật mã. Bạn chỉ cần tải về phiên bản này và thay thế những phiên bản mật mã thuật « mạnh » có sẵn với gói này bằng những phiên bản « vô hạn »."
+
+#: ../JB-jre.templates.in:1001
+#. Type: note
+#. Description
+msgid ""
+"The Java(TM) Cryptography Extension (JCE) Unlimited Strength Jurisdiction "
+"Policy Files 1.4.2 are available at http://javashoplm.sun.com/ECom/docs/"
+"Welcome.jsp?StoreId=22&PartDetailId=7503-jce-1.4.2-oth-"
+"JPR&SiteId=JSC&TransactionId=noreg"
+msgstr "Các tập tin chính sách phạm vi quyền hạn sức mạnh vô hạn JCE (Java(TM) Cryptography Extension Unlimited Strength Jurisdiction Policy Files) phiên bản 1.4.2 sẵn sàng ở địa chỉ « http://javashoplm.sun.com/ECom/docs/Welcome.jsp?StoreId=22&PartDetailId=7503-jce-1.4.2-oth-JPR&SiteId=JSC&TransactionId=noreg »."
+
+#: ../JB-jre.templates.in:2001
+#. Type: boolean
+#. Description
+msgid "Grant the \"stopThread\" RuntimePermission?"
+msgstr "Cấp quyền lúc chạy « stopThread » ?"
+
+#: ../JB-jre.templates.in:2001
+#. Type: boolean
+#. Description
+msgid ""
+"This permission allows any thread to stop itself using the java.lang.Thread."
+"stop() method that takes no argument."
+msgstr "Quyền này cho phép bất cứ nhánh nào tự dừng chạy, dùng phương pháp « java.lang.Thread."
+"stop() » mà không yêu cầu đối số."
+
+#: ../JB-jre.templates.in:2001
+#. Type: boolean
+#. Description
+msgid ""
+"Note that this permission is granted by default only to remain backwards "
+"compatible. It is strongly recommended that you either not grant this "
+"permission at all or restrict it manually in java.policy to code sources "
+"that you specify, because Thread.stop() is potentially unsafe."
+msgstr "Ghi chú rằng quyền này được cấp theo mặc định chỉ để còn lại tương thích ngược. Rất khuyên bạn hoặc không cấp quyền này cả, hoặc tự hạn chế nó trong tập tin « java.policy » thành một số nguồn mã riêng, vì « Thread.stop() » có thể là không an toàn."
+
+#: ../JB-jre.templates.in:2001
+#. Type: boolean
+#. Description
+msgid "See \"http://java.sun.com/notes\" for more information."
+msgstr "Để tìm thêm thông tin, xem « http://java.sun.com/notes »."
+
+#: ../dlj.templates:2001
+#. Type: boolean
+#. Description
+msgid "Do you agree with the DLJ license terms?"
+msgstr "Bạn có đồng ý với điều kiện của giấy phép DLJ không?"
+
+#: ../dlj.templates:2001
+#. Type: boolean
+#. Description
+msgid ""
+"In order to install this package, you must agree to its license terms, the "
+"\"Operating System Distributor License for Java\" (DLJ), v1.1. Not accepting "
+"will cancel the installation."
+msgstr "Để cài đặt gói này, trước tiên bạn cần phải đồng ý với điều kiện giấy phép DLI: Giấy Phép Phân Phối Hệ Điều Hành cho Java (Operating System Distributor License for Java) phiên bản 1.1. Không đồng ý thì thôi tiến trình cài đặt."
+
+#: ../dlj.templates:3001
+#. Type: error
+#. Description
+msgid "Declined Operating System Distributor License for Java v1.1 (DLJ)"
+msgstr "Đã từ chối điều kiện của DLI: Giấy Phép Phân Phối Hệ Điều Hành cho Java (Operating System Distributor License for Java) phiên bản 1.1"
+
+#: ../dlj.templates:3001
+#. Type: error
+#. Description
+msgid ""
+"If you do not agree to the DLJ license terms you cannot install this "
+"software."
+msgstr "Không đồng ý với điều kiện giấy phép DLI thì bạn không thể cài đặt phần mềm này."
+
+#: ../dlj.templates:3001
+#. Type: error
+#. Description
+msgid "The installation of this package will be canceled."
+msgstr "Tiến trình cài đặt gói này thì bị hủy bỏ."

@@ -1,0 +1,135 @@
+# Slovak translation of sun-java6.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the sun-java6 package.
+# Ivan Masár <helix84@centrum.sk>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: sun-java6\n"
+"Report-Msgid-Bugs-To: sun-java6@packages.debian.org\n"
+"POT-Creation-Date: 2010-02-16 06:35+0100\n"
+"PO-Revision-Date: 2010-02-11 22:53+0100\n"
+"Last-Translator: Ivan Masár <helix84@centrum.sk>\n"
+"Language-Team: Slovak <sk-i18n@lists.linux.sk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2);\n"
+
+#. Type: note
+#. Description
+#: ../JB-jre.templates.in:1001
+msgid "JCE Unlimited Strength Jurisdiction Policy Files"
+msgstr "Súbory jurisdikcie s neobmedzenou silou JCE"
+
+#. Type: note
+#. Description
+#: ../JB-jre.templates.in:1001
+msgid ""
+"Due to import control restrictions of some countries, the JCE jurisdiction "
+"policy files shipped with this package allow \"strong\" but limited "
+"cryptography to be used. An \"unlimited strength\" version of these files "
+"indicating no restrictions on cryptographic strengths is available for those "
+"living in eligible countries (which is most countries). You download this "
+"version and replace the strong cryptography versions supplied with this "
+"package with the unlimited ones."
+msgstr ""
+"Z dôvodu obmedzenia importu niektorých krajín súbory politiky jurisdikcie "
+"JCE dodávané v tomto balíku umožňujú použitie „silnej“, ale obmedzenej "
+"kryptografie. Verzia týchto súborov s „neobmedzenou silou“, čo znamená bez "
+"obmedzení sily kryptografie, je dostupná pre tých, ktorí žijú v krajinách, "
+"ktorých sa to netýka (čo je väčšina krajín). Môžete si stiahnuť túto verziu "
+"a nahradiť verzie so silnou kryptografiou týmito súbormi s neobmedzenou "
+"kryptografiou."
+
+#. Type: note
+#. Description
+#: ../JB-jre.templates.in:1001
+msgid ""
+"The Java(TM) Cryptography Extension (JCE) Unlimited Strength Jurisdiction "
+"Policy Files 1.4.2 are available at http://javashoplm.sun.com/ECom/docs/"
+"Welcome.jsp?StoreId=22&PartDetailId=7503-jce-1.4.2-oth-"
+"JPR&SiteId=JSC&TransactionId=noreg"
+msgstr ""
+"Súbory jurisdikcie s neobmedzenou silou Java(TM) Cryptography Extension "
+"(JCE) 1.4.2 sú dostupné na adrese http://javashoplm.sun.com/ECom/docs/"
+"Welcome.jsp?StoreId=22&PartDetailId=7503-jce-1.4.2-oth-"
+"JPR&SiteId=JSC&TransactionId=noreg"
+
+#. Type: boolean
+#. Description
+#: ../JB-jre.templates.in:2001
+msgid "Grant the \"stopThread\" RuntimePermission?"
+msgstr "Udeliť RuntimePermission „stopThread“?"
+
+#. Type: boolean
+#. Description
+#: ../JB-jre.templates.in:2001
+msgid ""
+"This permission allows any thread to stop itself using the java.lang.Thread."
+"stop() method that takes no argument."
+msgstr ""
+"Toto oprávnenie umožňuje akémukoľvek vláknu zastaviť svoj beh zavolaním "
+"metódy java.lang.Thread.stop() bez argumentov."
+
+#. Type: boolean
+#. Description
+#: ../JB-jre.templates.in:2001
+msgid ""
+"Note that this permission is granted by default only to remain backwards "
+"compatible. It is strongly recommended that you either not grant this "
+"permission at all or restrict it manually in java.policy to code sources "
+"that you specify, because Thread.stop() is potentially unsafe."
+msgstr ""
+"Pamätajte, že toto oprávnenie sa štandardne udeľuje len z dôvodov spätnej "
+"kompatibility. Dôrazne sa odporúča, aby ste buď toto oprávnenie vôbec "
+"neudeľovali alebo ho manuálne obmedzte v java.policy na vymenované zdrojové "
+"kódy, pretože Thread.stop() je potenciálne nebezpečné."
+
+#. Type: boolean
+#. Description
+#: ../JB-jre.templates.in:2001
+msgid "See \"http://java.sun.com/notes\" for more information."
+msgstr ""
+"Ďalšie informácie nájdete na „http://java.sun.com/notes“"
+
+#. Type: boolean
+#. Description
+#: ../dlj.templates:2001
+msgid "Do you accept the DLJ license terms?"
+msgstr "Prijímate licenčné podmienky DLJ?"
+
+#. Type: boolean
+#. Description
+#: ../dlj.templates:2001
+msgid ""
+"In order to install this package, you must accept the license terms, the "
+"\"Operating System Distributor License for Java\" (DLJ), v1.1. Not accepting "
+"will cancel the installation."
+msgstr ""
+"Aby ste mohli nainštalovať tento balík, musíte prijať jeho licenčné "
+"podmienky „Operating System Distributor License for Java“ (DLJ), v1.1. Ak "
+"vyjadríte nesúhlas, inštalácia sa zruší."
+
+#. Type: error
+#. Description
+#: ../dlj.templates:3001
+msgid "Declined Operating System Distributor License for Java v1.1 (DLJ)"
+msgstr ""
+"Zamietnutá Licencia distribútora operačného systému pre Java v1.1 (DLJ)"
+
+#. Type: error
+#. Description
+#: ../dlj.templates:3001
+msgid ""
+"If you do not agree to the DLJ license terms you cannot install this "
+"software."
+msgstr ""
+"Ak nesúhlasíte s licenčnými podmienkami DLJ, nemôžete tento softvér "
+"nainštalovať."
+
+#. Type: error
+#. Description
+#: ../dlj.templates:3001
+msgid "The installation of this package will be canceled."
+msgstr "Inštalácia tohto balíka sa zruší."
