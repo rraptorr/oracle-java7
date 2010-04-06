@@ -89,7 +89,7 @@ Package: ia32-sun-java6-plugin
 Architecture: amd64 ia64
 Section: non-free/web
 Priority: optional
-Depends: ${shlibs:Depends}, ${misc:Depends}, ia32-sun-java6-bin (>= ${source:Version}), firefox | firefox-2 | iceweasel | mozilla-firefox | iceape-browser | mozilla-browser | epiphany-gecko | epiphany-webkit | epiphany-browser | galeon | midbrowser | moblin-web-browser | xulrunner | xulrunner-1.9 | konqueror
+Depends: ${shlibs:Depends}, ${misc:Depends}, ia32-sun-java6-bin (>= ${source:Version}), firefox | firefox-2 | iceweasel | mozilla-firefox | iceape-browser | mozilla-browser | epiphany-gecko | epiphany-webkit | epiphany-browser | galeon | midbrowser | moblin-web-browser | xulrunner | xulrunner-1.9 | konqueror | chromium-browser
 Description: The Java(TM) Plug-in, Java SE 6 (32-bit)
  Java Plug-in enables applets written to the Java Platform 6 
  specification to be run in Mozilla and other web browsers. 

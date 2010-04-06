@@ -1,4 +1,23 @@
-sun-java6 (6.19-1) UNRELEASED; urgency=low
+sun-java6 (6.19-1) unstable; urgency=low
+
+  * Sync from Ubuntu. Thanks to Matthias Klose.
+  * Vietnamese (vi) debconf templates translation updated (Closes: #576135)
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Tue, 06 Apr 2010 11:54:35 +0200
+
+sun-java6 (6.19-0ubuntu2) lucid; urgency=low
+
+  [ Kees Cook ]
+  * implement an execute bit checker for the Ubuntu Non-Exec Policy
+    (LP: #506702):
+    - debian/JB-java.desktop.in: update mime handler to use new launcher.
+
+  [ Michael Terry ]
+  * Recognize chromium-browser as an available browser. LP: #553468.
+
+ -- Matthias Klose <doko@canonical.com>  Thu, 01 Apr 2010 22:26:43 +0200
+
+sun-java6 (6.19-0ubuntu1) lucid; urgency=low
 
   * New upstream version.
   * SECURITY UPDATE: multiple upstream vulnerabilities. Upstream fixes:
@@ -37,7 +56,6 @@ sun-java6 (6.19-1) UNRELEASED; urgency=low
     - 6909597: JPEGImageReader stepX Integer Overflow Vulnerability.
     - 6932480: Crash in CompilerThread/Parser. Unloaded array klass?
     - 6898739: TLS renegotiation issue.
-  * Recognize chromium-browser as an available browser. LP: #553468.
 
  -- Matthias Klose <doko@canonical.com>  Tue, 30 Mar 2010 23:07:56 +0000
 
