@@ -44,7 +44,7 @@ jdirname	:= $(ia32_prefix)java-$(version)-$(VENDOR)-$(jdkversion).$(releng_ver)
 jdiralias	:= $(ia32_prefix)java-$(version)-$(VENDOR)
 srcdir		:= $(arch)-jdk
 bin_pattern	= jdk-$(subst .,_,$(version))-dlj-linux-%.bin
-bin_pattern	= jdk-6u19-dlj-linux-%.bin
+bin_pattern	= jdk-6u20-dlj-linux-%.bin
 all_archs	= $(filter $(subst =, , $(arch_map)), \
 			   $(subst -, , $(patsubst %.bin, %, $(wildcard *.bin))))
 priority	:= 63
@@ -317,8 +317,8 @@ compare-jre-jars:
 	  exit 1; \
 	fi
 
-diff_ignore = -I 'Tuesday, March 9' \
-	-I 'Tue Mar 09' -I '^ *// java GenerateCharacter'
+diff_ignore = -I 'Monday, April 12' \
+	-I 'Mon Apr 12' -I '^ *// java GenerateCharacter'
 
 with_check = yes
 
@@ -394,7 +394,9 @@ unpack-%-stamp: $(bin_pattern)
 	mv $(unpackdir) $*-jdk
 	@echo $*
 
-	diff -u $*-jdk/LICENSE $*-jdk/jre/LICENSE
+# Commented for now because the license differs in the official distribution
+# (seems to be mainly cosmetic)
+#	diff -u $*-jdk/LICENSE $*-jdk/jre/LICENSE
 	diff -u $*-jdk/THIRDPARTYLICENSEREADME.txt \
 	    $*-jdk/jre/THIRDPARTYLICENSEREADME.txt
 

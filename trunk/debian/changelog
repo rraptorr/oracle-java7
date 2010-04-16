@@ -1,3 +1,12 @@
+sun-java6 (6.20-1) unstable; urgency=low
+
+  * New upstream release
+  * SECURITY UPDATE: multiple upstream vulnerabilities. Upstream fixes:
+    - (CVE-2010-0886): Vulnerability in desktop Java
+    - (CVE-2010-0887): Vulnerability in desktop Java
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Fri, 16 Apr 2010 16:54:12 +0200
+
 sun-java6 (6.19-1) unstable; urgency=low
 
   * Sync from Ubuntu. Thanks to Matthias Klose.
