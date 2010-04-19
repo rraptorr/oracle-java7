@@ -394,9 +394,7 @@ unpack-%-stamp: $(bin_pattern)
 	mv $(unpackdir) $*-jdk
 	@echo $*
 
-# Commented for now because the license differs in the official distribution
-# (seems to be mainly cosmetic)
-#	diff -u $*-jdk/LICENSE $*-jdk/jre/LICENSE
+	diff -u $*-jdk/LICENSE $*-jdk/jre/LICENSE
 	diff -u $*-jdk/THIRDPARTYLICENSEREADME.txt \
 	    $*-jdk/jre/THIRDPARTYLICENSEREADME.txt
 

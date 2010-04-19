@@ -1,3 +1,13 @@
+sun-java6 (6.20-dlj-1) unstable; urgency=low
+
+  * Team upload.
+  * Create orig tarball from files at
+    <https://jdk-distros.dev.java.net/developer.html>. (Closes: #578402)
+  * Upload for Architecture: amd64. (Closes: #578361, #576481)
+  * Re-enable the license check in d/rules. (Closes: #578378)
+
+ -- Torsten Werner <twerner@debian.org>  Mon, 19 Apr 2010 22:13:23 +0200
+
 sun-java6 (6.20-1) unstable; urgency=low
 
   * New upstream release
