@@ -1,7 +1,0 @@
-?package(@basename@-bin):\
-	needs="x11"\
-	section="Applications/System/Security"\
-	title="@vendor@ Java @RELEASE@ Policy Tool@ia32txt@"\
-	command="/@basedir@/bin/policytool"\
-	icon="/usr/share/pixmaps/@basename@.xpm"\
-	hints="Java2"

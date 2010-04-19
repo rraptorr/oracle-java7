@@ -1,8 +1,0 @@
-@basename@-jdk: copyright-should-refer-to-common-license-file-for-gpl
-@basename@-jdk: shlib-without-PT_GNU_STACK-section
-@basename@-jdk: unstripped-binary-or-object
-@basename@-jdk: binary-or-shlib-defines-rpath
-@basename@-jdk: menu-icon-missing /usr/share/icons/@basename@.xpm
-@basename@-jdk: menu-icon-missing /usr/share/pixmaps/@basename@.xpm
-@basename@-jdk: package-contains-empty-directory
-@basename@-jdk: too-long-extended-description-in-templates
