@@ -235,7 +235,6 @@ debian/control: debian/control.in debian/rules
 	      -e 's/@RELEASE@/$(relstring)/g' \
 	      -e 's/@archdir@/$(archdir)/g' \
 	      -e 's/@browsers@/$(browsers)/g' \
-	      -e 's,@java_launcher@,$(java_launcher),g' \
 	      -e 's/@cjk_fonts@/$(cjk_fonts)/g' \
 	      -e 's,@pkg_version@,$(if $(filter $(distrelease),etch dapper edgy feisty gutsy),$${Source-Version},$${source:Version}),g' \
 	    debian/control.in > debian/control
@@ -281,6 +280,7 @@ packaging-files:
 	      -e 's,@jdk_packs@,$(jdk_packs),g' \
 	      -e 's,@j2se_lib@,$(j2se_lib),g' \
 	      -e 's,@browser_dirs@,$(browser_plugin_dirs),g' \
+	      -e 's,@java_launcher@,$(java_launcher),g' \
 	    $$f > $$f2; \
 	done
 ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386 lpia))
