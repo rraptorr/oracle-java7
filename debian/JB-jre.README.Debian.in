@@ -35,11 +35,13 @@ Alternatives:
 Please see README.alternatives.
 
 
-Java Plug-In (i386 only):
+Java Plug-In:
 =========================
 * The @basename@-plugin package automatically enables the Java Plug-In
   for use with Firefox, Mozilla, and browsers based on Mozilla.
 * The Plug-In can be configured with the program ControlPanel.
+* Make sure you have Java enabled in Iceweasel's preferences dialog.
+
 
 
 Java Cryptography Extension (JCE) support:
