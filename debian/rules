@@ -121,7 +121,6 @@ p_jdk	:= $(basename)-jdk
 p_src	:= $(basename)-source
 p_fonts	:= $(basename)-fonts
 p_demo	:= $(basename)-demo
-p_doc	:= $(basename)-doc
 p_plug	:= $(basename)-plugin
 p_javadb	:= $(basename)-javadb
 
@@ -131,7 +130,6 @@ d_jdk	:= debian/$(p_jdk)
 d_src	:= debian/$(p_src)
 d_demo	:= debian/$(p_demo)
 d_fonts	:= debian/$(p_fonts)
-d_doc	:= debian/$(p_doc)
 d_plug	:= debian/$(p_plug)
 d_javadb	:= debian/$(p_javadb)
 
@@ -941,25 +939,6 @@ binary-$(p_src):	build
 
 #	cat debian/dlj.templates >> $(d_src).templates
 
-
-binary-$(p_doc):	DH_OPTIONS=-p$(p_doc)
-binary-$(p_doc):	build
-	dh_testdir
-	dh_testroot
-	dh_clean -d
-	dh_installdirs \
-		$(basedir) \
-		$(lintian_overrides) \
-		usr/share/doc/$(p_jdk)/html
-
-	: # add lintian overrides
-	cp -p debian/$(p_doc).overrides \
-		$(d_doc)/$(lintian_overrides)/$(p_doc)
-
-	dh_installdocs
-	dh_installchangelogs
-	echo "$(doc)/$(p_jdk)/html $(doc)/$(p_doc)/html" > $(d_doc).links
-	echo "$(doc)/$(p_jdk)/html $(basedir)/docs" >> $(d_doc).links
 
 binary-$(p_javadb):	DH_OPTIONS=-p$(p_javadb)
 binary-$(p_javadb):	build
