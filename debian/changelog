@@ -1,11 +1,10 @@
-sun-java6 (6.20-dlj-2) UNRELEASED; urgency=low
+sun-java6 (6.20-dlj-2) unstable; urgency=low
 
   * Team upload.
   * Update Homepage in d/control.
   * Update italian and spanish debconf translation. (Closes: #560354, #570790)
   * Switch to source format 3.0.
-  * Remove files for the old -doc package since we Suggests: openjdk-6-doc
-    today.
+  * Remove files for the old -doc package since we Suggests: openjdk-6-doc.
   * Clean up README.Debian and add some information about using dpkg-divert
     before manually installing JCE policy files. (Closes: #578578)
 
