@@ -6,8 +6,10 @@ sun-java6 (6.20-dlj-2) UNRELEASED; urgency=low
   * Switch to source format 3.0.
   * Remove files for the old -doc package since we Suggests: openjdk-6-doc
     today.
+  * Clean up README.Debian and add some information about using dpkg-divert
+    before manually installing JCE policy files. (Closes: #578578)
 
- -- Torsten Werner <twerner@debian.org>  Sat, 01 May 2010 10:40:32 +0200
+ -- Torsten Werner <twerner@debian.org>  Sat, 01 May 2010 11:29:15 +0200
 
 sun-java6 (6.20-dlj-1) unstable; urgency=low
 
