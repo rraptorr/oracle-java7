@@ -2,8 +2,9 @@ sun-java6 (6.20-dlj-2) UNRELEASED; urgency=low
 
   * Team upload.
   * Update Homepage in d/control.
+  * Update italian and spanish debconf translation. (Closes: #560354, #570790)
 
- -- Torsten Werner <twerner@debian.org>  Sat, 24 Apr 2010 09:57:56 +0200
+ -- Torsten Werner <twerner@debian.org>  Sat, 01 May 2010 10:30:18 +0200
 
 sun-java6 (6.20-dlj-1) unstable; urgency=low
 
