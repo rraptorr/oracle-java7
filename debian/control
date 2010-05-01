@@ -73,7 +73,7 @@ Package: ia32-sun-java6-bin
 Section: non-free/java
 Architecture: amd64 ia64
 Depends: sun-java6-jre (>= ${source:Version}), ia32-libs, ${shlibs:Depends}, ${odbc:Depends}, ${misc:Depends}
-Recommends: ${shlibs:Recommends}, ${mdns:Depends}
+Recommends: ${shlibs:Recommends}, ${mdns:Depends}, ia32-libs-gtk
 Description: Sun Java(TM) Runtime Environment (JRE) 6 (32-bit)
  The Sun Java Platform Standard Edition Runtime Environment (JRE) 6
  contains the Java virtual machine, runtime class libraries, and 
