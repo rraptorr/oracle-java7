@@ -6,6 +6,8 @@ sun-java6 (6.20-dlj-3) unstable; urgency=low
   * Add a some information to README.Debian that explains how to enable the
     plugin in Iceweasel. (Closes: #541154)
   * Add myself to Uploaders.
+  * Add missing changelog entry for CVE-2010-0087 to version 6.19-0ubuntu1.
+  * Add missing changelog entry for CVE-2010-1423 to version 6.20-1.
 
  -- Torsten Werner <twerner@debian.org>  Sun, 02 May 2010 12:07:16 +0200
 
@@ -37,6 +39,7 @@ sun-java6 (6.20-1) unstable; urgency=low
   * SECURITY UPDATE: multiple upstream vulnerabilities. Upstream fixes:
     - (CVE-2010-0886): Vulnerability in desktop Java
     - (CVE-2010-0887): Vulnerability in desktop Java
+    - (CVE-2010-1423): Vulnerability in desktop Java
 
  -- Sylvestre Ledru <sylvestre@debian.org>  Fri, 16 Apr 2010 16:54:12 +0200
 
@@ -73,6 +76,9 @@ sun-java6 (6.19-0ubuntu1) lucid; urgency=low
     - (CVE-2010-0095): Subclasses of InetAddress may incorrectly interpret
       network addresses (6893954) [ZDI-CAN-603].
     - (CVE-2010-0085): File TOCTOU deserialization vulnerability (6736390).
+    - (CVE-2010-0087): Unspecified vulnerability in the Java Web Start, Java
+      Plug-in component allows remote attackers to affect confidentiality,
+      integrity, and availability via unknown vectors.
     - (CVE-2010-0091): Unsigned applet can retrieve the dragged information
       before drop action occurs (6887703).
     - (CVE-2010-0088): Inflater/Deflater clone issues (6745393).
