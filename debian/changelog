@@ -1,13 +1,13 @@
 sun-java6 (6.20-dlj-3) unstable; urgency=low
 
-  UNRELEASED
   * Change Vcs-Svn header to allow anonymous access. (Closes: #478673)
   * Add Recommends: ia32-libs-gtk to package ia32-sun-java6-bin.
     (Closes: #532359)
   * Add a some information to README.Debian that explains how to enable the
     plugin in Iceweasel. (Closes: #541154)
+  * Add myself to Uploaders.
 
- -- Torsten Werner <twerner@debian.org>  Sat, 01 May 2010 14:49:03 -0400
+ -- Torsten Werner <twerner@debian.org>  Sun, 02 May 2010 12:07:16 +0200
 
 sun-java6 (6.20-dlj-2) unstable; urgency=low
 

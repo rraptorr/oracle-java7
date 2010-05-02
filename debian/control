@@ -2,7 +2,7 @@ Source: sun-java6
 Section: non-free/java
 Priority: optional
 Maintainer: Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
-Uploaders: Sylvestre Ledru <sylvestre@debian.org>
+Uploaders: Sylvestre Ledru <sylvestre@debian.org>, Torsten Werner<twerner@debian.org>
 Build-Depends: debhelper (>= 5.0.51~), lsb-release, po-debconf, defoma, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxp6, libxt6, libxtst6, lib32asound2 [amd64], ia32-libs [amd64 ia64]
 Standards-Version: 3.8.4
 Vcs-Svn: svn://svn.debian.org/svn/pkg-java/trunk/sun-java6
