@@ -225,7 +225,7 @@ exclusion.japanese-sazanami=0390-03d6,2200-22ef,2701-27be
 
 # Font File Names
 
-filename.-arphic-ar_pl_shanheisun_uni-medium-r-normal--*-*-*-*-p-*-iso10646-1=/usr/share/fonts/truetype/arphic/ uming.ttc
+filename.-arphic-ar_pl_shanheisun_uni-medium-r-normal--*-*-*-*-p-*-iso10646-1=/usr/share/fonts/truetype/arphic/uming.ttc
 filename.-arphic-ar_pl_uming_uni-medium-r-normal--*-*-*-*-p-*-iso10646-1=/usr/share/fonts/truetype/arphic/uming.ttc
 filename.-baekmuk-batang-medium-r-normal--*-%d-*-*-c-*-*-*=/usr/share/fonts/truetype/baekmuk/batang.ttf
 filename.-un-batang-medium-r-normal--*-%d-*-*-c-*-*-*=/usr/share/fonts/truetype/unfonts/UnBatang.ttf

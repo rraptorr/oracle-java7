@@ -1,3 +1,11 @@
+sun-java6 (6.20-dlj-4) unstable; urgency=low
+
+  UNRELEASED
+  * Remove wrong space character for uming.ttc path in fontconfig.properties.
+    Thanks to Alberto Alvarez García.
+
+ -- Torsten Werner <twerner@debian.org>  Sat, 08 May 2010 11:30:59 +0200
+
 sun-java6 (6.20-dlj-3) unstable; urgency=low
 
   * Change Vcs-Svn header to allow anonymous access. (Closes: #478673)
