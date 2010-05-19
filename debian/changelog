@@ -1,6 +1,5 @@
 sun-java6 (6.20-dlj-4) unstable; urgency=low
 
-  UNRELEASED
   * Remove wrong space character for uming.ttc path in fontconfig.properties.
     Thanks to Alberto Alvarez García.
 
