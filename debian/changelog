@@ -1,3 +1,10 @@
+sun-java6 (6.20-dlj-5) unstable; urgency=low
+
+  * UNRELEASED
+  * Update danish debconf tranlation; thanks to Joe Dalton. (Closes: #586238)
+
+ -- Torsten Werner <twerner@debian.org>  Sun, 20 Jun 2010 21:12:02 +0200
+
 sun-java6 (6.20-dlj-4) unstable; urgency=low
 
   * Remove wrong space character for uming.ttc path in fontconfig.properties.
