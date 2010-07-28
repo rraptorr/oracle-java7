@@ -762,6 +762,9 @@ binary-$(p_jre):	#binary-$(p_jbin)
 	ln -sf /etc/.java $(d_jre)/$(basedir)/.systemPrefs
 
 	cat debian/dlj.templates >> $(d_jre).templates
+	dh_install -p$(p_jre) debian/swing.properties /etc/$(jdiralias)/
+	dh_link -p$(p_jre) /etc/$(jdiralias)/swing.properties \
+		/$(basedir)/jre/lib/swing.properties
 
 
 binary-$(p_plug):	DH_OPTIONS=-p$(p_plug)
