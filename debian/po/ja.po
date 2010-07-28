@@ -1,15 +1,16 @@
 # Copyright (C) 2006 Matthias Klose <doko@ubuntu.com>
-# This file is distributed under the same license as the sun-java5 package.
-# Hideki Yamane (Debian-JP) <henrich@debian.or.jp>, 2006.
+#           (C) 2010 Debian Java Maintainers <pkg-java-maintainers@lists.alioth.debian.org>
+# This file is distributed under the same license as the sun-java6 package.
+# Hideki Yamane <henrich@debian.org>, 2006, 2010.
 #
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: sun-java5 1.5.0-07-2\n"
+"Project-Id-Version: sun-java6 6.20-dlj-1\n"
 "Report-Msgid-Bugs-To: sun-java6@packages.debian.org\n"
 "POT-Creation-Date: 2010-03-05 15:58+0100\n"
-"PO-Revision-Date: 2006-07-23 03:42+0900\n"
-"Last-Translator: Hideki Yamane (Debian-JP) <henrich@debian.or.jp>\n"
+"PO-Revision-Date: 2010-05-04 07:41+0900\n"
+"Last-Translator: Hideki Yamane <henrich@debian.org>\n"
 "Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -86,30 +87,19 @@ msgstr ""
 #. Type: boolean
 #. Description
 #: ../JB-jre.templates.in:2001
-#, fuzzy
-#| msgid ""
-#| "See \"http://download.java.net/dlj/jdk6/LICENSE\" for more information."
 msgid "See \"http://java.sun.com/notes\" for more information."
 msgstr ""
-"詳細については \"http://download.java.net/dlj/jdk6/LICENSE\" を参照してくださ"
-"い。"
+"詳細については \"http://java.sun.com/notes\" を参照してください。"
 
 #. Type: boolean
 #. Description
 #: ../dlj.templates:2001
-#, fuzzy
-#| msgid "Do you agree with the DLJ license terms?"
 msgid "Do you accept the DLJ license terms?"
 msgstr "DLJ ライセンス条項に同意しますか?"
 
 #. Type: boolean
 #. Description
 #: ../dlj.templates:2001
-#, fuzzy
-#| msgid ""
-#| "In order to install this package, you must agree to its license terms, "
-#| "the \"Operating System Distributor License for Java\" (DLJ), v1.1. Not "
-#| "accepting will cancel the installation."
 msgid ""
 "In order to install this package, you must accept the license terms, the "
 "\"Operating System Distributor License for Java\" (DLJ), v1.1. Not accepting "

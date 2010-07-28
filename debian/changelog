@@ -3,10 +3,12 @@ sun-java6 (6.21-1) unstable; urgency=low
   * New upstream release
     - There are no security fixes in this release.
   * Update $(bin_pattern) and $(diff_ignore) in debian/rules.
-  * Update danish debconf tranlation; thanks to Joe Dalton. (Closes: #586238)
   * Add a lintian override for embedded-libjpeg.
+  * Update danish debconf translation; thanks to Joe Dalton. (Closes: #586238)
+  * Update japanese debconf translation; thanks to Hideki Yamane.
+    (Closes: #580157)
 
- -- Torsten Werner <twerner@debian.org>  Wed, 28 Jul 2010 14:26:55 +0200
+ -- Torsten Werner <twerner@debian.org>  Wed, 28 Jul 2010 14:32:49 +0200
 
 sun-java6 (6.20-dlj-4) unstable; urgency=low
 
