@@ -43,8 +43,7 @@ unpackdir	:= jdk$(jdkversion)_$(releng_ver)
 jdirname	:= $(ia32_prefix)java-$(version)-$(VENDOR)-$(jdkversion).$(releng_ver)
 jdiralias	:= $(ia32_prefix)java-$(version)-$(VENDOR)
 srcdir		:= $(arch)-jdk
-bin_pattern	= jdk-$(subst .,_,$(version))-dlj-linux-%.bin
-bin_pattern	= jdk-6u20-dlj-linux-%.bin
+bin_pattern	= jdk-$(version)u$(releng_ver)-dlj-linux-%.bin
 all_archs	= $(filter $(subst =, , $(arch_map)), \
 			   $(subst -, , $(patsubst %.bin, %, $(wildcard *.bin))))
 priority	:= 63
@@ -99,18 +98,19 @@ endif
 info:
 	@echo Build information
 	@echo ==========================
-	@echo 'TOP        = $(TOP)'
-	@echo 'VENDOR     = $(VENDOR)'
-	@echo 'RELEASE    = $(RELEASE)'
-	@echo 'PRODUCT    = $(PRODUCT)'
-	@echo 'basename   = $(basename)'
-	@echo 'version    = $(version)'
-	@echo 'releng_ver = $(releng_ver)'
-	@echo 'unpackdir  = $(unpackdir)'
-	@echo 'srcdir     = $(srcdir)'
-	@echo 'all_archs  = $(all_archs)'
-	@echo 'arch       = $(arch)'
-	@echo 'archdir    = $(archdir)'
+	@echo 'TOP         = $(TOP)'
+	@echo 'VENDOR      = $(VENDOR)'
+	@echo 'RELEASE     = $(RELEASE)'
+	@echo 'PRODUCT     = $(PRODUCT)'
+	@echo 'basename    = $(basename)'
+	@echo 'version     = $(version)'
+	@echo 'releng_ver  = $(releng_ver)'
+	@echo 'unpackdir   = $(unpackdir)'
+	@echo 'srcdir      = $(srcdir)'
+	@echo 'all_archs   = $(all_archs)'
+	@echo 'arch        = $(arch)'
+	@echo 'archdir     = $(archdir)'
+	@echo 'bin_pattern = $(bin_pattern)'
 	@echo $(jre_tools)
 
 d	= debian/tmp
@@ -315,8 +315,8 @@ compare-jre-jars:
 	  exit 1; \
 	fi
 
-diff_ignore = -I 'Monday, April 12' \
-	-I 'Mon Apr 12' -I '^ *// java GenerateCharacter'
+diff_ignore = -I 'Tuesday, June 22' \
+	-I 'Tue Jun 22' -I '^ *// java GenerateCharacter'
 
 with_check = yes
 

@@ -7,3 +7,4 @@
 @basename@-bin: package-contains-empty-directory
 @basename@-bin: too-long-extended-description-in-templates
 @basename@-bin: embedded-zlib
+@basename@-bin: embedded-libjpeg
