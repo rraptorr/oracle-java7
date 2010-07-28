@@ -2,8 +2,10 @@ sun-java6 (6.21-2) unstable; urgency=low
 
   UNRELEASED
   * Add file /etc/java-6-sun/swing.properties. (Closes: #480570)
+  * Install the desktop file for jvisualvm and remove the one for jconsole.
+    (Closes: #539288)
 
- -- Torsten Werner <twerner@debian.org>  Wed, 28 Jul 2010 15:49:32 +0200
+ -- Torsten Werner <twerner@debian.org>  Wed, 28 Jul 2010 16:08:33 +0200
 
 sun-java6 (6.21-1) unstable; urgency=low
 

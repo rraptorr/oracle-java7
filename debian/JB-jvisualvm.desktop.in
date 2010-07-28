@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=@vendor@ Java @RELEASE@ VisualVM@ia32txt@
+Comment=@vendor@ Java @RELEASE@ Monitoring & Management (VisualVM)@ia32txt@
+Exec=/@basedir@/bin/jvisualvm
+Terminal=false
+Type=Application
+Icon=@basename@
+Categories=Application;System;

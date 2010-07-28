@@ -838,7 +838,10 @@ binary-$(p_jdk):	build
 	    $(d_jdk)/$(basedir)/bin/java-rmi.cgi
 
 	: # add menu stuff
-	cp -p debian/$(basename)-jconsole.desktop \
+	#jconsole is obsolete, see #539288
+	#cp -p debian/$(basename)-jconsole.desktop \
+	#      $(d_jdk)/usr/share/applications/
+	cp -p debian/$(basename)-jvisualvm.desktop \
 	      $(d_jdk)/usr/share/applications/
 
 	: # add lintian overrides
