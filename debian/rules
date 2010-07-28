@@ -60,7 +60,7 @@ bd_plugin = \
 	$(if $(filter $(distribution),Debian),libxul-dev,$(if $(filter $(distrelease),hardy),xulrunner-1.9-dev,firefox-dev))
 
 browser_plugin_dirs = xulrunner-addons firefox iceape iceweasel mozilla midbrowser xulrunner konqueror
-browsers = firefox | firefox-2 | iceweasel | mozilla-firefox | iceape-browser | mozilla-browser | epiphany-gecko | epiphany-webkit | epiphany-browser | galeon | midbrowser | moblin-web-browser | xulrunner | xulrunner-1.9 | konqueror | chromium-browser
+browsers = firefox | firefox-2 | iceweasel | mozilla-firefox | iceape-browser | mozilla-browser | epiphany-gecko | epiphany-webkit | epiphany-browser | galeon | midbrowser | moblin-web-browser | xulrunner | xulrunner-1.9 | konqueror | chromium-browser | midori
 
 # FIXME: xulrunner-addons only tested on sid, jaunty, karmic
 ifeq ($(distribution),Ubuntu)
