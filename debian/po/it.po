@@ -1,15 +1,15 @@
 # ITALIAN TRANSLATION OF SUN-JAVA6'S PO-DEBCONF FILE.
-# COPYRIGHT (C) 2009 THE SUN-JAVA6'S COPYRIGHT HOLDER
+# COPYRIGHT (C) 2009-2010 THE SUN-JAVA6'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the sun-java6 package.
 #
-# Vincenzo Campanella <vinz65@gmail.com>, 2009.
+# Vincenzo Campanella <vinz65@gmail.com>, 2009, 2010.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: sun-java6\n"
+"Project-Id-Version: sun-java6 6.21-1\n"
 "Report-Msgid-Bugs-To: sun-java6@packages.debian.org\n"
-"POT-Creation-Date: 2009-12-02 07:46+0100\n"
-"PO-Revision-Date: 2009-12-02 14:21+0100\n"
+"POT-Creation-Date: 2010-03-05 15:58+0100\n"
+"PO-Revision-Date: 2010-09-17 13:33+0100\n"
 "Last-Translator: Vincenzo Campanella <vinz65@gmail.com>\n"
 "Language-Team: Italian <tp@lists.linux.it>\n"
 "MIME-Version: 1.0\n"
@@ -37,10 +37,10 @@ msgstr ""
 "A causa delle restrizioni all'importazione vigenti in alcune nazioni, i file "
 "JCE «Jurisdisction Policy» presenti in questo pacchetto consentono una "
 "cifratura «forte» ma limitata. Una versione di questi file con «forza "
-"illimitata», cioè senza restrizioni sulla forza della cifratura, è disponibile "
-"per i residenti nei paesi idonei (ossia la maggior parte dei paesi). È "
-"responsabilità dell'utente scaricare questa versione e sostituire la "
-"versione fornita con questo pacchetto."
+"illimitata», cioè senza restrizioni sulla forza della cifratura, è "
+"disponibile per i residenti nei paesi idonei (ossia la maggior parte dei "
+"paesi). È responsabilità dell'utente scaricare questa versione e sostituire "
+"la versione fornita con questo pacchetto."
 
 #. Type: note
 #. Description
@@ -52,8 +52,8 @@ msgid ""
 "JPR&SiteId=JSC&TransactionId=noreg"
 msgstr ""
 "I file Java(TM) Cryptography Extension (JCE) Unlimited Strength Jurisdiction "
-"Policy 1.4.2 sono disponibili in http://javashoplm.sun.com/ECom/docs/"
-"Welcome.jsp?StoreId=22&PartDetailId=7503-jce-1.4.2-oth-"
+"Policy 1.4.2 sono disponibili in http://javashoplm.sun.com/ECom/docs/Welcome."
+"jsp?StoreId=22&PartDetailId=7503-jce-1.4.2-oth-"
 "JPR&SiteId=JSC&TransactionId=noreg"
 
 #. Type: boolean
@@ -84,8 +84,8 @@ msgstr ""
 "Notare che questo permesso è accordato in modo predefinito solo per "
 "garantire la retrocompatibilità. Poiché Thread.stop() è potenzialmente non "
 "sicuro, si raccomanda caldamente di non accordarlo del tutto, oppure di "
-"restringerne manualmente i permessi, in «java.policy», ai «code source» cui "
-"si desidera accordarlo."
+"restringerne manualmente i permessi, in «java.policy», ai «code source» cui si "
+"desidera accordarlo."
 
 #. Type: boolean
 #. Description
@@ -96,20 +96,27 @@ msgstr "Per maggiori informazioni consultare «http://java.sun.com/notes»."
 #. Type: boolean
 #. Description
 #: ../dlj.templates:2001
-msgid "Do you agree with the DLJ license terms?"
-msgstr "Accettare i termini di licenza DLJ?"
+#
+#| msgid "Do you agree with the DLJ license terms?"
+msgid "Do you accept the DLJ license terms?"
+msgstr "Si accettano i termini di licenza DLJ?"
 
 #. Type: boolean
 #. Description
 #: ../dlj.templates:2001
+#
+#| msgid ""
+#| "In order to install this package, you must agree to its license terms, "
+#| "the \"Operating System Distributor License for Java\" (DLJ), v1.1. Not "
+#| "accepting will cancel the installation."
 msgid ""
-"In order to install this package, you must agree to its license terms, the "
+"In order to install this package, you must accept the license terms, the "
 "\"Operating System Distributor License for Java\" (DLJ), v1.1. Not accepting "
 "will cancel the installation."
 msgstr ""
-"Per poter installare questo pacchetto è necessario accettarne i termini della "
-"licenza, la «Operating System Distributor License for Java» (DLJ), v1.1. La "
-"mancata accettazione causerà l'annullamento dell'installazione."
+"Per poter installare questo pacchetto è necessario accettarne i termini "
+"della licenza, l'«Operating System Distributor License for Java» (DLJ), "
+"v1.1. La mancata accettazione causerà l'annullamento dell'installazione."
 
 #. Type: error
 #. Description
@@ -132,4 +139,3 @@ msgstr ""
 #: ../dlj.templates:3001
 msgid "The installation of this package will be canceled."
 msgstr "L'installazione di questo pacchetto verrà ora annullata."
-

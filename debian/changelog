@@ -1,11 +1,52 @@
-sun-java6 (6.21-2) unstable; urgency=low
+sun-java6 (6.22-1) unstable; urgency=low
 
-  UNRELEASED
+  [ Torsten Werner ]
   * Add file /etc/java-6-sun/swing.properties. (Closes: #480570)
   * Install the desktop file for jvisualvm and remove the one for jconsole.
     (Closes: #539288)
 
- -- Torsten Werner <twerner@debian.org>  Wed, 28 Jul 2010 16:08:33 +0200
+  [ Sylvestre Ledru ]
+  * New upstream release (Closes: #600259)
+  * SECURITY UPDATE: multiple upstream vulnerabilities. Upstream fixes:
+    - (CVE-2010-3556): JDK unspecified vulnerability in 2D component
+    - (CVE-2010-3562): JDK IndexColorModel double-free
+    - (CVE-2010-3565): JDK JPEG writeImage remote code execution
+    - (CVE-2010-3566): JDK ICC Profile remote code execution
+    - (CVE-2010-3567): Crash in ICU Opentype layout engine due to mismatch in
+                       character counts
+    - (CVE-2010-3571): JDK unspecified vulnerability in 2D component
+    - (CVE-2010-3554): JDK corba reflection vulnerabilities
+    - (CVE-2010-3563): JDK unspecified vulnerability in Deployment component
+    - (CVE-2010-3568): JDK Deserialization Race condition
+    - (CVE-2010-3569): JDK Serialization inconsistencies
+    - (CVE-2010-3558): JDK unspecified vulnerability in Java Web Start component
+    - (CVE-2010-3552): JDK unspecified vulnerability in New Java Plugin
+	               component
+    - (CVE-2010-3559): JDK unspecified vulnerability in Sound component
+    - (CVE-2010-3572): JDK unspecified vulnerability in Sound component
+    - (CVE-2010-3553): UIDefault.ProxyLazyValue has unsafe reflection usage
+    - (CVE-2010-3555): JDK unspecified vulnerability in Deployment component
+    - (CVE-2010-3550): JDK unspecified vulnerability in Java Web Start component
+    - (CVE-2010-3570): JDK unspecified vulnerability in Deployment Toolkit
+    - (CVE-2010-3561): Privileged ServerSocket.accept allows receiving
+                       connections from any host
+    - (CVE-2009-3555): TLS: MITM attacks via session renegotiation
+    - (CVE-2010-1321): krb5: null pointer dereference in GSS-API library leads
+	               to DoS
+    - (CVE-2010-3549): HttpURLConnection chunked encoding issue (Http request
+                       splitting)
+    - (CVE-2010-3557): JDK Swing mutable static
+    - (CVE-2010-3541): limit setting of some request headers in
+	               HttpURLConnection
+    - (CVE-2010-3573): limit HTTP request cookie headers in HttpURLConnection
+    - (CVE-2010-3574): limit use of TRACE method in HttpURLConnection
+    - (CVE-2010-3548): JDK DNS server IP address information leak
+    - (CVE-2010-3551): NetworkInterface reveals local network address to
+                       untrusted code
+    - (CVE-2010-3560): JDK unspecified vulnerability in Networking component
+  * Update of the italian po. Thanks to Vincenzo Campanella (Closes: #597313)
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Fri, 15 Oct 2010 10:05:39 +0200
 
 sun-java6 (6.21-1) unstable; urgency=low
 
