@@ -1,8 +1,10 @@
-sun-java6 (6.22-2) UNRELEASED; urgency=low
+sun-java6 (6.23-1) unstable; urgency=low
 
+  * New upstream release
   * Add 'google-chrome' as Depends of sun-java6-plugin (Closes: #607455)
+  * Standards-Version updated to version 3.9.1
 
- -- Sylvestre Ledru <sylvestre@debian.org>  Sat, 18 Dec 2010 17:45:17 +0100
+ -- Sylvestre Ledru <sylvestre@debian.org>  Wed, 09 Feb 2011 01:23:20 +0100
 
 sun-java6 (6.22-1) unstable; urgency=low
 
