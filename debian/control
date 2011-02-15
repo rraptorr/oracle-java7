@@ -8,7 +8,7 @@ Standards-Version: 3.9.1
 Vcs-Svn: svn://svn.debian.org/svn/pkg-java/trunk/sun-java6
 Vcs-Browser: http://svn.debian.org/wsvn/pkg-java/trunk/sun-java6
 XS-Autobuild: yes
-Homepage: https://jdk-distros.dev.java.net
+Homepage: http://jdk-distros.java.net/
 
 Package: sun-java6-jre
 Section: non-free/java

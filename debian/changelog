@@ -1,3 +1,14 @@
+sun-java6 (6.24-1) UNRELEASED; urgency=low
+
+  * New upstream release
+  * Watch file added
+  * Homepage updated to http://jdk-distros.java.net/
+  * SECURITY UPDATE: multiple upstream vulnerabilities. Upstream fixes:
+    - (CVE-2010-4476): Java Runtime Environment hangs when converting 
+      "2.2250738585072012e-308" to a binary floating-point number.
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Wed, 16 Feb 2011 00:46:20 +0100
+
 sun-java6 (6.23-1) unstable; urgency=low
 
   * New upstream release
