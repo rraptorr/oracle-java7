@@ -1,4 +1,4 @@
-sun-java6 (6.24-1) UNRELEASED; urgency=low
+sun-java6 (6.24-1) unstable; urgency=high
 
   * New upstream release
   * Watch file added
@@ -6,7 +6,40 @@ sun-java6 (6.24-1) UNRELEASED; urgency=low
   * SECURITY UPDATE: multiple upstream vulnerabilities. Upstream fixes:
     - (CVE-2010-4476): Java Runtime Environment hangs when converting 
       "2.2250738585072012e-308" to a binary floating-point number.
-
+    - (CVE-2010-4452): Oracle Java XGetSamplePtrFromSnd Remote Code
+                       Execution Vulnerability
+    - (CVE-2010-4454): Vulnerability allows successful unauthenticated network
+                       attacks via multiple protocols.
+    - (CVE-2010-4462): XGetSamplePtrFromSnd Remote Code Execution Vulnerability
+    - (CVE-2010-4463): Webstart Trusted JNLP Extension Remote Code Execution
+                       Vulnerability
+    - (CVE-2010-4465): Swing timer-based security manager bypass
+    - (CVE-2010-4467): Vulnerability allows successful unauthenticated network
+                       attacks via multiple protocols.
+    - (CVE-2010-4469): Hotspot backward jsr heap corruption
+    - (CVE-2010-4473): Vulnerability allows successful unauthenticated network
+                       attacks via multiple protocols.
+    - (CVE-2010-4422): Vulnerability allows successful unauthenticated network
+                       attacks via multiple protocols.
+    - (CVE-2010-4451): Vulnerability allows successful unauthenticated network
+                       attacks via HTTP. 
+    - (CVE-2010-4466): Runtime NTLM Authentication Information Leakage
+                       Vulnerability
+    - (CVE-2010-4470): JAXP untrusted component state manipulation
+    - (CVE-2010-4471): Java2D font-related system property leak
+    - (CVE-2010-4447): Vulnerability allows successful unauthenticated network
+                       attacks via multiple protocols.
+    - (CVE-2010-4475): vulnerability allows successful unauthenticated network
+                       attacks via multiple protocols.
+    - (CVE-2010-4468): DNS cache poisoning by untrusted applets
+    - (CVE-2010-4450): Launcher incorrect processing of empty library path
+                       entries
+    - (CVE-2010-4448): DNS cache poisoning by untrusted applets
+    - (CVE-2010-4472): Untrusted code allowed to replace DSIG/C14N
+                       implementation
+    - (CVE-2010-4474): Easily exploitable vulnerability requiring logon to
+                       Operating System. 
+    
  -- Sylvestre Ledru <sylvestre@debian.org>  Wed, 16 Feb 2011 00:46:20 +0100
 
 sun-java6 (6.23-1) unstable; urgency=low

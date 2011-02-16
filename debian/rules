@@ -315,8 +315,8 @@ compare-jre-jars:
 	  exit 1; \
 	fi
 
-diff_ignore = -I 'Friday, November 12' \
-	-I 'Fri Nov 12' -I '^ *// java GenerateCharacter'
+diff_ignore = -I 'Wednesday, February 2' \
+	-I 'Wed Feb 02' -I '^ *// java GenerateCharacter'
 
 with_check = yes
 
