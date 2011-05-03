@@ -12,3 +12,6 @@
 @basename@-bin: embedded-library @basedir@/jre/lib/@arch@/libsplashscreen.so: zlib
 @basename@-bin: embedded-library @basedir@/jre/lib/@arch@/libsplashscreen.so: libjpeg
 @basename@-bin: embedded-library @basedir@/jre/lib/@arch@/libzip.so: zlib
+@basename@-bin: embedded-zlib
+@basename@-bin: embedded-libjpeg
+
