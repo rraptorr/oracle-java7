@@ -1,3 +1,10 @@
+sun-java6 (6.25-2) unstable; urgency=low
+
+  * sun-java6-fonts can be installed without installing the jre
+    (Closes: #625617)
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Sat, 07 May 2011 23:06:10 +0200
+
 sun-java6 (6.25-1) unstable; urgency=low
 
   * New upstream release
