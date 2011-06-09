@@ -101,7 +101,7 @@ Description: Java(TM) Plug-in, Java SE 6 (32-bit)
 Package: sun-java6-fonts
 Section: non-free/fonts
 Architecture: all
-Depends: defoma, ${misc:Depends}
+Depends: sun-java6-jre (>= ${source:Version}), defoma, ${misc:Depends}
 Provides: ttf-lucida
 Conflicts: ttf-lucida
 Description: Lucida TrueType fonts (from the Sun JRE)

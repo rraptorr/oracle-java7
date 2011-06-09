@@ -1,3 +1,10 @@
+sun-java6 (6.25-3) unstable; urgency=low
+
+  * For now, revert changes of upload 6.25-2 due to license reasons. 
+    In touch with upstream about this issue.
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Thu, 19 May 2011 16:50:11 +0200
+
 sun-java6 (6.25-2) unstable; urgency=low
 
   * sun-java6-fonts can be installed without installing the jre

@@ -805,10 +805,7 @@ binary-$(p_fonts):	build
 	done >> $(CURDIR)/$(d_fonts).links
 
 	dh_installdefoma
-# Commented because of bug #625617
-#	ln -s $(p_jre)/ $(d_fonts)/usr/share/doc/$(p_fonts)
-	mkdir -p $(d_fonts)/usr/share/doc/$(p_fonts)/
-	cp $(d_jre)/usr/share/doc/$(p_jre)/* $(d_fonts)/usr/share/doc/$(p_fonts)/
+	ln -s $(p_jre) $(d_fonts)/usr/share/doc/$(p_fonts)
 #	cat debian/dlj.templates >> $(d_fonts).templates
 
 

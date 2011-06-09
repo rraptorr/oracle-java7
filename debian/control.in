@@ -101,7 +101,7 @@ Description: Java(TM) Plug-in, Java SE @RELEASE@ (32-bit)
 Package: @basename@-fonts
 Section: non-free/fonts
 Architecture: all
-Depends: defoma, ${misc:Depends}
+Depends: @JRE@ (>= @pkg_version@), defoma, ${misc:Depends}
 Provides: ttf-lucida
 Conflicts: ttf-lucida
 Description: Lucida TrueType fonts (from the @vendor@ JRE)
