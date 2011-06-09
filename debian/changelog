@@ -1,3 +1,38 @@
+sun-java6 (6.26-1) unstable; urgency=high
+
+  * New upstream release (Closes: #629852)
+  * SECURITY UPDATE: multiple upstream vulnerabilities. Upstream fixes:
+    - (CVE-2011-0862): integer overflows in JPEGImageReader and font
+                       SunLayoutEngine (2D, 7013519) 
+    - (CVE-2011-0873): unspecified vulnerability fixed in 6u26 (2D) 
+    - (CVE-2011-0815): FileDialog.show() buffer overflow (AWT, 7012520) 
+    - (CVE-2011-0817): unspecified vulnerabilities fixed in 6u26 (Deployment,
+                       JRE) 
+    - (CVE-2011-0863): unspecified vulnerability fixed in 6u26 (Deployment) 
+    - (CVE-2011-0864): JVM memory corruption via certain bytecode (HotSpot,
+                       7020373) 
+    - (CVE-2011-0802): unspecified vulnerabilities fixed in 6u26 (Sound) 
+    - (CVE-2011-0814): unspecified vulnerabilities fixed in 6u26 (Sound) 
+    - (CVE-2011-0871): MediaTracker created Component instances with
+                       unnecessary privileges (Swing, 7020198) 
+    - (CVE-2011-0786): unspecified vulnerabilities fixed in 6u26 (Deployment,
+                       JRE) 
+    - (CVE-2011-0788): unspecified vulnerabilities fixed in 6u26 (Deployment,
+                       JRE) 
+    - (CVE-2011-0866): unspecified vulnerabilities fixed in 6u26 (Deployment,
+                       JRE) 
+    - (CVE-2011-0868): incorrect numeric type conversion in TransformHelper
+                       (2D, 7016495) 
+    - (CVE-2011-0872): non-blocking sockets incorrectly selected for reading
+                       (NIO, 6213702) 
+    - (CVE-2011-0867): NetworkInterface information leak (Networking, 7013969) 
+    - (CVE-2011-0869): unprivileged proxy settings change via SOAPConnection
+                       (SAAJ, 7013971) 
+    - (CVE-2011-0865): Deserialization allows creation of mutable SignedObject
+                       (Deserialization, 6618658) 
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Thu, 09 Jun 2011 10:20:23 +0200
+
 sun-java6 (6.25-3) unstable; urgency=low
 
   * For now, revert changes of upload 6.25-2 due to license reasons. 
