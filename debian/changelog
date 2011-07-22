@@ -1,4 +1,4 @@
-sun-java6 (6.26-2) unstable; urgency=low
+sun-java6 (6.26-2) UNRELEASED; urgency=low
 
   * "ia32-sun-java6-bin has improperly equal alternatives priority on amd64"
     fixed. Thanks to Todd Vierling for providing the patch (LP: #643658)
