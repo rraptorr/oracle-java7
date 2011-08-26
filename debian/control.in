@@ -39,8 +39,8 @@ Section: non-free/java
 Architecture: amd64 i386 lpia
 Pre-Depends: debconf (>= 0.5) | debconf-2.0
 Depends: @basename@-jre (>= @pkg_version@), ${odbc:Depends}, ${shlibs:Depends}, ${misc:Depends}
-Recommends: ${shlibs:Recommends}, ${mdns:Depends}
-Suggests: binfmt-support
+Recommends: ${shlibs:Recommends}
+Suggests: binfmt-support, ${mdns:Depends}
 Conflicts: binfmt-support (<< 1.1.2)
 Description: @vendor@ Java(TM) Runtime Environment (JRE) @RELEASE@ (architecture dependent files)
  The @vendor@ Java Platform Standard Edition Runtime Environment (JRE) @RELEASE@
@@ -73,7 +73,8 @@ Package: ia32-@basename@-bin
 Section: non-free/java
 Architecture: amd64 ia64
 Depends: @basename@-jre (>= @pkg_version@), ia32-libs, ${shlibs:Depends}, ${odbc:Depends}, ${misc:Depends}
-Recommends: ${shlibs:Recommends}, ${mdns:Depends}, ia32-libs-gtk
+Recommends: ${shlibs:Recommends}, ia32-libs-gtk
+Suggests: ${mdns:Depends}
 Description: @vendor@ Java(TM) Runtime Environment (JRE) @RELEASE@ (32-bit)
  The @vendor@ Java Platform Standard Edition Runtime Environment (JRE) @RELEASE@
  contains the Java virtual machine, runtime class libraries, and 

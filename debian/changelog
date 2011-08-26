@@ -1,9 +1,16 @@
-sun-java6 (6.26-2) UNRELEASED; urgency=low
+sun-java6 (6.26-3) unstable; urgency=low
 
   * "ia32-sun-java6-bin has improperly equal alternatives priority on amd64"
     fixed. Thanks to Todd Vierling for providing the patch (LP: #643658)
 
  -- Sylvestre Ledru <sylvestre@debian.org>  Fri, 22 Jul 2011 23:22:17 +0200
+
+sun-java6 (6.26-2) unstable; urgency=low
+
+  * Move libnss-mdns to Suggests. Thanks to Arthur Gautier for investigating
+    (Closes: #484316)
+
+ -- Sylvestre Ledru <sylvestre@debian.org>  Fri, 26 Aug 2011 11:33:19 +0200
 
 sun-java6 (6.26-1) unstable; urgency=high
 
