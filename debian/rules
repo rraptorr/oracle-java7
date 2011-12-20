@@ -13,7 +13,7 @@ distrelease	:= $(shell lsb_release -cs)
 
 DEB_HOST_ARCH	?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
 
-arch_map	:= amd64=amd64 i386=i586 lpia=i586 powerpc=ppc sparc=sparc ia64=ia64
+arch_map	:= amd64=x64 i386=i586 lpia=i586 powerpc=ppc sparc=sparc ia64=ia64
 archdir_map	:= amd64=amd64 i386=i386 lpia=i386 powerpc=ppc sparc=sparc ia64=ia64
 
 arch		:= $(strip $(patsubst $(DEB_HOST_ARCH)=%, %, \
@@ -43,7 +43,7 @@ unpackdir	:= jdk$(jdkversion)_$(releng_ver)
 jdirname	:= $(ia32_prefix)java-$(version)-$(VENDOR)-$(jdkversion).$(releng_ver)
 jdiralias	:= $(ia32_prefix)java-$(version)-$(VENDOR)
 srcdir		:= $(arch)-jdk
-bin_pattern	= jdk-$(version)u$(releng_ver)-dlj-linux-%.bin
+bin_pattern	= jdk-$(version)u$(releng_ver)-linux-%.bin
 all_archs	= $(filter $(subst =, , $(arch_map)), \
 			   $(subst -, , $(patsubst %.bin, %, $(wildcard *.bin))))
 priority	:= 63
@@ -297,15 +297,15 @@ compare-jre-jars:
 	jars=$$(cd i586-jdk/; find jre -name '*.jar'); \
 	for j in $$jars; do \
 	  echo =======  $$j  ========; \
-	  if [ ! -f amd64-jdk/$$j ]; then \
-	    echo "file does not exist: amd64-jdk/$$j"; \
+	  if [ ! -f x64-jdk/$$j ]; then \
+	    echo "file does not exist: x64-jdk/$$j"; \
 	    continue; \
 	  fi; \
 	  d=$${j%*.jar}; \
-	  rm -rf i586-jdk/$$d amd64-jdk/$$d; \
+	  rm -rf i586-jdk/$$d x64-jdk/$$d; \
 	  unzip -q -d i586-jdk/$$d i586-jdk/$$j; \
-	  unzip -q -d amd64-jdk/$$d amd64-jdk/$$j; \
-	  if diff -ur i586-jdk/$$d amd64-jdk/$$d; then \
+	  unzip -q -d x64-jdk/$$d x64-jdk/$$j; \
+	  if diff -ur i586-jdk/$$d x64-jdk/$$d; then \
 	    : ; \
 	  else \
 	    badjars="$$badjars $$j"; \
@@ -316,8 +316,8 @@ compare-jre-jars:
 	  exit 1; \
 	fi
 
-diff_ignore = -I 'Wednesday, May 4' \
-	-I 'Wed May 04' -I '^ *// java GenerateCharacter'
+diff_ignore = -I 'Thursday, November 10' \
+	-I 'Thu Nov 10' -I '^ *// java GenerateCharacter'
 
 with_check = yes
 
@@ -431,7 +431,7 @@ clean:
 	dh_testdir
 	dh_testroot
 	rm -f *-stamp
-	rm -rf amd64-jdk i586-jdk tmp-* $(unpackdir)
+	rm -rf x64-jdk i586-jdk tmp-* $(unpackdir)
 	rm -f debian/*.debhelper debian/more debian/control.old
 	rm -f debian/$(p_jbin).substvars.tmp
 	: # TODO: and these should be

@@ -1,3 +1,9 @@
+sun-java6 (6.30-1) unstable; urgency=low
+
+  * New upstream release
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Tue, 20 Dec 2011 09:13:18 +0100
+
 sun-java6 (6.26-3) unstable; urgency=low
 
   * "ia32-sun-java6-bin has improperly equal alternatives priority on amd64"
