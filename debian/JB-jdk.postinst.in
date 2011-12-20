@@ -2,8 +2,6 @@
 
 set -e
 
-. /usr/share/debconf/confmodule
-
 priority=@priority@
 basedir=/@basedir@
 basediralias=/@basediralias@

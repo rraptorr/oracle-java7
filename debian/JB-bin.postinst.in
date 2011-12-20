@@ -93,15 +93,6 @@ configure)
 	rm -f $log
     esac
 
-    # respect the debconf choice not to grant the stopThread permission
-    #db_get @basename@-jre/stopthread
-    #if [ "$RET" = "false" ]; then
-    #    POL=/etc/$jdiralias/security/java.policy
-    #    mv $POL $POL.orig
-    #    sed "s:\(\\tpermission java.lang.RuntimePermission \"stopThread\";\)://\\1:" < $POL.orig > $POL
-    #    rm $POL.orig
-    #fi
-
     ;;
 
 esac

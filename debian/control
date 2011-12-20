@@ -2,7 +2,7 @@ Source: sun-java6
 Section: non-free/java
 Priority: optional
 Maintainer: Janusz Dziemidowicz <rraptorr@nails.eu.org>
-Build-Depends: debhelper (>= 5.0.51~), lsb-release, po-debconf, defoma, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, lib32asound2 [amd64], ia32-libs [amd64 ia64]
+Build-Depends: debhelper (>= 5.0.51~), lsb-release, defoma, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, lib32asound2 [amd64], ia32-libs [amd64 ia64]
 Standards-Version: 3.9.2
 XS-Autobuild: yes
 
@@ -10,7 +10,6 @@ Package: sun-java6-jre
 Section: non-free/java
 Architecture: all
 Provides: java-virtual-machine, java-runtime, java2-runtime, java5-runtime, java6-runtime, java-runtime-headless, java2-runtime-headless, java5-runtime-headless, java6-runtime-headless
-Pre-Depends: debconf (>= 0.5) | debconf-2.0
 Depends: java-common (>= 0.24), locales, sun-java6-bin (>= ${source:Version}) | ia32-sun-java6-bin (>= ${source:Version}), ${misc:Depends}
 Recommends: gsfonts-x11
 Suggests: sun-java6-plugin | ia32-sun-java6-plugin, sun-java6-fonts, ttf-baekmuk | ttf-unfonts | ttf-unfonts-core, ttf-kochi-gothic | ttf-sazanami-gothic, ttf-kochi-mincho | ttf-sazanami-mincho, ttf-arphic-uming,
@@ -33,7 +32,6 @@ Description: Sun Java(TM) Runtime Environment (JRE) 6 (architecture independent 
 Package: sun-java6-bin
 Section: non-free/java
 Architecture: amd64 i386 lpia
-Pre-Depends: debconf (>= 0.5) | debconf-2.0
 Depends: sun-java6-jre (>= ${source:Version}), ${odbc:Depends}, ${shlibs:Depends}, ${misc:Depends}
 Recommends: ${shlibs:Recommends}
 Suggests: binfmt-support, ${mdns:Depends}
@@ -107,7 +105,6 @@ Description: Lucida TrueType fonts (from the Sun JRE)
 
 Package: sun-java6-jdk
 Architecture: amd64 i386 lpia
-Pre-Depends: debconf (>= 0.5) | debconf-2.0
 Depends: sun-java6-bin (>= ${source:Version}), ${shlibs:Depends}, ${misc:Depends}
 Suggests: sun-java6-demo, default-jdk-doc, sun-java6-source
 Provides: java-compiler, java2-compiler, java-sdk, java2-sdk, java5-sdk, java6-sdk

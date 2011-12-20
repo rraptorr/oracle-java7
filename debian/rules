@@ -420,9 +420,6 @@ endif
 
 	touch $@
 
-update-dlj: build-stamp
-	touch debian/dlj.templates
-
 update-copyright: build-stamp
 	jdkdir=$(srcdir) jdkdistrosdir=debian pkgdir=debian \
 	  sh debian/mkcopy.sh
@@ -715,7 +712,6 @@ endif
 	    echo "plugin $$b-javaplugin.so /$(TOP)/$(jdiralias)/jre/lib/$(archdir)/libnpjp2.so"; \
 	  done; \
 	) > $(d_jbin)/$(TOP)/.$(jdiralias).jinfo
-	cat debian/dlj.templates >> $(d_jbin).templates
 
 
 ia32-binary-bin: unpack-stamp
@@ -762,7 +758,6 @@ binary-$(p_jre):	#binary-$(p_jbin)
 
 	ln -sf /etc/.java $(d_jre)/$(basedir)/.systemPrefs
 
-	cat debian/dlj.templates >> $(d_jre).templates
 	dh_install -p$(p_jre) debian/swing.properties /etc/$(jdiralias)/
 	dh_link -p$(p_jre) /etc/$(jdiralias)/swing.properties \
 		/$(basedir)/jre/lib/swing.properties
@@ -778,7 +773,6 @@ binary-$(p_plug):	#binary-$(p_jbin)
 		$(lintian_overrides) \
 		$(foreach d, $(browser_plugin_dirs), usr/lib/$(d)/plugins)
 	ln -s $(p_jbin) $(d_plug)/usr/share/doc/$(p_plug)
-#	cat debian/dlj.templates >> $(d_plug).templates
 
 	: # add lintian overrides
 	cp -p debian/$(p_plug).overrides \
@@ -807,7 +801,6 @@ binary-$(p_fonts):	build
 
 	dh_installdefoma
 	ln -s $(p_jre) $(d_fonts)/usr/share/doc/$(p_fonts)
-#	cat debian/dlj.templates >> $(d_fonts).templates
 
 
 binary-$(p_jdk):	DH_OPTIONS=-p$(p_jdk)
@@ -878,7 +871,6 @@ endif
 		-Xlibjavaplugin_oji.so Xlibnpjp2.so -X_g.so
 
 	sed -i -e 's/ *([^,]*) *//g' $(d_jdk).substvars
-	cat debian/dlj.templates >> $(d_jdk).templates
 
 	dh_installdocs \
 		$(srcdir)/README.html debian/README.alternatives
@@ -944,8 +936,6 @@ binary-$(p_src):	build
 
 	ln -s $(p_jdk) $(d_src)/usr/share/doc/$(p_src)
 
-#	cat debian/dlj.templates >> $(d_src).templates
-
 
 binary-$(p_javadb):	DH_OPTIONS=-p$(p_javadb)
 binary-$(p_javadb):	build
@@ -978,7 +968,6 @@ binary-indep:	DH_OPTIONS=-i $(NO_PACKAGES)
 binary-indep:	$(binary_indep_targets)
 	dh_testdir
 	dh_testroot
-	dh_installdebconf
 	dh_installmime
 	dh_installmenu
 	dh_icons || dh_iconcache || true
@@ -1000,7 +989,6 @@ binary-arch:	DH_OPTIONS=-s $(NO_PACKAGES)
 binary-arch:	$(binary_arch_targets)
 	dh_testdir
 	dh_testroot
-	dh_installdebconf
 	dh_installmime
 	dh_installmenu
 	dh_icons || dh_iconcache || true
