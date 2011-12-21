@@ -36,10 +36,7 @@ dirpartsv	:= $(shell echo $(word 3, $(dirparts)) | tr '.' ' ')
 version		:= $(word 1, $(dirpartsv))
 releng_ver	:= $(word 2, $(dirpartsv))
 jdkversion	:= 1.6.0
-#unpackdir	:= jdk$(version)_$(releng_ver)
-#unpackdir	:= jdk$(jdkversion)
 unpackdir	:= jdk$(jdkversion)_$(releng_ver)
-#jdirname	:= $(ia32_prefix)java-$(version)-$(VENDOR)-$(version).$(releng_ver)
 jdirname	:= $(ia32_prefix)java-$(version)-$(VENDOR)-$(jdkversion).$(releng_ver)
 jdiralias	:= $(ia32_prefix)java-$(version)-$(VENDOR)
 srcdir		:= $(arch)-jdk
@@ -384,7 +381,6 @@ unpack-amd64-stamp: unpack-i586-stamp
 
 unpack-%-stamp: $(bin_pattern)
 	rm -rf $(unpackdir)
-#	$(SHELL) tmp-$< --accept-license > /dev/null
 	binsize=$$(wc -c $< | awk '{print $$1}'); \
 	zipstart=$$(unzip -ql $< 2>&1 >/dev/null \
 			| sed -n -e 's/.* \([0-9][0-9]*\) extra bytes.*/\1/p'); \
@@ -409,20 +405,7 @@ endif
 	: # fix permissions
 	-find $*-jdk -name '*.properties' -o -name '*.xml' | xargs chmod 644
 
-#	for i in `find $*-jdk/man/man1` -name '*.1'; do \
-#	  mv $$i `dirname $$i`/`basename $$i .1`.$(mantag).1; \
-#	done
-	find $*-jdk/. -name "CVS" -print0 | xargs -0 rm -rf
-
-#	for i in `find $*-jdk/man/ja_JP.eucJP -name *.1.gz`; do \
-#	    mv $$i `dirname $$i`/`basename $$i 1.gz`ja.1.gz; \
-#	done
-
 	touch $@
-
-update-copyright: build-stamp
-	jdkdir=$(srcdir) jdkdistrosdir=debian pkgdir=debian \
-	  sh debian/mkcopy.sh
 
 clean:
 	dh_testdir
@@ -486,10 +469,6 @@ binary-$(p_jbin):	build
 	install -m 755 debian/javaws-wrapper.sh $(d_jbin)/$(basedir)/jre/bin/javaws
 
 
-#	: # 1.4 only
-#	rm -f $(d_jbin)/$(basedir)/jre/lib/$(archdir)/libagent.so
-#	-find $(d_jbin) -name HtmlConverter -o -name htmlconverter.jar | xargs rm -f
-
 ###	: # get upstream docs out of there
 ###	-rm $(d_jbin)/$(j2se_lib)/jre/{CHANGES,COPYRIGHT,INSTALL,*LICENSE*,README
 	rm -f $(d_jbin)/$(basedir)/jre/{CHANGES,INSTALL}
@@ -536,29 +515,12 @@ binary-$(p_jbin):	build
 	echo "etc/$(jdiralias)/jvm.cfg $(basedir)/jre/lib/$(archdir)/jvm.cfg" \
 	    >> $(d_jbin).links
 
-#	: # replace duplicate files in bin and jre/bin with links
-#	for f in `cd $(srcdir)/. && diff -s -r jre/bin bin \
-#		| sed -n 's/^Files \(.*\) and \(.*\) are identical$$/\2/p'`; \
-#	do \
-#	  [ $$f = bin/HtmlConverter ] || \
-#	  echo /$(basedir)/jre/$$f /$(basedir)/$$f; \
-#	done >> $(d_jbin).links
-
 	set -e; \
 	for i in $$(find $(srcdir)/bin ! -type d); do \
 	  n=$$(basename $$i); \
 	  case " $(jre_tools) $(corba_tools) " in *\ $$n\ *) ;; *) continue; esac; \
 	  echo $(basedir)/jre/bin/$$n $(basedir)/bin/$$n; \
 	done >> $(d_jbin).links
-
-#	  if [ -L $(d_jbin)/$(basedir)/jre/$$f ]; then \
-#	    ln -sf `readlink $(d_jbin)/$(basedir)/jre/$$f` \
-#		$(d_jbin)/$(basedir)/$$f; \
-#	  else \
-#	    ln -sf /$(basedir)/jre/$$f \
-#		$(d_jbin)/$(basedir)/$$f; \
-#	  fi; \
-#
 
 	: # give all permissions to cross-VM extension directory
 	mv $(d_jbin)/$(security)/java.policy \
@@ -632,12 +594,6 @@ ifeq (,$(ia32_prefix))
 		$(d_jbin)/$(basedir)/jre/lib/$(archdir)/libodbcinst.so
 	ln -sf /usr/lib/libodbc.so.1 \
 		$(d_jbin)/$(basedir)/jre/lib/$(archdir)/libodbc.so
-# currently unsupported
-#else
-#	ln -sf /usr/lib32/libodbcinst.so.1 \
-#		$(d_jbin)/$(basedir)/jre/lib/$(archdir)/libodbcinst.so
-#	ln -sf /usr/lib32/libodbc.so.1 \
-#		$(d_jbin)/$(basedir)/jre/lib/$(archdir)/libodbc.so
 endif
 
 	 : # fix permissions
@@ -845,7 +801,6 @@ binary-$(p_jdk):	build
 ifneq (,$(findstring demo, $(NO_PACKAGES)))
 	cp -a $(srcdir)/demo $(d_jdk)/usr/share/doc/$(p_jdk)/
 	cp -a $(srcdir)/sample $(d_jdk)/usr/share/doc/$(p_jdk)/examples
-#	chmod 755 $(d_jdk)/usr/share/doc/$(p_jdk)/examples/scripting/scriptpad/src/scripts/memory.sh
 
 	echo usr/share/doc/$(p_jdk)/demo $(basedir)/demo >> $(d_jdk).links
 	echo usr/share/doc/$(p_jdk)/examples $(basedir)/sample >> $(d_jdk).links
@@ -910,12 +865,6 @@ binary-$(p_demo):	build
 	: # add lintian overrides
 	cp -p debian/$(p_demo).overrides \
 		$(d_demo)/$(lintian_overrides)/$(p_demo)
-
-#	( \
-#	  gnome=`find $(d_demo)/usr/share/gnome -type f -printf "%f %P "`; \
-#	  echo "gnome='$$gnome'"; \
-#	  echo "" \
-#	) > $(d_demo).debhelper
 
 	ld_path=$(d_jbin)/$(basedir)/jre/lib/$(archdir) \
 	    dh_shlibdeps \

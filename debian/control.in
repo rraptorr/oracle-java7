@@ -4,7 +4,6 @@ Priority: optional
 Maintainer: Janusz Dziemidowicz <rraptorr@nails.eu.org>
 Build-Depends: debhelper (>= 5.0.51~), lsb-release, defoma, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, lib32asound2 [amd64], ia32-libs [amd64 ia64]
 Standards-Version: 3.9.2
-XS-Autobuild: yes
 
 Package: @basename@-jre
 Section: non-free/java
@@ -23,9 +22,6 @@ Description: @vendor@ Java(TM) Runtime Environment (JRE) @RELEASE@ (architecture
  doesn't contain development tools such as compilers or debuggers.
  For development tools, see the Java Development Kit JDK(TM) @RELEASE@
  (package @basename@-jdk).
- .
- NOTE: You must accept Sun's EULA prior to successfully installing
- this package
  .
  This package contains architecture independent files.
 
@@ -115,9 +111,6 @@ Description: @vendor@ Java(TM) Development Kit (JDK) @RELEASE@
  The JDK includes tools useful for developing and testing programs 
  written in the Java programming language and running on the Java 
  Platform.
- .
- NOTE: You must accept Sun's EULA prior to successfully installing
- this package
 
 Package: @basename@-demo
 Architecture: amd64 i386 lpia
@@ -157,4 +150,4 @@ Description: Java(TM) DB, Sun Microsystems' distribution of Apache Derby
  This package adds the optional Java DB to your JDK 6 installation.
  .
  For more information, check out the Java DB website:
- http://developers.sun.com/prodtech/javadb/
+ http://www.oracle.com/technetwork/java/javadb/overview/index.html
