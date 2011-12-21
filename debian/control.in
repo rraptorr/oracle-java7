@@ -11,7 +11,7 @@ Architecture: all
 Provides: java-virtual-machine, java-runtime, java2-runtime, java5-runtime, java6-runtime, java-runtime-headless, java2-runtime-headless, java5-runtime-headless, java6-runtime-headless
 Depends: java-common (>= 0.24), locales, @basename@-bin (>= @pkg_version@) | ia32-@basename@-bin (>= @pkg_version@), ${misc:Depends}
 Recommends: gsfonts-x11
-Suggests: @basename@-plugin | ia32-@basename@-plugin, @basename@-fonts, @cjk_fonts@
+Suggests: @basename@-plugin, @basename@-fonts, @cjk_fonts@
 Replaces: @basename@-bin, ia32-@basename@-bin
 Conflicts: j2se-common
 Description: @vendor@ Java(TM) Runtime Environment (JRE) @RELEASE@ (architecture independent files)
@@ -75,19 +75,6 @@ Description: @vendor@ Java(TM) Runtime Environment (JRE) @RELEASE@ (32-bit)
  (package @basename@-jdk).
  .
  This package contains architecture dependent files for ia32.
-
-Package: ia32-@basename@-plugin
-Architecture: amd64 ia64
-Section: non-free/web
-Priority: optional
-Depends: ${shlibs:Depends}, ${misc:Depends}, ia32-@basename@-bin (>= @pkg_version@), @browsers@
-Description: Java(TM) Plug-in, Java SE @RELEASE@ (32-bit)
- Java Plug-in enables applets written to the Java Platform @RELEASE@ 
- specification to be run in Mozilla and other web browsers. 
- Java Plug-in comes with the Java Runtime Environment (JRE).
- .
- This is a metapackage containing dependencies for running Java in 
- various browsers.
 
 Package: @basename@-fonts
 Section: non-free/fonts

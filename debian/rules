@@ -139,13 +139,11 @@ ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386 lpia))
 endif
 ifeq ($(with_ia32),yes)
     binary_arch_targets	+= ia32-binary-bin
-    #binary_arch_targets += ia32-binary-plugin
 endif
 binary_indep_targets	:= \
 	$(patsubst %, binary-%, $(p_jre) $(p_src) $(p_fonts) $(p_javadb))
-NO_PACKAGES = -Nia32-$(p_plug)
 ifneq ($(with_ia32),yes)
-  NO_PACKAGES += -Nia32-$(p_jbin)
+  NO_PACKAGES = -Nia32-$(p_jbin)
 endif
 
 # (most) jre and jdk tools handled by the alternatives system.
@@ -733,14 +731,6 @@ binary-$(p_plug):	#binary-$(p_jbin)
 	: # add lintian overrides
 	cp -p debian/$(p_plug).overrides \
 		$(d_plug)/$(lintian_overrides)/$(p_plug)
-
-ia32-binary-plugin: unpack-stamp
-	dh_testdir
-	dh_testroot
-	$(MAKE) -f debian/rules binary-ia32-$(p_plug) \
-		ia32_prefix=ia32- \
-		DEB_HOST_ARCH=i386
-
 
 binary-$(p_fonts):	DH_OPTIONS=-p$(p_fonts)
 binary-$(p_fonts):	build

@@ -11,7 +11,7 @@ Architecture: all
 Provides: java-virtual-machine, java-runtime, java2-runtime, java5-runtime, java6-runtime, java-runtime-headless, java2-runtime-headless, java5-runtime-headless, java6-runtime-headless
 Depends: java-common (>= 0.24), locales, sun-java6-bin (>= ${source:Version}) | ia32-sun-java6-bin (>= ${source:Version}), ${misc:Depends}
 Recommends: gsfonts-x11
-Suggests: sun-java6-plugin | ia32-sun-java6-plugin, sun-java6-fonts, ttf-baekmuk | ttf-unfonts | ttf-unfonts-core, ttf-kochi-gothic | ttf-sazanami-gothic, ttf-kochi-mincho | ttf-sazanami-mincho, ttf-arphic-uming,
+Suggests: sun-java6-plugin, sun-java6-fonts, ttf-baekmuk | ttf-unfonts | ttf-unfonts-core, ttf-kochi-gothic | ttf-sazanami-gothic, ttf-kochi-mincho | ttf-sazanami-mincho, ttf-arphic-uming,
 Replaces: sun-java6-bin, ia32-sun-java6-bin
 Conflicts: j2se-common
 Description: Sun Java(TM) Runtime Environment (JRE) 6 (architecture independent files)
@@ -75,19 +75,6 @@ Description: Sun Java(TM) Runtime Environment (JRE) 6 (32-bit)
  (package sun-java6-jdk).
  .
  This package contains architecture dependent files for ia32.
-
-Package: ia32-sun-java6-plugin
-Architecture: amd64 ia64
-Section: non-free/web
-Priority: optional
-Depends: ${shlibs:Depends}, ${misc:Depends}, ia32-sun-java6-bin (>= ${source:Version}), firefox | firefox-2 | iceweasel | mozilla-firefox | iceape-browser | mozilla-browser | epiphany-gecko | epiphany-webkit | epiphany-browser | galeon | midbrowser | moblin-web-browser | xulrunner | xulrunner-1.9 | konqueror | chromium-browser | midori | google-chrome
-Description: Java(TM) Plug-in, Java SE 6 (32-bit)
- Java Plug-in enables applets written to the Java Platform 6 
- specification to be run in Mozilla and other web browsers. 
- Java Plug-in comes with the Java Runtime Environment (JRE).
- .
- This is a metapackage containing dependencies for running Java in 
- various browsers.
 
 Package: sun-java6-fonts
 Section: non-free/fonts
