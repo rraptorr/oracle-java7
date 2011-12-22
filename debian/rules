@@ -483,13 +483,11 @@ binary-$(p_jbin):	build
 	mkdir -p $(d_jbin)/etc/$(jdiralias)/management
 	for i in \
 	  calendars.properties \
-	  jvm.cfg \
 	  content-types.properties \
 	  logging.properties \
 	  sound.properties \
 	  flavormap.properties \
 	  net.properties \
-	  fontconfig.properties \
 	  management/jmxremote.access \
 	  management/jmxremote.password \
 	  management/management.properties \
