@@ -14,8 +14,9 @@ Java 6.
 2. Supported Debian versions
 
 So far packages were tested on following versions:
-- wheezy i386
-- wheezy amd64
+- wheezy i386/amd64
+- squeeze i386/amd64
+- lenny i386/amd64
 
 3. Usage
 
