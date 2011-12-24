@@ -82,15 +82,17 @@ configure)
     mount | grep -qs 'on /proc type proc' || echo >&2 "/proc is not mounted; some java apps may fail"
 
     # activate class data sharing
-    case @archdir@ in i386|sparc)
-	rm -f $basedir/jre/lib/@archdir@/client/classes.jsa
-	log=$(tempfile)
-	if ! $basedir/bin/java -client -Xshare:dump -Xmx256m -XX:PermSize=128m > $log; then
-	    rm -f $basedir/jre/lib/@archdir@/client/classes.jsa
-	    cat >&2 $log
-	    echo "Ignoring error generating classes.jsa"
-	fi
-	rm -f $log
+    case @archdir@ in i386|amd64)
+	for type in client server; do
+	    rm -f $basedir/jre/lib/@archdir@/$type/classes.jsa
+	    log=$(tempfile)
+	    if ! $basedir/bin/java -$type -Xshare:dump -Xmx256m -XX:PermSize=128m > $log; then
+	        rm -f $basedir/jre/lib/@archdir@/$type/classes.jsa
+	        cat >&2 $log
+	        echo "Ignoring error generating classes.jsa"
+	    fi
+	    rm -f $log
+	done
     esac
 
     ;;

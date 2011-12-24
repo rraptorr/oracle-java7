@@ -10,7 +10,9 @@ for i in $jar_packs; do
     rm -f $basedir/$jar
 done
 
-rm -f $basedir/jre/lib/@archdir@/client/classes.jsa
+for type in client server; do
+  rm -f $basedir/jre/lib/@archdir@/$type/classes.jsa
+done
 
 if [ "$1" = "remove" ] || [ "$1" = "deconfigure" ]; then
     for i in $jre_tools; do
