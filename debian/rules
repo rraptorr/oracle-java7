@@ -619,18 +619,6 @@ endif
 	cat $(d_jbin).substvars.tmp >> $(d_jbin).substvars
 ifeq (,$(ia32_prefix))
 	echo 'odbc:Depends=unixodbc' >> $(d_jbin).substvars
-	echo 'mdns:Depends=libnss-mdns' >> $(d_jbin).substvars
-else
-  ifneq ($(distribution),Ubuntu)
-    ifneq (,$(filter $(distrelease), gutsy))
-	echo 'mdns:Depends=ia32-libs (>= 1.19ubuntu1)' >> $(d_jbin).substvars
-    endif
-    ifneq (,$(filter $(distrelease), hardy))
-	echo 'mdns:Depends=lib32nss-mdns' >> $(d_jbin).substvars
-    endif
-  else
-	echo 'mdns:Depends=lib32nss-mdns' >> $(d_jbin).substvars
-  endif
 endif
 
 	( \

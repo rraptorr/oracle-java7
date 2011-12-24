@@ -30,7 +30,7 @@ Section: non-free/java
 Architecture: amd64 i386 lpia
 Depends: sun-java6-jre (>= ${source:Version}), ${odbc:Depends}, ${shlibs:Depends}, ${misc:Depends}
 Recommends: ${shlibs:Recommends}
-Suggests: binfmt-support, ${mdns:Depends}
+Suggests: binfmt-support
 Conflicts: binfmt-support (<< 1.1.2)
 Description: Sun Java(TM) Runtime Environment (JRE) 6 (architecture dependent files)
  The Sun Java Platform Standard Edition Runtime Environment (JRE) 6
@@ -64,7 +64,6 @@ Section: non-free/java
 Architecture: amd64 ia64
 Depends: sun-java6-jre (>= ${source:Version}), ia32-libs, ${shlibs:Depends}, ${odbc:Depends}, ${misc:Depends}
 Recommends: ${shlibs:Recommends}, ia32-libs-gtk
-Suggests: ${mdns:Depends}
 Description: Sun Java(TM) Runtime Environment (JRE) 6 (32-bit)
  The Sun Java Platform Standard Edition Runtime Environment (JRE) 6
  contains the Java virtual machine, runtime class libraries, and 
