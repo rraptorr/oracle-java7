@@ -13,8 +13,8 @@ distrelease	:= $(shell lsb_release -cs)
 
 DEB_HOST_ARCH	?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
 
-arch_map	:= amd64=x64 i386=i586 lpia=i586 powerpc=ppc sparc=sparc ia64=ia64
-archdir_map	:= amd64=amd64 i386=i386 lpia=i386 powerpc=ppc sparc=sparc ia64=ia64
+arch_map	:= amd64=x64 i386=i586 lpia=i586 powerpc=ppc sparc=sparc
+archdir_map	:= amd64=amd64 i386=i386 lpia=i386 powerpc=ppc sparc=sparc
 
 arch		:= $(strip $(patsubst $(DEB_HOST_ARCH)=%, %, \
 			$(filter $(DEB_HOST_ARCH)=%, $(arch_map))))
@@ -83,10 +83,8 @@ cjk_fonts += $(if $(with_wgy_zenhai),ttf-wqy-zenhei,ttf-arphic-uming),
 
 lintian_overrides	:= usr/share/lintian/overrides
 
-ifneq ($(DEB_HOST_ARCH),ia64)
-  packaging_files = packaging-files
-endif
-ifneq (,$(findstring $(DEB_HOST_ARCH), amd64 ia64))
+packaging_files = packaging-files
+ifneq (,$(findstring $(DEB_HOST_ARCH), amd64))
   with_ia32 = yes
   ia32_packaging_files = ia32-packaging-files
 
@@ -130,10 +128,8 @@ d_fonts	:= debian/$(p_fonts)
 d_plug	:= debian/$(p_plug)
 d_javadb	:= debian/$(p_javadb)
 
-ifneq ($(DEB_HOST_ARCH),ia64)
-  binary_arch_targets	= \
-	$(patsubst %, binary-%, $(p_jbin) $(p_jdk) $(p_demo))
-endif
+binary_arch_targets	= \
+    $(patsubst %, binary-%, $(p_jbin) $(p_jdk) $(p_demo))
 ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386 lpia))
     binary_arch_targets	+= binary-$(p_plug)
 endif

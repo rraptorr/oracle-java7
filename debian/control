@@ -2,7 +2,7 @@ Source: sun-java6
 Section: non-free/java
 Priority: optional
 Maintainer: Janusz Dziemidowicz <rraptorr@nails.eu.org>
-Build-Depends: debhelper (>= 5.0.51~), lsb-release, defoma, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, lib32asound2 [amd64], ia32-libs [amd64 ia64]
+Build-Depends: debhelper (>= 5.0.51~), lsb-release, defoma, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, lib32asound2 [amd64], ia32-libs [amd64]
 Standards-Version: 3.9.2
 
 Package: sun-java6-jre
@@ -61,7 +61,7 @@ Description: Java(TM) Plug-in, Java SE 6
 
 Package: ia32-sun-java6-bin
 Section: non-free/java
-Architecture: amd64 ia64
+Architecture: amd64
 Depends: sun-java6-jre (>= ${source:Version}), ia32-libs, ${shlibs:Depends}, ${odbc:Depends}, ${misc:Depends}
 Recommends: ${shlibs:Recommends}, ia32-libs-gtk
 Description: Sun Java(TM) Runtime Environment (JRE) 6 (32-bit)

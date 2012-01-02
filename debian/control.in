@@ -2,7 +2,7 @@ Source: @basename@
 Section: non-free/java
 Priority: optional
 Maintainer: Janusz Dziemidowicz <rraptorr@nails.eu.org>
-Build-Depends: debhelper (>= 5.0.51~), lsb-release, defoma, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, lib32asound2 [amd64], ia32-libs [amd64 ia64]
+Build-Depends: debhelper (>= 5.0.51~), lsb-release, defoma, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, lib32asound2 [amd64], ia32-libs [amd64]
 Standards-Version: 3.9.2
 
 Package: @basename@-jre
@@ -61,7 +61,7 @@ Description: Java(TM) Plug-in, Java SE @RELEASE@
 
 Package: ia32-@basename@-bin
 Section: non-free/java
-Architecture: amd64 ia64
+Architecture: amd64
 Depends: @basename@-jre (>= @pkg_version@), ia32-libs, ${shlibs:Depends}, ${odbc:Depends}, ${misc:Depends}
 Recommends: ${shlibs:Recommends}, ia32-libs-gtk
 Description: @vendor@ Java(TM) Runtime Environment (JRE) @RELEASE@ (32-bit)
