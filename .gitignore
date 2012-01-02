@@ -1,4 +1,4 @@
-jdk-*-linux*.bin
+jdk-*-linux-*.bin
 i586-jdk
 x64-jdk
 tmp-i586
@@ -21,6 +21,7 @@ debian/sun-java6-plugin
 debian/sun-java6-source
 
 *-stamp
+debian/control.old
 debian/*.debhelper
 debian/*.substvars
 debian/*.log

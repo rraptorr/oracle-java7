@@ -209,6 +209,8 @@ debian/control: debian/control.in debian/rules
 	      -e 's/@archdir@/$(archdir)/g' \
 	      -e 's/@browsers@/$(browsers)/g' \
 	      -e 's/@cjk_fonts@/$(cjk_fonts)/g' \
+	      -e 's/@jdkversion@/$(jdkversion)/g' \
+	      -e 's/@releng_ver@/$(releng_ver)/g' \
 	      -e 's,@pkg_version@,$(if $(filter $(distrelease),etch dapper edgy feisty gutsy),$${Source-Version},$${source:Version}),g' \
 	    debian/control.in > debian/control
 	@if cmp -s debian/control debian/control.old; then \
