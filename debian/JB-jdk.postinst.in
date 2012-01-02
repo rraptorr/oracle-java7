@@ -10,7 +10,6 @@ jdiralias=@jdiralias@
 srcext=1.gz
 dstext=1.gz
 jdk_tools='@jdk_tools@'
-jar_packs='@jdk_packs@'
 
 case "$1" in
 configure)
@@ -47,12 +46,6 @@ configure)
 	    esac
 	done
     fi
-
-    for i in $jar_packs; do
-	jar=$(echo $i | sed 's/\.pack$/.jar/')
-	$basedir/bin/unpack200 $basedir/$i $basedir/$jar
-	chmod 644 $basedir/$jar
-    done
 
     ;;
 esac

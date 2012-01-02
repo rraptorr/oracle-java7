@@ -46,11 +46,9 @@ all_archs	= $(filter $(subst =, , $(arch_map)), \
 priority	:= 63
 
 tag		:= $(strip $(subst .,, $(RELEASE)))
-mantag		:= $(VENDOR)$(tag)
 
 basedir		= $(TOP)/$(jdirname)
 doc		:= usr/share/doc
-j2se_lib	:= usr/lib/$(basename)
 security	:= etc/$(jdiralias)/security
 
 bd_plugin = \
@@ -155,12 +153,6 @@ jdk_tools_alt	= $(filter-out jvisualvm, $(jdk_tools))
 
 jre_manpages_re:= $(shell echo $(jre_tools) $(corba_tools) | tr -s ' ' '|')
 
-#ship_packs = yes
-ifeq ($(ship_packs),yes)
-  jre_packs	= $(shell cd $(srcdir); find jre/lib -name '*.pack')
-  jdk_packs	= $(shell cd $(srcdir); find lib -name '*.pack')
-endif
-
 # TODO: unpack both tarballs, compare them to ensure we do things right
 # these are identical files / directories
 common_jre_things = \
@@ -179,8 +171,6 @@ common_jre_things = \
 	jre/COPYRIGHT \
 	jre/LICENSE \
 	jre/THIRDPARTYLICENSEREADME.txt \
-
-common_jdk_things = \
 
 # jar files, whith the same contents; just the time stamps differ
 common_jre_jars = \
@@ -255,13 +245,8 @@ packaging-files:
 	      -e 's/@tag@/$(tag)/g' \
 	      -e 's/@ia32txt@/$(ia32txt)/g' \
 	      -e 's/@priority@/$(priority)/g' \
-	      -e 's/@mantag@/$(mantag)/g' \
 	      -e 's/@jre_tools@/$(jre_tools_alt)/g' \
 	      -e 's/@jdk_tools@/$(jdk_tools_alt)/g' \
-	      -e 's/@corba_tools@/$(corba_tools)/g' \
-	      -e 's,@jre_packs@,$(jre_packs),g' \
-	      -e 's,@jdk_packs@,$(jdk_packs),g' \
-	      -e 's,@j2se_lib@,$(j2se_lib),g' \
 	      -e 's,@browser_dirs@,$(browser_plugin_dirs),g' \
 	      -e 's,@java_launcher@,$(java_launcher),g' \
 	    $$f > $$f2; \
@@ -381,14 +366,12 @@ unpack-%-stamp: $(bin_pattern)
 	diff -u $*-jdk/THIRDPARTYLICENSEREADME.txt \
 	    $*-jdk/jre/THIRDPARTYLICENSEREADME.txt
 
-ifneq ($(ship_packs),yes)
 	set -e; \
 	for i in $$(find $*-jdk -name '*.pack'); do \
 	  i586-jdk/bin/unpack200 $$i \
 		$$(dirname $$i)/$$(basename $$i .pack).jar; \
 	  rm -f $$i; \
 	done
-endif
 
 	: # fix permissions
 	-find $*-jdk -name '*.properties' -o -name '*.xml' | xargs chmod 644
@@ -458,7 +441,6 @@ binary-$(p_jbin):	build
 
 
 ###	: # get upstream docs out of there
-###	-rm $(d_jbin)/$(j2se_lib)/jre/{CHANGES,COPYRIGHT,INSTALL,*LICENSE*,README
 	rm -f $(d_jbin)/$(basedir)/jre/{CHANGES,INSTALL}
 
 	: # install template files as real files (all commented out)

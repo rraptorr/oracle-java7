@@ -2,13 +2,7 @@
 
 basedir=/@basedir@
 basediralias=/@basediralias@
-jar_packs='@jre_packs@'
 jre_tools='@jre_tools@'
-
-for i in $jar_packs; do
-    jar=$(echo $i | sed 's/\.pack$/.jar/')
-    rm -f $basedir/$jar
-done
 
 for type in client server; do
   rm -f $basedir/jre/lib/@archdir@/$type/classes.jsa

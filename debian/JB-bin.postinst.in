@@ -10,7 +10,6 @@ mandir=/@basediralias@/jre/man
 srcext=1.gz
 dstext=1.gz
 jre_tools='@jre_tools@'
-jar_packs='@jre_packs@'
 
 case "$1" in
 configure)
@@ -25,12 +24,6 @@ configure)
 	chmod 644 /etc/.java/.systemPrefs/.systemRootModFile
     fi
 
-    for i in $jar_packs; do
-	jar=$(echo $i | sed 's/\.pack$/.jar/')
-	$basedir/bin/unpack200 $basedir/$i $basedir/$jar
-	chmod 644 $basedir/$jar
-    done
-    
     for i in $jre_tools; do
 	unset slave1 slave2 || true
         if [ -e $mandir/man1/$i.$srcext ]; then
