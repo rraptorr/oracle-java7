@@ -385,8 +385,6 @@ clean:
 	rm -rf x64-jdk i586-jdk tmp-* $(unpackdir)
 	rm -f debian/*.debhelper debian/more debian/control.old
 	rm -f debian/$(p_jbin).substvars.tmp
-	: # TODO: and these should be
-	: # -rm -f $(d_jre).copyright debian/copyright
 
 	for f in debian/*.in; do \
 	  f2=$$(echo $$f | sed 's/JB/$(basename)/;s/\.in$$//'); \
@@ -472,8 +470,6 @@ binary-$(p_jbin):	build
 
 	mv $(d_jbin)/$(basedir)/jre/lib/$(archdir)/jvm.cfg \
 		$(d_jbin)/etc/$(jdiralias)/
-	: # TODO: why do we provide a custom font.properties.ja?
-	: # cp -p debian/font.properties.ja $(d_jbin)/etc/$(jdiralias)/.
 	-mv $(d_jbin)/$(basedir)/jre/lib/security/{java.*,cacerts} \
 		$(d_jbin)/$(security)
 
@@ -591,6 +587,8 @@ endif
 	cat $(d_jbin).substvars.tmp >> $(d_jbin).substvars
 ifeq (,$(ia32_prefix))
 	echo 'odbc:Depends=unixodbc' >> $(d_jbin).substvars
+else
+	echo 'odbc:Depends=' >> $(d_jbin).substvars
 endif
 
 	( \
@@ -665,8 +663,7 @@ binary-$(p_jre):	#binary-$(p_jbin)
 		debian/README.alternatives \
 		debian/JAVA_HOME
 
-	dh_installchangelogs -k \
-#		$(srcdir)/jre/CHANGES
+	dh_installchangelogs
 
 	ln -sf /etc/.java $(d_jre)/$(basedir)/.systemPrefs
 
@@ -736,9 +733,6 @@ binary-$(p_jdk):	build
 	    $(d_jdk)/$(basedir)/bin/java-rmi.cgi
 
 	: # add menu stuff
-	#jconsole is obsolete, see #539288
-	#cp -p debian/$(basename)-jconsole.desktop \
-	#      $(d_jdk)/usr/share/applications/
 	cp -p debian/$(basename)-jvisualvm.desktop \
 	      $(d_jdk)/usr/share/applications/
 
@@ -889,8 +883,6 @@ binary-arch:	$(binary_arch_targets)
 	dh_installmime
 	dh_installmenu
 	dh_icons || dh_iconcache || true
-	: # don't strip the files, we are not allowed to modify these
-	#dh_strip -X_g.so
 	dh_link
 	: # don't compress anything from the shipped demo and sample files
 	dh_compress -Xdemo -Xexamples -Xsample -X.html -X.pdf
