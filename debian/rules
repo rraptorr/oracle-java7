@@ -171,6 +171,11 @@ common_jre_things = \
 	jre/lib/oblique-fonts \
 	jre/lib/zi \
 	jre/lib/jsse.jar \
+	jre/lib/jce.jar \
+	jre/lib/ext/sunjce_provider.jar \
+	jre/lib/ext/sunpkcs11.jar \
+	jre/lib/security/local_policy.jar \
+	jre/lib/security/US_export_policy.jar \
 	jre/COPYRIGHT \
 	jre/LICENSE \
 	jre/THIRDPARTYLICENSEREADME.txt \
@@ -179,15 +184,18 @@ common_jdk_things = \
 
 # jar files, whith the same contents; just the time stamps differ
 common_jre_jars = \
-	jre/lib/ext/sunjce_provider.jar \
 	jre/lib/ext/dnsns.jar \
 	jre/lib/ext/localedata.jar \
-	jre/lib/jce.jar \
-	jre/lib/security/US_export_policy.jar \
-	jre/lib/security/local_policy.jar \
 	jre/lib/im/indicim.jar \
 	jre/lib/im/thaiim.jar \
 	jre/lib/charsets.jar \
+	jre/lib/management-agent.jar \
+	jre/lib/plugin.jar \
+	jre/lib/resources.jar \
+	jre/lib/javaws.jar \
+	jre/lib/deploy.jar \
+	jre/lib/alt-rt.jar \
+	jre/lib/alt-string.jar \
 
 control: control-stamp
 control-stamp: debian/control $(ia32_packaging_files) $(packaging_files)
