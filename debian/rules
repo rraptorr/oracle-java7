@@ -189,20 +189,6 @@ common_jre_jars = \
 	jre/lib/im/thaiim.jar \
 	jre/lib/charsets.jar \
 
-version_tag	:= $(shell dpkg-parsechangelog | \
-			sed -ne 's/Version: *\([0-9]\+:\)*//p')
-
-tag:
-	cvs tag -c -F $(subst .,_,$(ctp_tag)_debian_version_$(version_tag))
-ifeq ($(findstring -,$(version_tag)),)
-	cvs tag -c -F $(subst .,_,$(ctp_tag)_upstream_version_$(version_tag))
-endif
-
-showtags:
-	@echo Version: $(version)
-	@echo Release: $(release)
-	@echo CTP tag: $(ctp_tag)
-
 control: control-stamp
 control-stamp: debian/control $(ia32_packaging_files) $(packaging_files)
 	touch control-stamp
