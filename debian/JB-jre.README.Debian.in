@@ -18,8 +18,6 @@ Installation of extensions:
   in /@basedir@/jre/lib/<ARCH>).
   Packages should depend on @JRE@ or @JDK@ if
   development tools are required.
-(<ARCH> currently is 'i386' for all x86 machines, 'sparc' for all sparc
-machines, and '`uname -m`' for all other machines)
 
 
 Debian Java Repository:

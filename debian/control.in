@@ -27,7 +27,7 @@ Description: @vendor@ Java(TM) Runtime Environment (JRE) @RELEASE@ (architecture
 
 Package: @basename@-bin
 Section: non-free/java
-Architecture: amd64 i386 lpia
+Architecture: amd64 i386
 Depends: @basename@-jre (>= @pkg_version@), ${odbc:Depends}, ${shlibs:Depends}, ${misc:Depends}
 Recommends: ${shlibs:Recommends}
 Suggests: binfmt-support
@@ -44,7 +44,7 @@ Description: @vendor@ Java(TM) Runtime Environment (JRE) @RELEASE@ (architecture
  This package contains architecture dependent files.
 
 Package: @basename@-plugin
-Architecture: amd64 i386 lpia
+Architecture: amd64 i386
 Section: non-free/web
 Priority: optional
 Depends: ${shlibs:Depends}, ${misc:Depends}, @basename@-bin (>= @pkg_version@), @browsers@
@@ -86,7 +86,7 @@ Description: Lucida TrueType fonts (from the @vendor@ JRE)
  This package makes the fonts available to defoma.
 
 Package: @basename@-jdk
-Architecture: amd64 i386 lpia
+Architecture: amd64 i386
 Depends: @basename@-bin (>= @pkg_version@), ${shlibs:Depends}, ${misc:Depends}
 Suggests: @basename@-demo, default-jdk-doc, @basename@-source
 Provides: java-compiler, java2-compiler, java-sdk, java2-sdk, java5-sdk, java6-sdk
@@ -99,7 +99,7 @@ Description: @vendor@ Java(TM) Development Kit (JDK) @RELEASE@
  Platform.
 
 Package: @basename@-demo
-Architecture: amd64 i386 lpia
+Architecture: amd64 i386
 Depends: @basename@-jre (>= @pkg_version@), @basename@-jdk (>= @pkg_version@), ${shlibs:Depends}, ${misc:Depends}
 Replaces: @basename@-jdk
 Enhances: @basename@-jdk

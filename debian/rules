@@ -13,8 +13,8 @@ distrelease	:= $(shell lsb_release -cs)
 
 DEB_HOST_ARCH	?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
 
-arch_map	:= amd64=x64 i386=i586 lpia=i586 powerpc=ppc sparc=sparc
-archdir_map	:= amd64=amd64 i386=i386 lpia=i386 powerpc=ppc sparc=sparc
+arch_map	:= amd64=x64 i386=i586
+archdir_map	:= amd64=amd64 i386=i386
 
 arch		:= $(strip $(patsubst $(DEB_HOST_ARCH)=%, %, \
 			$(filter $(DEB_HOST_ARCH)=%, $(arch_map))))
@@ -30,8 +30,8 @@ RELEASE		:= $(shell echo $(word 2, $(dirparts)) | sed 's/^[a-z]*//')
 # where to get it?
 relstring	:= 6
 PRODUCT		:= $(javaname)$(RELEASE)
-srcname		= $(VENDOR)-$(PRODUCT)
-basename	= $(ia32_prefix)$(VENDOR)-$(PRODUCT)
+srcname		:= $(VENDOR)-$(PRODUCT)
+basename	:= $(ia32_prefix)$(VENDOR)-$(PRODUCT)
 dirpartsv	:= $(shell echo $(word 3, $(dirparts)) | tr '.' ' ')
 version		:= $(word 1, $(dirpartsv))
 releng_ver	:= $(word 2, $(dirpartsv))
@@ -40,19 +40,14 @@ unpackdir	:= jdk$(jdkversion)_$(releng_ver)
 jdirname	:= $(ia32_prefix)java-$(version)-$(VENDOR)-$(jdkversion).$(releng_ver)
 jdiralias	:= $(ia32_prefix)java-$(version)-$(VENDOR)
 srcdir		:= $(arch)-jdk
-bin_pattern	= jdk-$(version)u$(releng_ver)-linux-%.bin
-all_archs	= $(filter $(subst =, , $(arch_map)), \
-			   $(subst -, , $(patsubst %.bin, %, $(wildcard *.bin))))
+bin_pattern	:= jdk-$(version)u$(releng_ver)-linux-%.bin
+all_archs	:= $(filter $(subst =, , $(arch_map)), \
+			    $(subst -, , $(patsubst %.bin, %, $(wildcard *.bin))))
 priority	:= 63
-
-tag		:= $(strip $(subst .,, $(RELEASE)))
 
 basedir		= $(TOP)/$(jdirname)
 doc		:= usr/share/doc
 security	:= etc/$(jdiralias)/security
-
-bd_plugin = \
-	$(if $(filter $(distribution),Debian),libxul-dev,$(if $(filter $(distrelease),hardy),xulrunner-1.9-dev,firefox-dev))
 
 browser_plugin_dirs = xulrunner-addons firefox iceape iceweasel mozilla midbrowser xulrunner konqueror
 browsers = firefox | firefox-2 | iceweasel | mozilla-firefox | iceape-browser | mozilla-browser | epiphany-gecko | epiphany-webkit | epiphany-browser | galeon | midbrowser | moblin-web-browser | xulrunner | xulrunner-1.9 | konqueror | chromium-browser | midori | google-chrome
@@ -128,7 +123,7 @@ d_javadb	:= debian/$(p_javadb)
 
 binary_arch_targets	= \
     $(patsubst %, binary-%, $(p_jbin) $(p_jdk) $(p_demo))
-ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386 lpia))
+ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386))
     binary_arch_targets	+= binary-$(p_plug)
 endif
 ifeq ($(with_ia32),yes)
@@ -244,7 +239,6 @@ packaging-files:
 	      -e 's/@arch@/$(DEB_HOST_ARCH)/g' \
 	      -e 's/@sarch@/$(arch)/g' \
 	      -e 's/@archdir@/$(archdir)/g' \
-	      -e 's/@tag@/$(tag)/g' \
 	      -e 's/@ia32txt@/$(ia32txt)/g' \
 	      -e 's/@priority@/$(priority)/g' \
 	      -e 's/@jre_tools@/$(jre_tools_alt)/g' \
@@ -253,7 +247,7 @@ packaging-files:
 	      -e 's,@java_launcher@,$(java_launcher),g' \
 	    $$f > $$f2; \
 	done
-ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386 lpia))
+ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386))
 	cat debian/$(p_jbin)-i586.menu >> $(d_jbin).menu
 	rm -f debian/$(p_jbin)-i586.menu
 endif
@@ -519,7 +513,7 @@ binary-$(p_jbin):	build
 	      $(d_jbin)/usr/share/applications/
 	cp -p debian/$(basename)-policytool.desktop \
 	      $(d_jbin)/usr/share/applications/
-ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386 lpia))
+ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386))
 	cp -p debian/$(basename)-{java,javaws}.desktop \
 	      $(d_jbin)/usr/share/applications/
 	cp -p debian/$(basename)-{controlpanel,policytool}.desktop \
