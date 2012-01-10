@@ -1,29 +1,37 @@
 1. Introduction
 
 Due to licensing problems Java 6 was recently removed from Debian
-testing and Debian stable was stuck with Java 6u26. Given security
-updates in later Java versions, this is leaves no choice, but manual
-Java update (OpenJDK not being an alternative for many).
+testing and Debian stable/oldstable was stuck with Java 6u26. Given
+security updates in later Java versions, this is leaves no choice, but
+manual Java update (OpenJDK not being an alternative for many).
 
 I didn't like the idea of installing Java by hand on my Debian
 systems, so I've looked for updated Java packages. As I was unable to
 find ones, I've decided to make my own, so I've pulled latest package
-sources from Debian Subversion repository and adapted it to latest
-Java 6.
+sources from the Debian Subversion repository and adapted it to the
+latest Java 6.
 
 2. Supported Debian versions
 
-So far packages were tested on following versions:
+So far packages were tested on following Debian versions:
 - wheezy i386/amd64
 - squeeze i386/amd64
 - lenny i386/amd64
 
+Packages are compatible with "official" Debian ones. I've only adapted
+them to the newest Java 6 and I've removed licensing stuff (since it
+does not apply anymore) and some obsolete code from rules. For details
+of changes see 'changelog' file.
+
 3. Usage
 
 To create packages on your own:
+- apt-get install dpkg-dev
 - git clone git://github.com/rraptorr/sun-java6.git sun-java6-6.30
 - cd sun-java6-6.30
 - Download jdk-6u30-linux-i586.bin and jdk-6u30-linux-x64.bin from
   http://www.oracle.com/technetwork/java/javase/downloads/index.html
   (yes, both, no matter which version you will run)
 - dpkg-buildpackage -b
+- install any missing packages that dpkg-buildpackage complains about
+  and repeat
