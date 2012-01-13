@@ -27,15 +27,13 @@ VENDOR		:= $(word 1, $(dirparts))
 Vendor		:= $(shell perl -e 'print ucfirst("$(VENDOR)");')
 javaname	:= $(shell echo $(word 2, $(dirparts)) | sed 's/[0-9.]*$$//')
 RELEASE		:= $(shell echo $(word 2, $(dirparts)) | sed 's/^[a-z]*//')
-# where to get it?
-relstring	:= 6
 PRODUCT		:= $(javaname)$(RELEASE)
 srcname		:= $(VENDOR)-$(PRODUCT)
 basename	:= $(ia32_prefix)$(VENDOR)-$(PRODUCT)
-dirpartsv	:= $(shell echo $(word 3, $(dirparts)) | tr '.' ' ')
+dirpartsv	:= $(shell dpkg-parsechangelog | sed -ne '/Version:/ s,Version: \(.*\),\1,p' | tr '.-' ' ')
 version		:= $(word 1, $(dirpartsv))
 releng_ver	:= $(word 2, $(dirpartsv))
-jdkversion	:= 1.6.0
+jdkversion	:= 1.$(version).0
 unpackdir	:= jdk$(jdkversion)_$(releng_ver)
 jdirname	:= $(ia32_prefix)java-$(version)-$(VENDOR)-$(jdkversion).$(releng_ver)
 jdiralias	:= $(ia32_prefix)java-$(version)-$(VENDOR)
@@ -200,7 +198,7 @@ debian/control: debian/control.in debian/rules
 	      -e 's/@srcname@/$(srcname)/g' \
 	      -e 's/@arch@/$(DEB_HOST_ARCH)/g' \
 	      -e 's/@sarch@/$(arch)/g' \
-	      -e 's/@RELEASE@/$(relstring)/g' \
+	      -e 's/@RELEASE@/$(RELEASE)/g' \
 	      -e 's/@archdir@/$(archdir)/g' \
 	      -e 's/@browsers@/$(browsers)/g' \
 	      -e 's/@cjk_fonts@/$(cjk_fonts)/g' \
@@ -228,7 +226,7 @@ packaging-files:
 	  sed -e 's/@JRE@/$(p_jre)/g' \
 	      -e 's/@JDK@/$(p_jdk)/g' \
 	      -e 's/@vendor@/$(Vendor)/g' \
-	      -e 's/@RELEASE@/$(relstring)/g' \
+	      -e 's/@RELEASE@/$(RELEASE)/g' \
 	      -e 's/@basename@/$(basename)/g' \
 	      -e 's,@TOP@,$(TOP),g' \
 	      -e 's,@basedir@,$(basedir),g' \

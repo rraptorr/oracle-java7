@@ -1,3 +1,9 @@
+sun-java6 (6.30-3) unstable; urgency=low
+
+  * Detect Java version from changelog instead of directory name
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Fri, 13 Jan 2012 17:58:31 +0100
+
 sun-java6 (6.30-2) unstable; urgency=low
 
   * Remove libnss-mdns from Suggests
