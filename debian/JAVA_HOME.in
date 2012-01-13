@@ -6,7 +6,7 @@
    be no need for JAVA_HOME as Java(TM) should be completely
    integrated with your Debian GNU/Linux system.
 
-   For reference, the setting of JAVA_HOME for Sun Java is:
+   For reference, the setting of JAVA_HOME for Oracle Java is:
      JAVA_HOME=/@TOP@/@jdiralias@
 
 2. Selecting @basename@ as the default Java(TM) implementation

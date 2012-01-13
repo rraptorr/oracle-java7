@@ -1,96 +1,96 @@
-Source: sun-java6
+Source: oracle-java7
 Section: non-free/java
 Priority: optional
 Maintainer: Janusz Dziemidowicz <rraptorr@nails.eu.org>
 Build-Depends: debhelper (>= 5.0.51~), lsb-release, defoma, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, lib32asound2 [amd64], ia32-libs [amd64]
 Standards-Version: 3.9.2
 
-Package: sun-java6-jre
+Package: oracle-java7-jre
 Section: non-free/java
 Architecture: all
-Provides: java-virtual-machine, java-runtime, java2-runtime, java5-runtime, java6-runtime, java-runtime-headless, java2-runtime-headless, java5-runtime-headless, java6-runtime-headless
-Depends: java-common (>= 0.24), locales, sun-java6-bin (>= ${source:Version}) | ia32-sun-java6-bin (>= ${source:Version}), ${misc:Depends}
+Provides: java-virtual-machine, java-runtime, java2-runtime, java5-runtime, java6-runtime, java7-runtime, java-runtime-headless, java2-runtime-headless, java5-runtime-headless, java6-runtime-headless, java7-runtime-headless
+Depends: java-common (>= 0.24), locales, oracle-java7-bin (>= ${source:Version}) | ia32-oracle-java7-bin (>= ${source:Version}), ${misc:Depends}
 Recommends: gsfonts-x11
-Suggests: sun-java6-plugin, sun-java6-fonts, ttf-baekmuk | ttf-unfonts | ttf-unfonts-core, ttf-kochi-gothic | ttf-sazanami-gothic, ttf-kochi-mincho | ttf-sazanami-mincho, ttf-arphic-uming,
-Replaces: sun-java6-bin, ia32-sun-java6-bin
+Suggests: oracle-java7-plugin, oracle-java7-fonts, ttf-baekmuk | ttf-unfonts | ttf-unfonts-core, ttf-kochi-gothic | ttf-sazanami-gothic, ttf-kochi-mincho | ttf-sazanami-mincho, ttf-arphic-uming,
+Replaces: oracle-java7-bin, ia32-oracle-java7-bin
 Conflicts: j2se-common
-Description: Sun Java(TM) Runtime Environment (JRE) 6 (architecture independent files)
- The Sun Java Platform Standard Edition Runtime Environment (JRE) 6
+Description: Oracle Java(TM) Runtime Environment (JRE) 7 (architecture independent files)
+ The Oracle Java Platform Standard Edition Runtime Environment (JRE) 7
  contains the Java virtual machine, runtime class libraries, and 
  Java application launcher that are necessary to run programs written 
  in the Java progamming language. It is not a development environment and
  doesn't contain development tools such as compilers or debuggers.
- For development tools, see the Java Development Kit JDK(TM) 6
- (package sun-java6-jdk).
+ For development tools, see the Java Development Kit JDK(TM) 7
+ (package oracle-java7-jdk).
  .
  This package contains architecture independent files.
 
-Package: sun-java6-bin
+Package: oracle-java7-bin
 Section: non-free/java
 Architecture: amd64 i386
-Depends: sun-java6-jre (>= ${source:Version}), ${odbc:Depends}, ${shlibs:Depends}, ${misc:Depends}
+Depends: oracle-java7-jre (>= ${source:Version}), ${odbc:Depends}, ${shlibs:Depends}, ${misc:Depends}
 Recommends: ${shlibs:Recommends}
 Suggests: binfmt-support
 Conflicts: binfmt-support (<< 1.1.2)
-Description: Sun Java(TM) Runtime Environment (JRE) 6 (architecture dependent files)
- The Sun Java Platform Standard Edition Runtime Environment (JRE) 6
+Description: Oracle Java(TM) Runtime Environment (JRE) 7 (architecture dependent files)
+ The Oracle Java Platform Standard Edition Runtime Environment (JRE) 7
  contains the Java virtual machine, runtime class libraries, and 
  Java application launcher that are necessary to run programs written 
  in the Java progamming language. It is not a development environment and
  doesn't contain development tools such as compilers or debuggers.
- For development tools, see the Java Development Kit JDK(TM) 6
- (package sun-java6-jdk).
+ For development tools, see the Java Development Kit JDK(TM) 7
+ (package oracle-java7-jdk).
  .
  This package contains architecture dependent files.
 
-Package: sun-java6-plugin
+Package: oracle-java7-plugin
 Architecture: amd64 i386
 Section: non-free/web
 Priority: optional
-Depends: ${shlibs:Depends}, ${misc:Depends}, sun-java6-bin (>= ${source:Version}), firefox | firefox-2 | iceweasel | mozilla-firefox | iceape-browser | mozilla-browser | epiphany-gecko | epiphany-webkit | epiphany-browser | galeon | midbrowser | moblin-web-browser | xulrunner | xulrunner-1.9 | konqueror | chromium-browser | midori | google-chrome
+Depends: ${shlibs:Depends}, ${misc:Depends}, oracle-java7-bin (>= ${source:Version}), firefox | firefox-2 | iceweasel | mozilla-firefox | iceape-browser | mozilla-browser | epiphany-gecko | epiphany-webkit | epiphany-browser | galeon | midbrowser | moblin-web-browser | xulrunner | xulrunner-1.9 | konqueror | chromium-browser | midori | google-chrome
 Xb-Npp-Applications: ec8030f7-c20a-464f-9b0e-13a3a9e97384, 92650c4d-4b8e-4d2a-b7eb-24ecf4f6b63a 
-Xb-Npp-Name: The Java(TM) Plug-in, Java SE 6
-Xb-Npp-MimeType: application/x-java-vm, application/x-java-applet, application/x-java-applet;version=1.1, application/x-java-applet;version=1.1.1, application/x-java-applet;version=1.1.2, application/x-java-applet;version=1.1.3, application/x-java-applet;version=1.2, application/x-java-applet;version=1.2.1, application/x-java-applet;version=1.2.2, application/x-java-applet;version=1.3, application/x-java-applet;version=1.3.1, application/x-java-applet;version=1.4, application/x-java-applet;version=1.4.1, application/x-java-applet;version=1.4.2, application/x-java-applet;version=1.5, application/x-java-applet;version=1.6, application/x-java-applet;jpi-version=1.6.0_30, application/x-java-bean, application/x-java-bean;version=1.1, application/x-java-bean;version=1.1.1, application/x-java-bean;version=1.1.2, application/x-java-bean;version=1.1.3, application/x-java-bean;version=1.2, application/x-java-bean;version=1.2.1, application/x-java-bean;version=1.2.2, application/x-java-bean;version=1.3, application/x-java-bean;version=1.3.1, application/x-java-bean;version=1.4, application/x-java-bean;version=1.4.1, application/x-java-bean;version=1.4.2, application/x-java-bean;version=1.5, application/x-java-bean;version=1.6, application/x-java-bean;jpi-version=1.6.0_30, application/x-java-vm-npruntime
-Description: Java(TM) Plug-in, Java SE 6
- Java Plug-in enables applets written to the Java Platform 6 
+Xb-Npp-Name: The Java(TM) Plug-in, Java SE 7
+Xb-Npp-MimeType: application/x-java-vm, application/x-java-applet, application/x-java-applet;version=1.1, application/x-java-applet;version=1.1.1, application/x-java-applet;version=1.1.2, application/x-java-applet;version=1.1.3, application/x-java-applet;version=1.2, application/x-java-applet;version=1.2.1, application/x-java-applet;version=1.2.2, application/x-java-applet;version=1.3, application/x-java-applet;version=1.3.1, application/x-java-applet;version=1.4, application/x-java-applet;version=1.4.1, application/x-java-applet;version=1.4.2, application/x-java-applet;version=1.5, application/x-java-applet;version=1.6, application/x-java-applet;version=1.7, application/x-java-applet;jpi-version=1.7.0_02, application/x-java-bean, application/x-java-bean;version=1.1, application/x-java-bean;version=1.1.1, application/x-java-bean;version=1.1.2, application/x-java-bean;version=1.1.3, application/x-java-bean;version=1.2, application/x-java-bean;version=1.2.1, application/x-java-bean;version=1.2.2, application/x-java-bean;version=1.3, application/x-java-bean;version=1.3.1, application/x-java-bean;version=1.4, application/x-java-bean;version=1.4.1, application/x-java-bean;version=1.4.2, application/x-java-bean;version=1.5, application/x-java-bean;version=1.6, application/x-java-bean;version=1.7, application/x-java-bean;jpi-version=1.7.0_02, application/x-java-vm-npruntime
+Description: Java(TM) Plug-in, Java SE 7
+ Java Plug-in enables applets written to the Java Platform 7 
  specification to be run in Mozilla and other web browsers. 
  Java Plug-in comes with the Java Runtime Environment (JRE).
  .
  This is a metapackage containing dependencies for running Java in 
  various browsers.
 
-Package: ia32-sun-java6-bin
+Package: ia32-oracle-java7-bin
 Section: non-free/java
 Architecture: amd64
-Depends: sun-java6-jre (>= ${source:Version}), ia32-libs, ${shlibs:Depends}, ${odbc:Depends}, ${misc:Depends}
+Depends: oracle-java7-jre (>= ${source:Version}), ia32-libs, ${shlibs:Depends}, ${odbc:Depends}, ${misc:Depends}
 Recommends: ${shlibs:Recommends}, ia32-libs-gtk
-Description: Sun Java(TM) Runtime Environment (JRE) 6 (32-bit)
- The Sun Java Platform Standard Edition Runtime Environment (JRE) 6
+Description: Oracle Java(TM) Runtime Environment (JRE) 7 (32-bit)
+ The Oracle Java Platform Standard Edition Runtime Environment (JRE) 7
  contains the Java virtual machine, runtime class libraries, and 
  Java application launcher that are necessary to run programs written 
  in the Java progamming language. It is not a development environment and
  doesn't contain development tools such as compilers or debuggers.
- For development tools, see the Java Development Kit JDK(TM) 6
- (package sun-java6-jdk).
+ For development tools, see the Java Development Kit JDK(TM) 7
+ (package oracle-java7-jdk).
  .
  This package contains architecture dependent files for ia32.
 
-Package: sun-java6-fonts
+Package: oracle-java7-fonts
 Section: non-free/fonts
 Architecture: all
-Depends: sun-java6-jre (>= ${source:Version}), defoma, ${misc:Depends}
+Depends: oracle-java7-jre (>= ${source:Version}), defoma, ${misc:Depends}
 Provides: ttf-lucida
 Conflicts: ttf-lucida
-Description: Lucida TrueType fonts (from the Sun JRE)
- The Lucida fonts are included in the sun-java6-jre package.
+Description: Lucida TrueType fonts (from the Oracle JRE)
+ The Lucida fonts are included in the oracle-java7-jre package.
  This package makes the fonts available to defoma.
 
-Package: sun-java6-jdk
+Package: oracle-java7-jdk
 Architecture: amd64 i386
-Depends: sun-java6-bin (>= ${source:Version}), ${shlibs:Depends}, ${misc:Depends}
-Suggests: sun-java6-demo, default-jdk-doc, sun-java6-source
-Provides: java-compiler, java2-compiler, java-sdk, java2-sdk, java5-sdk, java6-sdk
-Description: Sun Java(TM) Development Kit (JDK) 6
+Depends: oracle-java7-bin (>= ${source:Version}), ${shlibs:Depends}, ${misc:Depends}
+Suggests: default-jdk-doc, oracle-java7-source
+Provides: java-compiler, java2-compiler, java-sdk, java2-sdk, java5-sdk, java6-sdk, java7-sdk
+Description: Oracle Java(TM) Development Kit (JDK) 7
  The JDK(TM) is a development environment for building applications, 
  applets, and components using the Java programming language.
  .
@@ -98,37 +98,25 @@ Description: Sun Java(TM) Development Kit (JDK) 6
  written in the Java programming language and running on the Java 
  Platform.
 
-Package: sun-java6-demo
-Architecture: amd64 i386
-Depends: sun-java6-jre (>= ${source:Version}), sun-java6-jdk (>= ${source:Version}), ${shlibs:Depends}, ${misc:Depends}
-Replaces: sun-java6-jdk
-Enhances: sun-java6-jdk
-Suggests: default-jdk-doc
-Description: Sun Java(TM) Development Kit (JDK) 6 demos and examples
- The JDK(TM) is a development environment for building applications, 
- applets, and components using the Java programming language.
- .
- This package contains the examples and demonstration files.
-
-Package: sun-java6-source
+Package: oracle-java7-source
 Architecture: all
-Depends: sun-java6-jdk (>= ${source:Version}), ${misc:Depends}
-Conflicts: sun-java6-src
-Replaces: sun-java6-src
-Description: Sun Java(TM) Development Kit (JDK) 6 source files
+Depends: oracle-java7-jdk (>= ${source:Version}), ${misc:Depends}
+Conflicts: oracle-java7-src
+Replaces: oracle-java7-src
+Description: Oracle Java(TM) Development Kit (JDK) 7 source files
  The JDK(TM) is a development environment for building applications, 
  applets, and components using the Java programming language.
  .
  This package contains the Java programming language source 
  files (src.zip) for all classes that make up the Java core API.
 
-Package: sun-java6-javadb
+Package: oracle-java7-javadb
 Architecture: all
 Section: non-free/java
-Depends: sun-java6-jdk (>= ${source:Version}), ${misc:Depends}
-Enhances: sun-java6-jdk
-Description: Java(TM) DB, Sun Microsystems' distribution of Apache Derby
- Java DB is Sun's supported distribution of the open source Apache 
+Depends: oracle-java7-jdk (>= ${source:Version}), ${misc:Depends}
+Enhances: oracle-java7-jdk
+Description: Java(TM) DB, Oracle's distribution of Apache Derby
+ Java DB is Oracle's supported distribution of the open source Apache 
  Derby 100% Java technology database. It is fully transactional, secure, 
  easy-to-use, standards-based -- SQL, JDBC API, and Java EE -- yet small, 
  only 2MB.

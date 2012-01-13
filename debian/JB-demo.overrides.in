@@ -1,5 +1,0 @@
-@basename@-demo: unstripped-binary-or-object @basedir@/demo/jvmti/*
-@basename@-demo: shlib-without-PT_GNU_STACK-section @basedir@/demo/jvmti/*
-@basename@-demo: codeless-jar usr/share/doc/sun-java6-jdk/demo/*
-@basename@-demo: codeless-jar usr/share/doc/sun-java6-jdk/examples/*
-@basename@-demo: menu-icon-too-big usr/share/pixmaps/sun-java6-app.xpm

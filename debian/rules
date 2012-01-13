@@ -28,22 +28,22 @@ Vendor		:= $(shell perl -e 'print ucfirst("$(VENDOR)");')
 javaname	:= $(shell echo $(word 2, $(dirparts)) | sed 's/[0-9.]*$$//')
 RELEASE		:= $(shell echo $(word 2, $(dirparts)) | sed 's/^[a-z]*//')
 # where to get it?
-relstring	:= 6
+relstring	:= 7
 PRODUCT		:= $(javaname)$(RELEASE)
 srcname		:= $(VENDOR)-$(PRODUCT)
 basename	:= $(ia32_prefix)$(VENDOR)-$(PRODUCT)
 dirpartsv	:= $(shell echo $(word 3, $(dirparts)) | tr '.' ' ')
 version		:= $(word 1, $(dirpartsv))
 releng_ver	:= $(word 2, $(dirpartsv))
-jdkversion	:= 1.6.0
-unpackdir	:= jdk$(jdkversion)_$(releng_ver)
+jdkversion	:= 1.7.0
+unpackdir	:= jdk$(jdkversion)_0$(releng_ver)
 jdirname	:= $(ia32_prefix)java-$(version)-$(VENDOR)-$(jdkversion).$(releng_ver)
 jdiralias	:= $(ia32_prefix)java-$(version)-$(VENDOR)
 srcdir		:= $(arch)-jdk
-bin_pattern	:= jdk-$(version)u$(releng_ver)-linux-%.bin
+bin_pattern	:= jdk-$(version)u$(releng_ver)-linux-%.tar.gz
 all_archs	:= $(filter $(subst =, , $(arch_map)), \
-			    $(subst -, , $(patsubst %.bin, %, $(wildcard *.bin))))
-priority	:= 63
+			    $(subst -, , $(patsubst %.tar.gz, %, $(wildcard *.tar.gz))))
+priority	:= 53
 
 basedir		= $(TOP)/$(jdirname)
 doc		:= usr/share/doc
@@ -108,7 +108,6 @@ p_jbin	:= $(basename)-bin
 p_jdk	:= $(basename)-jdk
 p_src	:= $(basename)-source
 p_fonts	:= $(basename)-fonts
-p_demo	:= $(basename)-demo
 p_plug	:= $(basename)-plugin
 p_javadb	:= $(basename)-javadb
 
@@ -116,13 +115,12 @@ d_jre	:= debian/$(p_jre)
 d_jbin	:= debian/$(p_jbin)
 d_jdk	:= debian/$(p_jdk)
 d_src	:= debian/$(p_src)
-d_demo	:= debian/$(p_demo)
 d_fonts	:= debian/$(p_fonts)
 d_plug	:= debian/$(p_plug)
 d_javadb	:= debian/$(p_javadb)
 
 binary_arch_targets	= \
-    $(patsubst %, binary-%, $(p_jbin) $(p_jdk) $(p_demo))
+    $(patsubst %, binary-%, $(p_jbin) $(p_jdk))
 ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386))
     binary_arch_targets	+= binary-$(p_plug)
 endif
@@ -171,16 +169,10 @@ common_jre_things = \
 common_jre_jars = \
 	jre/lib/ext/dnsns.jar \
 	jre/lib/ext/localedata.jar \
-	jre/lib/im/indicim.jar \
-	jre/lib/im/thaiim.jar \
 	jre/lib/charsets.jar \
 	jre/lib/management-agent.jar \
-	jre/lib/plugin.jar \
 	jre/lib/resources.jar \
-	jre/lib/javaws.jar \
-	jre/lib/deploy.jar \
 	jre/lib/alt-rt.jar \
-	jre/lib/alt-string.jar \
 
 control: control-stamp
 control-stamp: debian/control $(ia32_packaging_files) $(packaging_files)
@@ -282,8 +274,8 @@ compare-jre-jars:
 	  exit 1; \
 	fi
 
-diff_ignore = -I 'Thursday, November 10' \
-	-I 'Thu Nov 10' -I '^ *// java GenerateCharacter'
+diff_ignore = -I 'Thursday, November 17' \
+	-I 'Thu Nov 17' -I '^ *// java GenerateCharacter'
 
 with_check = yes
 
@@ -350,11 +342,7 @@ unpack-amd64-stamp: unpack-i586-stamp
 
 unpack-%-stamp: $(bin_pattern)
 	rm -rf $(unpackdir)
-	binsize=$$(wc -c $< | awk '{print $$1}'); \
-	zipstart=$$(unzip -ql $< 2>&1 >/dev/null \
-			| sed -n -e 's/.* \([0-9][0-9]*\) extra bytes.*/\1/p'); \
-	tail -c $$(expr $$binsize - $$zipstart) $< > tmp-jdk.zip
-	unzip -q tmp-jdk.zip
+	tar xf $<
 	mv $(unpackdir) $*-jdk
 	@echo $*
 
@@ -736,18 +724,6 @@ binary-$(p_jdk):	build
 	cp -p debian/$(p_jdk).overrides \
 		$(d_jdk)/$(lintian_overrides)/$(p_jdk)
 
-ifneq (,$(findstring demo, $(NO_PACKAGES)))
-	cp -a $(srcdir)/demo $(d_jdk)/usr/share/doc/$(p_jdk)/
-	cp -a $(srcdir)/sample $(d_jdk)/usr/share/doc/$(p_jdk)/examples
-
-	echo usr/share/doc/$(p_jdk)/demo $(basedir)/demo >> $(d_jdk).links
-	echo usr/share/doc/$(p_jdk)/examples $(basedir)/sample >> $(d_jdk).links
-
-	: # add lintian overrides
-	cat debian/$(p_demo).overrides \
-		>> $(d_jdk)/usr/share/lintian/overrides/$(p_jdk)
-endif
-
 	for m in $$(find $(srcdir)/man/man1 -type f); do \
 	  n=$$(basename $$m .1); \
 	  case " $(jre_tools) $(corba_tools) " in *\ $$n\ *) continue; esac; \
@@ -768,46 +744,6 @@ endif
 	dh_installdocs \
 		$(srcdir)/README.html debian/README.alternatives
 	dh_installchangelogs
-
-
-binary-$(p_demo):	DH_OPTIONS=-p$(p_demo)
-binary-$(p_demo):	build
-	dh_testdir
-	dh_testroot
-	dh_clean -d
-	dh_installdirs \
-		usr/share/doc/$(p_jdk) \
-		usr/share/pixmaps \
-		$(basedir)/demo \
-		$(lintian_overrides)
-
-	cp -a $(srcdir)/demo $(d_demo)/usr/share/doc/$(p_jdk)/
-	cp -a $(srcdir)/sample $(d_demo)/usr/share/doc/$(p_jdk)/examples
-	mv $(d_demo)/usr/share/doc/$(p_jdk)/demo/jvmti \
-	  $(d_demo)/$(basedir)/demo/
-
-	: # fix permissions
-	chmod 755 $(d_demo)/usr/share/doc/$(p_jdk)/examples/scripting/scriptpad/src/scripts/memory.sh
-
-	echo usr/share/doc/$(p_jdk)/examples $(basedir)/sample > $(d_demo).links
-	for i in $(srcdir)/demo/*; do \
-	  i=$$(basename $$i); \
-	  case "$$i" in jvmti) continue; esac; \
-	  echo usr/share/doc/$(p_jdk)/demo/$$i $(basedir)/demo/$$i >> $(d_demo).links; \
-	done
-	echo $(basedir)/demo/jvmti usr/share/doc/$(p_jdk)/demo/jvmti >> $(d_demo).links
-
-	cp -p debian/sun_java_app.xpm \
-		$(d_demo)/usr/share/pixmaps/$(basename)-app.xpm
-
-	: # add lintian overrides
-	cp -p debian/$(p_demo).overrides \
-		$(d_demo)/$(lintian_overrides)/$(p_demo)
-
-	ld_path=$(d_jbin)/$(basedir)/jre/lib/$(archdir) \
-	    dh_shlibdeps \
-
-	echo usr/share/doc/$(p_jdk) usr/share/doc/$(p_demo) >> $(d_demo).links
 
 
 binary-$(p_src):	DH_OPTIONS=-p$(p_src)
@@ -841,13 +777,6 @@ binary-$(p_javadb):	build
 
 	dh_installdocs
 	dh_installchangelogs
-	mv $(d_javadb)/$(basedir)/db/demo $(d_javadb)/usr/share/doc/$(p_javadb)/
-	mv $(d_javadb)/$(basedir)/db/docs/* $(d_javadb)/usr/share/doc/$(p_javadb)/
-	mv $(d_javadb)/$(basedir)/db/javadoc $(d_javadb)/usr/share/doc/$(p_javadb)/
-	rmdir $(d_javadb)/$(basedir)/db/docs
-	echo usr/share/doc/$(p_javadb)/demo $(basedir)/db/demo >> $(d_javadb).links
-	echo usr/share/doc/$(p_javadb) $(basedir)/db/docs >> $(d_javadb).links
-	echo usr/share/doc/$(p_javadb)/javadoc $(basedir)/db/javadoc >> $(d_javadb).links
 	find $(d_javadb)/$(basedir)/db  -name '*.bat' -o -name '*.ksh' | xargs chmod 644
 
 

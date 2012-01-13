@@ -1,4 +1,4 @@
-jdk-*-linux-*.bin
+jdk-*-linux-*.tar.gz
 i586-jdk
 x64-jdk
 tmp-i586
@@ -7,18 +7,17 @@ tmp-jdk.zip
 
 debian/JAVA_HOME
 debian/README.alternatives
-debian/sun-java6-jre.README.Debian
+debian/oracle-java7-jre.README.Debian
 
 debian/files
-debian/ia32-sun-java6-bin
-debian/sun-java6-bin
-debian/sun-java6-demo
-debian/sun-java6-fonts
-debian/sun-java6-javadb
-debian/sun-java6-jdk
-debian/sun-java6-jre
-debian/sun-java6-plugin
-debian/sun-java6-source
+debian/ia32-oracle-java7-bin
+debian/oracle-java7-bin
+debian/oracle-java7-fonts
+debian/oracle-java7-javadb
+debian/oracle-java7-jdk
+debian/oracle-java7-jre
+debian/oracle-java7-plugin
+debian/oracle-java7-source
 
 *-stamp
 debian/control.old

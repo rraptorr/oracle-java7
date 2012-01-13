@@ -9,13 +9,13 @@ script can be used to set a bunch of jre/jdk alternatives:
 
 - Set all runtime tools to point to the @basename@ alternatives:
 
-  update-java-alternatives --jre --set java-6-sun
+  update-java-alternatives --jre --set java-7-oracle
 
 
 - Set all runtime and development tools to point to the @basename@
   alternatives:
 
-  update-java-alternatives --set java-6-sun
+  update-java-alternatives --set java-7-oracle
 
 
 - Set all runtime and development tools to auto mode:
