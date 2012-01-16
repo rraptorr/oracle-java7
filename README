@@ -1,10 +1,17 @@
 1. Introduction
 
-Work in progress on Java 7 packages for Debian.
+Java 7 packages for Debian.
 
 2. Supported Debian versions
 
-None, but it should build on lenny/squeeze/wheezy;)
+So far packages were tested on following Debian versions:
+- wheezy i386/amd64
+- squeeze i386/amd64
+- lenny i386/amd64
+
+Packages are compatible with "official" Debian ones of Java 6, but
+have a lower priority (use update-java-alternatives if you have Java 6
+already installed).
 
 3. Usage
 
