@@ -247,7 +247,7 @@ ia32-packaging-files:
 	$(MAKE) -f debian/rules packaging-files \
 		ia32_prefix=ia32- \
 		packaging_files= \
-		priority=15 \
+		priority=13 \
 		DEB_HOST_ARCH=i386
 
 compare-jre-jars:
@@ -614,6 +614,7 @@ ia32-binary-bin: unpack-stamp
 	$(MAKE) -f debian/rules binary-ia32-$(p_jbin) \
 		ia32_prefix=ia32- \
 		packaging_files= \
+		priority=13 \
 		DEB_HOST_ARCH=i386
 
 	for i in $(common_jre_things) $(common_jre_jars); do \
