@@ -17,7 +17,7 @@ already installed).
 
 To create packages on your own:
 - apt-get install dpkg-dev
-- git clone git://github.com/rraptorr/sun-java6.git --branch oracle-java7 oracle-java7
+- git clone git://github.com/rraptorr/oracle-java7.git
 - cd oracle-java7
 - Download jdk-7u2-linux-i586.tar.gz and jdk-7u2-linux-x64.tar.gz from
   http://www.oracle.com/technetwork/java/javase/downloads/index.html
