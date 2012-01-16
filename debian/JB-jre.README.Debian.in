@@ -46,7 +46,7 @@ Java Cryptography Extension (JCE) support:
 ==========================================
 For legal reason, JCE support in this environment is limited to
 smaller key sizes.  Please see
-<https://cds.sun.com/is-bin/INTERSHOP.enfinity/WFS/CDS-CDS_Developer-Site/en_US/-/USD/ViewProductDetail-Start?ProductRef=jce_policy-6-oth-JPR@CDS-CDS_Developer>
+<http://www.oracle.com/technetwork/java/javase/downloads/jce-7-download-432124.html>
 for the Unlimited Strength Jurisdiction Policy Files. It is recommended to use
 dpkg-divert before replacing installed files to avoid upgrade problems in the
 future:
