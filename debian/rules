@@ -22,7 +22,7 @@ archdir		:= $(strip $(patsubst $(DEB_HOST_ARCH)=%, %, \
 			$(filter $(DEB_HOST_ARCH)=%, $(archdir_map))))
 
 TOP		:= usr/lib/jvm
-dirparts	:= $(shell basename $(CURDIR) | tr '-' ' ')
+dirparts	:= $(shell dpkg-parsechangelog | sed -ne '/Source:/ s,Source: \(.*\),\1,p' | tr '-' ' ')
 VENDOR		:= $(word 1, $(dirparts))
 Vendor		:= $(shell perl -e 'print ucfirst("$(VENDOR)");')
 javaname	:= $(shell echo $(word 2, $(dirparts)) | sed 's/[0-9.]*$$//')
