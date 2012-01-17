@@ -668,10 +668,6 @@ binary-$(p_plug):	#binary-$(p_jbin)
 		$(foreach d, $(browser_plugin_dirs), usr/lib/$(d)/plugins)
 	ln -s $(p_jbin) $(d_plug)/usr/share/doc/$(p_plug)
 
-	: # add lintian overrides
-	cp -p debian/$(p_plug).overrides \
-		$(d_plug)/$(lintian_overrides)/$(p_plug)
-
 binary-$(p_fonts):	DH_OPTIONS=-p$(p_fonts)
 binary-$(p_fonts):	build
 	dh_testroot
