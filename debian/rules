@@ -147,13 +147,11 @@ jre_manpages_re:= $(shell echo $(jre_tools) $(corba_tools) | tr -s ' ' '|')
 # TODO: unpack both tarballs, compare them to ensure we do things right
 # these are identical files / directories
 common_jre_things = \
-	jre/lib/audio \
 	jre/lib/cmm \
 	jre/lib/fonts \
 	jre/lib/images/cursors \
 	jre/lib/oblique-fonts \
 	jre/lib/zi \
-	jre/lib/jsse.jar \
 	jre/lib/jce.jar \
 	jre/lib/ext/sunjce_provider.jar \
 	jre/lib/ext/sunpkcs11.jar \
@@ -173,6 +171,7 @@ common_jre_jars = \
 	jre/lib/management-agent.jar \
 	jre/lib/resources.jar \
 	jre/lib/alt-rt.jar \
+	jre/lib/jsse.jar \
 
 control: control-stamp
 control-stamp: debian/control $(ia32_packaging_files) $(packaging_files)
@@ -277,10 +276,7 @@ compare-jre-jars:
 diff_ignore = -I 'Thursday, November 17' \
 	-I 'Thu Nov 17' -I '^ *// java GenerateCharacter'
 
-with_check = yes
-
 unpack-stamp: $(foreach a, $(all_archs), unpack-$(a)-stamp)
-ifeq ($(with_check),yes)
 	: # check for identical files / trees
 	set -e; set -- $(all_archs); a1=$$1; shift; \
 	for a2; do \
@@ -291,7 +287,7 @@ ifeq ($(with_check),yes)
 	      echo "    OK"; \
 	    else \
 	      echo "    differ"; \
-	      badjars="$$badthings $$i"; \
+	      badthings="$$badthings $$i"; \
 	    fi; \
 	  done; \
 	done; \
@@ -335,7 +331,6 @@ ifeq ($(with_check),yes)
 	done
 
 	@echo No relevant differences
-endif
 	touch unpack-stamp
 
 unpack-amd64-stamp: unpack-i586-stamp

@@ -3,7 +3,6 @@ i586-jdk
 x64-jdk
 tmp-i586
 tmp-x64
-tmp-jdk.zip
 
 debian/JAVA_HOME
 debian/README.alternatives
@@ -36,3 +35,4 @@ debian/*.links
 debian/*.desktop
 debian/*.defoma-hints
 debian/*.doc-base
+debian/*.tmp
