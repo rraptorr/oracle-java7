@@ -725,6 +725,9 @@ binary-$(p_jdk):	build
 	cp -p debian/$(p_jdk).overrides \
 		$(d_jdk)/$(lintian_overrides)/$(p_jdk)
 
+	: # fix permissions
+	chmod 755 $(d_jdk)/$(basedir)/lib/visualvm/platform/lib/nbexec
+
 	for m in $$(find $(srcdir)/man/man1 -type f); do \
 	  n=$$(basename $$m .1); \
 	  case " $(jre_tools) $(corba_tools) " in *\ $$n\ *) continue; esac; \

@@ -2,3 +2,5 @@
 @basename@-jdk: shlib-without-PT_GNU_STACK-section @basedir@/lib/*
 @basename@-jdk: unstripped-binary-or-object @basedir@/bin/*
 @basename@-jdk: unstripped-binary-or-object @basedir@/lib/*
+@basename@-jdk: menu-icon-missing usr/share/pixmaps/oracle-java7.xpm
+@basename@-jdk: new-package-should-close-itp-bug

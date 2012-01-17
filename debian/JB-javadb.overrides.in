@@ -1,1 +1,2 @@
 @basename@-javadb: extra-license-file @basedir@/db/LICENSE
+@basename@-javadb: new-package-should-close-itp-bug
