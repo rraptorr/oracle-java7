@@ -158,9 +158,12 @@ common_jre_things = \
 	jre/lib/ext/sunec.jar \
 	jre/lib/security/local_policy.jar \
 	jre/lib/security/US_export_policy.jar \
+	jre/lib/locale \
 	jre/COPYRIGHT \
 	jre/LICENSE \
 	jre/THIRDPARTYLICENSEREADME.txt \
+	jre/README \
+	jre/Welcome.html \
 
 # jar files, whith the same contents; just the time stamps differ
 common_jre_jars = \
