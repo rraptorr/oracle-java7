@@ -180,7 +180,9 @@ control: control-stamp
 control-stamp: debian/control $(ia32_packaging_files) $(packaging_files)
 	touch control-stamp
 
-build: build-stamp
+build: build-arch build-indep
+build-arch: build-stamp
+build-indep: build-stamp
 build-stamp: info unpack-stamp control-stamp
 	touch build-stamp
 

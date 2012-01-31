@@ -1,9 +1,0 @@
-# the license requires these tight dependencies :-/
-oracle-java7 source: not-binnmuable-all-depends-any
-oracle-java7 source: not-binnmuable-any-depends-all
-
-# keep dh_desktop to be able to build on older releases
-oracle-java7 source: dh_desktop-is-deprecated
-
-# dh_icons is only called conditionally
-oracle-java7 source: debhelper-script-needs-versioned-build-depends
