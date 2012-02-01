@@ -365,7 +365,6 @@ unpack-%-stamp: $(bin_pattern)
 clean:
 	dh_testdir
 	dh_testroot
-	rm -f *-stamp
 	rm -rf x64-jdk i586-jdk tmp-* $(unpackdir)
 	rm -f debian/*.debhelper debian/more debian/control.old
 	rm -f debian/$(p_jbin).substvars.tmp
@@ -391,7 +390,7 @@ binary-$(p_jbin):	DH_OPTIONS=-p$(p_jbin) $(NO_PACKAGES)
 binary-$(p_jbin):	build
 	dh_testdir
 	dh_testroot
-	dh_clean -d
+	dh_prep
 	dh_installdirs \
 		usr/share/doc \
 		etc/$(jdiralias)/security \
@@ -560,13 +559,12 @@ endif
 		$(d_jbin).substvars > $(d_jbin).substvars.tmp
 	rm -f debian/$(p_jbin).substvars
 	ld_path=$(d_jbin)/$(basedir)/jre/lib/$(archdir) \
-	    dh_shlibdeps -v \
+	    dh_shlibdeps \
 		-l$$ld_path:$$ld_path/client:$$ld_path/native_threads:$$ld_path/headless \
-		-Xjavaws -Xawt_robot -Xpolicytool \
+		-Xjavaws -Xpolicytool \
 		-Xlibjavaplugin -Xlibawt -Xlibjawt -Xlibmawt -Xlibdcpr \
-		-Xlibfontmanager -XlibXm -Xlibjsoundalsa  -X_g.so \
-		-Xlibsplashscreen -Xlibmawt -Xlibmlib \
-		-Xlibdeploy
+		-Xlibfontmanager -Xlibjsoundalsa  -X_g.so \
+		-Xlibsplashscreen -Xlibmlib -Xlibdeploy
 	sed -i -e 's/ *([^,]*) *//g' $(d_jbin).substvars
 	cat $(d_jbin).substvars.tmp >> $(d_jbin).substvars
 ifeq (,$(ia32_prefix))
@@ -626,7 +624,7 @@ binary-$(p_jre):	DH_OPTIONS=-p$(p_jre)
 binary-$(p_jre):	#binary-$(p_jbin)
 	dh_testdir
 	dh_testroot
-	dh_clean -d
+	dh_prep
 	dh_installdirs \
 		$(basedir)/jre \
 		usr/share/doc \
@@ -661,7 +659,7 @@ binary-$(p_plug):	DH_OPTIONS=-p$(p_plug)
 binary-$(p_plug):	#binary-$(p_jbin)
 	dh_testdir
 	dh_testroot
-	dh_clean -d
+	dh_prep
 	dh_installdirs \
 		usr/share/doc \
 		$(lintian_overrides) \
@@ -671,7 +669,7 @@ binary-$(p_plug):	#binary-$(p_jbin)
 binary-$(p_fonts):	DH_OPTIONS=-p$(p_fonts)
 binary-$(p_fonts):	build
 	dh_testroot
-	dh_clean -d
+	dh_prep
 	dh_installdirs \
 		usr/share/doc \
 		usr/share/fonts/truetype/ttf-lucida
@@ -689,7 +687,7 @@ binary-$(p_jdk):	DH_OPTIONS=-p$(p_jdk)
 binary-$(p_jdk):	build
 	dh_testdir
 	dh_testroot
-	dh_clean -d
+	dh_prep
 	dh_installdirs \
 		usr/share/doc/$(p_jdk) \
 		$(basedir)/jre/lib/$(archdir) \
@@ -750,7 +748,7 @@ binary-$(p_src):	DH_OPTIONS=-p$(p_src)
 binary-$(p_src):	build
 	dh_testdir
 	dh_testroot
-	dh_clean -d
+	dh_prep
 	dh_installdirs \
 		usr/share/doc \
 		$(basedir)
@@ -764,7 +762,7 @@ binary-$(p_javadb):	DH_OPTIONS=-p$(p_javadb)
 binary-$(p_javadb):	build
 	dh_testdir
 	dh_testroot
-	dh_clean -d
+	dh_prep
 	dh_installdirs \
 		$(basedir) \
 		$(lintian_overrides) \
@@ -786,7 +784,7 @@ binary-indep:	$(binary_indep_targets)
 	dh_testroot
 	dh_installmime
 	dh_installmenu
-	dh_icons || dh_iconcache || true
+	dh_icons
 	dh_link
 	: # don't compress anything from the shipped demo and sample files
 	dh_compress -Xdemo -Xsample -X.html
