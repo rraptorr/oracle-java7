@@ -1,9 +1,10 @@
 oracle-java7 (7.2-2) unstable; urgency=low
 
   * Fix lintian source package warnings
-  * Update debhelper compatibility level to 7
+  * Update debhelper compatibility level to 6
+  * Update java-common dependency to 0.28
 
- -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Wed, 01 Feb 2012 20:57:18 +0000
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Sun, 05 Feb 2012 13:01:14 +0100
 
 oracle-java7 (7.2-1) unstable; urgency=low
 

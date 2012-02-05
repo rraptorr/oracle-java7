@@ -3,14 +3,14 @@ Section: non-free/java
 Priority: optional
 Maintainer: Janusz Dziemidowicz <rraptorr@nails.eu.org>
 Homepage: http://www.oracle.com/technetwork/java/javase/downloads/index.html
-Build-Depends: debhelper (>= 7), lsb-release, defoma, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, libxrender1, lib32asound2 [amd64], ia32-libs [amd64]
+Build-Depends: debhelper (>= 6), lsb-release, defoma, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, libxrender1, lib32asound2 [amd64], ia32-libs [amd64]
 Standards-Version: 3.9.2
 
 Package: @basename@-jre
 Section: non-free/java
 Architecture: all
 Provides: java-virtual-machine, java-runtime, java2-runtime, java5-runtime, java6-runtime, java7-runtime, java-runtime-headless, java2-runtime-headless, java5-runtime-headless, java6-runtime-headless, java7-runtime-headless
-Depends: java-common (>= 0.24), locales, @basename@-bin (>= @pkg_version@) | ia32-@basename@-bin (>= @pkg_version@), ${misc:Depends}
+Depends: java-common (>= 0.28), locales, @basename@-bin (>= @pkg_version@) | ia32-@basename@-bin (>= @pkg_version@), ${misc:Depends}
 Recommends: gsfonts-x11
 Suggests: @basename@-plugin, @basename@-fonts, @cjk_fonts@
 Replaces: @basename@-bin, ia32-@basename@-bin
