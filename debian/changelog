@@ -1,10 +1,27 @@
-oracle-java7 (7.2-2) unstable; urgency=low
+oracle-java7 (7.3-1) unstable; urgency=low
 
   * Fix lintian source package warnings
   * Update debhelper compatibility level to 6
   * Update java-common dependency to 0.28
+  * SECURITY UPDATE: multiple upstream vulnerabilities. Upstream fixes:
+     - (CVE-2012-0497): unspecified vulnerability fixed in 6u31 (2D)
+     - (CVE-2012-0498): unspecified vulnerability fixed in 6u31 (2D)
+     - (CVE-2012-0499): unspecified vulnerability fixed in 6u31 (2D)
+     - (CVE-2012-0500): unspecified vulnerability fixed in 6u31 (Deployment)
+     - (CVE-2012-0508): unspecified vulnerability fixed in 6u31 (JavaFX)
+     - (CVE-2012-0504): unspecified vulnerability fixed in 6u31 (Install)
+     - (CVE-2011-3571): unspecified vulnerability in the Virtual Desktop
+                        Infrastructure (Concurrency)
+     - (CVE-2012-0503): unspecified vulnerability fixed in 6u31 (I18n)
+     - (CVE-2012-0505): unspecified vulnerability fixed in 6u31 (Serialization)
+     - (CVE-2012-0502): unspecified vulnerability fixed in 6u31 (AWT)
+     - (CVE-2011-3563): unspecified vulnerability fixed in 6u31 (Sound)
+     - (CVE-2011-5035): hash table implementations vulnerable to algorithmic
+                        complexity attacks (Lightweight HTTP Server)
+     - (CVE-2012-0501): unspecified vulnerability fixed in 6u31 (JRE)
+     - (CVE-2012-0506): unspecified vulnerability fixed in 6u31 (CORBA)
 
- -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Sun, 05 Feb 2012 13:01:14 +0100
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Sat, 18 Feb 2012 14:15:51 +0000
 
 oracle-java7 (7.2-1) unstable; urgency=low
 
