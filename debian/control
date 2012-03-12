@@ -88,7 +88,7 @@ Package: oracle-java7-jdk
 Architecture: amd64 i386
 Depends: oracle-java7-bin (>= ${source:Version}), ${shlibs:Depends}, ${misc:Depends}
 Suggests: default-jdk-doc, oracle-java7-source
-Provides: java-compiler, java2-compiler, java-sdk, java2-sdk, java5-sdk, java6-sdk, java7-sdk
+Provides: java-compiler, java2-compiler, java-sdk, java2-sdk, java5-sdk, java6-sdk, java7-jdk
 Description: Oracle Java(TM) Development Kit (JDK) 7
  The JDK(TM) is a development environment for building applications, 
  applets, and components using the Java programming language.
