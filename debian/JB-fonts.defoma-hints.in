@@ -2,7 +2,7 @@ category truetype
 
 # Sans
 
-begin /usr/share/fonts/truetype/ttf-lucida/LucidaSansRegular.ttf
+begin /usr/share/fonts/truetype/lucida/LucidaSansRegular.ttf
   Family = LucidaSans
   FontName = LucidaSans
   Encoding = Unicode
@@ -17,7 +17,7 @@ begin /usr/share/fonts/truetype/ttf-lucida/LucidaSansRegular.ttf
   Priority = 15
 end
 
-begin /usr/share/fonts/truetype/ttf-lucida/LucidaSansDemiBold.ttf
+begin /usr/share/fonts/truetype/lucida/LucidaSansDemiBold.ttf
   Family = LucidaSans
   FontName = LucidaSans-Demibold
   Encoding = Unicode
@@ -32,7 +32,7 @@ begin /usr/share/fonts/truetype/ttf-lucida/LucidaSansDemiBold.ttf
   Priority = 15
 end
 
-begin /usr/share/fonts/truetype/ttf-lucida/LucidaSansOblique.ttf
+begin /usr/share/fonts/truetype/lucida/LucidaSansOblique.ttf
   Family = LucidaSans
   FontName = LucidaSans-Oblique
   Encoding = Unicode
@@ -47,7 +47,7 @@ begin /usr/share/fonts/truetype/ttf-lucida/LucidaSansOblique.ttf
   Priority = 15
 end
 
-begin /usr/share/fonts/truetype/ttf-lucida/LucidaSansDemiOblique.ttf
+begin /usr/share/fonts/truetype/lucida/LucidaSansDemiOblique.ttf
   Family = LucidaSans
   FontName = LucidaSans-Demibold-Oblique
   Encoding = Unicode
@@ -64,7 +64,7 @@ end
 
 # Serif
 
-begin /usr/share/fonts/truetype/ttf-lucida/LucidaBrightRegular.ttf
+begin /usr/share/fonts/truetype/lucida/LucidaBrightRegular.ttf
   Family = LucidaBright
   FontName = LucidaBright-Regular
   Encoding = Unicode
@@ -79,7 +79,7 @@ begin /usr/share/fonts/truetype/ttf-lucida/LucidaBrightRegular.ttf
   Priority = 15
 end
 
-begin /usr/share/fonts/truetype/ttf-lucida/LucidaBrightItalic.ttf
+begin /usr/share/fonts/truetype/lucida/LucidaBrightItalic.ttf
   Family = LucidaBright
   FontName = LucidaBright-Italic
   Encoding = Unicode
@@ -94,7 +94,7 @@ begin /usr/share/fonts/truetype/ttf-lucida/LucidaBrightItalic.ttf
   Priority = 15
 end
 
-begin /usr/share/fonts/truetype/ttf-lucida/LucidaBrightDemiBold.ttf
+begin /usr/share/fonts/truetype/lucida/LucidaBrightDemiBold.ttf
   Family = Lucida-Bright
   FontName = Lucida-Bright-Demi
   Encoding = Unicode
@@ -109,7 +109,7 @@ begin /usr/share/fonts/truetype/ttf-lucida/LucidaBrightDemiBold.ttf
   Priority = 15
 end
 
-begin /usr/share/fonts/truetype/ttf-lucida/LucidaBrightDemiItalic.ttf
+begin /usr/share/fonts/truetype/lucida/LucidaBrightDemiItalic.ttf
   Family = Lucida-Bright
   FontName = Lucida-Bright-DemiItalic
   Encoding = Unicode
@@ -126,7 +126,7 @@ end
 
 # Mono
 
-begin /usr/share/fonts/truetype/ttf-lucida/LucidaTypewriterRegular.ttf
+begin /usr/share/fonts/truetype/lucida/LucidaTypewriterRegular.ttf
   Family = LucidaSans-Typewriter
   FontName = LucidaSans-Typewriter
   Encoding = Unicode
@@ -141,7 +141,7 @@ begin /usr/share/fonts/truetype/ttf-lucida/LucidaTypewriterRegular.ttf
   Priority = 15
 end
 
-begin /usr/share/fonts/truetype/ttf-lucida/LucidaTypewriterOblique.ttf
+begin /usr/share/fonts/truetype/lucida/LucidaTypewriterOblique.ttf
   Family = LucidaSans-Typewriter
   FontName = LucidaSans-Typewriter-Oblique
   Encoding = Unicode
@@ -156,7 +156,7 @@ begin /usr/share/fonts/truetype/ttf-lucida/LucidaTypewriterOblique.ttf
   Priority = 15
 end
 
-begin /usr/share/fonts/truetype/ttf-lucida/LucidaTypewriterBold.ttf
+begin /usr/share/fonts/truetype/lucida/LucidaTypewriterBold.ttf
   Family = LucidaSans-Typewriter
   FontName = LucidaSans-Typewriter-Bold
   Encoding = Unicode
@@ -171,7 +171,7 @@ begin /usr/share/fonts/truetype/ttf-lucida/LucidaTypewriterBold.ttf
   Priority = 15
 end
 
-begin /usr/share/fonts/truetype/ttf-lucida/LucidaTypewriterBoldOblique.ttf
+begin /usr/share/fonts/truetype/lucida/LucidaTypewriterBoldOblique.ttf
   Family = LucidaSans-Typewriter
   FontName = LucidaSans-Typewriter-Bold-Oblique
   Encoding = Unicode

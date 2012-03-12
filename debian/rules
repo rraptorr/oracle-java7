@@ -28,7 +28,6 @@ Vendor		:= $(shell perl -e 'print ucfirst("$(VENDOR)");')
 javaname	:= $(shell echo $(word 2, $(dirparts)) | sed 's/[0-9.]*$$//')
 RELEASE		:= $(shell echo $(word 2, $(dirparts)) | sed 's/^[a-z]*//')
 PRODUCT		:= $(javaname)$(RELEASE)
-srcname		:= $(VENDOR)-$(PRODUCT)
 basename	:= $(ia32_prefix)$(VENDOR)-$(PRODUCT)
 dirpartsv	:= $(shell dpkg-parsechangelog | sed -ne '/Version:/ s,Version: \(.*\),\1,p' | tr '.-' ' ')
 version		:= $(word 1, $(dirpartsv))
@@ -43,8 +42,7 @@ all_archs	:= $(filter $(subst =, , $(arch_map)), \
 			    $(subst -, , $(patsubst %.tar.gz, %, $(wildcard *.tar.gz))))
 priority	:= 53
 
-basedir		= $(TOP)/$(jdirname)
-doc		:= usr/share/doc
+basedir		:= $(TOP)/$(jdirname)
 security	:= etc/$(jdiralias)/security
 
 browser_plugin_dirs = xulrunner-addons firefox iceape iceweasel mozilla midbrowser xulrunner konqueror
@@ -60,14 +58,14 @@ endif
 
 java_launcher = /$(basedir)/bin/java
 ifeq ($(distribution),Ubuntu)
-  ifeq (,$(filter $(distrel),karmic jaunty intrepid hardy gutsy feisty edgy dapper))
+  ifeq (,$(filter $(distrelease),hardy))
     java_launcher = cautious-launcher %f /$(basedir)/bin/java
   endif
 endif
 
 with_wgy_zenhai = $(if $(filter $(distrelease),hardy),yes)
 
-cjk_fonts = ttf-baekmuk | ttf-unfonts | ttf-unfonts-core,
+cjk_fonts = ttf-baekmuk | ttf-unfonts-core,
 cjk_fonts += ttf-kochi-gothic | ttf-sazanami-gothic,
 cjk_fonts += ttf-kochi-mincho | ttf-sazanami-mincho,
 cjk_fonts += $(if $(with_wgy_zenhai),ttf-wqy-zenhei,ttf-arphic-uming),
@@ -78,7 +76,6 @@ packaging_files = packaging-files
 ifneq (,$(findstring $(DEB_HOST_ARCH), amd64))
   with_ia32 = yes
   ia32_packaging_files = ia32-packaging-files
-
 endif
 
 info:
@@ -193,16 +190,13 @@ debian/control: debian/control.in debian/rules
 	      -e 's/@vendor@/$(Vendor)/g' \
 	      -e 's/@basename@/$(basename)/g' \
 	      -e 's,@basedir@,$(basedir),g' \
-	      -e 's/@srcname@/$(srcname)/g' \
 	      -e 's/@arch@/$(DEB_HOST_ARCH)/g' \
-	      -e 's/@sarch@/$(arch)/g' \
 	      -e 's/@RELEASE@/$(RELEASE)/g' \
 	      -e 's/@archdir@/$(archdir)/g' \
 	      -e 's/@browsers@/$(browsers)/g' \
 	      -e 's/@cjk_fonts@/$(cjk_fonts)/g' \
 	      -e 's/@jdkversion@/$(jdkversion)/g' \
 	      -e 's/@releng_ver@/$(releng_ver)/g' \
-	      -e 's,@pkg_version@,$(if $(filter $(distrelease),etch dapper edgy feisty gutsy),$${Source-Version},$${source:Version}),g' \
 	    debian/control.in > debian/control
 	@if cmp -s debian/control debian/control.old; then \
 	  rm -f debian/control.old; \
@@ -230,10 +224,7 @@ packaging-files:
 	      -e 's,@basedir@,$(basedir),g' \
 	      -e 's,@basediralias@,$(TOP)/$(jdiralias),g' \
 	      -e 's,@jdiralias@,$(jdiralias),g' \
-	      -e 's,@jdirname@,$(jdirname),g' \
-	      -e 's/@srcname@/$(srcname)/g' \
 	      -e 's/@arch@/$(DEB_HOST_ARCH)/g' \
-	      -e 's/@sarch@/$(arch)/g' \
 	      -e 's/@archdir@/$(archdir)/g' \
 	      -e 's/@ia32txt@/$(ia32txt)/g' \
 	      -e 's/@priority@/$(priority)/g' \
@@ -367,7 +358,7 @@ clean:
 	dh_testroot
 	rm -f *-stamp
 	rm -rf x64-jdk i586-jdk tmp-* $(unpackdir)
-	rm -f debian/*.debhelper debian/more debian/control.old
+	rm -f debian/*.debhelper debian/control.old
 	rm -f debian/$(p_jbin).substvars.tmp
 
 	for f in debian/*.in; do \
@@ -375,16 +366,11 @@ clean:
 	  case "$$f2" in debian/control) continue; esac; \
 	  rm -f $$f2; \
 	done
-	rm -f debian/$(basename)*.templates
 	rm -f debian/$(basename)*.links
-	rm -f debian/copyright.1*
 	rm -f debian/ia32-$(basename)*.*
 	rm -f debian/*.debhelper.log
 
 	dh_clean
-
-mrproper: clean
-	rm -rf build-stamp $(srcdir)
 
 
 binary-$(p_jbin):	DH_OPTIONS=-p$(p_jbin) $(NO_PACKAGES)
@@ -548,10 +534,10 @@ endif
 	find $(d_jbin) -name '*.xml' | xargs -r chmod 644
 
 	rm -f $(d_jbin).substvars
-	ld_path=$(d_jbin)/$(basedir)/jre/lib/$(archdir) \
-	    dh_shlibdeps \
-		-l$$ld_path:$$ld_path/client:$$ld_path/native_threads \
-		-Xlibjavaplugin_oji.so -Xlibnpjp2.so
+	dh_shlibdeps \
+		-l$(basedir)/jre/lib/$(archdir)/server \
+		-Xlibjavaplugin_oji.so -Xlibnpjp2.so \
+		-- --warnings=0
 
 	sed -i -e 's/libc6[^,]*, *//g' -e 's/libc6[^,]*$$//g' -e 's/ *([^,]*) *//g' \
 		$(d_jbin).substvars
@@ -559,13 +545,13 @@ endif
 	sed -e 's/Depends/Recommends/' \
 		$(d_jbin).substvars > $(d_jbin).substvars.tmp
 	rm -f debian/$(p_jbin).substvars
-	ld_path=$(d_jbin)/$(basedir)/jre/lib/$(archdir) \
-	    dh_shlibdeps \
-		-l$$ld_path:$$ld_path/client:$$ld_path/native_threads:$$ld_path/headless \
+	dh_shlibdeps \
+		-l$(basedir)/jre/lib/$(archdir)/server \
 		-Xjavaws -Xpolicytool \
 		-Xlibjavaplugin -Xlibawt -Xlibjawt -Xlibmawt -Xlibdcpr \
 		-Xlibfontmanager -Xlibjsoundalsa  -X_g.so \
-		-Xlibsplashscreen -Xlibmlib -Xlibdeploy
+		-Xlibsplashscreen -Xlibmlib -Xlibdeploy \
+		-- --warnings=0
 	sed -i -e 's/ *([^,]*) *//g' $(d_jbin).substvars
 	cat $(d_jbin).substvars.tmp >> $(d_jbin).substvars
 ifeq (,$(ia32_prefix))
@@ -673,11 +659,11 @@ binary-$(p_fonts):	build
 	dh_clean -d
 	dh_installdirs \
 		usr/share/doc \
-		usr/share/fonts/truetype/ttf-lucida
+		usr/share/fonts/truetype/lucida
 
 	cd $(srcdir) && \
 	for f in jre/lib/*fonts/*.ttf; do \
-	  echo $(basedir)/$$f usr/share/fonts/truetype/ttf-lucida/$$(basename $$f); \
+	  echo $(basedir)/$$f usr/share/fonts/truetype/lucida/$$(basename $$f); \
 	done >> $(CURDIR)/$(d_fonts).links
 
 	dh_installdefoma
@@ -733,10 +719,10 @@ binary-$(p_jdk):	build
 	done
 	-find $(d_jdk)/$(basedir)/man -name '*.[1-9]' | xargs gzip
 
-	ld_path=$(d_jbin)/$(basedir)/jre/lib/$(archdir) \
-	    dh_shlibdeps \
-	-l$$ld_path:$$ld_path/client:$$ld_path/native_threads:$$ld_path/headless \
-		-Xlibjavaplugin_oji.so Xlibnpjp2.so -X_g.so
+	dh_shlibdeps \
+		-L$(p_jbin) \
+		-l$(basedir)/jre/lib/$(archdir)/server \
+		-- --warnings=0
 
 	sed -i -e 's/ *([^,]*) *//g' $(d_jdk).substvars
 
@@ -806,7 +792,7 @@ binary-arch:	$(binary_arch_targets)
 	dh_testroot
 	dh_installmime
 	dh_installmenu
-	dh_icons || dh_iconcache || true
+	dh_icons
 	dh_link
 	: # don't compress anything from the shipped demo and sample files
 	dh_compress -Xdemo -Xexamples -Xsample -X.html -X.pdf
@@ -822,4 +808,4 @@ binary-arch:	$(binary_arch_targets)
 
 binary: binary-arch binary-indep
 
-.PHONY: binary binary-indep binary-arch install checkroot build
+.PHONY: binary binary-indep binary-arch build build-indep build-arch clean

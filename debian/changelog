@@ -1,3 +1,14 @@
+oracle-java7 (7.3-2) unstable; urgency=low
+
+  * Remove obsolete dependency information
+  * Remove obsolete Ubuntu rules
+  * Standards-Version updated to version 3.9.3
+  * Change location of Lucida fonts
+  * Remove unused rules targets and variables
+  * Bring back shlibs:Depends in plugin
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Tue, 13 Mar 2012 00:33:17 +0100
+
 oracle-java7 (7.3-1) unstable; urgency=high
 
   * Fix lintian source package warnings
@@ -8,7 +19,6 @@ oracle-java7 (7.3-1) unstable; urgency=high
      - (CVE-2012-0498): unspecified vulnerability fixed in 7u3 (2D)
      - (CVE-2012-0499): unspecified vulnerability fixed in 7u3 (2D)
      - (CVE-2012-0500): unspecified vulnerability fixed in 7u3 (Deployment)
-     - (CVE-2012-0508): unspecified vulnerability fixed in 7u3 (JavaFX)
      - (CVE-2012-0504): unspecified vulnerability fixed in 7u3 (Install)
      - (CVE-2011-3571): unspecified vulnerability in the Virtual Desktop
                         Infrastructure (Concurrency)

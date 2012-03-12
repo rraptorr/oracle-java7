@@ -9,6 +9,9 @@ So far packages were tested on following Debian versions:
 - squeeze i386/amd64
 - lenny i386/amd64
 
+New users of Debian Wheezy should cosider using java-package:
+http://wiki.debian.org/JavaPackage
+
 Packages are compatible with "official" Debian ones of Java 6, but
 have a lower priority (use update-java-alternatives if you have Java 6
 already installed).
@@ -22,7 +25,7 @@ To create packages on your own:
 - Download jdk-7u3-linux-i586.tar.gz and jdk-7u3-linux-x64.tar.gz from
   http://www.oracle.com/technetwork/java/javase/downloads/index.html
   (yes, both, no matter which version you will run)
-- dpkg-buildpackage -b
+- dpkg-buildpackage -b -uc -us
 - install any missing packages that dpkg-buildpackage complains about
   and repeat
 
