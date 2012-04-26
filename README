@@ -22,7 +22,7 @@ To create packages on your own:
 - apt-get install dpkg-dev
 - git clone git://github.com/rraptorr/oracle-java7.git
 - cd oracle-java7
-- Download jdk-7u3-linux-i586.tar.gz and jdk-7u3-linux-x64.tar.gz from
+- Download jdk-7u4-linux-i586.tar.gz and jdk-7u4-linux-x64.tar.gz from
   http://www.oracle.com/technetwork/java/javase/downloads/index.html
   (yes, both, no matter which version you will run)
 - dpkg-buildpackage -b -uc -us
