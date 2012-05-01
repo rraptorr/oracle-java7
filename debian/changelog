@@ -1,3 +1,9 @@
+oracle-java7 (7.4-2) unstable; urgency=low
+
+  * Fix rules on certain locales (i.e. et_EE)
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Tue, 01 May 2012 17:08:36 +0000
+
 oracle-java7 (7.4-1) unstable; urgency=low
 
   * New upstream release
