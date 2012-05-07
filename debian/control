@@ -3,7 +3,7 @@ Section: non-free/java
 Priority: optional
 Maintainer: Janusz Dziemidowicz <rraptorr@nails.eu.org>
 Homepage: http://www.oracle.com/technetwork/java/javase/downloads/index.html
-Build-Depends: debhelper (>= 6), lsb-release, defoma, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, libxrender1, lib32asound2 [amd64], ia32-libs [amd64]
+Build-Depends: debhelper (>= 6), lsb-release, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, libxrender1, lib32asound2 [amd64], ia32-libs [amd64]
 Standards-Version: 3.9.3
 
 Package: oracle-java7-jre
@@ -77,12 +77,12 @@ Description: Oracle Java(TM) Runtime Environment (JRE) 7 (32-bit)
 Package: oracle-java7-fonts
 Section: non-free/fonts
 Architecture: all
-Depends: oracle-java7-jre (>= ${source:Version}), defoma, ${misc:Depends}
+Depends: oracle-java7-jre (>= ${source:Version}), ${misc:Depends}
 Provides: ttf-lucida
 Conflicts: ttf-lucida
 Description: Lucida TrueType fonts (from the Oracle JRE)
  The Lucida fonts are included in the oracle-java7-jre package.
- This package makes the fonts available to defoma.
+ This package makes the fonts available to system.
 
 Package: oracle-java7-jdk
 Architecture: amd64 i386

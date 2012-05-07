@@ -1,8 +1,9 @@
 oracle-java7 (7.4-2) unstable; urgency=low
 
   * Fix rules on certain locales (i.e. et_EE)
+  * Remove defoma stuff
 
- -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Tue, 01 May 2012 17:08:36 +0000
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Sat, 05 May 2012 23:11:47 +0000
 
 oracle-java7 (7.4-1) unstable; urgency=low
 

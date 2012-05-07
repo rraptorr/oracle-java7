@@ -666,7 +666,6 @@ binary-$(p_fonts):	build
 	  echo $(basedir)/$$f usr/share/fonts/truetype/lucida/$$(basename $$f); \
 	done >> $(CURDIR)/$(d_fonts).links
 
-	dh_installdefoma
 	ln -s $(p_jre) $(d_fonts)/usr/share/doc/$(p_fonts)
 
 
