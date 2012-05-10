@@ -44,17 +44,10 @@ Java Plug-In:
 
 Java Cryptography Extension (JCE) support:
 ==========================================
-For legal reason, JCE support in this environment is limited to
-smaller key sizes.  Please see
-<http://www.oracle.com/technetwork/java/javase/downloads/jce-7-download-432124.html>
-for the Unlimited Strength Jurisdiction Policy Files. It is recommended to use
-dpkg-divert before replacing installed files to avoid upgrade problems in the
-future:
-
-  sudo dpkg-divert --rename /@basedir@/jre/lib/security/local_policy.jar
-  sudo dpkg-divert --rename /@basedir@/jre/lib/security/US_export_policy.jar
-
-That change can be reverted through:
+JCE unlimited strength jurisdiction policy files are now included by default,
+older versions of this package recommended to use dpkg-divert before replacing
+installed files to avoid upgrade problems, you can keep those diverted files
+or revert to use the included files:
 
   sudo dpkg-divert --rename --remove /@basedir@/jre/lib/security/local_policy.jar
   sudo dpkg-divert --rename --remove /@basedir@/jre/lib/security/US_export_policy.jar

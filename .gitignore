@@ -1,8 +1,10 @@
 jdk-*-linux-*.tar.gz
+UnlimitedJCEPolicyJDK*.zip
 i586-jdk
 x64-jdk
 tmp-i586
 tmp-x64
+UnlimitedJCEPolicy
 
 debian/JAVA_HOME
 debian/README.alternatives

@@ -272,7 +272,7 @@ compare-jre-jars:
 diff_ignore = -I 'Thursday, April 12' \
 	-I 'Thu Apr 12' -I '^ *// java GenerateCharacter'
 
-unpack-stamp: $(foreach a, $(all_archs), unpack-$(a)-stamp)
+unpack-stamp: $(foreach a, $(all_archs), unpack-$(a)-stamp) unpack-jce-stamp
 	: # check for identical files / trees
 	set -e; set -- $(all_archs); a1=$$1; shift; \
 	for a2; do \
@@ -353,11 +353,17 @@ unpack-%-stamp: $(bin_pattern)
 
 	touch $@
 
+
+unpack-jce-stamp:
+	rm -rf UnlimitedJCEPolicy
+	unzip -q UnlimitedJCEPolicyJDK$(version).zip
+	touch $@
+
 clean:
 	dh_testdir
 	dh_testroot
 	rm -f *-stamp
-	rm -rf x64-jdk i586-jdk tmp-* $(unpackdir)
+	rm -rf x64-jdk i586-jdk UnlimitedJCEPolicy tmp-* $(unpackdir)
 	rm -f debian/*.debhelper debian/control.old
 	rm -f debian/$(p_jbin).substvars.tmp
 
@@ -623,6 +629,9 @@ binary-$(p_jre):	build
 
 	: # these are only in the i586 archive
 	cp -a i586-jdk/jre/lib/images/icons $(d_jre)/$(basedir)/jre/lib/images/
+
+	: # JCE Unlimited Strength Jurisdiction Policy
+	cp -a UnlimitedJCEPolicy/*.jar $(d_jre)/$(basedir)/jre/lib/security/
 
 	: # add lintian overrides
 	cp -p debian/$(p_jre).overrides \
