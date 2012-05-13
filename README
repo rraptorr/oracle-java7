@@ -28,7 +28,7 @@ To create packages on your own:
 - Download UnlimitedJCEPolicyJDK7.zip from the same page under "Java
   Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy
   Files 7"
-- dpkg-buildpackage -b -uc -us
+- dpkg-buildpackage -uc -us
 - install any missing packages that dpkg-buildpackage complains about
   and repeat
 
