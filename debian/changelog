@@ -1,3 +1,10 @@
+oracle-java7 (7.4-3) unstable; urgency=low
+
+  * Add JCE Unlimited Strength Jurisdiction Policy Files
+  * Set source format to "3.0 (native)"
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Sun, 13 May 2012 19:12:43 +0000
+
 oracle-java7 (7.4-2) unstable; urgency=low
 
   * Fix rules on certain locales (i.e. et_EE)
