@@ -1,5 +1,5 @@
-@basename@-jdk: shlib-without-PT_GNU_STACK-section @basedir@/bin/*
-@basename@-jdk: shlib-without-PT_GNU_STACK-section @basedir@/lib/*
-@basename@-jdk: unstripped-binary-or-object @basedir@/bin/*
-@basename@-jdk: unstripped-binary-or-object @basedir@/lib/*
+@basename@-jdk: shlib-without-PT_GNU_STACK-section
+@basename@-jdk: unstripped-binary-or-object
+@basename@-jdk: hardening-no-fortify-functions
+@basename@-jdk: hardening-no-relro
 @basename@-jdk: menu-icon-missing usr/share/pixmaps/oracle-java7.xpm

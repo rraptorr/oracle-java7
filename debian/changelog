@@ -1,3 +1,9 @@
+oracle-java7 (7.5-2) UNRELEASED; urgency=low
+
+  * Add lintian overrides for missing binary hardening
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Wed, 13 Jun 2012 14:38:10 +0200
+
 oracle-java7 (7.5-1) unstable; urgency=high
 
   * Add JCE Unlimited Strength Jurisdiction Policy Files

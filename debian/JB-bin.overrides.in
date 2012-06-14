@@ -1,8 +1,8 @@
-@basename@-bin: unstripped-binary-or-object @basedir@/jre/bin/*
-@basename@-bin: unstripped-binary-or-object @basedir@/jre/lib/*
-@basename@-bin: shlib-without-PT_GNU_STACK-section @basedir@/jre/bin/*
-@basename@-bin: shlib-without-PT_GNU_STACK-section @basedir@/jre/lib/*
-@basename@-bin: shlib-with-non-pic-code @basedir@/jre/lib/@arch@/*
+@basename@-bin: unstripped-binary-or-object
+@basename@-bin: shlib-without-PT_GNU_STACK-section
+@basename@-bin: shlib-with-non-pic-code
+@basename@-bin: hardening-no-fortify-functions
+@basename@-bin: hardening-no-relro
 @basename@-bin: image-file-in-usr-lib @basedir@/jre/lib/desktop/icons/*
 @basename@-bin: image-file-in-usr-lib @basedir@/jre/lib/deploy/splash.gif
 @basename@-bin: image-file-in-usr-lib @basedir@/jre/lib/servicetag/jdk_header.png
