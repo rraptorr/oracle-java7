@@ -267,8 +267,11 @@ compare-jre-jars:
 	  exit 1; \
 	fi
 
-diff_ignore = -I 'Tuesday, May 15' \
-	-I 'Tue May 15' -I '^ *// java GenerateCharacter'
+diff_ignore = -I '^\* Monday' -I '^\* Tuesday' -I '^\* Wednesday' \
+        -I '^\* Thursday' -I '^\* Friday' -I '^\* Saturday' -I '^\* Sunday' \
+        -I '^// This file was generated AUTOMATICALLY' \
+        -I '^ *// java GenerateCharacter' \
+        -I '^// Generated from input file'
 
 unpack-stamp: $(foreach a, $(all_archs), unpack-$(a)-stamp) unpack-jce-stamp
 	: # check for identical files / trees
