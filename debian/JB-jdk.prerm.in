@@ -1,7 +1,6 @@
 #!/bin/sh -e
 
 jdk_tools='@jdk_tools@'
-basedir=/@basedir@
 basediralias=/@basediralias@
 
 

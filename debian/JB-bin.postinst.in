@@ -25,19 +25,12 @@ configure)
     fi
 
     for i in $jre_tools; do
-	unset slave1 slave2 || true
+	unset slave1 || true
         if [ -e $mandir/man1/$i.$srcext ]; then
 	    slave1="--slave \
 		/usr/share/man/man1/$i.$dstext \
                 $i.$dstext \
                 $mandir/man1/$i.$srcext"
-	fi
-	# disabled
-        if false && [ -e $mandir/ja/man1/$i.$srcext ]; then
-	    slave2="--slave \
-		/usr/share/man/ja/man1/$i.$dstext \
-                ${i}_ja.$dstext \
-                $mandir/ja/man1/$i.$srcext"
 	fi
         update-alternatives \
             --install \
@@ -45,7 +38,7 @@ configure)
             $i \
             $basediralias/jre/bin/$i \
             $priority \
-	    $slave1 $slave2
+	    $slave1
     done
 
     update-alternatives \
@@ -59,17 +52,6 @@ configure)
     # registered by another JRE.
     if which update-binfmts >/dev/null && [ -r /usr/share/binfmts/jar ]; then
         update-binfmts --package @basename@ --import jar || true
-    fi
-
-    # fix slave links for man page alternatives
-    if [ -n "$2" ] && dpkg --compare-versions "$2" lt 6-00-2ubuntu2; then
-	for i in $jre_tools; do
-	    current=$(LANG=C update-alternatives --display $i 2>&1 \
-		| awk '/link currently points to/ { print $NF}')
-	    case "$current" in /@basediralias@*)
-	        update-alternatives --quiet --set $i $basediralias/jre/bin/$i
-	    esac
-	done
     fi
 
     mount | grep -qs 'on /proc type proc' || echo >&2 "/proc is not mounted; some java apps may fail"
