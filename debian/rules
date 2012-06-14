@@ -45,15 +45,13 @@ priority	:= 53
 basedir		:= $(TOP)/$(jdirname)
 security	:= etc/$(jdiralias)/security
 
-browser_plugin_dirs = xulrunner-addons firefox iceape iceweasel mozilla midbrowser xulrunner konqueror
-browsers = firefox | firefox-2 | iceweasel | mozilla-firefox | iceape-browser | mozilla-browser | epiphany-gecko | epiphany-webkit | epiphany-browser | galeon | midbrowser | moblin-web-browser | xulrunner | xulrunner-1.9 | konqueror | chromium-browser | midori | google-chrome
+browser_plugin_dirs = firefox iceape iceweasel mozilla midbrowser konqueror
+browsers = firefox | firefox-2 | iceweasel | mozilla-firefox | iceape-browser | mozilla-browser | epiphany-gecko | epiphany-webkit | epiphany-browser | galeon | midbrowser | konqueror | chromium-browser | midori | google-chrome
 
-# FIXME: xulrunner-addons only tested on sid, jaunty, karmic
 ifeq ($(distribution),Ubuntu)
-  browser_plugin_dirs = xulrunner-addons firefox iceape iceweasel mozilla midbrowser xulrunner
-  browser_plugin_dirs = xulrunner-addons mozilla
+  browser_plugin_dirs = mozilla
 else
-  browser_plugin_dirs = xulrunner-addons firefox iceape iceweasel mozilla midbrowser xulrunner
+  browser_plugin_dirs = firefox iceape iceweasel mozilla midbrowser
 endif
 
 java_launcher = /$(basedir)/bin/java
@@ -590,11 +588,7 @@ endif
 	    echo "jdk $$i /$(TOP)/$(jdiralias)/bin/$$i"; \
 	  done; \
 	  for d in $(browser_plugin_dirs); do \
-	    case "$$d" in \
-	      xulrunner-addons) b=xulrunner-1.9;; \
-	      *) b=$$d;; \
-	    esac; \
-	    echo "plugin $$b-javaplugin.so /$(TOP)/$(jdiralias)/jre/lib/$(archdir)/libnpjp2.so"; \
+	    echo "plugin $$d-javaplugin.so /$(TOP)/$(jdiralias)/jre/lib/$(archdir)/libnpjp2.so"; \
 	  done; \
 	) > $(d_jbin)/$(TOP)/.$(jdiralias).jinfo
 

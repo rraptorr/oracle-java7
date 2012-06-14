@@ -6,13 +6,8 @@ PLUGINPTH=/@basediralias@/jre/lib/@archdir@/$PLUGIN
 
 if [ "$1" = "remove" ] || [ "$1" = "deconfigure" ]; then
     for browser_dir in $browser_dirs; do
-	if [ $browser_dir = xulrunner-addons ]; then
-	    browser=xulrunner-1.9
-	else
-	    browser=$browser_dir
-	fi
 	update-alternatives --quiet --remove \
-	    $browser-javaplugin.so \
+	    $browser_dir-javaplugin.so \
 	    $PLUGINPTH
     done
 fi
