@@ -4,6 +4,7 @@ oracle-java7 (7.5-2) UNRELEASED; urgency=low
   * Remove unused code from installation scripts
   * Remove obsolete code for browser plugin
   * Remove Java release dates from diff invocation
+  * Update copyright year
 
  -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Wed, 13 Jun 2012 14:38:10 +0200
 
