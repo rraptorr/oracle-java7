@@ -1,4 +1,4 @@
-oracle-java7 (7.5-2) UNRELEASED; urgency=low
+oracle-java7 (7.5-2) unstable; urgency=low
 
   * Add lintian overrides for missing binary hardening
   * Remove unused code from installation scripts
@@ -6,7 +6,7 @@ oracle-java7 (7.5-2) UNRELEASED; urgency=low
   * Remove Java release dates from diff invocation
   * Update copyright year
 
- -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Wed, 13 Jun 2012 14:38:10 +0200
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Sun, 15 Jul 2012 23:09:37 +0200
 
 oracle-java7 (7.5-1) unstable; urgency=high
 
