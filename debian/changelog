@@ -1,3 +1,9 @@
+oracle-java7 (7.5-3) UNRELEASED; urgency=low
+
+  * Fix building on lenny with lib32gcc1 from lenny-backports on amd64
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Mon, 23 Jul 2012 15:10:21 +0200
+
 oracle-java7 (7.5-2) unstable; urgency=low
 
   * Add lintian overrides for missing binary hardening

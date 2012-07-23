@@ -376,6 +376,7 @@ clean:
 	rm -f debian/$(basename)*.links
 	rm -f debian/ia32-$(basename)*.*
 	rm -f debian/*.debhelper.log
+	rm -f debian/shlibs.local
 
 	dh_clean
 
@@ -535,6 +536,14 @@ ifeq (,$(ia32_prefix))
 		$(d_jbin)/$(basedir)/jre/lib/$(archdir)/libodbcinst.so
 	ln -sf /usr/lib/libodbc.so.1 \
 		$(d_jbin)/$(basedir)/jre/lib/$(archdir)/libodbc.so
+endif
+
+# a bit ugly fix for lenny with 32bit libraries installed from backports
+ifeq (,$(ia32_prefix))
+	rm -f debian/shlibs.local
+else
+	echo 'libgcc_s 1 lib32gcc1' > debian/shlibs.local
+	echo 'libasound 2 lib32asound2' >> debian/shlibs.local
 endif
 
 	 : # fix permissions
