@@ -16,6 +16,13 @@ Packages are compatible with "official" Debian ones of Java 6, but
 have a lower priority (use update-java-alternatives if you have Java 6
 already installed).
 
+I do not have resources to test packages on Ubuntu. However, if one
+finds any problem on Ubuntu, feel free to report an issue and I will
+try to resolve it.
+
+For automated solution Ubuntu users can use:
+https://github.com/flexiondotorg/oab-java6
+
 3. Usage
 
 To create packages on your own:
