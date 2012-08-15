@@ -169,6 +169,7 @@ common_jre_jars = \
 	jre/lib/management-agent.jar \
 	jre/lib/resources.jar \
 	jre/lib/alt-rt.jar \
+	jre/lib/jfr.jar \
 	jre/lib/jsse.jar \
 
 control: control-stamp
@@ -350,7 +351,9 @@ unpack-%-stamp: $(bin_pattern)
 	done
 
 	: # fix permissions
-	-find $*-jdk -name '*.properties' -o -name '*.xml' | xargs chmod 644
+	-find $*-jdk -name '*.properties' -o -name '*.properties.ja' -o -name '*.xml' \
+	  -o -name '*.jar' -o -name '*.src' -o -name '*.bfc' -o -name '*.txt' -o -name '*.cfg' \
+	  -o -name 'classlist' -o -name 'currency.data' -o -name 'meta-index' | xargs chmod 644
 
 	touch $@
 
@@ -424,9 +427,6 @@ binary-$(p_jbin):	build
 	  mv $$i $${i%*.template}; \
 	done
 
-	: # fix permissions
-	chmod 644 $(d_jbin)/$(basedir)/jre/lib/deploy/splash.gif
-
 	: # move config files to etc/$(jdiralias) and symlink them.
 	mkdir -p $(d_jbin)/etc/$(jdiralias)/management
 	for i in \
@@ -436,6 +436,7 @@ binary-$(p_jbin):	build
 	  sound.properties \
 	  flavormap.properties \
 	  net.properties \
+	  javafx.properties \
 	  management/jmxremote.access \
 	  management/jmxremote.password \
 	  management/management.properties \
@@ -546,13 +547,12 @@ else
 	echo 'libasound 2 lib32asound2' >> debian/shlibs.local
 endif
 
-	 : # fix permissions
-	find $(d_jbin) -name '*.xml' | xargs -r chmod 644
-
 	rm -f $(d_jbin).substvars
 	dh_shlibdeps \
 		-l$(basedir)/jre/lib/$(archdir)/server \
-		-Xlibjavaplugin_oji.so -Xlibnpjp2.so \
+		-Xlibnpjp2.so \
+		-Xfxavcodecplugin-52.so -Xfxavcodecplugin-53.so -Xfxplugins.so -Xlibglass.so -Xlibgstplugins-lite.so -Xlibgstreamer-lite.so \
+		-Xlibjavafx-font.so -Xlibjavafx-iio.so -Xlibjfxmedia.so -Xlibjfxwebkit.so -Xlibprism-es2.so \
 		-- --warnings=0
 
 	sed -i -e 's/libc6[^,]*, *//g' -e 's/libc6[^,]*$$//g' -e 's/ *([^,]*) *//g' \
@@ -567,6 +567,8 @@ endif
 		-Xlibjavaplugin -Xlibawt -Xlibjawt -Xlibmawt -Xlibdcpr \
 		-Xlibfontmanager -Xlibjsoundalsa  -X_g.so \
 		-Xlibsplashscreen -Xlibmlib -Xlibdeploy \
+		-Xfxavcodecplugin-52.so -Xfxavcodecplugin-53.so -Xfxplugins.so -Xlibglass.so -Xlibgstplugins-lite.so -Xlibgstreamer-lite.so \
+		-Xlibjavafx-font.so -Xlibjavafx-iio.so -Xlibjfxmedia.so -Xlibjfxwebkit.so -Xlibprism-es2.so \
 		-- --warnings=0
 	sed -i -e 's/ *([^,]*) *//g' $(d_jbin).substvars
 	cat $(d_jbin).substvars.tmp >> $(d_jbin).substvars
