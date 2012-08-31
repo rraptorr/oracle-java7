@@ -157,6 +157,7 @@ common_jre_things = \
 	jre/COPYRIGHT \
 	jre/LICENSE \
 	jre/THIRDPARTYLICENSEREADME.txt \
+	jre/THIRDPARTYLICENSEREADME-JAVAFX.txt \
 	jre/README \
 	jre/Welcome.html \
 
@@ -339,9 +340,12 @@ unpack-%-stamp: $(bin_pattern)
 	mv $(unpackdir) $*-jdk
 	@echo $*
 
+	diff -u $*-jdk/COPYRIGHT $*-jdk/jre/COPYRIGHT
 	diff -u $*-jdk/LICENSE $*-jdk/jre/LICENSE
 	diff -u $*-jdk/THIRDPARTYLICENSEREADME.txt \
 	    $*-jdk/jre/THIRDPARTYLICENSEREADME.txt
+	diff -u $*-jdk/THIRDPARTYLICENSEREADME-JAVAFX.txt \
+	    $*-jdk/jre/THIRDPARTYLICENSEREADME-JAVAFX.txt
 
 	set -e; \
 	for i in $$(find $*-jdk -name '*.pack'); do \
@@ -351,7 +355,7 @@ unpack-%-stamp: $(bin_pattern)
 	done
 
 	: # fix permissions
-	-find $*-jdk -name '*.properties' -o -name '*.properties.ja' -o -name '*.xml' \
+	-find $*-jdk -name '*.properties' -o -name '*.properties.ja' -o -name '*.xml' -o -name '*.bat' \
 	  -o -name '*.jar' -o -name '*.src' -o -name '*.bfc' -o -name '*.txt' -o -name '*.cfg' \
 	  -o -name 'classlist' -o -name 'currency.data' -o -name 'meta-index' | xargs chmod 644
 
@@ -702,7 +706,7 @@ binary-$(p_jdk):	build
 	-cp -a $(srcdir)/{bin,include,lib,README.html} \
 	    $(d_jdk)/$(basedir)
 
-	for i in COPYRIGHT LICENSE THIRDPARTYLICENSEREADME.txt; do \
+	for i in COPYRIGHT LICENSE THIRDPARTYLICENSEREADME.txt THIRDPARTYLICENSEREADME-JAVAFX.txt; do \
 	  ln -sf jre/$$i $(d_jdk)/$(basedir)/$$i; \
 	done
 
@@ -721,9 +725,6 @@ binary-$(p_jdk):	build
 	: # add lintian overrides
 	cp -p debian/$(p_jdk).overrides \
 		$(d_jdk)/$(lintian_overrides)/$(p_jdk)
-
-	: # fix permissions
-	chmod 755 $(d_jdk)/$(basedir)/lib/visualvm/platform/lib/nbexec
 
 	for m in $$(find $(srcdir)/man/man1 -type f); do \
 	  n=$$(basename $$m .1); \
@@ -778,7 +779,6 @@ binary-$(p_javadb):	build
 
 	dh_installdocs
 	dh_installchangelogs
-	find $(d_javadb)/$(basedir)/db  -name '*.bat' -o -name '*.ksh' | xargs chmod 644
 
 
 binary-indep:	DH_OPTIONS=-i $(NO_PACKAGES)
