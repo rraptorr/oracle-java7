@@ -1,3 +1,9 @@
+oracle-java7 (7.7-2) UNRELEASED; urgency=low
+
+  * Remove even more obsolete code
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Sat, 08 Sep 2012 01:30:05 +0200
+
 oracle-java7 (7.7-1) unstable; urgency=high
 
   * SECURITY UPDATE:

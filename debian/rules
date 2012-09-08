@@ -144,7 +144,7 @@ jre_manpages_re:= $(shell echo $(jre_tools) $(corba_tools) | tr -s ' ' '|')
 common_jre_things = \
 	jre/lib/cmm \
 	jre/lib/fonts \
-	jre/lib/images/cursors \
+	jre/lib/images \
 	jre/lib/oblique-fonts \
 	jre/lib/zi \
 	jre/lib/jce.jar \
@@ -245,30 +245,6 @@ ia32-packaging-files:
 		priority=13 \
 		DEB_HOST_ARCH=i386
 
-compare-jre-jars:
-	set -e; set -- $(all_archs); src1=$$1-jdk/src; shift; \
-	jars=$$(cd i586-jdk/; find jre -name '*.jar'); \
-	for j in $$jars; do \
-	  echo =======  $$j  ========; \
-	  if [ ! -f x64-jdk/$$j ]; then \
-	    echo "file does not exist: x64-jdk/$$j"; \
-	    continue; \
-	  fi; \
-	  d=$${j%*.jar}; \
-	  rm -rf i586-jdk/$$d x64-jdk/$$d; \
-	  unzip -q -d i586-jdk/$$d i586-jdk/$$j; \
-	  unzip -q -d x64-jdk/$$d x64-jdk/$$j; \
-	  if diff -ur i586-jdk/$$d x64-jdk/$$d; then \
-	    : ; \
-	  else \
-	    badjars="$$badjars $$j"; \
-	  fi; \
-	done; \
-	if [ -n "$$badjars" ]; then \
-	  echo "Differing jar files: $$badjars"; \
-	  exit 1; \
-	fi
-
 diff_ignore = -I '^\* Monday' -I '^\* Tuesday' -I '^\* Wednesday' \
         -I '^\* Thursday' -I '^\* Friday' -I '^\* Saturday' -I '^\* Sunday' \
         -I '^// This file was generated AUTOMATICALLY' \
@@ -349,7 +325,7 @@ unpack-%-stamp: $(bin_pattern)
 
 	set -e; \
 	for i in $$(find $*-jdk -name '*.pack'); do \
-	  i586-jdk/bin/unpack200 $$i \
+	  $*-jdk/bin/unpack200 $$i \
 		$$(dirname $$i)/$$(basename $$i .pack).jar; \
 	  rm -f $$i; \
 	done
@@ -415,8 +391,6 @@ binary-$(p_jbin):	build
 
 	: remove arch indep files and directories
 	rm -rf $(foreach i, $(common_jre_things) $(common_jre_jars), $(d_jbin)/$(basedir)/$(i))
-	: # icons, only in the i586 archive -> $(p_jre)
-	rm -rf $(d_jbin)/$(basedir)/jre/lib/images/icons
 
 	: # install a wrapper for javaws
 	mv $(d_jbin)/$(basedir)/jre/bin/javaws $(d_jbin)/$(basedir)/jre/bin/javaws.real
@@ -514,8 +488,7 @@ endif
 	  cp debian/$(basename)-$$i.mime $(d_jbin)/usr/share/mime-info/; \
 	done
 
-	: # XXX hack, the icon is not available in the amd64 package
-	cp -p i586-jdk/jre/plugin/desktop/sun_java.png \
+	cp -p $(d_jbin)/$(basedir)/jre/plugin/desktop/sun_java.png \
 		$(d_jbin)/usr/share/pixmaps/$(basename).png
 	cp -p debian/sun_java.xpm \
 		$(d_jbin)/usr/share/pixmaps/$(basename).xpm
@@ -638,9 +611,6 @@ binary-$(p_jre):	build
 	set -e; \
 	tar -c -C $(srcdir) -f - $(common_jre_things) $(common_jre_jars) \
 	  | tar -x -C $(d_jre)/$(basedir) -f -
-
-	: # these are only in the i586 archive
-	cp -a i586-jdk/jre/lib/images/icons $(d_jre)/$(basedir)/jre/lib/images/
 
 	: # JCE Unlimited Strength Jurisdiction Policy
 	cp -a UnlimitedJCEPolicy/*.jar $(d_jre)/$(basedir)/jre/lib/security/
@@ -792,10 +762,6 @@ binary-indep:	$(binary_indep_targets)
 	: # don't compress anything from the shipped demo and sample files
 	dh_compress -Xdemo -Xsample -X.html
 	dh_fixperms
-	: # remove empty directories, when all components are in place
-	for d in $$(find debian/{$(VENDOR),ia32*} -depth -type d \( ! -name plugins -o -name $(p_jdk) \) -empty 2> /dev/null); do \
-	  while rmdir $$d 2> /dev/null; do d=`dirname $$d`; done; \
-	done
 	dh_installdeb
 	dh_gencontrol
 	dh_md5sums
@@ -813,10 +779,6 @@ binary-arch:	$(binary_arch_targets)
 	: # don't compress anything from the shipped demo and sample files
 	dh_compress -Xdemo -Xexamples -Xsample -X.html -X.pdf
 	dh_fixperms
-	: # remove empty directories, when all components are in place
-	for d in $$(find debian/{$(VENDOR),ia32*} -depth -type d -name plugins -empty 2> /dev/null); do \
-	  while rmdir $$d 2> /dev/null; do d=`dirname $$d`; done; \
-	done
 	dh_installdeb
 	dh_gencontrol
 	dh_md5sums
