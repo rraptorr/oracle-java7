@@ -325,7 +325,7 @@ unpack-%-stamp: $(bin_pattern)
 
 	set -e; \
 	for i in $$(find $*-jdk -name '*.pack'); do \
-	  $*-jdk/bin/unpack200 $$i \
+	  i586-jdk/bin/unpack200 $$i \
 		$$(dirname $$i)/$$(basename $$i .pack).jar; \
 	  rm -f $$i; \
 	done
