@@ -1,6 +1,7 @@
 oracle-java7 (7.7-2) UNRELEASED; urgency=low
 
   * Remove even more obsolete code
+  * Add links for machine dependent include files
 
  -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Sat, 08 Sep 2012 01:30:05 +0200
 
