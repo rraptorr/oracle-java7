@@ -680,6 +680,11 @@ binary-$(p_jdk):	build
 	  ln -sf jre/$$i $(d_jdk)/$(basedir)/$$i; \
 	done
 
+	# add links to machine dependent include files
+	for i in jawt_md.h jni_md.h; do \
+	  ln -sf linux/$$i $(d_jdk)/$(basedir)/include/$$i; \
+	done
+
 	: # remove any runtime files from the jdk package
 	-find $(d_jbin)/$(basedir)/jre/bin \! -type d \
 		-printf "$(d_jdk)/$(basedir)/bin/%P\0" | xargs -r0 rm -f
