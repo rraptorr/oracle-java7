@@ -1,9 +1,42 @@
-oracle-java7 (7.7-2) UNRELEASED; urgency=low
+oracle-java7 (7.9-1) unstable; urgency=high
 
   * Remove even more obsolete code
   * Add links for machine dependent include files
+  * SECURITY UPDATE:
+     - (CVE-2012-5083): unspecified vulnerability fixed in 7u9 (2D)
+     - (CVE-2012-1531): unspecified vulnerability fixed in 7u9 (2D)
+     - (CVE-2012-5086): XMLDecoder sandbox restriction bypass (Beans)
+     - (CVE-2012-5087): PropertyElementHandler insufficient access checks (Beans)
+     - (CVE-2012-1533): unspecified vulnerability fixed in 7u9 (Deployment)
+     - (CVE-2012-1532): unspecified vulnerability fixed in 7u9 (Deployment)
+     - (CVE-2012-5076): com.sun.org.glassfish.* not restricted packages (JAX-WS)
+     - (CVE-2012-3143): unspecified vulnerability fixed in 7u9 (JMX)
+     - (CVE-2012-5088): MethodHandle insufficient access control checks (Libraries)
+     - (CVE-2012-5078): unspecified vulnerability fixed in JavaFX
+     - (CVE-2012-5089): RMIConnectionImpl insufficient access control checks (JMX)
+     - (CVE-2012-5084): DefaultFormatter insufficient data validation (Swing)
+     - (CVE-2012-5080): unspecified vulnerability fixed in JavaFX
+     - (CVE-2012-3159): unspecified vulnerability fixed in 7u9 (Deployment)
+     - (CVE-2012-5068): RhinoScriptEngine security bypass (Libraries)
+     - (CVE-2012-4416): uninitialized Array JVM memory disclosure (Hotspot)
+     - (CVE-2012-5074): com.sun.org.glassfish.* not restricted packages (JAX-WS)
+     - (CVE-2012-5071): DescriptorSupport insufficient package access checks (JMX)
+     - (CVE-2012-5069): Executors state handling issues (Concurrency)
+     - (CVE-2012-5067): unspecified vulnerability fixed in 7u9 (Deployment)
+     - (CVE-2012-5070): EnvHelp information disclosure (JMX)
+     - (CVE-2012-5075): RMIConnectionImpl information disclosure (JMX)
+     - (CVE-2012-5073): LogManager security bypass (Libraries)
+     - (CVE-2012-5079): unspecified vulnerability fixed in 7u9 (Libraries)
+     - (CVE-2012-5072): AccessController.doPrivilegedWithCombiner() information
+                        disclosure (Security)
+     - (CVE-2012-5081): JSSE denial of service (JSSE)
+     - (CVE-2012-5082): unspecified vulnerability fixed in JavaFX
+     - (CVE-2012-3216): java.io.FilePermission information leak (Libraries)
+     - (CVE-2012-5077): SecureRandom mulitple seeders information disclosure
+                        (Security)
+     - (CVE-2012-5085): disable Gopher support by default (Gopher)
 
- -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Sat, 08 Sep 2012 01:30:05 +0200
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Wed, 17 Oct 2012 11:59:28 +0200
 
 oracle-java7 (7.7-1) unstable; urgency=high
 
