@@ -6,21 +6,25 @@ oracle-java7 (7.9-1) unstable; urgency=high
      - (CVE-2012-5083): unspecified vulnerability fixed in 7u9 (2D)
      - (CVE-2012-1531): unspecified vulnerability fixed in 7u9 (2D)
      - (CVE-2012-5086): XMLDecoder sandbox restriction bypass (Beans)
-     - (CVE-2012-5087): PropertyElementHandler insufficient access checks (Beans)
+     - (CVE-2012-5087): PropertyElementHandler insufficient access checks
+                        (Beans)
      - (CVE-2012-1533): unspecified vulnerability fixed in 7u9 (Deployment)
      - (CVE-2012-1532): unspecified vulnerability fixed in 7u9 (Deployment)
      - (CVE-2012-5076): com.sun.org.glassfish.* not restricted packages (JAX-WS)
      - (CVE-2012-3143): unspecified vulnerability fixed in 7u9 (JMX)
-     - (CVE-2012-5088): MethodHandle insufficient access control checks (Libraries)
+     - (CVE-2012-5088): MethodHandle insufficient access control checks
+                        (Libraries)
      - (CVE-2012-5078): unspecified vulnerability fixed in JavaFX
-     - (CVE-2012-5089): RMIConnectionImpl insufficient access control checks (JMX)
+     - (CVE-2012-5089): RMIConnectionImpl insufficient access control checks
+                        (JMX)
      - (CVE-2012-5084): DefaultFormatter insufficient data validation (Swing)
      - (CVE-2012-5080): unspecified vulnerability fixed in JavaFX
      - (CVE-2012-3159): unspecified vulnerability fixed in 7u9 (Deployment)
      - (CVE-2012-5068): RhinoScriptEngine security bypass (Libraries)
      - (CVE-2012-4416): uninitialized Array JVM memory disclosure (Hotspot)
      - (CVE-2012-5074): com.sun.org.glassfish.* not restricted packages (JAX-WS)
-     - (CVE-2012-5071): DescriptorSupport insufficient package access checks (JMX)
+     - (CVE-2012-5071): DescriptorSupport insufficient package access checks
+                        (JMX)
      - (CVE-2012-5069): Executors state handling issues (Concurrency)
      - (CVE-2012-5067): unspecified vulnerability fixed in 7u9 (Deployment)
      - (CVE-2012-5070): EnvHelp information disclosure (JMX)
