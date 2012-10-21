@@ -1,3 +1,9 @@
+oracle-java7 (7.9-2) UNRELEASED; urgency=low
+
+  * Make rules display clearly what files are missing
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Sun, 21 Oct 2012 19:02:44 +0000
+
 oracle-java7 (7.9-1) unstable; urgency=high
 
   * Remove even more obsolete code

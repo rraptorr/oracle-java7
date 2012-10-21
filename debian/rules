@@ -38,8 +38,7 @@ jdirname	:= $(ia32_prefix)java-$(version)-$(VENDOR)-$(jdkversion).$(releng_ver)
 jdiralias	:= $(ia32_prefix)java-$(version)-$(VENDOR)
 srcdir		:= $(arch)-jdk
 bin_pattern	:= jdk-$(version)u$(releng_ver)-linux-%.tar.gz
-all_archs	:= $(filter $(subst =, , $(arch_map)), \
-			    $(subst -, , $(patsubst %.tar.gz, %, $(wildcard *.tar.gz))))
+all_archs	:= i586 x64
 priority	:= 53
 
 basedir		:= $(TOP)/$(jdirname)
@@ -308,9 +307,7 @@ unpack-stamp: $(foreach a, $(all_archs), unpack-$(a)-stamp) unpack-jce-stamp
 	@echo No relevant differences
 	touch unpack-stamp
 
-unpack-amd64-stamp: unpack-i586-stamp
-
-unpack-%-stamp: $(bin_pattern)
+$(foreach a, $(all_archs), unpack-$(a)-stamp): unpack-%-stamp: $(bin_pattern)
 	rm -rf $(unpackdir)
 	tar xf $<
 	mv $(unpackdir) $*-jdk
@@ -338,7 +335,7 @@ unpack-%-stamp: $(bin_pattern)
 	touch $@
 
 
-unpack-jce-stamp:
+unpack-jce-stamp: UnlimitedJCEPolicyJDK$(version).zip
 	rm -rf UnlimitedJCEPolicy
 	unzip -q UnlimitedJCEPolicyJDK$(version).zip
 	touch $@
