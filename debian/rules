@@ -28,17 +28,16 @@ Vendor		:= $(shell perl -e 'print ucfirst("$(VENDOR)");')
 javaname	:= $(shell echo $(word 2, $(dirparts)) | sed 's/[0-9.]*$$//')
 RELEASE		:= $(shell echo $(word 2, $(dirparts)) | sed 's/^[[:alpha:]]*//')
 PRODUCT		:= $(javaname)$(RELEASE)
-basename	:= $(ia32_prefix)$(VENDOR)-$(PRODUCT)
+basename	:= $(VENDOR)-$(PRODUCT)
 dirpartsv	:= $(shell dpkg-parsechangelog | sed -ne '/Version:/ s,Version: \(.*\),\1,p' | tr '.-' ' ')
 version		:= $(word 1, $(dirpartsv))
 releng_ver	:= $(word 2, $(dirpartsv))
 jdkversion	:= 1.$(version).0
 unpackdir	:= jdk$(jdkversion)_0$(releng_ver)
-jdirname	:= $(ia32_prefix)java-$(version)-$(VENDOR)-$(jdkversion).$(releng_ver)
-jdiralias	:= $(ia32_prefix)java-$(version)-$(VENDOR)
+jdirname	:= java-$(version)-$(VENDOR)-$(jdkversion).$(releng_ver)
+jdiralias	:= java-$(version)-$(VENDOR)
 srcdir		:= $(arch)-jdk
 bin_pattern	:= jdk-$(version)u$(releng_ver)-linux-%.tar.gz
-all_archs	:= i586 x64
 priority	:= 53
 
 basedir		:= $(TOP)/$(jdirname)
@@ -69,12 +68,6 @@ cjk_fonts += $(if $(with_wgy_zenhai),ttf-wqy-zenhei,ttf-arphic-uming),
 
 lintian_overrides	:= usr/share/lintian/overrides
 
-packaging_files = packaging-files
-ifneq (,$(findstring $(DEB_HOST_ARCH), amd64))
-  with_ia32 = yes
-  ia32_packaging_files = ia32-packaging-files
-endif
-
 info:
 	@echo Build information
 	@echo ==========================
@@ -87,7 +80,6 @@ info:
 	@echo 'releng_ver  = $(releng_ver)'
 	@echo 'unpackdir   = $(unpackdir)'
 	@echo 'srcdir      = $(srcdir)'
-	@echo 'all_archs   = $(all_archs)'
 	@echo 'arch        = $(arch)'
 	@echo 'archdir     = $(archdir)'
 	@echo 'bin_pattern = $(bin_pattern)'
@@ -112,18 +104,9 @@ d_plug	:= debian/$(p_plug)
 d_javadb	:= debian/$(p_javadb)
 
 binary_arch_targets	= \
-    $(patsubst %, binary-%, $(p_jbin) $(p_jdk))
-ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386))
-    binary_arch_targets	+= binary-$(p_plug)
-endif
-ifeq ($(with_ia32),yes)
-    binary_arch_targets	+= ia32-binary-bin
-endif
+	$(patsubst %, binary-%, $(p_jbin) $(p_jdk) $(p_plug))
 binary_indep_targets	:= \
 	$(patsubst %, binary-%, $(p_jre) $(p_src) $(p_fonts) $(p_javadb))
-ifneq ($(with_ia32),yes)
-  NO_PACKAGES = -Nia32-$(p_jbin)
-endif
 
 # (most) jre and jdk tools handled by the alternatives system.
 # dups in heimdal-clients, krb5-user: kinit, klist, ktab, no alternatives
@@ -138,8 +121,6 @@ jdk_tools_alt	= $(filter-out jvisualvm, $(jdk_tools))
 
 jre_manpages_re:= $(shell echo $(jre_tools) $(corba_tools) | tr -s ' ' '|')
 
-# TODO: unpack both tarballs, compare them to ensure we do things right
-# these are identical files / directories
 common_jre_things = \
 	jre/lib/cmm \
 	jre/lib/fonts \
@@ -159,9 +140,6 @@ common_jre_things = \
 	jre/THIRDPARTYLICENSEREADME-JAVAFX.txt \
 	jre/README \
 	jre/Welcome.html \
-
-# jar files, whith the same contents; just the time stamps differ
-common_jre_jars = \
 	jre/lib/ext/dnsns.jar \
 	jre/lib/ext/localedata.jar \
 	jre/lib/ext/zipfs.jar \
@@ -173,7 +151,7 @@ common_jre_jars = \
 	jre/lib/jsse.jar \
 
 control: control-stamp
-control-stamp: debian/control $(ia32_packaging_files) $(packaging_files)
+control-stamp: debian/control packaging-files
 	touch control-stamp
 
 build: build-arch build-indep
@@ -204,14 +182,8 @@ debian/control: debian/control.in debian/rules
           exit 1; \
 	fi
 
-ifeq (,$(ia32_prefix))
-  in_files = debian/*.in
-else
-  in_files = debian/JB-{archive,bin,control,java,policy,plugin,web}*.in
-  ia32txt= $(empty_) (32bit)
-endif
 packaging-files:
-	for f in $(in_files); do \
+	for f in debian/*.in; do \
 	  case "$$f" in debian/control.in) continue; esac; \
 	  f2=$$(echo $$f | sed 's/JB/$(basename)/;s/\.in$$//'); \
 	  sed -e 's/@JRE@/$(p_jre)/g' \
@@ -225,7 +197,6 @@ packaging-files:
 	      -e 's,@jdiralias@,$(jdiralias),g' \
 	      -e 's/@arch@/$(DEB_HOST_ARCH)/g' \
 	      -e 's/@archdir@/$(archdir)/g' \
-	      -e 's/@ia32txt@/$(ia32txt)/g' \
 	      -e 's/@priority@/$(priority)/g' \
 	      -e 's/@jre_tools@/$(jre_tools_alt)/g' \
 	      -e 's/@jdk_tools@/$(jdk_tools_alt)/g' \
@@ -233,16 +204,6 @@ packaging-files:
 	      -e 's,@java_launcher@,$(java_launcher),g' \
 	    $$f > $$f2; \
 	done
-ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386))
-	cat debian/$(p_jbin)-i586.menu >> $(d_jbin).menu
-	rm -f debian/$(p_jbin)-i586.menu
-endif
-ia32-packaging-files:
-	$(MAKE) -f debian/rules packaging-files \
-		ia32_prefix=ia32- \
-		packaging_files= \
-		priority=13 \
-		DEB_HOST_ARCH=i386
 
 diff_ignore = -I '^\* Monday' -I '^\* Tuesday' -I '^\* Wednesday' \
         -I '^\* Thursday' -I '^\* Friday' -I '^\* Saturday' -I '^\* Sunday' \
@@ -250,64 +211,9 @@ diff_ignore = -I '^\* Monday' -I '^\* Tuesday' -I '^\* Wednesday' \
         -I '^ *// java GenerateCharacter' \
         -I '^// Generated from input file'
 
-unpack-stamp: $(foreach a, $(all_archs), unpack-$(a)-stamp) unpack-jce-stamp
-	: # check for identical files / trees
-	set -e; set -- $(all_archs); a1=$$1; shift; \
-	for a2; do \
-	  echo "Comparing architecture $$a1 with $$a2"; \
-	  for i in $(common_jre_things); do \
-	    echo "  Comparing $$i ..."; \
-	    if diff -ur $$a1-jdk/$$i $$a2-jdk/$$i; then \
-	      echo "    OK"; \
-	    else \
-	      echo "    differ"; \
-	      badthings="$$badthings $$i"; \
-	    fi; \
-	  done; \
-	done; \
-	if [ -n "$$badthings" ]; then \
-	  echo "Differing files/subtrees: $$badthings"; \
-	  exit 1; \
-	fi
+unpack-stamp: unpack-$(arch)-stamp unpack-jce-stamp
 
-	: # check for jars with the same content
-	set -e; \
-	for j in $(common_jre_jars); do \
-	  echo "  Comparing $$j ..."; \
-	  d=$${j%*.jar}; \
-	  set -- $(all_archs); a1=$$1; shift; \
-	  mkdir -p tmp-$$a1/$$d; \
-	  unzip -q -d tmp-$$a1/$$d $$a1-jdk/$$j; \
-	  for a2; do \
-	    mkdir -p tmp-$$a2/$$d; \
-	    unzip -q -d tmp-$$a2/$$d $$a2-jdk/$$j; \
-	    if diff -ur tmp-$$a1/$$d tmp-$$a2/$$d; then \
-	      echo "    OK"; \
-	    else \
-	      echo "    differ"; \
-	      badjars="$$badjars $$j ($$a1, $$a2)"; \
-	    fi; \
-	  done; \
-	done; \
-	if [ -n "$$badjars" ]; then \
-	  echo "Differing jar files: $$badjars"; \
-	  exit 1; \
-	fi
-
-	: # check if the sources are the "same"
-	set -e; set -- $(all_archs); a1=$$1; shift; \
-	unzip -q -d tmp-$$a1/src $$a1-jdk/src.zip; \
-	for a2; do \
-	  unzip -q -d tmp-$$a2/src $$a2-jdk/src.zip; \
-	  echo "Comparing sources: tmp-$$a1/src tmp-$$a2/src ..."; \
-	  echo "    diff -ur $(diff_ignore)"; \
-	  diff -ur $(diff_ignore) tmp-$$a1/src tmp-$$a2/src; \
-	done
-
-	@echo No relevant differences
-	touch unpack-stamp
-
-$(foreach a, $(all_archs), unpack-$(a)-stamp): unpack-%-stamp: $(bin_pattern)
+unpack-$(arch)-stamp: unpack-%-stamp: $(bin_pattern)
 	rm -rf $(unpackdir)
 	tar xf $<
 	mv $(unpackdir) $*-jdk
@@ -322,7 +228,7 @@ $(foreach a, $(all_archs), unpack-$(a)-stamp): unpack-%-stamp: $(bin_pattern)
 
 	set -e; \
 	for i in $$(find $*-jdk -name '*.pack'); do \
-	  i586-jdk/bin/unpack200 $$i \
+	  $*-jdk/bin/unpack200 $$i \
 		$$(dirname $$i)/$$(basename $$i .pack).jar; \
 	  rm -f $$i; \
 	done
@@ -354,14 +260,12 @@ clean:
 	  rm -f $$f2; \
 	done
 	rm -f debian/$(basename)*.links
-	rm -f debian/ia32-$(basename)*.*
 	rm -f debian/*.debhelper.log
-	rm -f debian/shlibs.local
 
 	dh_clean
 
 
-binary-$(p_jbin):	DH_OPTIONS=-p$(p_jbin) $(NO_PACKAGES)
+binary-$(p_jbin):	DH_OPTIONS=-p$(p_jbin)
 binary-$(p_jbin):	build
 	dh_testdir
 	dh_testroot
@@ -387,7 +291,7 @@ binary-$(p_jbin):	build
 	echo $(basedir) $(TOP)/$(jdiralias) > $(d_jbin).links
 
 	: remove arch indep files and directories
-	rm -rf $(foreach i, $(common_jre_things) $(common_jre_jars), $(d_jbin)/$(basedir)/$(i))
+	rm -rf $(foreach i, $(common_jre_things), $(d_jbin)/$(basedir)/$(i))
 
 	: # install a wrapper for javaws
 	mv $(d_jbin)/$(basedir)/jre/bin/javaws $(d_jbin)/$(basedir)/jre/bin/javaws.real
@@ -471,12 +375,10 @@ binary-$(p_jbin):	build
 	      $(d_jbin)/usr/share/applications/
 	cp -p debian/$(basename)-policytool.desktop \
 	      $(d_jbin)/usr/share/applications/
-ifneq (,$(filter $(DEB_HOST_ARCH), amd64 i386))
 	cp -p debian/$(basename)-{java,javaws}.desktop \
 	      $(d_jbin)/usr/share/applications/
 	cp -p debian/$(basename)-{controlpanel,policytool}.desktop \
 	      $(d_jbin)/usr/share/applications/
-endif
 
 	for i in archive web-start; do \
 	  cp debian/$(basename)-$$i.applications \
@@ -506,20 +408,10 @@ endif
 	-find $(d_jbin)/$(basedir)/jre/man -name '*.[1-9]' | xargs gzip
 
 # make these absolute links, so we can use them for resolving the dependencies
-ifeq (,$(ia32_prefix))
 	ln -sf /usr/lib/libodbcinst.so.1 \
 		$(d_jbin)/$(basedir)/jre/lib/$(archdir)/libodbcinst.so
 	ln -sf /usr/lib/libodbc.so.1 \
 		$(d_jbin)/$(basedir)/jre/lib/$(archdir)/libodbc.so
-endif
-
-# a bit ugly fix for lenny with 32bit libraries installed from backports
-ifeq (,$(ia32_prefix))
-	rm -f debian/shlibs.local
-else
-	echo 'libgcc_s 1 lib32gcc1' > debian/shlibs.local
-	echo 'libasound 2 lib32asound2' >> debian/shlibs.local
-endif
 
 	rm -f $(d_jbin).substvars
 	dh_shlibdeps \
@@ -546,11 +438,7 @@ endif
 		-- --warnings=0
 	sed -i -e 's/ *([^,]*) *//g' $(d_jbin).substvars
 	cat $(d_jbin).substvars.tmp >> $(d_jbin).substvars
-ifeq (,$(ia32_prefix))
 	echo 'odbc:Depends=unixodbc' >> $(d_jbin).substvars
-else
-	echo 'odbc:Depends=' >> $(d_jbin).substvars
-endif
 
 	( \
 	  echo 'package $(basename)'; \
@@ -558,7 +446,7 @@ endif
 	  echo 'magic PK\x03\x04'; \
 	) > $(d_jbin)/$(basedir)/jre/lib/jar.binfmt
 
-	ln -sf $(subst $(ia32_prefix),, $(p_jre)) $(d_jbin)/usr/share/doc/$(p_jbin)
+	ln -sf $(p_jre) $(d_jbin)/usr/share/doc/$(p_jbin)
 
 	rm -f debian/$(p_jbin).substvars.tmp
 
@@ -581,20 +469,6 @@ endif
 	) > $(d_jbin)/$(TOP)/.$(jdiralias).jinfo
 
 
-ia32-binary-bin: unpack-stamp
-	dh_testdir
-	dh_testroot
-	$(MAKE) -f debian/rules binary-ia32-$(p_jbin) \
-		ia32_prefix=ia32- \
-		packaging_files= \
-		priority=13 \
-		DEB_HOST_ARCH=i386
-
-	for i in $(common_jre_things) $(common_jre_jars); do \
-	  echo $(basedir)/$$i $(TOP)/ia32-$(jdirname)/$$i; \
-	done >> debian/ia32-$(p_jbin).links
-
-
 binary-$(p_jre):	DH_OPTIONS=-p$(p_jre)
 binary-$(p_jre):	build
 	dh_testdir
@@ -606,7 +480,7 @@ binary-$(p_jre):	build
 		$(lintian_overrides)
 
 	set -e; \
-	tar -c -C $(srcdir) -f - $(common_jre_things) $(common_jre_jars) \
+	tar -c -C $(srcdir) -f - $(common_jre_things) \
 	  | tar -x -C $(d_jre)/$(basedir) -f -
 
 	: # JCE Unlimited Strength Jurisdiction Policy
@@ -753,7 +627,7 @@ binary-$(p_javadb):	build
 	dh_installchangelogs
 
 
-binary-indep:	DH_OPTIONS=-i $(NO_PACKAGES)
+binary-indep:	DH_OPTIONS=-i
 binary-indep:	$(binary_indep_targets)
 	dh_testdir
 	dh_testroot
@@ -770,7 +644,7 @@ binary-indep:	$(binary_indep_targets)
 	dh_builddeb
 
 
-binary-arch:	DH_OPTIONS=-s $(NO_PACKAGES)
+binary-arch:	DH_OPTIONS=-s
 binary-arch:	$(binary_arch_targets)
 	dh_testdir
 	dh_testroot

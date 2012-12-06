@@ -1,6 +1,7 @@
 oracle-java7 (7.9-2) UNRELEASED; urgency=low
 
   * Make rules display clearly what files are missing
+  * Remove ia32 packages
 
  -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Sun, 21 Oct 2012 19:02:44 +0000
 

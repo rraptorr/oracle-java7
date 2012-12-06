@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=@vendor@ Java @RELEASE@ Runtime@ia32txt@
-Comment=@vendor@ Java @RELEASE@ Runtime@ia32txt@
+Name=@vendor@ Java @RELEASE@ Runtime
+Comment=@vendor@ Java @RELEASE@ Runtime
 Exec=@java_launcher@ -jar
 Terminal=false
 Type=Application

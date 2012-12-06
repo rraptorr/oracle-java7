@@ -3,17 +3,17 @@ Section: non-free/java
 Priority: optional
 Maintainer: Janusz Dziemidowicz <rraptorr@nails.eu.org>
 Homepage: http://www.oracle.com/technetwork/java/javase/downloads/index.html
-Build-Depends: debhelper (>= 6), lsb-release, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, libxrender1, lib32asound2 [amd64], ia32-libs [amd64]
+Build-Depends: debhelper (>= 6), lsb-release, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, libxrender1
 Standards-Version: 3.9.3
 
 Package: oracle-java7-jre
 Section: non-free/java
 Architecture: all
 Provides: java-virtual-machine, java-runtime, java2-runtime, java5-runtime, java6-runtime, java7-runtime, java-runtime-headless, java2-runtime-headless, java5-runtime-headless, java6-runtime-headless, java7-runtime-headless
-Depends: java-common (>= 0.28), locales, oracle-java7-bin (>= ${source:Version}) | ia32-oracle-java7-bin (>= ${source:Version}), ${misc:Depends}
+Depends: java-common (>= 0.28), locales, oracle-java7-bin (>= ${source:Version}), ${misc:Depends}
 Recommends: gsfonts-x11
 Suggests: oracle-java7-plugin, oracle-java7-fonts, ttf-baekmuk | ttf-unfonts-core, ttf-kochi-gothic | ttf-sazanami-gothic, ttf-kochi-mincho | ttf-sazanami-mincho, ttf-arphic-uming,
-Replaces: oracle-java7-bin, ia32-oracle-java7-bin
+Replaces: oracle-java7-bin
 Description: Oracle Java(TM) Runtime Environment (JRE) 7 (architecture independent files)
  The Oracle Java Platform Standard Edition Runtime Environment (JRE) 7
  contains the Java virtual machine, runtime class libraries, and 
@@ -57,22 +57,6 @@ Description: Java(TM) Plug-in, Java SE 7
  .
  This is a metapackage containing dependencies for running Java in 
  various browsers.
-
-Package: ia32-oracle-java7-bin
-Section: non-free/java
-Architecture: amd64
-Depends: oracle-java7-jre (>= ${source:Version}), ia32-libs, ${shlibs:Depends}, ${odbc:Depends}, ${misc:Depends}
-Recommends: ${shlibs:Recommends}, ia32-libs-gtk
-Description: Oracle Java(TM) Runtime Environment (JRE) 7 (32-bit)
- The Oracle Java Platform Standard Edition Runtime Environment (JRE) 7
- contains the Java virtual machine, runtime class libraries, and 
- Java application launcher that are necessary to run programs written 
- in the Java progamming language. It is not a development environment and
- doesn't contain development tools such as compilers or debuggers.
- For development tools, see the Java Development Kit JDK(TM) 7
- (package oracle-java7-jdk).
- .
- This package contains architecture dependent files for ia32.
 
 Package: oracle-java7-fonts
 Section: non-free/fonts

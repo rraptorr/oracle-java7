@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
-Name=@vendor@ Java @RELEASE@ VisualVM@ia32txt@
-Comment=@vendor@ Java @RELEASE@ Monitoring & Management (VisualVM)@ia32txt@
+Name=@vendor@ Java @RELEASE@ VisualVM
+Comment=@vendor@ Java @RELEASE@ Monitoring & Management (VisualVM)
 Exec=/@basedir@/bin/jvisualvm
 Terminal=false
 Type=Application

@@ -3,17 +3,17 @@ Section: non-free/java
 Priority: optional
 Maintainer: Janusz Dziemidowicz <rraptorr@nails.eu.org>
 Homepage: http://www.oracle.com/technetwork/java/javase/downloads/index.html
-Build-Depends: debhelper (>= 6), lsb-release, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, libxrender1, lib32asound2 [amd64], ia32-libs [amd64]
+Build-Depends: debhelper (>= 6), lsb-release, unzip, bzip2, patch, libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, libxrender1
 Standards-Version: 3.9.3
 
 Package: @basename@-jre
 Section: non-free/java
 Architecture: all
 Provides: java-virtual-machine, java-runtime, java2-runtime, java5-runtime, java6-runtime, java7-runtime, java-runtime-headless, java2-runtime-headless, java5-runtime-headless, java6-runtime-headless, java7-runtime-headless
-Depends: java-common (>= 0.28), locales, @basename@-bin (>= ${source:Version}) | ia32-@basename@-bin (>= ${source:Version}), ${misc:Depends}
+Depends: java-common (>= 0.28), locales, @basename@-bin (>= ${source:Version}), ${misc:Depends}
 Recommends: gsfonts-x11
 Suggests: @basename@-plugin, @basename@-fonts, @cjk_fonts@
-Replaces: @basename@-bin, ia32-@basename@-bin
+Replaces: @basename@-bin
 Description: @vendor@ Java(TM) Runtime Environment (JRE) @RELEASE@ (architecture independent files)
  The @vendor@ Java Platform Standard Edition Runtime Environment (JRE) @RELEASE@
  contains the Java virtual machine, runtime class libraries, and 
@@ -57,22 +57,6 @@ Description: Java(TM) Plug-in, Java SE @RELEASE@
  .
  This is a metapackage containing dependencies for running Java in 
  various browsers.
-
-Package: ia32-@basename@-bin
-Section: non-free/java
-Architecture: amd64
-Depends: @basename@-jre (>= ${source:Version}), ia32-libs, ${shlibs:Depends}, ${odbc:Depends}, ${misc:Depends}
-Recommends: ${shlibs:Recommends}, ia32-libs-gtk
-Description: @vendor@ Java(TM) Runtime Environment (JRE) @RELEASE@ (32-bit)
- The @vendor@ Java Platform Standard Edition Runtime Environment (JRE) @RELEASE@
- contains the Java virtual machine, runtime class libraries, and 
- Java application launcher that are necessary to run programs written 
- in the Java progamming language. It is not a development environment and
- doesn't contain development tools such as compilers or debuggers.
- For development tools, see the Java Development Kit JDK(TM) @RELEASE@
- (package @basename@-jdk).
- .
- This package contains architecture dependent files for ia32.
 
 Package: @basename@-fonts
 Section: non-free/fonts

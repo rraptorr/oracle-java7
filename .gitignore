@@ -11,7 +11,6 @@ debian/README.alternatives
 debian/oracle-java7-jre.README.Debian
 
 debian/files
-debian/ia32-oracle-java7-bin
 debian/oracle-java7-bin
 debian/oracle-java7-fonts
 debian/oracle-java7-javadb
@@ -38,4 +37,3 @@ debian/*.desktop
 debian/*.defoma-hints
 debian/*.doc-base
 debian/*.tmp
-debian/shlibs.local
