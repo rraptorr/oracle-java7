@@ -1,3 +1,13 @@
+oracle-java7 (7.11-1) unstable; urgency=high
+
+  * SECURITY UPDATE:
+     - (CVE-2013-0422): Oracle Java 7 Security Manager Bypass Vulnerability
+                        (Libraries)
+     - (CVE-2012-3174): unspecified vulnerability leads to remote arbitrary
+                        code execution (Libraries)
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Mon, 14 Jan 2013 10:21:04 +0100
+
 oracle-java7 (7.10-1) unstable; urgency=low
 
   * Make rules display clearly what files are missing
