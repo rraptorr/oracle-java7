@@ -1,4 +1,11 @@
-oracle-java7 (7.10-1) unstable; urgency=low
+oracle-java7 (7.11-1) unstable; urgency=high
+
+  * SECURITY UPDATE:
+     - (CVE-2013-0422): Security Manager Bypass Vulnerability
+
+ -- Svein Harald Soleim <sveinhs@imr.no> Mon, 14 Jan 2013 09:51:24 +0100
+
+ oracle-java7 (7.10-1) unstable; urgency=low
 
   * Make rules display clearly what files are missing
   * Remove ia32 packages
