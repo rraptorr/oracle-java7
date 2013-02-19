@@ -1,1 +1,2 @@
 oracle-java7 source: native-package-with-dash-version
+oracle-java7 source: intra-source-package-circular-dependency oracle-java7-bin oracle-java7-jre
