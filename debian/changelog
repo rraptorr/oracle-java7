@@ -1,3 +1,14 @@
+oracle-java7 (7.15-1) unstable; urgency=high
+
+  * SECURITY UPDATE:
+     - (CVE-2013-1487): unspecified vulnerability fixed in 7u15 (Deployment)
+     - (CVE-2013-1486): unspecified vulnerability fixed in 7u15 (JMX)
+     - (CVE-2013-1484): unspecified vulnerability fixed in 7u15 (Libraries)
+     - (CVE-2013-1485): unspecified vulnerability fixed in 7u15 (Libraries)
+     - (CVE-2013-0169): SSL/TLS Lucky Thirteen Attack (JSSE)
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Tue, 19 Feb 2013 20:31:35 +0100
+
 oracle-java7 (7.13-1) unstable; urgency=high
 
   * SECURITY UPDATE:
