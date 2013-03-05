@@ -1,3 +1,11 @@
+oracle-java7 (7.17-1) unstable; urgency=high
+
+  * SECURITY UPDATE:
+     - (CVE-2013-0809): unspecified vulnerability fixed in 7u17 (2D)
+     - (CVE-2013-1493): unspecified vulnerability fixed in 7u17 (2D)
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Tue, 05 Mar 2013 11:42:58 +0100
+
 oracle-java7 (7.15-1) unstable; urgency=high
 
   * SECURITY UPDATE:
