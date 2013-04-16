@@ -29,7 +29,7 @@ To create packages on your own:
 - apt-get install dpkg-dev
 - git clone git://github.com/rraptorr/oracle-java7.git
 - cd oracle-java7
-- Download jdk-7u17-linux-i586.tar.gz or jdk-7u17-linux-x64.tar.gz from
+- Download jdk-7u21-linux-i586.tar.gz or jdk-7u21-linux-x64.tar.gz from
   http://www.oracle.com/technetwork/java/javase/downloads/index.html
   (depending on your architecture)
 - Download UnlimitedJCEPolicyJDK7.zip from the same page under "Java

@@ -1,3 +1,58 @@
+oracle-java7 (7.21-1) unstable; urgency=high
+
+  * SECURITY UPDATE:
+     - (CVE-2013-2383): font layout and glyph table errors (2D)
+     - (CVE-2013-2384): font layout and glyph table errors (2D)
+     - (CVE-2013-1569): font layout and glyph table errors (2D)
+     - (CVE-2013-2434): unspecified vulnerability fixed in 7u21 (2D)
+     - (CVE-2013-2432): unspecified vulnerability fixed in 7u21 (2D)
+     - (CVE-2013-2420): image processing vulnerability (2D)
+     - (CVE-2013-1491): unspecified sanbox bypass (2D)
+     - (CVE-2013-1558): java.beans.ThreadGroupContext missing restrictions
+                        (Beans)
+     - (CVE-2013-2440): unspecified vulnerability fixed in 7u21 (Deployment)
+     - (CVE-2013-2435): unspecified vulnerability fixed in 7u21 (Deployment)
+     - (CVE-2013-2431): Hotspot intrinsic frames vulnerability (Hotspot)
+     - (CVE-2013-2425): unspecified vulnerability fixed in 7u21 (Install)
+     - (CVE-2013-1518): JAXP missing security restrictions (JAXP)
+     - (CVE-2013-2414): unspecified vulnerability fixed in 7u21 (JavaFX)
+     - (CVE-2013-2428): unspecified vulnerability fixed in 7u21 (JavaFX)
+     - (CVE-2013-2427): unspecified vulnerability fixed in 7u21 (JavaFX)
+     - (CVE-2013-2422): MethodUtil trampoline class incorrect restrictions
+                        (Libraries)
+     - (CVE-2013-1537): remote code loading enabled by default (RMI)
+     - (CVE-2013-1557): LogStream.setDefaultStream() missing security
+                        restrictions (RMI)
+     - (CVE-2013-2421): Hotspot MethodHandle lookup error (HotSpot)
+     - (CVE-2013-0402): unspecified buffer overflow, leading to JVM compromise
+                        (JavaFX)
+     - (CVE-2013-2426): unspecified vulnerability fixed in 7u21 (Libraries)
+     - (CVE-2013-2436): Wrapper.convert insufficient type checks (Libraries)
+     - (CVE-2013-1488): unspecified sanbox bypass (Libraries)
+     - (CVE-2013-2394): unspecified vulnerability fixed in 7u21 (2D)
+     - (CVE-2013-2430): JPEGImageReader state corruption (ImageIO)
+     - (CVE-2013-2429): JPEGImageWriter state corruption (ImageIO)
+     - (CVE-2013-1563): unspecified vulnerability fixed in 7u21 (Install)
+     - (CVE-2013-2439): unspecified vulnerability fixed in 7u21 (Install)
+     - (CVE-2013-0401): unspecified sandbox bypass (AWT)
+     - (CVE-2013-2419): unspecified vulnerability fixed in 7u21 (2D)
+     - (CVE-2013-2424): MBeanInstantiator insufficient class access checks
+                        (JMX)
+     - (CVE-2013-1561): unspecified vulnerability fixed in 7u21 (JavaFX)
+     - (CVE-2013-1564): unspecified vulnerability fixed in 7u21 (JavaFX)
+     - (CVE-2013-2438): unspecified vulnerability fixed in 7u21 (JavaFX)
+     - (CVE-2013-2417): unspecified vulnerability fixed in 7u21 (Networking)
+     - (CVE-2013-2418): unspecified vulnerability fixed in 7u21 (Deployment)
+     - (CVE-2013-2416): unspecified vulnerability fixed in 7u21 (Deployment)
+     - (CVE-2013-2433): unspecified vulnerability fixed in 7u21 (Deployment)
+     - (CVE-2013-1540): unspecified vulnerability fixed in 7u21 (Deployment)
+     - (CVE-2013-2423): incorrect setter access checks in MethodHandles
+                        (Hotspot)
+     - (CVE-2013-2415): temporary files created with insecure permissions
+                        (JAX-WS)
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Tue, 16 Apr 2013 23:51:13 +0200
+
 oracle-java7 (7.17-1) unstable; urgency=high
 
   * SECURITY UPDATE:
