@@ -38,33 +38,29 @@ jdirname	:= java-$(version)-$(VENDOR)-$(jdkversion).$(releng_ver)
 jdiralias	:= java-$(version)-$(VENDOR)
 srcdir		:= $(arch)-jdk
 bin_pattern	:= jdk-$(version)u$(releng_ver)-linux-%.tar.gz
-priority	:= 53
+priority	:= 73
 
 basedir		:= $(TOP)/$(jdirname)
 security	:= etc/$(jdiralias)/security
 
 browser_plugin_dirs = firefox iceape iceweasel mozilla midbrowser konqueror
-browsers = firefox | firefox-2 | iceweasel | mozilla-firefox | iceape-browser | mozilla-browser | epiphany-gecko | epiphany-webkit | epiphany-browser | galeon | midbrowser | konqueror | chromium-browser | midori | google-chrome
+browsers = firefox | iceweasel | iceape-browser | epiphany-browser | galeon | konqueror | chromium-browser | midori | google-chrome
 
 ifeq ($(distribution),Ubuntu)
   browser_plugin_dirs = mozilla
 else
-  browser_plugin_dirs = firefox iceape iceweasel mozilla midbrowser
+  browser_plugin_dirs = firefox iceape iceweasel mozilla
 endif
 
 java_launcher = /$(basedir)/bin/java
 ifeq ($(distribution),Ubuntu)
-  ifeq (,$(filter $(distrelease),hardy))
-    java_launcher = cautious-launcher %f /$(basedir)/bin/java
-  endif
+  java_launcher = cautious-launcher %f /$(basedir)/bin/java
 endif
-
-with_wgy_zenhai = $(if $(filter $(distrelease),hardy),yes)
 
 cjk_fonts = ttf-baekmuk | ttf-unfonts-core,
 cjk_fonts += ttf-kochi-gothic | ttf-sazanami-gothic,
 cjk_fonts += ttf-kochi-mincho | ttf-sazanami-mincho,
-cjk_fonts += $(if $(with_wgy_zenhai),ttf-wqy-zenhei,ttf-arphic-uming),
+cjk_fonts += ttf-arphic-uming,
 
 lintian_overrides	:= usr/share/lintian/overrides
 
@@ -323,7 +319,7 @@ binary-$(p_jbin):	build
 	do \
 	  mv $(d_jbin)/$(basedir)/jre/lib/$$i $(d_jbin)/etc/$(jdiralias)/$$i; \
 	done
-	cp debian/fontconfig.properties.$(if $(with_wgy_zenhai),wqy-zenhei,src) \
+	cp debian/fontconfig.properties.src \
 		$(d_jbin)/etc/$(jdiralias)/fontconfig.properties
 
 	mv $(d_jbin)/$(basedir)/jre/lib/$(archdir)/jvm.cfg \

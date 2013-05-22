@@ -1,3 +1,13 @@
+oracle-java7 (7.21-2) UNRELEASED; urgency=low
+
+  * Drop lenny support
+  * Bump standards to 3.9.4
+  * Bump debhelper compat to 8
+  * Remove obsolete Ubuntu rules
+  * Change priority to 73 which is higher than sun-java6
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Wed, 22 May 2013 10:14:02 +0200
+
 oracle-java7 (7.21-1) unstable; urgency=high
 
   * SECURITY UPDATE:
