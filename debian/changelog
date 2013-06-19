@@ -1,12 +1,51 @@
-oracle-java7 (7.21-2) UNRELEASED; urgency=low
+oracle-java7 (7.25-1) unstable; urgency=high
 
   * Drop lenny support
   * Bump standards to 3.9.4
   * Bump debhelper compat to 8
   * Remove obsolete Ubuntu rules
   * Change priority to 73 which is higher than sun-java6
+  * SECURITY UPDATE:
+     - (CVE-2013-2470): unspecified vulnerability fixed in 7u25 (2D)
+     - (CVE-2013-2471): unspecified vulnerability fixed in 7u25 (2D)
+     - (CVE-2013-2472): unspecified vulnerability fixed in 7u25 (2D)
+     - (CVE-2013-2473): unspecified vulnerability fixed in 7u25 (2D)
+     - (CVE-2013-2463): unspecified vulnerability fixed in 7u25 (2D)
+     - (CVE-2013-2464): unspecified vulnerability fixed in 7u25 (2D)
+     - (CVE-2013-2465): unspecified vulnerability fixed in 7u25 (2D)
+     - (CVE-2013-2469): unspecified vulnerability fixed in 7u25 (2D)
+     - (CVE-2013-2459): unspecified vulnerability fixed in 7u25 (AWT)
+     - (CVE-2013-2468): unspecified vulnerability fixed in 7u25 (Deployment)
+     - (CVE-2013-2466): unspecified vulnerability fixed in 7u25 (Deployment)
+     - (CVE-2013-2462): unspecified vulnerability fixed in 7u25 (Deployment)
+     - (CVE-2013-2460): unspecified vulnerability fixed in 7u25 (Serviceability)
+     - (CVE-2013-2445): unspecified vulnerability fixed in 7u25 (Hotspot)
+     - (CVE-2013-2448): unspecified vulnerability fixed in 7u25 (Sound)
+     - (CVE-2013-2442): unspecified vulnerability fixed in 7u25 (Deployment)
+     - (CVE-2013-2461): unspecified vulnerability fixed in 7u25 (Libraries)
+     - (CVE-2013-2407): unspecified vulnerability fixed in 7u25 (Libraries)
+     - (CVE-2013-2454): unspecified vulnerability fixed in 7u25 (JDBC)
+     - (CVE-2013-2458): unspecified vulnerability fixed in 7u25 (Libraries)
+     - (CVE-2013-2444): unspecified vulnerability fixed in 7u25 (AWT)
+     - (CVE-2013-2446): unspecified vulnerability fixed in 7u25 (CORBA)
+     - (CVE-2013-2437): unspecified vulnerability fixed in 7u25 (Deployment)
+     - (CVE-2013-2400): unspecified vulnerability fixed in 7u25 (Deployment)
+     - (CVE-2013-3744): unspecified vulnerability fixed in 7u25 (Deployment)
+     - (CVE-2013-2457): unspecified vulnerability fixed in 7u25 (JMX)
+     - (CVE-2013-2453): unspecified vulnerability fixed in 7u25 (JMX)
+     - (CVE-2013-2443): unspecified vulnerability fixed in 7u25 (Libraries)
+     - (CVE-2013-2452): unspecified vulnerability fixed in 7u25 (Libraries)
+     - (CVE-2013-2455): unspecified vulnerability fixed in 7u25 (Libraries)
+     - (CVE-2013-2447): unspecified vulnerability fixed in 7u25 (Networking)
+     - (CVE-2013-2450): unspecified vulnerability fixed in 7u25 (Serialization)
+     - (CVE-2013-2456): unspecified vulnerability fixed in 7u25 (Serialization)
+     - (CVE-2013-2412): unspecified vulnerability fixed in 7u25 (Serviceability)
+     - (CVE-2013-2449): unspecified vulnerability fixed in 7u25 (Libraries)
+     - (CVE-2013-1571): Frame injection in generated HTML (Javadoc)
+     - (CVE-2013-2451): unspecified vulnerability fixed in 7u25 (Networking)
+     - (CVE-2013-1500): unspecified vulnerability fixed in 7u25 (2D)
 
- -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Wed, 22 May 2013 10:14:02 +0200
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Wed, 19 Jun 2013 09:26:42 +0200
 
 oracle-java7 (7.21-1) unstable; urgency=high
 
