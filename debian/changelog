@@ -1,3 +1,9 @@
+oracle-java7 (7.25-2) UNRELEASED; urgency=low
+
+  * Fix javaws location in mime file
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Thu, 05 Sep 2013 12:58:03 +0200
+
 oracle-java7 (7.25-1) unstable; urgency=high
 
   * Drop lenny support
