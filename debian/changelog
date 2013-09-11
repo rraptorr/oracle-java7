@@ -1,8 +1,10 @@
-oracle-java7 (7.25-2) UNRELEASED; urgency=low
+oracle-java7 (7.40-1) unstable; urgency=low
 
   * Fix javaws location in mime file
+  * New upstream release, see release notes for details:
+    http://www.oracle.com/technetwork/java/javase/7u40-relnotes-2004172.html
 
- -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Thu, 05 Sep 2013 12:58:03 +0200
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Wed, 11 Sep 2013 10:14:23 +0200
 
 oracle-java7 (7.25-1) unstable; urgency=high
 
@@ -179,7 +181,7 @@ oracle-java7 (7.13-1) unstable; urgency=high
      - (CVE-2013-0438): unspecified vulnerability fixed in 7u13 (Deployment)
      - (CVE-2013-0443): unspecified vulnerability fixed in 7u13 (JSSE)
      - (CVE-2013-1489): bypass of the security level setting in browser plugin
-	                (Deployment)
+                        (Deployment)
 
  -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Sat, 02 Feb 2013 11:23:18 +0000
 
