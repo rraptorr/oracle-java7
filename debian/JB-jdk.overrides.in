@@ -3,3 +3,4 @@
 @basename@-jdk: hardening-no-fortify-functions
 @basename@-jdk: hardening-no-relro
 @basename@-jdk: menu-icon-missing usr/share/pixmaps/oracle-java7.xpm
+@basename@-jdk: image-file-in-usr-lib @basedir@/lib/missioncontrol/*

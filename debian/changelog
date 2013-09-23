@@ -1,3 +1,9 @@
+oracle-java7 (7.40-2) UNRELEASED; urgency=low
+
+  * Add lintian overrides for Mission Control
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Mon, 23 Sep 2013 12:37:36 +0200
+
 oracle-java7 (7.40-1) unstable; urgency=low
 
   * Fix javaws location in mime file
