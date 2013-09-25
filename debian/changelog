@@ -1,3 +1,9 @@
+oracle-java7 (7.45-2) UNRELEASED; urgency=low
+
+  * Switch source package format to quilt
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Mon, 28 Oct 2013 14:44:45 +0100
+
 oracle-java7 (7.45-1) unstable; urgency=high
 
   * Add lintian overrides for Mission Control
