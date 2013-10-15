@@ -1,8 +1,60 @@
-oracle-java7 (7.40-2) UNRELEASED; urgency=low
+oracle-java7 (7.45-1) unstable; urgency=high
 
   * Add lintian overrides for Mission Control
+  * SECURITY UPDATE:
+     - (CVE-2013-5782): unspecified vulnerability fixed in 7u45 (2D)
+     - (CVE-2013-5830): unspecified vulnerability fixed in 7u45 (Libraries)
+     - (CVE-2013-5809): unspecified vulnerability fixed in 7u45 (2D)
+     - (CVE-2013-5829): unspecified vulnerability fixed in 7u45 (2D)
+     - (CVE-2013-5814): unspecified vulnerability fixed in 7u45 (CORBA)
+     - (CVE-2013-5824): unspecified vulnerability fixed in 7u45 (Deployment)
+     - (CVE-2013-5788): unspecified vulnerability fixed in 7u45 (Deployment)
+     - (CVE-2013-5787): unspecified vulnerability fixed in 7u45 (Deployment)
+     - (CVE-2013-5789): unspecified vulnerability fixed in 7u45 (Deployment)
+     - (CVE-2013-5817): unspecified vulnerability fixed in 7u45 (JNDI)
+     - (CVE-2013-5842): unspecified vulnerability fixed in 7u45 (Libraries)
+     - (CVE-2013-5843): unspecified vulnerability fixed in 7u45 (2D)
+     - (CVE-2013-5832): unspecified vulnerability fixed in 7u45 (Deployment)
+     - (CVE-2013-5850): unspecified vulnerability fixed in 7u45 (Libraries)
+     - (CVE-2013-5838): unspecified vulnerability fixed in 7u45 (Libraries)
+     - (CVE-2013-5805): unspecified vulnerability fixed in 7u45 (Swing)
+     - (CVE-2013-5806): unspecified vulnerability fixed in 7u45 (Swing)
+     - (CVE-2013-5846): unspecified vulnerability fixed in 7u45 (JavaFX)
+     - (CVE-2013-5810): unspecified vulnerability fixed in 7u45 (JavaFX)
+     - (CVE-2013-5844): unspecified vulnerability fixed in 7u45 (JavaFX)
+     - (CVE-2013-5777): unspecified vulnerability fixed in 7u45 (JavaFX)
+     - (CVE-2013-5852): unspecified vulnerability fixed in 7u45 (Deployment)
+     - (CVE-2013-5802): unspecified vulnerability fixed in 7u45 (JAXP)
+     - (CVE-2013-5775): unspecified vulnerability fixed in 7u45 (JavaFX)
+     - (CVE-2013-5804): unspecified vulnerability fixed in 7u45 (Javadoc)
+     - (CVE-2013-5812): unspecified vulnerability fixed in 7u45 (Deployment)
+     - (CVE-2013-3829): unspecified vulnerability fixed in 7u45 (Libraries)
+     - (CVE-2013-5783): unspecified vulnerability fixed in 7u45 (Swing)
+     - (CVE-2013-5825): unspecified vulnerability fixed in 7u45 (JAXP)
+     - (CVE-2013-4002): unspecified vulnerability fixed in 7u45 (JAXP)
+     - (CVE-2013-5823): unspecified vulnerability fixed in 7u45 (Security)
+     - (CVE-2013-5778): unspecified vulnerability fixed in 7u45 (2D)
+     - (CVE-2013-5801): unspecified vulnerability fixed in 7u45 (2D)
+     - (CVE-2013-5776): unspecified vulnerability fixed in 7u45 (Deployment)
+     - (CVE-2013-5818): unspecified vulnerability fixed in 7u45 (Deployment)
+     - (CVE-2013-5819): unspecified vulnerability fixed in 7u45 (Deployment)
+     - (CVE-2013-5831): unspecified vulnerability fixed in 7u45 (Deployment)
+     - (CVE-2013-5820): unspecified vulnerability fixed in 7u45 (JAX-WS)
+     - (CVE-2013-5851): unspecified vulnerability fixed in 7u45 (JAXP)
+     - (CVE-2013-5840): unspecified vulnerability fixed in 7u45 (Libraries)
+     - (CVE-2013-5774): unspecified vulnerability fixed in 7u45 (Libraries)
+     - (CVE-2013-5848): unspecified vulnerability fixed in 7u45 (Deployment)
+     - (CVE-2013-5780): unspecified vulnerability fixed in 7u45 (Libraries)
+     - (CVE-2013-5800): unspecified vulnerability fixed in 7u45 (JGSS)
+     - (CVE-2013-5849): unspecified vulnerability fixed in 7u45 (AWT)
+     - (CVE-2013-5790): unspecified vulnerability fixed in 7u45 (BEANS)
+     - (CVE-2013-5784): unspecified vulnerability fixed in 7u45 (SCRIPTING)
+     - (CVE-2013-5797): unspecified vulnerability fixed in 7u45 (Javadoc)
+     - (CVE-2013-5772): unspecified vulnerability fixed in 7u45 (jhat)
+     - (CVE-2013-5803): unspecified vulnerability fixed in 7u45 (JGSS)
+     - (CVE-2013-5854): unspecified vulnerability fixed in 7u45 (JavaFX)
 
- -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Mon, 23 Sep 2013 12:37:36 +0200
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Tue, 15 Oct 2013 19:28:45 +0000
 
 oracle-java7 (7.40-1) unstable; urgency=low
 
