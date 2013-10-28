@@ -15,17 +15,17 @@ while [ $# -gt 0 ] ; do
         *UnlimitedJCEPolicyJDK7.zip)
             rm -rf "$dir"/UnlimitedJCEPolicy
             unzip -q "$1" -d "$dir"
-            tar -czf "$dir"/../oracle-java${major}_${major}.${minor}.orig-UnlimitedJCEPolicy.tar.gz "$dir"/UnlimitedJCEPolicy
+            tar -czf "$dir"/../oracle-java${major}_${major}.${minor}.orig-UnlimitedJCEPolicy.tar.gz -C "$dir" UnlimitedJCEPolicy
             rm -f "$1"
             ;;
         *jdk-${major}u${minor}-linux-i586.tar.gz)
-            rm -rf "$dir"/i586
+            rm -rf "$dir"/i586 "$dir"/jdk1.${major}.0_${minor}
             tar xf "$1" -C "$dir"
             mv "$dir"/jdk1.${major}.0_${minor} "$dir"/i586
             mv "$1" "$dir"/../oracle-java${major}_${major}.${minor}.orig-i586.tar.gz
             ;;
         *jdk-${major}u${minor}-linux-x64.tar.gz)
-            rm -rf "$dir"/x64
+            rm -rf "$dir"/x64 "$dir"/jdk1.${major}.0_${minor}
             tar xf "$1" -C "$dir"
             mv "$dir"/jdk1.${major}.0_${minor} "$dir"/x64
             mv "$1" "$dir"/../oracle-java${major}_${major}.${minor}.orig-x64.tar.gz
@@ -37,4 +37,4 @@ while [ $# -gt 0 ] ; do
     shift
 done
 
-git --git-dir="$dir"/.git archive -o "$dir"/../oracle-java${major}_${major}.${minor}.orig.tar.gz --prefix=oracle_java${major}/ HEAD README.md
+git --git-dir="$dir"/.git archive -o "$dir"/../oracle-java${major}_${major}.${minor}.orig.tar.gz --prefix=oracle_java${major}-${major}.${minor}/ HEAD README.md
