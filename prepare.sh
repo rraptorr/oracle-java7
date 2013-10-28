@@ -37,4 +37,4 @@ while [ $# -gt 0 ] ; do
     shift
 done
 
-git --git-dir="$dir"/.git archive -o "$dir"/../oracle-java${major}_${major}.${minor}.orig.tar.gz --prefix=oracle_java${major}-${major}.${minor}/ HEAD README.md
+git --git-dir="$dir"/.git archive -o "$dir"/../oracle-java${major}_${major}.${minor}.orig.tar.gz --prefix=oracle_java${major}-${major}.${minor}/ HEAD README.md prepare.sh
