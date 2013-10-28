@@ -29,17 +29,6 @@ debian/*.desktop
 debian/*.doc-base
 debian/*.tmp
 
-COPYRIGHT
-LICENSE
-README.html
-THIRDPARTYLICENSEREADME-JAVAFX.txt
-THIRDPARTYLICENSEREADME.txt
-bin
-db
-include
-jre
-lib
-man
-release
-src.zip
 UnlimitedJCEPolicy
+x64
+i586

@@ -35,7 +35,7 @@ releng_ver	:= $(word 2, $(dirpartsv))
 jdkversion	:= 1.$(version).0
 jdirname	:= java-$(version)-$(VENDOR)-$(jdkversion).$(releng_ver)
 jdiralias	:= java-$(version)-$(VENDOR)
-srcdir		:= .
+srcdir		:= $(arch)
 priority	:= 73
 
 basedir		:= $(TOP)/$(jdirname)
