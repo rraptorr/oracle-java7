@@ -522,7 +522,7 @@ binary-$(p_fonts):	build
 	cd $(srcdir) && \
 	for f in jre/lib/*fonts/*.ttf; do \
 	  echo $(basedir)/$$f usr/share/fonts/truetype/lucida/$$(basename $$f); \
-	done >> $(CURDIR)/$(d_fonts).links
+	done >> "$(CURDIR)/$(d_fonts).links"
 
 	ln -s $(p_jre) $(d_fonts)/usr/share/doc/$(p_fonts)
 
