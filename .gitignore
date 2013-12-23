@@ -1,11 +1,3 @@
-jdk-*-linux-*.tar.gz
-UnlimitedJCEPolicyJDK*.zip
-i586-jdk
-x64-jdk
-tmp-i586
-tmp-x64
-UnlimitedJCEPolicy
-
 debian/JAVA_HOME
 debian/README.alternatives
 debian/oracle-java7-jre.README.Debian
@@ -36,3 +28,7 @@ debian/*.links
 debian/*.desktop
 debian/*.doc-base
 debian/*.tmp
+
+UnlimitedJCEPolicy
+x64
+i586

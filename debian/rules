@@ -34,11 +34,9 @@ version		:= $(word 1, $(dirpartsv))
 releng_ver	:= $(word 2, $(dirpartsv))
 jdkversion	:= 1.$(version).0
 jdkbuild	:= 18
-unpackdir	:= jdk$(jdkversion)_$(releng_ver)
 jdirname	:= java-$(version)-$(VENDOR)-$(jdkversion).$(releng_ver)
 jdiralias	:= java-$(version)-$(VENDOR)
-srcdir		:= $(arch)-jdk
-bin_pattern	:= jdk-$(version)u$(releng_ver)-linux-%.tar.gz
+srcdir		:= $(arch)
 priority	:= 73
 
 basedir		:= $(TOP)/$(jdirname)
@@ -82,11 +80,9 @@ info:
 	@echo 'basename    = $(basename)'
 	@echo 'version     = $(version)'
 	@echo 'releng_ver  = $(releng_ver)'
-	@echo 'unpackdir   = $(unpackdir)'
 	@echo 'srcdir      = $(srcdir)'
 	@echo 'arch        = $(arch)'
 	@echo 'archdir     = $(archdir)'
-	@echo 'bin_pattern = $(bin_pattern)'
 	@echo $(jre_tools)
 
 d	= debian/tmp
@@ -161,7 +157,7 @@ control-stamp: debian/control packaging-files
 build: build-arch build-indep
 build-arch: build-stamp
 build-indep: build-stamp
-build-stamp: info unpack-stamp control-stamp
+build-stamp: info control-stamp
 	touch build-stamp
 
 debian/control: debian/control.in debian/rules
@@ -215,46 +211,11 @@ diff_ignore = -I '^\* Monday' -I '^\* Tuesday' -I '^\* Wednesday' \
         -I '^ *// java GenerateCharacter' \
         -I '^// Generated from input file'
 
-unpack-stamp: unpack-$(arch)-stamp unpack-jce-stamp
-
-unpack-$(arch)-stamp: unpack-%-stamp: $(bin_pattern)
-	rm -rf $(unpackdir)
-	tar xf $<
-	mv $(unpackdir) $*-jdk
-	@echo $*
-
-	diff -u $*-jdk/COPYRIGHT $*-jdk/jre/COPYRIGHT
-	diff -u $*-jdk/LICENSE $*-jdk/jre/LICENSE
-	diff -u $*-jdk/THIRDPARTYLICENSEREADME.txt \
-	    $*-jdk/jre/THIRDPARTYLICENSEREADME.txt
-	diff -u $*-jdk/THIRDPARTYLICENSEREADME-JAVAFX.txt \
-	    $*-jdk/jre/THIRDPARTYLICENSEREADME-JAVAFX.txt
-
-	set -e; \
-	for i in $$(find $*-jdk -name '*.pack'); do \
-	  $*-jdk/bin/unpack200 $$i \
-		$$(dirname $$i)/$$(basename $$i .pack).jar; \
-	  rm -f $$i; \
-	done
-
-	: # fix permissions
-	-find $*-jdk -name '*.properties' -o -name '*.properties.ja' -o -name '*.xml' -o -name '*.bat' \
-	  -o -name '*.jar' -o -name '*.src' -o -name '*.bfc' -o -name '*.txt' -o -name '*.cfg' \
-	  -o -name 'classlist' -o -name 'currency.data' -o -name 'meta-index' | xargs chmod 644
-
-	touch $@
-
-
-unpack-jce-stamp: UnlimitedJCEPolicyJDK$(version).zip
-	rm -rf UnlimitedJCEPolicy
-	unzip -q UnlimitedJCEPolicyJDK$(version).zip
-	touch $@
-
 clean:
 	dh_testdir
 	dh_testroot
 	rm -f *-stamp
-	rm -rf x64-jdk i586-jdk UnlimitedJCEPolicy tmp-* $(unpackdir)
+	rm -rf tmp-*
 	rm -f debian/*.debhelper debian/control.old
 	rm -f debian/$(p_jbin).substvars.tmp
 
@@ -472,6 +433,11 @@ binary-$(p_jbin):	build
 	  done; \
 	) > $(d_jbin)/$(TOP)/.$(jdiralias).jinfo
 
+	: # fix permissions
+	-find $(d_jbin) -name '*.properties' -o -name 'classlist' -o -name '*.data' \
+	  -o -name '*.jar' -o -name '*.bfc' -o -name '*.src' -o -name '*.properties.ja' \
+	  -o -name '*.txt' -o -name 'meta-index' -o -name '*.cfg' | xargs chmod 644
+
 
 binary-$(p_jre):	DH_OPTIONS=-p$(p_jre)
 binary-$(p_jre):	build
@@ -493,6 +459,9 @@ binary-$(p_jre):	build
 	: # add lintian overrides
 	cp -p debian/$(p_jre).overrides \
 		$(d_jre)/$(lintian_overrides)/$(p_jre)
+
+	: # fix permissions
+	-find $(d_jre) -name '*.jar' | xargs chmod 644
 
 	dh_installdocs \
 		$(srcdir)/jre/README \
@@ -626,6 +595,9 @@ binary-$(p_javadb):	build
 	: # add lintian overrides
 	cp -p debian/$(p_javadb).overrides \
 		$(d_javadb)/$(lintian_overrides)/$(p_javadb)
+
+	: # fix permissions
+	-find $(d_javadb) -name '*.bat' | xargs chmod 644
 
 	dh_installdocs
 	dh_installchangelogs

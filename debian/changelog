@@ -4,11 +4,12 @@ oracle-java7 (7.45-2) UNRELEASED; urgency=low
   * Bump standards to 3.9.5
   * Add missing lintian override
   * Fix building in directory with spaces in name
+  * Switch source package format to quilt
 
   [ Jochen Schalanda ]
   * Automatic download of upstream archives
 
- -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Thu, 07 Nov 2013 10:26:11 +0100
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Mon, 23 Dec 2013 23:36:06 +0100
 
 oracle-java7 (7.45-1) unstable; urgency=high
 
