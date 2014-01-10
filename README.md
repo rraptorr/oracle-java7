@@ -34,14 +34,8 @@ To create packages on your own:
 - apt-get install dpkg-dev
 - git clone git://github.com/rraptorr/oracle-java7.git
 - cd oracle-java7
-- download jdk-7u45-linux-i586.tar.gz and jdk-7u45-linux-x64.tar.gz
-  from <http://www.oracle.com/technetwork/java/javase/downloads/index.html>
-  (yes, both, no matter which version you will run)
-- download UnlimitedJCEPolicyJDK7.zip from the same page under "Java
-  Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy
-  Files 7"
-- run prepare.sh providing paths to all downloaded files as arguments, i.e.
-  prepare.sh jdk-7u45-linux-i586.tar.gz jdk-7u45-linux-x64.tar.gz UnlimitedJCEPolicyJDK7.zip
+- run prepare.sh:
+  sh ./prepare.sh
 - dpkg-buildpackage -uc -us
 - install any missing packages that dpkg-buildpackage complains about
   and repeat

@@ -1,4 +1,4 @@
-oracle-java7 (7.45-2) UNRELEASED; urgency=low
+oracle-java7 (7.45-2) unstable; urgency=low
 
   [ Janusz Dziemidowicz ]
   * Bump standards to 3.9.5
