@@ -27,4 +27,4 @@ tar xf "$dir"/jdk-${major}u${minor}-linux-x64.tar.gz -C "$dir"
 mv "$dir"/jdk1.${major}.0_${minor} "$dir"/x64
 mv "$dir"/jdk-${major}u${minor}-linux-x64.tar.gz "$dir"/../oracle-java${major}_${major}.${minor}.orig-x64.tar.gz
 
-git --git-dir="$dir"/.git archive -o "$dir"/../oracle-java${major}_${major}.${minor}.orig.tar.gz --prefix=oracle_java${major}-${major}.${minor}/ HEAD README.md prepare.sh
+git --git-dir="$dir"/.git archive --format=tar --prefix=oracle_java${major}-${major}.${minor}/ HEAD README.md prepare.sh | gzip > "$dir"/../oracle-java${major}_${major}.${minor}.orig.tar.gz
