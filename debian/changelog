@@ -1,3 +1,49 @@
+oracle-java7 (7.51-1) unstable; urgency=high
+
+  * SECURITY UPDATE:
+     - (CVE-2014-0410): unspecified vulnerability fixed in 7u51 (Deployment)
+     - (CVE-2014-0415): unspecified vulnerability fixed in 7u51 (Deployment)
+     - (CVE-2013-5907): Layout Engine LookupProcessor insufficient input checks
+                        (2D)
+     - (CVE-2014-0428): insufficient security checks in IIOP streams (CORBA)
+     - (CVE-2014-0422): insufficient package access checks in the Naming
+                        component (JNDI)
+     - (CVE-2014-0385): unspecified vulnerability fixed in 7u51 (Install)
+     - (CVE-2013-5889): unspecified vulnerability fixed in 7u51 (Deployment)
+     - (CVE-2014-0408): JObjC code issues (Hotspot)
+     - (CVE-2013-5893): JVM method processing issues (Libraries)
+     - (CVE-2014-0417): unspecified vulnerability fixed in 7u51 (2D)
+     - (CVE-2014-0387): unspecified vulnerability fixed in 7u51 (Deployment)
+     - (CVE-2014-0424): unspecified vulnerability fixed in 7u51 (Deployment)
+     - (CVE-2014-0373): SnmpStatusException handling issues (Serviceability)
+     - (CVE-2013-5878): null xmlns handling issue (Security)
+     - (CVE-2013-5904): unspecified vulnerability fixed in 7u51 (Deployment)
+     - (CVE-2013-5870): unspecified vulnerability fixed in 7u51 (JavaFX)
+     - (CVE-2014-0403): unspecified vulnerability fixed in 7u51 (Deployment)
+     - (CVE-2014-0375): unspecified vulnerability fixed in 7u51 (Deployment)
+     - (CVE-2014-0423): XXE issue in decoder (Beans)
+     - (CVE-2013-5905): unspecified vulnerability fixed in 7u51 (Install)
+     - (CVE-2013-5906): unspecified vulnerability fixed in 7u51 (Install)
+     - (CVE-2013-5902): unspecified vulnerability fixed in 7u51 (Deployment)
+     - (CVE-2014-0418): unspecified vulnerability fixed in 7u51 (Deployment)
+     - (CVE-2013-5887): unspecified vulnerability fixed in 7u51 (Deployment)
+     - (CVE-2013-5899): unspecified vulnerability fixed in 7u51 (Deployment)
+     - (CVE-2013-5896): com.sun.corba.se. should be restricted package (CORBA)
+     - (CVE-2013-5884): insufficient security checks in CORBA stub factories
+                        (CORBA)
+     - (CVE-2014-0416): insecure subject principals set handling (JAAS)
+     - (CVE-2014-0376): document builder missing security checks (JAXP)
+     - (CVE-2014-0368): insufficient Socket checkListen checks (Networking)
+     - (CVE-2013-5910): XML canonicalizer mutable strings passed to untrusted
+                        code (Security)
+     - (CVE-2013-5895): unspecified vulnerability fixed in 7u51 (JavaFX)
+     - (CVE-2013-5888): unspecified vulnerability fixed in 7u51 (Deployment)
+     - (CVE-2014-0382): unspecified vulnerability fixed in 7u51 (JavaFX)
+     - (CVE-2013-5898): unspecified vulnerability fixed in 7u51 (Deployment)
+     - (CVE-2014-0411): TLS/SSL handshake timing issues (JSSE)
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Wed, 15 Jan 2014 10:30:43 +0100
+
 oracle-java7 (7.45-2) unstable; urgency=low
 
   [ Janusz Dziemidowicz ]
