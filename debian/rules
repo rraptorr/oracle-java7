@@ -438,6 +438,9 @@ binary-$(p_jbin):	build
 	  -o -name '*.jar' -o -name '*.bfc' -o -name '*.src' -o -name '*.properties.ja' \
 	  -o -name '*.txt' -o -name 'meta-index' -o -name '*.cfg' | xargs chmod 644
 
+ifneq (,$(filter paxctl,$(DEB_BUILD_OPTIONS)))
+	/sbin/paxctl -Cm $(d_jbin)/$(basedir)/jre/bin/{java,keytool,orbd,pack200,policytool,rmid,rmiregistry,servertool,tnameserv}
+endif
 
 binary-$(p_jre):	DH_OPTIONS=-p$(p_jre)
 binary-$(p_jre):	build
@@ -566,6 +569,9 @@ binary-$(p_jdk):	build
 		$(srcdir)/README.html debian/README.alternatives
 	dh_installchangelogs
 
+ifneq (,$(filter paxctl,$(DEB_BUILD_OPTIONS)))
+	/sbin/paxctl -Cm $(d_jdk)/$(basedir)/bin/{appletviewer,apt,extcheck,idlj,jar,jarsigner,javac,javadoc,javah,javap,jcmd,jconsole,jdb,jhat,jinfo,jmap,jps,jrunscript,jsadebugd,jstack,jstat,native2ascii,rmic,schemagen,serialver,wsgen,wsimport,xjc}
+endif
 
 binary-$(p_src):	DH_OPTIONS=-p$(p_src)
 binary-$(p_src):	build
