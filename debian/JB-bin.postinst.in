@@ -61,7 +61,7 @@ configure)
 	for type in client server; do
 	    rm -f $basedir/jre/lib/@archdir@/$type/classes.jsa
 	    log=$(tempfile)
-	    if ! $basedir/bin/java -$type -Xshare:dump -Xmx256m -XX:PermSize=128m > $log; then
+	    if ! $basedir/bin/java -$type -Xshare:dump -Xmx256m > $log; then
 	        rm -f $basedir/jre/lib/@archdir@/$type/classes.jsa
 	        cat >&2 $log
 	        echo "Ignoring error generating classes.jsa"
