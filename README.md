@@ -23,9 +23,6 @@ I do not have resources to test packages on Ubuntu. However, if one
 finds any problem on Ubuntu, feel free to report an issue and I will
 try to resolve it.
 
-For automated solution Ubuntu users can use:
-<https://github.com/flexiondotorg/oab-java6>
-
 Usage
 -----
 
