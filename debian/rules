@@ -570,6 +570,9 @@ binary-$(p_jdk):	build
 		$(srcdir)/README.html debian/README.alternatives
 	dh_installchangelogs
 
+	: # fix permissions
+	-find $(d_jdk) -name '*.ini' | xargs chmod 644
+
 ifneq (,$(filter paxctl,$(DEB_BUILD_OPTIONS)))
 	/sbin/paxctl -Cm $(d_jdk)/$(basedir)/bin/{appletviewer,apt,extcheck,idlj,jar,jarsigner,javac,javadoc,javah,javap,jcmd,jconsole,jdb,jhat,jinfo,jmap,jps,jrunscript,jsadebugd,jstack,jstat,native2ascii,rmic,schemagen,serialver,wsgen,wsimport,xjc}
 endif

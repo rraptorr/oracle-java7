@@ -1,8 +1,45 @@
-oracle-java7 (7.51-2) UNRELEASED; urgency=low
+oracle-java7 (7.55-1) unstable; urgency=high
 
   * Support setting grsecurity flags via paxctl
+  * SECURITY UPDATE:
+     - (CVE-2014-0429): unspecified vulnerability fixed in 7u55 (2D)
+     - (CVE-2014-0457): unspecified vulnerability fixed in 7u55 (Libraries)
+     - (CVE-2014-0456): unspecified vulnerability fixed in 7u55 (Hotspot)
+     - (CVE-2014-2421): unspecified vulnerability fixed in 7u55 (2D)
+     - (CVE-2014-2397): unspecified vulnerability fixed in 7u55 (Hotspot)
+     - (CVE-2014-2397): unspecified vulnerability fixed in 7u55 (Libraries)
+     - (CVE-2014-0455): unspecified vulnerability fixed in 7u55 (Libraries)
+     - (CVE-2014-0461): unspecified vulnerability fixed in 7u55 (Libraries)
+     - (CVE-2014-0448): unspecified vulnerability fixed in 7u55 (Deployment)
+     - (CVE-2014-2428): unspecified vulnerability fixed in 7u55 (Deployment)
+     - (CVE-2014-2412): unspecified vulnerability fixed in 7u55 (AWT)
+     - (CVE-2014-0451): unspecified vulnerability fixed in 7u55 (AWT)
+     - (CVE-2014-0458): unspecified vulnerability fixed in 7u55 (JAX-WS)
+     - (CVE-2014-2423): unspecified vulnerability fixed in 7u55 (JAX-WS)
+     - (CVE-2014-0452): unspecified vulnerability fixed in 7u55 (JAX-WS)
+     - (CVE-2014-2414): unspecified vulnerability fixed in 7u55 (JAXB)
+     - (CVE-2014-2402): unspecified vulnerability fixed in 7u55 (Libraries)
+     - (CVE-2014-0446): unspecified vulnerability fixed in 7u55 (Libraries)
+     - (CVE-2014-0454): unspecified vulnerability fixed in 7u55 (Security)
+     - (CVE-2014-2427): unspecified vulnerability fixed in 7u55 (Sound)
+     - (CVE-2014-2422): unspecified vulnerability fixed in 7u55 (JavaFX)
+     - (CVE-2014-2409): unspecified vulnerability fixed in 7u55 (Deployment)
+     - (CVE-2014-0460): unspecified vulnerability fixed in 7u55 (JNDI)
+     - (CVE-2013-6954): libpng: unhandled zero-length PLTE chunk or NULL
+                        palette (AWT)
+     - (CVE-2013-6629): libjpeg: information leak (read of uninitialized
+                        memory) (AWT)
+     - (CVE-2014-0449): unspecified vulnerability fixed in 7u55 (Deployment)
+     - (CVE-2014-2403): unspecified vulnerability fixed in 7u55 (JAXP)
+     - (CVE-2014-2401): unspecified vulnerability fixed in 7u55 (2D)
+     - (CVE-2014-0459): unspecified vulnerability fixed in 7u55 (2D)
+     - (CVE-2014-2413): unspecified vulnerability fixed in 7u55 (Libraries)
+     - (CVE-2014-0453): unspecified vulnerability fixed in 7u55 (Security)
+     - (CVE-2014-2398): unspecified vulnerability fixed in 7u55 (Javadoc)
+     - (CVE-2014-1876): insecure temporary file use in unpack200 (Libraries)
+     - (CVE-2014-2420): unspecified vulnerability fixed in 7u55 (Deployment)
 
- -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Mon, 10 Feb 2014 11:55:21 +0100
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Tue, 15 Apr 2014 22:52:47 +0200
 
 oracle-java7 (7.51-1) unstable; urgency=high
 
