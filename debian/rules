@@ -118,7 +118,7 @@ jre_tools_alt	= $(filter-out kinit klist ktab, $(jre_tools)) $(corba_tools)
 
 all_jdk_tools	= $(notdir $(wildcard $(srcdir)/bin/*))
 jdk_tools	= $(filter-out $(all_jre_tools), $(all_jdk_tools))
-jdk_tools_alt	= $(filter-out jvisualvm, $(jdk_tools))
+jdk_tools_alt	= $(filter-out jvisualvm apt, $(jdk_tools))
 
 jre_manpages_re:= $(shell echo $(jre_tools) $(corba_tools) | tr -s ' ' '|')
 
