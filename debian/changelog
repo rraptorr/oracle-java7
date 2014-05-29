@@ -1,9 +1,15 @@
+oracle-java7 (7.60-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Thu, 29 May 2014 12:29:30 +0200
+
 oracle-java7 (7.55-2) unstable; urgency=low
 
   * Remove apt from java alternatives, it is deprecated and conflicts
     with Debian apt package.
 
- -- Janusz Dziemidowicz <janusz@still>  Thu, 17 Apr 2014 10:39:33 +0200
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Thu, 17 Apr 2014 10:39:33 +0200
 
 oracle-java7 (7.55-1) unstable; urgency=high
 
