@@ -28,13 +28,13 @@ Usage
 
 To create packages on your own:
 
-- apt-get install dpkg-dev curl unzip
+- apt-get install debhelper curl unzip
 - git clone git://github.com/rraptorr/oracle-java7.git
 - cd oracle-java7
 - sh ./prepare.sh
 - dpkg-buildpackage -uc -us
 - install any missing packages that dpkg-buildpackage complains about
-  and repeat
+  and repeat (currently libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, libxrender1)
 
 Legal
 -----
