@@ -34,7 +34,7 @@ To create packages on your own:
 - sh ./prepare.sh
 - dpkg-buildpackage -uc -us
 - install any missing packages that dpkg-buildpackage complains about
-  and repeat
+  and repeat (currently libasound2, unixodbc, libx11-6, libxext6, libxi6, libxt6, libxtst6, libxrender1)
 
 Legal
 -----
