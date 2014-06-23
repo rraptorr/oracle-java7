@@ -28,7 +28,7 @@ Usage
 
 To create packages on your own:
 
-- apt-get install dpkg-dev curl unzip
+- apt-get install debhelper curl unzip
 - git clone git://github.com/rraptorr/oracle-java7.git
 - cd oracle-java7
 - sh ./prepare.sh

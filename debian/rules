@@ -8,10 +8,9 @@ export DH_OPTIONS=
 
 export SHELL=/bin/bash
 
-distribution	:= $(shell lsb_release -is)
-distrelease	:= $(shell lsb_release -cs)
+distribution	:= $(shell dpkg-vendor --query Vendor)
 
-DEB_HOST_ARCH	?= $(shell dpkg-architecture -qDEB_HOST_ARCH)
+DEB_HOST_ARCH	?= $(shell dpkg-architecture -qDEB_HOST_ARCH 2>/dev/null)
 
 arch_map	:= amd64=x64 i386=i586
 archdir_map	:= amd64=amd64 i386=i386
@@ -562,6 +561,7 @@ binary-$(p_jdk):	build
 	dh_shlibdeps \
 		-L$(p_jbin) \
 		-l$(basedir)/jre/lib/$(archdir)/server \
+		-Xlibcairo-swt.so \
 		-- --warnings=0
 
 	sed -i -e 's/ *([^,]*) *//g' $(d_jdk).substvars

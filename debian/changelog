@@ -1,3 +1,9 @@
+oracle-java7 (7.60-2) unstable; urgency=low
+
+  * Update dependencies and README to fix issues with missing packages or tools
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Mon, 23 Jun 2014 13:23:12 +0200
+
 oracle-java7 (7.60-1) unstable; urgency=medium
 
   * New upstream release
