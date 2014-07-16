@@ -1,3 +1,34 @@
+oracle-java7 (7.65-1) stable; urgency=high
+
+  * SECURITY UPDATE:
+     - (CVE-2014-4227): unspecified vulnerability fixed in 7u65 (Deployment)
+     - (CVE-2014-4219): Bytecode verification does not prevent ctor calls to
+                        this() and super() (Hotspot)
+     - (CVE-2014-2490): Event logger format string vulnerability (Hotspot)
+     - (CVE-2014-4216): Incorrect generic signature attribute parsing (Hotspot)
+     - (CVE-2014-2483): Restrict use of privileged annotations (Libraries)
+     - (CVE-2014-4223): Incorrect handling of invocations with exhausted ranks
+                        (Libraries)
+     - (CVE-2014-4262): AtomicReferenceFieldUpdater missing primitive type check
+                        (Libraries)
+     - (CVE-2014-4209): SubjectDelegator protection insufficient (JMX)
+     - (CVE-2014-4265): unspecified vulnerability fixed in 7u65 (Deployment)
+     - (CVE-2014-4220): unspecified vulnerability fixed in 7u65 (Deployment)
+     - (CVE-2014-4218): Clone interfaces passed to proxy methods (Libraries)
+     - (CVE-2014-4252): Prevent instantiation of service with non-public
+                        constructor (Security)
+     - (CVE-2014-4266): InfoBuilder incorrect return values (Serviceability)
+     - (CVE-2014-4268): Missing file choser access restrictions (Swing)
+     - (CVE-2014-4264): Incorrect TLS/EC management (Security)
+     - (CVE-2014-4221): MethodHandles.Lookup insufficient modifiers checks
+                        (Libraries)
+     - (CVE-2014-4244): RSA blinding issues (Security)
+     - (CVE-2014-4263): insufficient Diffie-Hellman public key validation
+                        (Security)
+     - (CVE-2014-4208): unspecified vulnerability fixed in 7u65 (Deployment)
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Wed, 16 Jul 2014 10:39:11 +0200
+
 oracle-java7 (7.60-2) unstable; urgency=low
 
   * Update dependencies and README to fix issues with missing packages or tools
