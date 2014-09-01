@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 export LC_ALL=C
 export LANG=C
 
