@@ -1,3 +1,10 @@
+oracle-java7 (7.67-2) UNRELEASED; urgency=low
+
+  * Fix libodbc symlinks
+  * Update standards version to 3.9.6
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Thu, 09 Oct 2014 18:22:55 +0000
+
 oracle-java7 (7.67-1) stable; urgency=low
 
   * New upstream release

@@ -4,4 +4,5 @@
 @basename@-jdk: hardening-no-relro
 @basename@-jdk: menu-icon-missing usr/share/pixmaps/oracle-java7.xpm
 @basename@-jdk: image-file-in-usr-lib @basedir@/lib/missioncontrol/*
+@basename@-jdk: binary-or-shlib-defines-rpath @basedir@/lib/missioncontrol/libcairo-swt.so /usr/lib64
 @basename@-jdk: embedded-library @basedir@/lib/@arch@/jli/libjli.so: zlib

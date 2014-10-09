@@ -10,7 +10,8 @@ export SHELL=/bin/bash
 
 distribution	:= $(shell dpkg-vendor --query Vendor)
 
-DEB_HOST_ARCH	?= $(shell dpkg-architecture -qDEB_HOST_ARCH 2>/dev/null)
+DEB_HOST_ARCH		?= $(shell dpkg-architecture -qDEB_HOST_ARCH 2>/dev/null)
+DEB_HOST_MULTIARCH	?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH 2>/dev/null)
 
 arch_map	:= amd64=x64 i386=i586
 archdir_map	:= amd64=amd64 i386=i386
@@ -373,9 +374,9 @@ binary-$(p_jbin):	build
 	-find $(d_jbin)/$(basedir)/jre/man -name '*.[1-9]' | xargs gzip
 
 # make these absolute links, so we can use them for resolving the dependencies
-	ln -sf /usr/lib/libodbcinst.so.1 \
+	ln -sf /usr/lib/$(DEB_HOST_MULTIARCH)/libodbcinst.so.1 \
 		$(d_jbin)/$(basedir)/jre/lib/$(archdir)/libodbcinst.so
-	ln -sf /usr/lib/libodbc.so.1 \
+	ln -sf /usr/lib/$(DEB_HOST_MULTIARCH)/libodbc.so.1 \
 		$(d_jbin)/$(basedir)/jre/lib/$(archdir)/libodbc.so
 
 	rm -f $(d_jbin).substvars

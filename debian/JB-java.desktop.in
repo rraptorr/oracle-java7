@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=@vendor@ Java @RELEASE@ Runtime
 Comment=@vendor@ Java @RELEASE@ Runtime
-Exec=@java_launcher@ -jar
+Exec=@java_launcher@ -jar %f
 Terminal=false
 Type=Application
 Icon=@basename@
