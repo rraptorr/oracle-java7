@@ -1,9 +1,39 @@
-oracle-java7 (7.67-2) UNRELEASED; urgency=low
+oracle-java7 (7.71-1) stable; urgency=high
 
   * Fix libodbc symlinks
   * Update standards version to 3.9.6
+  * SECURITY UPDATE:
+     - (CVE-2014-6513): splash image handling memory corruption (AWT)
+     - (CVE-2014-6532): unspecified vulnerability fixed in 7u71 (Deployment)
+     - (CVE-2014-6503): unspecified vulnerability fixed in 7u71 (Deployment)
+     - (CVE-2014-6456): unspecified vulnerability fixed in 7u71 (Deployment)
+     - (CVE-2014-6492): unspecified vulnerability fixed in 7u71 (Deployment)
+     - (CVE-2014-6493): unspecified vulnerability fixed in 7u71 (Deployment)
+     - (CVE-2014-4288): unspecified vulnerability fixed in 7u71 (Deployment)
+     - (CVE-2014-6466): unspecified vulnerability fixed in 7u71 (Deployment)
+     - (CVE-2014-6458): unspecified vulnerability fixed in 7u71 (Deployment)
+     - (CVE-2014-6506): insufficient permission checks when setting resource
+                        bundle on system logger (Libraries)
+     - (CVE-2014-6511): ICU: Layout Engine ContextualSubstitution missing
+                        boundary checks (2D)
+     - (CVE-2014-6476): unspecified vulnerability fixed in 7u71 (Deployment)
+     - (CVE-2014-6515): unspecified vulnerability fixed in 7u71 (Deployment)
+     - (CVE-2014-6504): incorrect optimization of range checks in C2 compiler
+                        (Hotspot)
+     - (CVE-2014-6519): missing BootstrapMethods bounds check (Hotspot)
+     - (CVE-2014-6517): StAX parser parameter entity XXE (JAXP)
+     - (CVE-2014-6531): insufficient ResourceBundle name check (Libraries)
+     - (CVE-2014-6512): DatagramSocket connected socket missing source check
+                        (Libraries)
+     - (CVE-2014-6457): Triple Handshake attack against TLS/SSL connections
+                        (JSSE)
+     - (CVE-2014-6527): unspecified vulnerability fixed in 7u71 (Deployment)
+     - (CVE-2014-6502): LogRecord use of incorrect CL when loading
+                        ResourceBundle (Libraries)
+     - (CVE-2014-6558): CipherInputStream incorrect exception handling
+                        (Security)
 
- -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Thu, 09 Oct 2014 18:22:55 +0000
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Wed, 15 Oct 2014 12:39:20 +0200
 
 oracle-java7 (7.67-1) stable; urgency=low
 
