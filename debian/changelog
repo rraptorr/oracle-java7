@@ -1,3 +1,9 @@
+oracle-java7 (7.72-1) stable; urgency=low
+
+  * New upstream release
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Wed, 15 Oct 2014 13:00:15 +0200
+
 oracle-java7 (7.71-1) stable; urgency=high
 
   * Fix libodbc symlinks
