@@ -1,3 +1,9 @@
+oracle-java7 (7.72-2) UNRELEASED; urgency=low
+
+  * Disable resume while downloading JCE policy files
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Mon, 15 Dec 2014 21:01:07 +0000
+
 oracle-java7 (7.72-1) stable; urgency=low
 
   * New upstream release
