@@ -1,6 +1,7 @@
 oracle-java7 (7.75-1) stable; urgency=high
 
   * Disable resume while downloading JCE policy files
+  * Add note about Java 7 EOL on April 2015
   * SECURITY UPDATE:
      - (CVE-2014-6601): class verifier insufficient invokespecial calls
                         verification (Hotspot)

@@ -1,3 +1,7 @@
+Please note that Java 7 is nearing its end of public updates and Oracle
+will not release any more updates after April 2015. For details
+please see http://www.oracle.com/technetwork/java/eol-135779.html
+
 Introduction
 ------------
 
