@@ -1,8 +1,31 @@
-oracle-java7 (7.72-2) UNRELEASED; urgency=low
+oracle-java7 (7.75-1) stable; urgency=high
 
   * Disable resume while downloading JCE policy files
+  * SECURITY UPDATE:
+     - (CVE-2014-6601): class verifier insufficient invokespecial calls
+                        verification (Hotspot)
+     - (CVE-2015-0412): insufficient code privileges checks (JAX-WS)
+     - (CVE-2015-0408): incorrect context class loader use in RMI transport
+                        (RMI)
+     - (CVE-2015-0395): phantom references handling issue in garbage collector
+                        (Hotspot)
+     - (CVE-2015-0403): unspecified vulnerability fixed in 7u75 (Deployment)
+     - (CVE-2015-0406): unspecified vulnerability fixed in 7u75 (Deployment)
+     - (CVE-2015-0383): insecure hsperfdata temporary file handling (Hotspot)
+     - (CVE-2015-0400): NTLM authentication data disclosure via redirect
+                        to proxy (Libraries)
+     - (CVE-2015-0407): directory information leak via file chooser (Swing)
+     - (CVE-2015-0410): DER decoder infinite loop (Security)
+     - (CVE-2014-6587): MulticastSocket NULL pointer dereference (Libraries)
+     - (CVE-2014-3566): SSL/TLS: Padding Oracle On Downgraded Legacy Encryption
+                        attack (JSSE)
+     - (CVE-2014-6593): incorrect tracking of ChangeCipherSpec during SSL/TLS
+                        handshake (JSSE)
+     - (CVE-2014-6585): ICU: font parsing OOB read (2D)
+     - (CVE-2014-6591): ICU: font parsing OOB read (2D)
+     - (CVE-2015-0413): unspecified vulnerability fixed in 7u75 (Serviceability)
 
- -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Mon, 15 Dec 2014 21:01:07 +0000
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Wed, 21 Jan 2015 11:04:49 +0100
 
 oracle-java7 (7.72-1) stable; urgency=low
 
