@@ -19,10 +19,6 @@ So far packages were tested on following Debian versions:
 New users of Debian Wheezy should cosider using java-package:
 <http://wiki.debian.org/JavaPackage>
 
-Packages are compatible with "official" Debian ones of Java 6, but
-have a higher priority (use update-java-alternatives to switch between
-Java versions).
-
 I do not have resources to test packages on Ubuntu. However, if one
 finds any problem on Ubuntu, feel free to report an issue and I will
 try to resolve it.
