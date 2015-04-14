@@ -1,3 +1,21 @@
+oracle-java7 (7.79-1) stable; urgency=high
+
+  * SECURITY UPDATE:
+       - (CVE-2015-0469): layout engine glyphStorage off-by-one (2D)
+       - (CVE-2015-0459): unspecified vulnerability fixed in 7u79 (2D)
+       - (CVE-2015-0491): unspecified vulnerability fixed in 7u79 (2D)
+       - (CVE-2015-0460): incorrect handling of phantom references (Hotspot)
+       - (CVE-2015-0492): unspecified vulnerability fixed in 7u79 (JavaFX)
+       - (CVE-2015-0458): unspecified vulnerability fixed in 7u79 (Deployment)
+       - (CVE-2015-0484): unspecified vulnerability fixed in 7u79 (JavaFX)
+       - (CVE-2015-0480): jar directory traversal issues (Tools)
+       - (CVE-2015-0488): certificate options parsing uncaught exception (JSSE)
+       - (CVE-2015-0477): incorrect permissions check in resource loading
+                          (Beans)
+       - (CVE-2015-0478): RSA implementation hardening (JCE)
+
+ -- Janusz Dziemidowicz <rraptorr@nails.eu.org>  Tue, 14 Apr 2015 20:23:16 +0200
+
 oracle-java7 (7.76-1) stable; urgency=low
 
   * New upstream release
