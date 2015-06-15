@@ -36,6 +36,15 @@ To create packages on your own:
 - install any missing packages that dpkg-buildpackage complains about
   and repeat
 
+Additional Usage
+----------------
+
+- install the packages on your target system
+- `dpkg -i <deb file>`
+- Set the environment variable `JAVA_HOME` to point to you newly installed Debian packages: `echo JAVA_HOME="/usr/lib/jvm/java-7-oracle" >> /etc/environment`
+- `source /etc/environment`
+- and you should be good to go
+
 Legal
 -----
 
