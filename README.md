@@ -39,7 +39,7 @@ To create packages on your own:
 Additional Usage
 ----------------
 
-- install the packages on your target system
+- install the new built Debian packages on your target system
 - `dpkg -i <deb file>`
 - Set the environment variable `JAVA_HOME` to point to you newly installed Debian packages: `echo JAVA_HOME="/usr/lib/jvm/java-7-oracle" >> /etc/environment`
 - `source /etc/environment`
