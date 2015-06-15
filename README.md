@@ -45,6 +45,15 @@ Additional Usage
 - `source /etc/environment`
 - and you should be good to go
 
+- when updating the packages in the future, changing the symbolic link in `/usr/lib/jvm` should suffice
+
+```
+$ cd /usr/lib/jvm/
+$ ls -1F 
+java-7-oracle@
+java-7-oracle-1.7.0.80/
+```
+
 Legal
 -----
 
