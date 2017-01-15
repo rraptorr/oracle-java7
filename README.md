@@ -28,13 +28,31 @@ Usage
 
 To create packages on your own:
 
-- apt-get install debhelper curl unzip
-- git clone git://github.com/rraptorr/oracle-java7.git
-- cd oracle-java7
-- sh ./prepare.sh
-- dpkg-buildpackage -uc -us
+- `apt-get install debhelper curl unzip`
+- `git clone git://github.com/rraptorr/oracle-java7.git`
+- `cd oracle-java7`
+- `sh ./prepare.sh`
+- `dpkg-buildpackage -uc -us`
 - install any missing packages that dpkg-buildpackage complains about
   and repeat
+
+Additional Usage
+----------------
+
+- install the new built Debian packages on your target system
+- `dpkg -i <deb file>`
+- Set the environment variable `JAVA_HOME` to point to you newly installed Debian packages: `echo JAVA_HOME="/usr/lib/jvm/java-7-oracle" >> /etc/environment`
+- `source /etc/environment`
+- and you should be good to go
+
+- when updating the packages in the future, changing the symbolic link in `/usr/lib/jvm` should suffice
+
+```
+$ cd /usr/lib/jvm/
+$ ls -1F 
+java-7-oracle@
+java-7-oracle-1.7.0.80/
+```
 
 Legal
 -----
